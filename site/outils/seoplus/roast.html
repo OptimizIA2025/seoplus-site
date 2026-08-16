@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirection vers votre bilan | SEOPlus!</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://www.optimizia.xyz/outils/seoplus/bilan.html">
+  <!-- Cette page a ete renommee bilan.html. Elle ne reste ici que pour les liens
+       deja partages et les onglets ouverts : la redirection recopie la chaine de
+       requete, sans quoi l'URL analysee serait perdue en route. Une vraie 301
+       serveur reste a poser cote hebergeur, ce fichier est le filet en attendant. -->
+  <script>
+    (function () {
+      var q = window.location.search || "";
+      var h = window.location.hash || "";
+      window.location.replace("bilan.html" + q + h);
+    })();
+  </script>
+  <meta http-equiv="refresh" content="0; url=bilan.html">
+</head>
+<body>
+  <p style="font-family:system-ui,sans-serif;padding:32px;text-align:center">
+    Cette page s'appelle désormais <a href="bilan.html">votre bilan de visibilité</a>.
+  </p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+# SEOPlus! - www.optimizia.xyz/outils/seoplus
+# Fichier indicatif : le robots.txt qui fait foi est celui de la racine du domaine.
+# Politique explicite : les crawlers classiques et IA sont les bienvenus.
+
+User-agent: *
+Allow: /
+# Pages personnelles ou sans contenu indexable : un resultat de recherche qui
+# tombe sur un ecran de connexion dessert le site autant que le visiteur.
+Disallow: /rapport.html
+Disallow: /bilan.html
+Disallow: /roast.html
+Disallow: /compte.html
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+Sitemap: https://www.optimizia.xyz/outils/seoplus/sitemap.xml
+
+# llms.txt : https://www.optimizia.xyz/outils/seoplus/llms.txt
+# llms-full.txt : https://www.optimizia.xyz/outils/seoplus/llms-full.txt

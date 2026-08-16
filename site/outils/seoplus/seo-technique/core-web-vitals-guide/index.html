@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Core Web Vitals : le guide sans jargon | SEOPlus!</title>
+  <meta name="description" content="LCP, INP, CLS : ce que mesurent vraiment les Core Web Vitals, les seuils à viser, et les 3 causes de lenteur les plus fréquentes, avec leurs correctifs.">
+  <link rel="canonical" href="https://www.optimizia.xyz/outils/seoplus/seo-technique/core-web-vitals-guide/">
+  <link rel="alternate" type="application/rss+xml" title="Blog SEOPlus!" href="/outils/seoplus/feed.xml">
+  <link rel="alternate" hreflang="fr" href="https://www.optimizia.xyz/outils/seoplus/seo-technique/core-web-vitals-guide/">
+  <link rel="alternate" hreflang="en" href="https://www.optimizia.xyz/outils/seoplus/en/technical-seo/core-web-vitals-guide/">
+  <link rel="alternate" hreflang="x-default" href="https://www.optimizia.xyz/outils/seoplus/seo-technique/core-web-vitals-guide/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.optimizia.xyz/outils/seoplus/assets/img/og.png?v=2">
+  <meta property="og:site_name" content="SEOPlus!">
+  <meta property="og:title" content="Core Web Vitals : le guide sans jargon">
+  <meta property="og:description" content="Ce que mesurent vraiment les trois métriques de Google, les seuils à viser, et les trois causes de lenteur qui reviennent partout.">
+  <meta property="og:url" content="https://www.optimizia.xyz/outils/seoplus/seo-technique/core-web-vitals-guide/">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.optimizia.xyz/outils/seoplus/assets/img/og.png?v=2">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "Core Web Vitals : le guide sans jargon",
+        "description": "LCP, INP, CLS : ce que mesurent vraiment les Core Web Vitals, les seuils à viser, et les 3 causes de lenteur les plus fréquentes, avec leurs correctifs.",
+        "inLanguage": "fr",
+        "datePublished": "2026-07-07",
+        "dateModified": "2026-08-11",
+        "mainEntityOfPage": "https://www.optimizia.xyz/outils/seoplus/seo-technique/core-web-vitals-guide/",
+        "author": {
+          "@type": "Person",
+          "name": "Romain Ben",
+          "url": "https://www.optimizia.xyz/outils/seoplus/a-propos.html",
+          "worksFor": {
+            "@id": "https://www.optimizia.xyz/#org"
+          }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://www.optimizia.xyz/#org",
+          "name": "OptimizIA.xyz",
+          "url": "https://www.optimizia.xyz",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.optimizia.xyz/outils/seoplus/assets/img/optimizia-logo.png",
+            "width": 1055,
+            "height": 236
+          }
+        },
+        "image": "https://www.optimizia.xyz/outils/seoplus/assets/img/og.png?v=2",
+        "isPartOf": {
+          "@id": "https://www.optimizia.xyz/outils/seoplus/#website"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Accueil",
+            "item": "https://www.optimizia.xyz/outils/seoplus/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.optimizia.xyz/outils/seoplus/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Technique",
+            "item": "https://www.optimizia.xyz/outils/seoplus/seo-technique/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Core Web Vitals : le guide sans jargon",
+            "item": "https://www.optimizia.xyz/outils/seoplus/seo-technique/core-web-vitals-guide/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/outils/seoplus/assets/fonts.css?v=20260814b">
+  <link rel="icon" type="image/svg+xml" href="/outils/seoplus/assets/img/favicon.svg">
+  <link rel="apple-touch-icon" href="/outils/seoplus/assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="/outils/seoplus/assets/style.css?v=20260817">
+</head>
+<body data-page="post">
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <a class="brand-home" href="/outils/seoplus/">
+          <img class="brand-logo" src="/outils/seoplus/assets/img/favicon.svg" alt="" width="30" height="30">
+          <span class="brand-name">SEO<em>Plus!</em></span>
+        </a>
+        <a class="brand-by" href="https://www.optimizia.xyz">by OptimizIA.xyz</a>
+      </div>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="/outils/seoplus/#comment">Comment ça marche</a>
+        <a href="/outils/seoplus/#couverture">L'audit</a>
+        <a href="/outils/seoplus/#tarifs">Tarifs</a>
+        <a href="/outils/seoplus/classement.html">Classement</a>
+        <a href="/outils/seoplus/blog/">Blog</a>
+        <a class="btn btn-primary" href="/outils/seoplus/#analyser">Analyser mon site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="post-wrap post-rel">
+        <a class="post-back" href="/outils/seoplus/blog/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          Retour au blog
+        </a>
+        <div class="post-head">
+          <p class="eyebrow"><a href="/outils/seoplus/blog/" style="color:inherit;text-decoration:none">Blog</a> · <a href="/outils/seoplus/seo-technique/" style="color:inherit;text-decoration:none">SEO technique</a></p>
+          <h1>Core Web Vitals : le guide sans jargon pour dirigeants</h1>
+        </div>
+
+        <div class="post-author">
+          <span class="author-avatar"><img src="/outils/seoplus/assets/img/authors/romain-ben.webp" alt="Portrait de Romain Ben" width="44" height="44" loading="lazy"></span>
+          <div class="author-id">
+            <a class="author-link" href="/outils/seoplus/a-propos.html"><b>Romain Ben</b></a>
+            <span>Co-fondateur &amp; CTO, OptimizIA.xyz · <time datetime="2026-07-07">7 juillet 2026</time> · <span class="post-updated"><time datetime="2026-08-11">Mis à jour le 11 août 2026</time></span></span>
+          </div>
+        </div>
+
+        <aside class="post-aside">
+          <div class="post-aside-inner">
+            <div class="aside-box">
+              <b class="aside-title">Sommaire</b>
+              <nav class="post-toc" aria-label="Sommaire de l'article">
+                <a href="#pourquoi-google-mesure-ca">Pourquoi Google mesure-t-il ça ?</a>
+                <a href="#les-trois-metriques">Les trois métriques, traduites</a>
+                <a href="#terrain-ou-laboratoire">Données terrain ou laboratoire ?</a>
+                <a href="#faut-il-viser-100-sur-100">Faut-il viser 100/100 ?</a>
+                <a href="#les-trois-causes">Les 3 causes qui reviennent partout</a>
+                <a href="#comment-corriger-le-cls-sans-tout-casser">Comment corriger le CLS sans tout casser ?</a>
+                <a href="#en-combien-de-temps-google-en-tient-il-compte">En combien de temps Google en tient-il compte ?</a>
+                <a href="#comment-mesurer">Comment mesurer chez vous ?</a>
+              </nav>
+            </div>
+            <div class="aside-box">
+              <b class="aside-title">Partager cet article</b>
+            <div class="post-share" aria-label="Partager l'article">
+            <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.optimizia.xyz%2Foutils%2Fseoplus%2Fseo-technique%2Fcore-web-vitals-guide%2F" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="share-btn" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.optimizia.xyz%2Foutils%2Fseoplus%2Fseo-technique%2Fcore-web-vitals-guide%2F&amp;text=Core%20Web%20Vitals%20%3A%20le%20guide%20sans%20jargon%20pour%20dirigeants" target="_blank" rel="noopener">X</a>
+            <button class="share-btn share-copy" type="button">Copier le lien</button>
+            </div>
+            </div>
+          </div>
+        </aside>
+
+
+        <div class="post-summary">
+          <b>En bref</b>
+          Les Core Web Vitals sont les trois mesures d'expérience de chargement que Google utilise comme signal de classement : LCP (vitesse d'affichage, viser moins de 2,5 s), INP (réactivité, moins de 200 ms) et CLS (stabilité visuelle, moins de 0,1). Sur les sites de TPE-PME, trois causes expliquent l'essentiel des mauvais scores : images trop lourdes, scripts tiers, hébergement sous-dimensionné. Notre <a href="/outils/seoplus/#analyser">audit gratuit</a> mesure vos CWV réels via l'API PageSpeed de Google.
+        </div>
+
+        <aside class="post-rail" aria-label="Auditer mon site">
+          <div class="post-rail-inner">
+            <div class="post-rail-card">
+              <span class="post-rail-tag">SEOPlus!</span>
+              <b>Votre site est-il visible dans Google et dans les réponses des IA ?</b>
+              <p>160 vérifications SEO et GEO, un score sur 100 et le plan d'actions qui va avec.</p>
+              <a class="btn btn-primary" href="/outils/seoplus/#analyser">Analyser mon site</a>
+              <span class="post-rail-note">30 secondes. Diagnostic gratuit, sans carte bancaire.</span>
+            </div>
+          </div>
+        </aside>
+
+        <div class="post">
+          <h2 id="pourquoi-google-mesure-ca">Pourquoi Google mesure-t-il ça ?</h2>
+          <p>Google veut envoyer ses utilisateurs vers des pages agréables à utiliser. Depuis 2021, il intègre donc dans son classement trois mesures d'expérience baptisées Core Web Vitals. Ce n'est pas le signal le plus puissant du SEO, mais c'est un signal, et surtout c'est un <b>facteur de conversion</b> : une page qui met 6 secondes à s'afficher perd une partie de ses visiteurs avant même d'avoir montré quoi que ce soit.</p>
+
+          <h2 id="les-trois-metriques">Les trois métriques, traduites</h2>
+          <ul>
+            <li><b>LCP (Largest Contentful Paint), le chargement.</b> Temps d'affichage du plus gros élément visible, en général votre image ou titre principal. C'est la sensation « le site est là ». <b>Cible : 2,5 secondes ou moins.</b></li>
+            <li><b>INP (Interaction to Next Paint), la réactivité.</b> Délai entre une action (clic, saisie) et la réaction visible de la page. C'est la sensation « ça répond ». <b>Cible : 200 ms ou moins.</b></li>
+            <li><b>CLS (Cumulative Layout Shift), la stabilité.</b> Mesure les décalages de mise en page pendant le chargement, ce moment où le bouton bouge juste quand vous alliez cliquer dessus. <b>Cible : 0,1 ou moins.</b></li>
+          </ul>
+          <p>Le barème Lighthouse qui les accompagne est simple : un score de performance de 90 à 100 est bon, de 50 à 89 à surveiller, en dessous de 50 à corriger.</p>
+
+          <h2 id="terrain-ou-laboratoire">Données terrain ou laboratoire ?</h2>
+          <p>Deux façons de mesurer, et elles ne racontent pas la même chose. Les <b>données terrain</b> (CrUX) sont collectées par Google sur vos vrais visiteurs Chrome des 28 derniers jours : c'est la vérité, mais il faut du trafic pour en avoir. Les <b>données laboratoire</b> (Lighthouse) sont une simulation dans des conditions standardisées : disponibles pour tout site, mais théoriques. Les petits sites n'ont souvent que le laboratoire ; c'est déjà un excellent indicateur de tendance. Notre rapport indique toujours laquelle des deux sources il affiche.</p>
+
+          <h2 id="faut-il-viser-100-sur-100">Faut-il viser 100/100 ?</h2>
+          <p>Non, et courir après le 100 est l'un des meilleurs moyens de gaspiller un budget. Deux raisons.</p>
+          <p>D'abord, ce que Google évalue pour le classement, ce sont les <b>seuils</b> des trois métriques, pas le score Lighthouse. Un site dont le LCP est à 2,3 s, l'INP à 150 ms et le CLS à 0,05 est au vert sur toute la ligne, que son score affiche 92 ou 78. Passer ce même site de 92 à 100 n'apporte rien au référencement.</p>
+          <p>Ensuite, le coût n'est pas linéaire. Amener une page de 40 à 75 se fait en général en une demi-journée, avec deux ou trois gestes simples : les images, les scripts inutiles, la compression. Aller de 90 à 100 demande souvent de découper des feuilles de style, de retirer des fonctionnalités et de renoncer à des outils que l'entreprise utilise vraiment. Le rapport entre l'effort et le gain s'inverse quelque part vers 85.</p>
+          <p>La bonne question n'est donc pas « quel est mon score » mais « suis-je au vert sur les trois seuils, en mobile ». Si oui, le sujet est clos, passez au contenu.</p>
+
+          <h2 id="les-trois-causes">Les 3 causes qui reviennent partout</h2>
+          <p>Après des dizaines d'audits de sites de TPE-PME, trois causes expliquent l'écrasante majorité des mauvais scores :</p>
+          <ol>
+            <li><b>Les images trop lourdes.</b> Une photo sortie d'un appareil moderne pèse 4 à 8 Mo. Posée telle quelle en image de fond, elle ruine le LCP à elle seule. Correctif : redimensionner à la taille d'affichage réelle et convertir en WebP ou AVIF. Une image de héros doit peser moins de 200 Ko.</li>
+            <li><b>Les scripts tiers.</b> Widget de chat, tracking, polices externes, vidéos intégrées : chaque script tiers bloque potentiellement le fil principal. Correctif : supprimer ceux qui ne servent plus (il y en a presque toujours), charger les autres en différé.</li>
+            <li><b>L'hébergement sous-dimensionné.</b> Si le serveur met 1,5 seconde à répondre avant même d'envoyer la page, aucune optimisation ne rattrapera ce retard. Correctif : activer la compression et le cache serveur, ou changer d'offre. Ça se mesure au TTFB (time to first byte, viser moins de 600 ms).</li>
+          </ol>
+
+          <h2 id="comment-corriger-le-cls-sans-tout-casser">Comment corriger le CLS sans tout casser ?</h2>
+          <p>Le CLS est la métrique la plus mal diagnostiquée des trois, parce que le coupable est rarement celui qu'on accuse. Un élément ne peut décaler la page que s'il <b>entre dans le flux</b> après le premier affichage. Un bloc positionné en absolu, ou une grille à colonnes fixes, ne décale rien, même s'il s'anime beaucoup et attire l'œil.</p>
+          <p>Les quatre causes réelles, par fréquence :</p>
+          <ul>
+            <li><b>Une image sans <code>width</code> ni <code>height</code>.</b> Le navigateur ne sait pas quelle place lui réserver, il affiche le texte, puis pousse tout vers le bas quand l'image arrive. C'est la cause numéro un, et la plus facile à corriger.</li>
+            <li><b>Un élément masqué qui réapparaît.</b> Attention au piège : masquer avec l'attribut <code>hidden</code> ou <code>display:none</code> sort l'élément du flux. Quand il revient, ses voisins se redisposent. Si l'emplacement doit rester réservé, utilisez <code>visibility:hidden</code>, qui garde la place. Nous nous sommes fait prendre sur notre propre page d'accueil par un compteur chargé après une requête réseau.</li>
+            <li><b>Une bannière ou un bandeau inséré en haut de page</b> après coup : il pousse toute la page vers le bas d'un coup.</li>
+            <li><b>Une police personnalisée</b> dont les lettres n'ont pas la même largeur que la police de secours : le texte se remet en page quand la vraie police arrive.</li>
+          </ul>
+          <p>Le réflexe utile avant de corriger : ouvrez l'onglet Performance de votre navigateur et regardez <b>quel</b> élément bouge. Corriger au jugé fait perdre des journées, comme l'a vécu ce site.</p>
+
+          <h2 id="en-combien-de-temps-google-en-tient-il-compte">En combien de temps Google en tient-il compte ?</h2>
+          <p>Voilà ce que personne ne dit et qui provoque le plus de découragement : les données terrain de Google sont une moyenne glissante sur 28 jours. Le jour où vous corrigez vos images, la mesure ne bouge presque pas, parce qu'elle contient encore 27 jours de visites sur l'ancienne version.</p>
+          <p>Comptez donc environ un mois pour voir la correction pleinement reflétée dans la Search Console, et n'en concluez pas au bout d'une semaine que votre travail n'a servi à rien. Le laboratoire, lui, réagit immédiatement : mesurez-y l'effet de votre correction le jour même, puis attendez le terrain pour la confirmation.</p>
+
+          <h2 id="comment-mesurer">Comment mesurer chez vous ?</h2>
+          <p>Notre <a href="/outils/seoplus/#analyser">audit gratuit</a> interroge l'API PageSpeed Insights de Google et affiche vos trois métriques avec leur source (terrain ou laboratoire), intégrées au score de la catégorie Performance. Vous pouvez aussi utiliser PageSpeed Insights directement : même donnée, sans le reste de l'audit. Mesurez la version mobile d'abord : c'est elle que Google regarde, et c'est presque toujours la moins bonne des deux.</p>
+        </div>
+
+
+<!-- silo:debut -->
+        <nav class="silo-more" aria-label="Plus dans le silo SEO technique">
+          <b class="silo-more-title">Plus dans SEO technique</b>
+          <ul class="silo-more-list">
+        <li><a href="/outils/seoplus/seo-technique/"><em class="silo-more-tag">Guide</em><b>Le guide du SEO technique pour une TPE-PME</b><span>Les 5 chantiers dans l'ordre : indexation, robots, vitesse, données structurées, mesure. La carte qui relie nos articles techniques.</span></a></li>
+        <li><a href="/outils/seoplus/seo-technique/donnees-structurees-json-ld/"><b>Données structurées : les schémas qui comptent vraiment pour Google et les IA</b><span>Les 5 types de JSON-LD utiles à une TPE-PME, un exemple complet à adapter, et les 3 erreurs qui invalident tout.</span></a></li>
+        <li><a href="/outils/seoplus/seo-technique/google-search-console-debuter/"><b>Google Search Console : le guide pour débuter (et les 3 rapports qui comptent)</b><span>Gratuit, officiel, et pourtant ignoré par la moitié des sites de PME. Installation en 10 minutes, puis les trois rapports qui vous disent quoi corriger en priorité.</span></a></li>
+        <li><a href="/outils/seoplus/seo-technique/maillage-interne/"><b>Maillage interne : la technique gratuite que presque personne ne fait</b><span>Lier vos propres pages entre elles change la façon dont Google et les IA comprennent votre site. La méthode hub et pages filles, applicable en une après-midi.</span></a></li>
+          </ul>
+        </nav>
+        <!-- silo:fin -->
+
+        <div class="post-cta">
+          <h2>Vos Core Web Vitals, mesurés en 30 secondes.</h2>
+          <p>L'audit gratuit inclut vos métriques réelles Google PageSpeed, intégrées à votre score de performance.</p>
+          <a class="btn btn-primary" href="/outils/seoplus/#analyser">Analyser mon site</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="footer-brand-line" href="/outils/seoplus/#top"><img class="brand-logo" src="/outils/seoplus/assets/img/favicon.svg" alt="" width="30" height="30" loading="lazy"><span class="brand-name">SEO<em style="font-style:normal;color:var(--orange)">Plus!</em></span></a>
+          <p>L'audit SEO et GEO automatisé par IA, conçu par OptimizIA.xyz, agence d'intégration IA et d'automatisation pour TPE et PME.</p>
+        </div>
+        <nav aria-label="Produit">
+          <b class="footer-title">Produit</b>
+          <a href="/outils/seoplus/#analyser">Analyser mon site</a>
+          <a href="/outils/seoplus/#comment">Comment ça marche</a>
+          <a href="/outils/seoplus/#tarifs">Tarifs</a>
+          <a href="/outils/seoplus/rapport.html?url=exemple.com&amp;demo=1">Exemple de rapport</a>
+        </nav>
+        <nav aria-label="Ressources">
+          <b class="footer-title">Ressources</b>
+          <a href="/outils/seoplus/blog/">Blog</a>
+          <a href="/outils/seoplus/classement.html">Classement public</a>
+          <a href="/outils/seoplus/generateur-llms-txt.html">Générateur llms.txt</a>
+          <a href="/outils/seoplus/methodologie.html">Notre méthode</a>
+        </nav>
+        <nav aria-label="Informations">
+          <b class="footer-title">Informations</b>
+          <a href="/outils/seoplus/a-propos.html">À propos</a>
+          <a href="/outils/seoplus/mentions-legales.html">Mentions légales</a>
+          <a href="/outils/seoplus/politique-confidentialite.html">Confidentialité</a>
+          <a href="/outils/seoplus/cgv.html">Conditions générales de vente</a>
+          <a href="mailto:contact@optimizia.xyz">contact@optimizia.xyz</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 SEOPlus! V6.0 par OptimizIA.xyz</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/outils/seoplus/config.js"></script>
+  <script src="/outils/seoplus/assets/app.js?v=20260817"></script>
+</body>
+</html>

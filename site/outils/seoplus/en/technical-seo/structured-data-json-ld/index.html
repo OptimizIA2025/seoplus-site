@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Structured data: the schemas that matter | SEOPlus!</title>
+  <meta name="description" content="JSON-LD explained simply: the 5 types of structured data a small business needs, a complete example to adapt, and the mistakes that invalidate the block.">
+  <link rel="canonical" href="https://www.optimizia.xyz/outils/seoplus/en/technical-seo/structured-data-json-ld/">
+  <link rel="alternate" type="application/rss+xml" title="SEOPlus! Blog" href="/outils/seoplus/feed-en.xml">
+  <link rel="alternate" hreflang="fr" href="https://www.optimizia.xyz/outils/seoplus/seo-technique/donnees-structurees-json-ld/">
+  <link rel="alternate" hreflang="en" href="https://www.optimizia.xyz/outils/seoplus/en/technical-seo/structured-data-json-ld/">
+  <link rel="alternate" hreflang="x-default" href="https://www.optimizia.xyz/outils/seoplus/seo-technique/donnees-structurees-json-ld/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.optimizia.xyz/outils/seoplus/assets/img/og.png?v=2">
+  <meta property="og:site_name" content="SEOPlus!">
+  <meta property="og:title" content="Structured data: the schemas that matter">
+  <meta property="og:description" content="The 5 types of structured data a small business needs, a complete example to adapt, and the mistakes that invalidate everything.">
+  <meta property="og:url" content="https://www.optimizia.xyz/outils/seoplus/en/technical-seo/structured-data-json-ld/">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.optimizia.xyz/outils/seoplus/assets/img/og.png?v=2">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "Structured data: the schemas that matter",
+        "description": "JSON-LD explained simply: the 5 types of structured data a small business needs, a complete example to adapt, and the mistakes that invalidate the block.",
+        "inLanguage": "en",
+        "datePublished": "2026-06-17",
+        "dateModified": "2026-08-11",
+        "mainEntityOfPage": "https://www.optimizia.xyz/outils/seoplus/en/technical-seo/structured-data-json-ld/",
+        "author": {
+          "@type": "Person",
+          "name": "Romain Ben",
+          "url": "https://www.optimizia.xyz/outils/seoplus/a-propos.html",
+          "worksFor": {
+            "@id": "https://www.optimizia.xyz/#org"
+          }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://www.optimizia.xyz/#org",
+          "name": "OptimizIA.xyz",
+          "url": "https://www.optimizia.xyz",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.optimizia.xyz/outils/seoplus/assets/img/optimizia-logo.png",
+            "width": 1055,
+            "height": 236
+          }
+        },
+        "image": "https://www.optimizia.xyz/outils/seoplus/assets/img/og.png?v=2",
+        "isPartOf": {
+          "@id": "https://www.optimizia.xyz/outils/seoplus/#website"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.optimizia.xyz/outils/seoplus/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.optimizia.xyz/outils/seoplus/en/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Technical",
+            "item": "https://www.optimizia.xyz/outils/seoplus/en/technical-seo/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Structured data: the schemas that matter",
+            "item": "https://www.optimizia.xyz/outils/seoplus/en/technical-seo/structured-data-json-ld/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/outils/seoplus/assets/fonts.css?v=20260814b">
+  <link rel="icon" type="image/svg+xml" href="/outils/seoplus/assets/img/favicon.svg">
+  <link rel="apple-touch-icon" href="/outils/seoplus/assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="/outils/seoplus/assets/style.css?v=20260817">
+</head>
+<body data-page="post" data-lang="en">
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <a class="brand-home" href="/outils/seoplus/?lang=en">
+          <img class="brand-logo" src="/outils/seoplus/assets/img/favicon.svg" alt="" width="30" height="30">
+          <span class="brand-name">SEO<em>Plus!</em></span>
+        </a>
+        <a class="brand-by" href="https://www.optimizia.xyz">by OptimizIA.xyz</a>
+      </div>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/outils/seoplus/?lang=en#comment">How it works</a>
+        <a href="/outils/seoplus/?lang=en#couverture">The audit</a>
+        <a href="/outils/seoplus/?lang=en#tarifs">Pricing</a>
+        <a href="/outils/seoplus/classement.html?lang=en">Leaderboard</a>
+        <a href="/outils/seoplus/en/blog/">Blog</a>
+        <a class="btn btn-primary" href="/outils/seoplus/?lang=en#analyser">Analyze my website</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="post-wrap post-rel">
+        <a class="post-back" href="/outils/seoplus/en/blog/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          Back to the blog
+        </a>
+        <div class="post-head">
+          <p class="eyebrow"><a href="/outils/seoplus/en/blog/" style="color:inherit;text-decoration:none">Blog</a> · <a href="/outils/seoplus/en/technical-seo/" style="color:inherit;text-decoration:none">Technical SEO</a></p>
+          <h1>Structured Data: The Schemas That Actually Matter for Google and AI</h1>
+        </div>
+
+        <div class="post-author">
+          <span class="author-avatar"><img src="/outils/seoplus/assets/img/authors/romain-ben.webp" alt="Portrait of Romain Ben" width="44" height="44" loading="lazy"></span>
+          <div class="author-id">
+            <a class="author-link" href="/outils/seoplus/a-propos.html?lang=en"><b>Romain Ben</b></a>
+            <span>Co-founder &amp; CTO, OptimizIA.xyz · <time datetime="2026-06-17">June 17, 2026</time> · <span class="post-updated"><time datetime="2026-08-11">Updated August 11, 2026</time></span></span>
+          </div>
+        </div>
+
+        <aside class="post-aside">
+          <div class="post-aside-inner">
+            <div class="aside-box">
+              <b class="aside-title">Contents</b>
+              <nav class="post-toc" aria-label="Article contents">
+                <a href="#what-is-structured-data">What is structured data?</a>
+                <a href="#does-it-make-you-rank-higher">Does it make you rank higher?</a>
+                <a href="#the-5-schemas-a-small-business-needs">The 5 schemas a small business needs</a>
+                <a href="#a-complete-example-to-adapt">A complete example to adapt</a>
+                <a href="#how-do-you-link-your-blocks-together">How do you link your blocks together?</a>
+                <a href="#which-properties-are-actually-required">Which properties are actually required?</a>
+                <a href="#the-3-mistakes-that-invalidate-everything">The mistakes that invalidate everything</a>
+                <a href="#how-to-check-it-works">How to check it works?</a>
+              </nav>
+            </div>
+            <div class="aside-box">
+              <b class="aside-title">Share this article</b>
+            <div class="post-share" aria-label="Share this article">
+            <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.optimizia.xyz%2Foutils%2Fseoplus%2Fen%2Ftechnical-seo%2Fstructured-data-json-ld%2F" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="share-btn" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.optimizia.xyz%2Foutils%2Fseoplus%2Fen%2Ftechnical-seo%2Fstructured-data-json-ld%2F&amp;text=Structured%20Data%3A%20The%20Schemas%20That%20Actually%20Matter%20for%20Google%20and%20AI" target="_blank" rel="noopener">X</a>
+            <button class="share-btn share-copy" type="button">Copy link</button>
+            </div>
+            </div>
+          </div>
+        </aside>
+
+
+        <div class="post-summary">
+          <b>In short</b>
+          Structured data is a few lines of JSON-LD code placed in your pages that tell machines who you are, what you sell and where. For a small business, 5 types cover the essentials: Organization (or LocalBusiness), WebSite, FAQPage, Article and Person. One hour of work, a double effect: Google enriches your results, and AI stops confusing you with someone else.
+        </div>
+
+        <aside class="post-rail" aria-label="Analyze my website">
+          <div class="post-rail-inner">
+            <div class="post-rail-card">
+              <span class="post-rail-tag">SEOPlus!</span>
+              <b>Is your website visible in Google and in AI answers?</b>
+              <p>160 SEO and GEO checks, a score out of 100 and the action plan that goes with it.</p>
+              <a class="btn btn-primary" href="/outils/seoplus/?lang=en#analyser">Analyze my website</a>
+              <span class="post-rail-note">30 seconds. Free diagnostic, no credit card.</span>
+            </div>
+          </div>
+        </aside>
+
+        <div class="post">
+          <h2 id="what-is-structured-data">What is structured data?</h2>
+          <p>Your page says "Boulangerie Martin, in the heart of Lyon since 1987". A human understands everything. A machine has to guess: is Martin a person's name or a company name? Is 1987 a founding year or an address? Structured data removes the guesswork: it is a block of code in JSON-LD format, placed in the page's <code>&lt;head&gt;</code>, that states the same information in the standardized vocabulary of <a href="https://schema.org" rel="noopener">schema.org</a>, the one Google, Bing and AI read natively.</p>
+          <p>It is the second of the 4 conditions of GEO: being understandable. A website without structured data can rank well, but it leaves machines to interpret, and machines interpret badly.</p>
+
+          <h2 id="does-it-make-you-rank-higher">Does it make you rank higher?</h2>
+          <p>No, and that is worth saying before you lose an afternoon over it. Structured data is not a ranking factor: adding a JSON-LD block will not move you from page 3 to page 1. Google has repeated this for years, and anyone selling you the opposite is selling something else.</p>
+          <p>What it changes lies elsewhere, and it is still worth the fifteen minutes. It makes your page <b>eligible</b> for enhanced displays it would otherwise never get: the business panel, review stars, the breadcrumb under your link, the article card. Above all it makes your business <b>identifiable as an entity</b>, not just as a string of words. That second effect carries the most weight today: an answer engine that has to name a tradesperson in Nantes prefers the one whose exact name, address and trade it knows, over the one it has to infer from a paragraph of marketing copy.</p>
+
+          <h2 id="the-5-schemas-a-small-business-needs">The 5 schemas a small business needs</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Type</th><th>What it declares</th><th>Where to put it</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>Organization</code> / <code>LocalBusiness</code></td><td>Name, business, address, hours, social profiles</td><td>Homepage</td></tr>
+                <tr><td><code>WebSite</code></td><td>The site name and its canonical URL</td><td>Homepage</td></tr>
+                <tr><td><code>FAQPage</code></td><td>Your questions and answers, ready to cite</td><td>Pages with a FAQ</td></tr>
+                <tr><td><code>Article</code> / <code>BlogPosting</code></td><td>Title, author, publication dates</td><td>Every blog post</td></tr>
+                <tr><td><code>Person</code></td><td>The owner or the experts, their role</td><td>Team or about page</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Use <code>LocalBusiness</code> rather than <code>Organization</code> if you have a physical address where customers visit you: it is what feeds your presence in local searches. The other types (Product, Event, Recipe...) are only worth it if your business justifies them.</p>
+
+          <h2 id="a-complete-example-to-adapt">A complete example to adapt</h2>
+          <p>The block below combines Organization and FAQPage for a service business. Replace the values, paste it into the <code>&lt;head&gt;</code> of your homepage:</p>
+          <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://yoursite.com/#org",
+      "name": "Durand Rénovation",
+      "description": "Interior renovation company for homeowners, Nantes and surrounding area.",
+      "url": "https://yoursite.com/",
+      "telephone": "+33 2 40 00 00 00",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "12 rue des Artisans",
+        "addressLocality": "Nantes",
+        "postalCode": "44000",
+        "addressCountry": "FR"
+      },
+      "areaServed": "Nantes and surrounding area",
+      "sameAs": ["https://www.linkedin.com/company/durand-renovation"]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How fast can you start?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A quote within 48 hours, work starting within 3 weeks on average."
+        }
+      }]
+    }
+  ]
+}
+&lt;/script&gt;</code></pre>
+
+          <h2 id="how-do-you-link-your-blocks-together">How do you link your blocks together?</h2>
+          <p>This is the detail that separates improvised markup from markup that holds. In the example above, the business carries an identifier: <code>"@id": "https://yoursite.com/#org"</code>. That identifier is an internal address, it matches no real page and does not need to exist on the web.</p>
+          <p>Its value: on your other pages, you no longer have to redeclare the whole business. A blog post can simply say <code>"publisher": { "@id": "https://yoursite.com/#org" }</code> and the engine knows who it is talking about. Without that identifier, every page declares a business with the same name without ever saying it is the same one, and you end up with ten blurry entities instead of one sharp one. Which is exactly what you do not want when the whole point is being recognized as an identified business.</p>
+          <p>Two rules are enough: the full entity is declared once, on the homepage, and the same identifier is reused everywhere else, byte for byte. A single capital letter of difference creates a second entity.</p>
+
+          <h2 id="which-properties-are-actually-required">Which properties are actually required?</h2>
+          <p>Many audits blur two notions Google keeps carefully apart, and have you rushing to fix what is only a suggestion.</p>
+          <ul>
+            <li><b>Required properties</b> govern eligibility. Their absence produces an <b>error</b> in the Rich Results Test, and the enhanced display is lost. For example a <code>FAQPage</code> with no <code>acceptedAnswer</code>, or a local listing with no <code>name</code> or <code>address</code>.</li>
+            <li><b>Recommended properties</b> improve the result without being demanded. Their absence produces a <b>warning</b>. For an article, <code>image</code>, <code>author</code>, <code>datePublished</code> and <code>dateModified</code> fall in this category: leaving them out breaks nothing, but strips the article of its thumbnail and its freshness signal.</li>
+          </ul>
+          <p>The practical rule: handle errors the same day, warnings at your next revision. And beware the opposite reflex, which costs more: adding a property with an invented value to silence a warning. A declared image that returns a 404 is far worse than no image at all, because it turns a harmless warning into a genuine error.</p>
+
+          <h2 id="the-3-mistakes-that-invalidate-everything">The mistakes that invalidate everything</h2>
+          <ul>
+            <li><b>Invalid JSON.</b> One extra comma and the entire block is ignored, with no visible error message. Always validate after editing.</li>
+            <li><b>Declaring what is not on the page.</b> A FAQPage whose questions do not appear in the visible content is considered misleading by Google. The schema describes the page, it does not replace it.</li>
+            <li><b>Inconsistencies between pages.</b> Two different addresses in two blocks, a name that changes from page to page: every contradiction weakens machines' trust in your data.</li>
+            <li><b>The block injected by JavaScript.</b> Some CMS plugins add the JSON-LD after the page loads. Google usually gets there in the end, but AI crawlers do not run JavaScript: to them, your markup does not exist. The block has to be in the source served by the server, the one you see with "view page source".</li>
+          </ul>
+
+          <h2 id="how-to-check-it-works">How to check it works?</h2>
+          <p>Two tools: Google's <a href="https://search.google.com/test/rich-results" rel="noopener">Rich Results Test</a> for a specific page, and our audit, which automatically checks the presence, validity and consistency of your structured data across your key pages, as part of <a href="/outils/seoplus/methodologie.html?lang=en">107 measured checks</a>. A natural complement: the llms.txt file, which summarizes your business for AI in the same place.</p>
+        </div>
+
+
+<!-- silo:debut -->
+        <nav class="silo-more" aria-label="More in the silo Technical SEO">
+          <b class="silo-more-title">More in Technical SEO</b>
+          <ul class="silo-more-list">
+        <li><a href="/outils/seoplus/en/technical-seo/"><em class="silo-more-tag">Guide</em><b>The technical SEO guide for small businesses</b><span>The 5 projects in order: indexing, crawlers, speed, structured data, measurement. The map that connects our technical articles.</span></a></li>
+        <li><a href="/outils/seoplus/en/technical-seo/core-web-vitals-guide/"><b>Core Web Vitals: the jargon-free guide for business owners</b><span>LCP, INP, CLS: what Google's three metrics really measure, the thresholds to aim for, and the three causes of slowness that show up on almost every small business website.</span></a></li>
+        <li><a href="/outils/seoplus/en/technical-seo/google-search-console-basics/"><b>Google Search Console: the beginner's guide (and the 3 reports that matter)</b><span>Free, official, and yet ignored by half of small business websites. Set it up in 10 minutes, then read the three reports that tell you what to fix first.</span></a></li>
+        <li><a href="/outils/seoplus/en/technical-seo/internal-linking/"><b>Internal linking: the free technique almost nobody uses</b><span>Linking your own pages together changes how Google and AI understand your website. The hub and child pages method, doable in one afternoon.</span></a></li>
+          </ul>
+        </nav>
+        <!-- silo:fin -->
+
+        <div class="post-cta">
+          <h2>Is your structured data readable?</h2>
+          <p>The audit checks JSON-LD, llms.txt and GEO signals in 30 seconds. Free, live.</p>
+          <a class="btn btn-primary" href="/outils/seoplus/?lang=en#analyser">Analyze my website</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="footer-brand-line" href="/outils/seoplus/?lang=en#top"><img class="brand-logo" src="/outils/seoplus/assets/img/favicon.svg" alt="" width="30" height="30" loading="lazy"><span class="brand-name">SEO<em style="font-style:normal;color:var(--orange)">Plus!</em></span></a>
+          <p>The AI-automated SEO and GEO audit, built by OptimizIA.xyz, an AI integration and automation agency for small and mid-size businesses.</p>
+        </div>
+        <nav aria-label="Product">
+          <b class="footer-title">Product</b>
+          <a href="/outils/seoplus/?lang=en#analyser">Analyze my website</a>
+          <a href="/outils/seoplus/?lang=en#comment">How it works</a>
+          <a href="/outils/seoplus/?lang=en#tarifs">Pricing</a>
+          <a href="/outils/seoplus/rapport.html?url=exemple.com&amp;demo=1">Sample report</a>
+        </nav>
+        <nav aria-label="Resources">
+          <b class="footer-title">Resources</b>
+          <a href="/outils/seoplus/en/blog/">Blog</a>
+          <a href="/outils/seoplus/classement.html?lang=en">Public leaderboard</a>
+          <a href="/outils/seoplus/generateur-llms-txt.html?lang=en">llms.txt generator</a>
+          <a href="/outils/seoplus/methodologie.html?lang=en">Our method</a>
+        </nav>
+        <nav aria-label="Information">
+          <b class="footer-title">Information</b>
+          <a href="/outils/seoplus/a-propos.html?lang=en">About us</a>
+          <a href="/outils/seoplus/mentions-legales-en.html">Legal notice</a>
+          <a href="/outils/seoplus/politique-confidentialite-en.html">Privacy</a>
+          <a href="/outils/seoplus/cgv-en.html">Terms of sale</a>
+          <a href="mailto:contact@optimizia.xyz">contact@optimizia.xyz</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 SEOPlus! V6.0 by OptimizIA.xyz</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/outils/seoplus/config.js"></script>
+  <script src="/outils/seoplus/assets/i18n-en.js?v=20260817"></script>
+  <script src="/outils/seoplus/assets/app.js?v=20260817"></script>
+</body>
+</html>

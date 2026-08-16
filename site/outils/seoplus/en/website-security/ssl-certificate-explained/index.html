@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The SSL certificate explained: what it protects, what it does not | SEOPlus!</title>
+  <meta name="description" content="The padlock does not say your website is safe. What the certificate actually guarantees, the three failures that cost the most, and how to check yours in two minutes.">
+  <link rel="canonical" href="https://www.optimizia.xyz/outils/seoplus/en/website-security/ssl-certificate-explained/">
+  <link rel="alternate" type="application/rss+xml" title="Blog SEOPlus!" href="/outils/seoplus/feed-en.xml">
+  <link rel="alternate" hreflang="fr" href="https://www.optimizia.xyz/outils/seoplus/securite/certificat-ssl-explique/">
+  <link rel="alternate" hreflang="en" href="https://www.optimizia.xyz/outils/seoplus/en/website-security/ssl-certificate-explained/">
+  <link rel="alternate" hreflang="x-default" href="https://www.optimizia.xyz/outils/seoplus/securite/certificat-ssl-explique/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.optimizia.xyz/outils/seoplus/assets/img/og.png?v=2">
+  <meta property="og:site_name" content="SEOPlus!">
+  <meta property="og:title" content="The SSL certificate explained: what it protects, what it does not">
+  <meta property="og:description" content="What the padlock guarantees, what it does not, and the three certificate failures that make a website disappear.">
+  <meta property="og:url" content="https://www.optimizia.xyz/outils/seoplus/en/website-security/ssl-certificate-explained/">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.optimizia.xyz/outils/seoplus/assets/img/og.png?v=2">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "The SSL certificate explained: what it protects, what it does not",
+        "description": "The padlock does not say your website is safe. What the certificate actually guarantees, the three failures that cost the most, and how to check yours in two minutes.",
+        "inLanguage": "en",
+        "datePublished": "2026-08-15",
+        "dateModified": "2026-08-15",
+        "mainEntityOfPage": "https://www.optimizia.xyz/outils/seoplus/en/website-security/ssl-certificate-explained/",
+        "author": {
+          "@type": "Person",
+          "name": "Romain Ben",
+          "url": "https://www.optimizia.xyz/outils/seoplus/a-propos.html",
+          "worksFor": {
+            "@id": "https://www.optimizia.xyz/#org"
+          }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://www.optimizia.xyz/#org",
+          "name": "OptimizIA.xyz",
+          "url": "https://www.optimizia.xyz",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.optimizia.xyz/outils/seoplus/assets/img/optimizia-logo.png",
+            "width": 1055,
+            "height": 236
+          }
+        },
+        "image": "https://www.optimizia.xyz/outils/seoplus/assets/img/og.png?v=2",
+        "isPartOf": {
+          "@id": "https://www.optimizia.xyz/outils/seoplus/#website"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.optimizia.xyz/outils/seoplus/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.optimizia.xyz/outils/seoplus/en/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Security",
+            "item": "https://www.optimizia.xyz/outils/seoplus/en/website-security/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "The SSL certificate explained: what it protects, what it does not",
+            "item": "https://www.optimizia.xyz/outils/seoplus/en/website-security/ssl-certificate-explained/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/outils/seoplus/assets/fonts.css?v=20260814b">
+  <link rel="icon" type="image/svg+xml" href="/outils/seoplus/assets/img/favicon.svg">
+  <link rel="apple-touch-icon" href="/outils/seoplus/assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="/outils/seoplus/assets/style.css?v=20260817">
+</head>
+<body data-page="post">
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <a class="brand-home" href="/outils/seoplus/">
+          <img class="brand-logo" src="/outils/seoplus/assets/img/favicon.svg" alt="" width="30" height="30">
+          <span class="brand-name">SEO<em>Plus!</em></span>
+        </a>
+        <a class="brand-by" href="https://www.optimizia.xyz">by OptimizIA.xyz</a>
+      </div>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/outils/seoplus/#comment">How it works</a>
+        <a href="/outils/seoplus/#couverture">The audit</a>
+        <a href="/outils/seoplus/#tarifs">Pricing</a>
+        <a href="/outils/seoplus/classement.html">Leaderboard</a>
+        <a href="/outils/seoplus/en/blog/">Blog</a>
+        <a class="btn btn-primary" href="/outils/seoplus/#analyser">Analyse my website</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="post-wrap post-rel">
+        <a class="post-back" href="/outils/seoplus/en/blog/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          Back to the blog
+        </a>
+        <div class="post-head">
+          <p class="eyebrow"><a href="/outils/seoplus/en/blog/" style="color:inherit;text-decoration:none">Blog</a> · <a href="/outils/seoplus/en/website-security/" style="color:inherit;text-decoration:none">Security &amp; trust</a></p>
+          <h1>The SSL certificate explained: what it protects, what it does not</h1>
+        </div>
+
+        <div class="post-author">
+          <span class="author-avatar"><img src="/outils/seoplus/assets/img/authors/romain-ben.webp" alt="Portrait of Romain Ben" width="44" height="44" loading="lazy"></span>
+          <div class="author-id">
+            <a class="author-link" href="/outils/seoplus/a-propos.html?lang=en"><b>Romain Ben</b></a>
+            <span>Co-founder &amp; CTO, OptimizIA.xyz · <time datetime="2026-08-15">15 August 2026</time></span>
+          </div>
+        </div>
+
+        <aside class="post-aside">
+          <div class="post-aside-inner">
+            <div class="aside-box">
+              <b class="aside-title">Contents</b>
+              <nav class="post-toc" aria-label="Article contents">
+                <a href="#what-the-padlock-says">What the padlock says, and what it does not</a>
+                <a href="#the-three-failures">The three failures that cost the most</a>
+                <a href="#free-or-paid">Should you pay for your certificate?</a>
+                <a href="#check-in-two-minutes">Check yours in two minutes</a>
+                <a href="#hsts-the-lock">HSTS: the lock that stops the fallback</a>
+                <a href="#what-we-measure-ssl">What our audit measures</a>
+              </nav>
+            </div>
+            <div class="aside-box">
+              <b class="aside-title">Share this article</b>
+            <div class="post-share" aria-label="Share the article">
+            <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.optimizia.xyz%2Foutils%2Fseoplus%2Fen%2Fwebsite-security%2Fssl-certificate-explained%2F" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="share-btn" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.optimizia.xyz%2Foutils%2Fseoplus%2Fen%2Fwebsite-security%2Fssl-certificate-explained%2F&amp;text=The%20SSL%20certificate%20explained%3A%20what%20it%20protects%2C%20what%20it%20does%20not" target="_blank" rel="noopener">X</a>
+            <button class="share-btn share-copy" type="button">Copy link</button>
+            </div>
+            </div>
+          </div>
+        </aside>
+
+
+        <div class="post-summary">
+          <b>In short</b>
+          A valid certificate proves two things, and only two: the connection is encrypted, and the server really is the one that controls the domain shown. It says nothing about the quality of the website, nor about its honesty. The three failures that cost the most are expiry, a certificate that does not cover every variant of the domain, and an HTTPS page loading resources over HTTP. All three are measurable from the outside, with no server access.
+        </div>
+
+        <aside class="post-rail" aria-label="Audit my website">
+          <div class="post-rail-inner">
+            <div class="post-rail-card">
+              <span class="post-rail-tag">SEOPlus!</span>
+              <b>Does your certificate really cover your whole domain?</b>
+              <p>160 SEO and GEO checks, a score out of 100 and the action plan that goes with it.</p>
+              <a class="btn btn-primary" href="/outils/seoplus/#analyser">Analyse my website</a>
+              <span class="post-rail-note">30 seconds. Free diagnosis, no credit card.</span>
+            </div>
+          </div>
+        </aside>
+
+        <div class="post">
+          <h2 id="what-the-padlock-says">What the padlock says, and what it does not</h2>
+          <p>The little padlock in the address bar is probably the most misunderstood security symbol on the web. It asserts exactly two things: the data exchanged between browser and server is <b>encrypted</b>, therefore unreadable to anyone intercepting it, and the server answering really is <b>the one that controls this domain name</b>.</p>
+          <p>It says nothing else. Not that the site is honest, not that the company exists, not that your data will be handled properly afterwards. A phishing site gets a free certificate in minutes, exactly like you. That is why « check for the padlock » stopped being sufficient security advice to give your customers a long time ago.</p>
+          <p>What the certificate does change for you is very concrete. Without it, browsers show a full-page warning, Google demotes you, and forms are flagged as insecure at the precise moment a visitor was about to leave you their phone number.</p>
+
+          <h2 id="the-three-failures">The three failures that cost the most</h2>
+          <p><b>1. Expiry.</b> A certificate has a short life, often 90 days. Renewal is normally automatic, but it breaks: a migration, a DNS change, a firewall blocking validation. The day it expires, the website becomes unreachable behind a red screen for everyone, with no warning and without anything having changed on the site itself. It is the most frequent and the most brutal failure.</p>
+          <p><b>2. A certificate that does not cover every variant.</b> A certificate issued for <code>example.com</code> does not cover <code>www.example.com</code>, and the other way round. The visitor who types the uncovered variant hits the warning. The classic case: everything works from links on the site, and fails from a business card where the address is written with the www.</p>
+          <p><b>3. Mixed content.</b> The page is served over HTTPS but calls an image, a script or a stylesheet over HTTP. The browser blocks the resource or downgrades the padlock. It is almost always a migration leftover: the site moved to HTTPS, and a handful of hard-coded addresses did not follow.</p>
+
+          <h2 id="free-or-paid">Should you pay for your certificate?</h2>
+          <p>In the vast majority of cases, no. A free certificate issued by a recognised authority encrypts exactly as well as a paid one: the encryption level does not depend on the price. The difference lies in validating the identity of the company behind the domain, and in contractual guarantees.</p>
+          <p>Yet browsers have stopped displaying extended validation certificates differently. The green bar with the company name, which justified the spending, no longer exists in mainstream browsers. For a brochure site, a modest shop or a services website, the free certificate renewed automatically is the right choice, and it is what almost every host provides by default.</p>
+          <p>The real subject is not the price of the certificate, it is what surrounds it: a systematic redirect from HTTP to HTTPS in a single step, and the <a href="/outils/seoplus/en/website-security/http-security-headers/">HTTP security headers</a> that stop a browser falling back to plain text.</p>
+
+          <h2 id="check-in-two-minutes">Check yours in two minutes</h2>
+          <p>Three steps, with no tool and no server access:</p>
+          <ul>
+            <li><b>The date.</b> Click the padlock, then the certificate details. Note the expiry date. If it falls within thirty days and you do not know who renews it, you have found your next task.</li>
+            <li><b>Both variants.</b> Type your address with the www, then without. Both must land on the same page, with no warning, and the final address must be identical in both cases.</li>
+            <li><b>Mixed content.</b> Open the browser console with F12, Console tab, and reload. A message containing « Mixed Content » names the offending resource precisely.</li>
+          </ul>
+          <p>If you would rather not open the console, our <a href="/outils/seoplus/#analyser">free audit</a> measures it from the outside and returns the result in plain language, with the fix to apply.</p>
+
+          <h2 id="hsts-the-lock">HSTS: the lock that stops the fallback</h2>
+          <p>The certificate encrypts the connection, but it does not guarantee the visitor uses it. Someone typing your address without the protocol arrives first over HTTP, in plain text, before being redirected. That first request, however brief, travels unprotected and can be hijacked.</p>
+          <p>The <b>Strict-Transport-Security</b> header closes that window. It tells the browser: for this domain, never use anything but HTTPS again, for the stated duration. The browser remembers the instruction and switches on its own, without asking the server. The redirect stays for the very first visit, but every subsequent one starts encrypted.</p>
+          <p>That leaves the first visit from a browser that does not yet know your domain. The <b>preload list</b> handles it: by adding the <code>preload</code> token to the header and submitting the domain to the public list, your domain ships inside the browsers themselves. Even the first visit is protected.</p>
+          <p>⚠️ One warning, because this setting is hard to undo: preloading applies by default to <b>all your subdomains</b>, and getting off the list takes months. If an internal subdomain cannot speak HTTPS, it will become unreachable. Check them all before submitting, and start with a short duration that you extend once confident.</p>
+
+          <h2 id="what-we-measure-ssl">What our audit measures</h2>
+          <p>The <b>TLS and certificate</b> category holds <b>6 checks</b>: HTTPS active, presence of the HSTS header, length of the redirect chain from HTTP, absence of mixed content, DNSSEC validity and presence of a CAA record. A seventh measurement, in the domain name category, gives the number of days left before the expiry of the latest certificate issued for your domain, read from the public certificate transparency logs.</p>
+          <p>What the audit does not do: it does not judge the authority that issued the certificate, and it cannot know whether your automatic renewal works. It tells you how many days are left. Checking that something is scheduled before the deadline is on you.</p>
+        </div>
+
+
+<!-- silo:debut -->
+        <nav class="silo-more" aria-label="More in the silo Security & trust">
+          <b class="silo-more-title">More in Security &amp; trust</b>
+          <ul class="silo-more-list">
+        <li><a href="/outils/seoplus/en/website-security/"><em class="silo-more-tag">Guide</em><b>Securing your website without being an IT person</b><span>The 4 projects that count: HTTP headers, certificate, authenticated email, exposed files. The map of the security silo.</span></a></li>
+        <li><a href="/outils/seoplus/en/website-security/files-never-expose/"><b>The files you should never leave at the root of your website</b><span>Backups, configuration files, database exports: whatever sits at the root is served to whoever asks. The paths tested first.</span></a></li>
+        <li><a href="/outils/seoplus/en/website-security/http-security-headers/"><b>HTTP security headers, explained without jargon</b><span>Six headers, what each one actually prevents, and why a single intervention is enough to set them all.</span></a></li>
+        <li><a href="/outils/seoplus/en/website-security/spf-dkim-dmarc/"><b>SPF, DKIM, DMARC: why your emails end up in spam</b><span>The 3 DNS records that decide whether your messages arrive, and the mistake that makes DMARC completely useless.</span></a></li>
+        <li><a href="/outils/seoplus/en/website-security/website-hacked-what-to-do/"><b>Your website has been hacked: the steps, in the right order</b><span>The signs that do not lie, the six steps in the right order, and the mistake that makes you start over.</span></a></li>
+          </ul>
+        </nav>
+        <!-- silo:fin -->
+
+        <div class="post-cta">
+          <h2>Does your HTTPS hold up?</h2>
+          <p>The audit checks your certificate, its expiry date, the HTTP to HTTPS redirect and mixed content. Free, 30 seconds.</p>
+          <a class="btn btn-primary" href="/outils/seoplus/#analyser">Analyse my website</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="footer-brand-line" href="/outils/seoplus/#top"><img class="brand-logo" src="/outils/seoplus/assets/img/favicon.svg" alt="" width="30" height="30" loading="lazy"><span class="brand-name">SEO<em style="font-style:normal;color:var(--orange)">Plus!</em></span></a>
+          <p>The AI-automated SEO and GEO audit, built by OptimizIA.xyz, an AI integration and automation agency for small businesses.</p>
+        </div>
+        <nav aria-label="Product">
+          <b class="footer-title">Product</b>
+          <a href="/outils/seoplus/#analyser">Analyse my website</a>
+          <a href="/outils/seoplus/#comment">How it works</a>
+          <a href="/outils/seoplus/#tarifs">Pricing</a>
+          <a href="/outils/seoplus/rapport.html?url=exemple.com&amp;demo=1">Sample report</a>
+        </nav>
+        <nav aria-label="Resources">
+          <b class="footer-title">Resources</b>
+          <a href="/outils/seoplus/en/blog/">Blog</a>
+          <a href="/outils/seoplus/classement.html">Public leaderboard</a>
+          <a href="/outils/seoplus/generateur-llms-txt.html">llms.txt generator</a>
+          <a href="/outils/seoplus/methodologie.html">Our method</a>
+        </nav>
+        <nav aria-label="Informations">
+          <b class="footer-title">Informations</b>
+          <a href="/outils/seoplus/a-propos.html?lang=en">About us</a>
+          <a href="/outils/seoplus/mentions-legales-en.html">Legal notice</a>
+          <a href="/outils/seoplus/politique-confidentialite-en.html">Privacy</a>
+          <a href="/outils/seoplus/cgv-en.html">Terms of sale</a>
+          <a href="mailto:contact@optimizia.xyz">contact@optimizia.xyz</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 SEOPlus! V6.0 par OptimizIA.xyz</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/outils/seoplus/config.js"></script>
+  <script src="/outils/seoplus/assets/app.js?v=20260817"></script>
+</body>
+</html>
