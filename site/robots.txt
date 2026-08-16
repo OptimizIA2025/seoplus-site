@@ -1,0 +1,10 @@
+# seoplus.optimizia.xyz - hote historique, ne sert plus que des redirections.
+# Le site vit sur https://www.optimizia.xyz/outils/seo-plus/
+# Tout reste ouvert au crawl : c est en passant ici que les robots
+# decouvrent les redirections et transferent le referencement.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://seoplus.optimizia.xyz/sitemap.xml
+Sitemap: https://www.optimizia.xyz/outils/seo-plus/sitemap.xml

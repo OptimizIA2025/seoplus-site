@@ -1,0 +1,5 @@
+# Le depot est un paquet de deploiement : les fichiers doivent arriver dans
+# l'image Docker exactement tels qu'ils sortent des generateurs. Sans cette
+# ligne, git convertirait les fins de ligne a l'aller et au retour, ce qui
+# change les octets servis et fait apparaitre des modifications fantomes.
+* -text

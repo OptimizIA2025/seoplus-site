@@ -1,0 +1,6 @@
+# Le paquet est genere : rien d'autre que lui ne doit atterrir dans site/.
+site/**/.claude/
+site/**/.impeccable/
+*.bak
+Thumbs.db
+desktop.ini
