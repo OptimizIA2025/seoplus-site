@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Les en-têtes de sécurité HTTP, expliqués sans jargon | SEOPlus!</title>
+  <meta name="description" content="Six en-têtes à poser sur votre serveur, ce que chacun empêche concrètement, et pourquoi une seule intervention suffit à les traiter tous. Sans ligne de code.">
+  <link rel="canonical" href="https://www.optimizia.xyz/tools/seoplus/securite/entetes-securite-http/">
+  <link rel="alternate" type="application/rss+xml" title="Blog SEOPlus!" href="/tools/seoplus/feed.xml">
+  <link rel="alternate" hreflang="fr" href="https://www.optimizia.xyz/tools/seoplus/securite/entetes-securite-http/">
+  <link rel="alternate" hreflang="en" href="https://www.optimizia.xyz/tools/seoplus/en/website-security/http-security-headers/">
+  <link rel="alternate" hreflang="x-default" href="https://www.optimizia.xyz/tools/seoplus/securite/entetes-securite-http/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.optimizia.xyz/tools/seoplus/assets/img/og.png?v=2">
+  <meta property="og:site_name" content="SEOPlus!">
+  <meta property="og:title" content="Les en-têtes de sécurité HTTP, expliqués sans jargon">
+  <meta property="og:description" content="Six en-têtes, ce que chacun empêche, et une seule intervention pour les poser tous. Le guide sans jargon pour une PME.">
+  <meta property="og:url" content="https://www.optimizia.xyz/tools/seoplus/securite/entetes-securite-http/">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.optimizia.xyz/tools/seoplus/assets/img/og.png?v=2">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "headline": "Les en-têtes de sécurité HTTP, expliqués sans jargon",
+        "description": "Six en-têtes à poser sur votre serveur, ce que chacun empêche concrètement, et pourquoi une seule intervention suffit à les traiter tous. Sans ligne de code.",
+        "inLanguage": "fr",
+        "datePublished": "2026-08-13",
+        "dateModified": "2026-08-13",
+        "mainEntityOfPage": "https://www.optimizia.xyz/tools/seoplus/securite/entetes-securite-http/",
+        "author": {
+          "@type": "Person",
+          "name": "Romain Ben",
+          "url": "https://www.optimizia.xyz/tools/seoplus/a-propos.html",
+          "worksFor": {
+            "@id": "https://www.optimizia.xyz/#org"
+          }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://www.optimizia.xyz/#org",
+          "name": "OptimizIA.xyz",
+          "url": "https://www.optimizia.xyz",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.optimizia.xyz/tools/seoplus/assets/img/optimizia-logo.png",
+            "width": 1055,
+            "height": 236
+          }
+        },
+        "image": "https://www.optimizia.xyz/tools/seoplus/assets/img/og.png?v=2",
+        "isPartOf": {
+          "@id": "https://www.optimizia.xyz/tools/seoplus/#website"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Accueil",
+            "item": "https://www.optimizia.xyz/tools/seoplus/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.optimizia.xyz/tools/seoplus/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Sécurité",
+            "item": "https://www.optimizia.xyz/tools/seoplus/securite/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Les en-têtes de sécurité HTTP, expliqués sans jargon",
+            "item": "https://www.optimizia.xyz/tools/seoplus/securite/entetes-securite-http/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/tools/seoplus/assets/fonts.css?v=20260814b">
+  <link rel="icon" type="image/svg+xml" href="/tools/seoplus/assets/img/favicon.svg">
+  <link rel="apple-touch-icon" href="/tools/seoplus/assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="/tools/seoplus/assets/style.css?v=20260817">
+</head>
+<body data-page="post">
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <a class="brand-home" href="/tools/seoplus/">
+          <img class="brand-logo" src="/tools/seoplus/assets/img/favicon.svg" alt="" width="30" height="30">
+          <span class="brand-name">SEO<em>Plus!</em></span>
+        </a>
+        <a class="brand-by" href="https://www.optimizia.xyz">by OptimizIA.xyz</a>
+      </div>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="/tools/seoplus/#comment">Comment ça marche</a>
+        <a href="/tools/seoplus/#couverture">L'audit</a>
+        <a href="/tools/seoplus/#tarifs">Tarifs</a>
+        <a href="/tools/seoplus/classement.html">Classement</a>
+        <a href="/tools/seoplus/blog/">Blog</a>
+        <a class="btn btn-primary" href="/tools/seoplus/#analyser">Analyser mon site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="post-wrap post-rel">
+        <a class="post-back" href="/tools/seoplus/blog/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          Retour au blog
+        </a>
+        <div class="post-head">
+          <p class="eyebrow"><a href="/tools/seoplus/blog/" style="color:inherit;text-decoration:none">Blog</a> · <a href="/tools/seoplus/securite/" style="color:inherit;text-decoration:none">Sécurité &amp; confiance</a></p>
+          <h1>Les en-têtes de sécurité HTTP, expliqués sans jargon</h1>
+        </div>
+
+        <div class="post-author">
+          <span class="author-avatar"><img src="/tools/seoplus/assets/img/authors/romain-ben.webp" alt="Portrait de Romain Ben" width="44" height="44" loading="lazy"></span>
+          <div class="author-id">
+            <a class="author-link" href="/tools/seoplus/a-propos.html"><b>Romain Ben</b></a>
+            <span>Co-fondateur &amp; CTO, OptimizIA.xyz · <time datetime="2026-08-13">13 août 2026</time></span>
+          </div>
+        </div>
+
+        <aside class="post-aside">
+          <div class="post-aside-inner">
+            <div class="aside-box">
+              <b class="aside-title">Sommaire</b>
+              <nav class="post-toc" aria-label="Sommaire de l'article">
+                <a href="#ce-qu-est-un-en-tete">Ce qu'est un en-tête, en une image</a>
+                <a href="#les-six-qui-comptent">Les six qui comptent, et ce que chacun empêche</a>
+                <a href="#les-cookies">Le cas des cookies, souvent oublié</a>
+                <a href="#comment-les-poser">Comment les poser, selon votre hébergement</a>
+                <a href="#ce-que-nous-mesurons">Ce que nous mesurons, et ce que nous refusons de mesurer</a>
+              </nav>
+            </div>
+            <div class="aside-box">
+              <b class="aside-title">Partager cet article</b>
+            <div class="post-share" aria-label="Partager l'article">
+            <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.optimizia.xyz%2Ftools%2Fseoplus%2Fsecurite%2Fentetes-securite-http%2F" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="share-btn" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.optimizia.xyz%2Ftools%2Fseoplus%2Fsecurite%2Fentetes-securite-http%2F&amp;text=Les%20en-t%C3%AAtes%20de%20s%C3%A9curit%C3%A9%20HTTP%2C%20expliqu%C3%A9s%20sans%20jargon" target="_blank" rel="noopener">X</a>
+            <button class="share-btn share-copy" type="button">Copier le lien</button>
+            </div>
+            </div>
+          </div>
+        </aside>
+
+
+        <div class="post-summary">
+          <b>En bref</b>
+          Les en-têtes de sécurité sont des instructions que votre serveur envoie au navigateur avant votre page. Ils lui disent ce qu'il a le droit de faire. Six d'entre eux comptent vraiment, ils se posent tous au même endroit, et une intervention d'une heure les traite en bloc. C'est le meilleur rapport entre l'effort fourni et les points gagnés dans un audit, et pourtant la catégorie où les sites de PME obtiennent les scores les plus bas.
+        </div>
+
+        <aside class="post-rail" aria-label="Auditer mon site">
+          <div class="post-rail-inner">
+            <div class="post-rail-card">
+              <span class="post-rail-tag">SEOPlus!</span>
+              <b>Quels en-têtes votre serveur envoie-t-il vraiment ?</b>
+              <p>160 vérifications SEO et GEO, un score sur 100 et le plan d'actions qui va avec.</p>
+              <a class="btn btn-primary" href="/tools/seoplus/#analyser">Analyser mon site</a>
+              <span class="post-rail-note">30 secondes. Diagnostic gratuit, sans carte bancaire.</span>
+            </div>
+          </div>
+        </aside>
+
+        <div class="post">
+          <h2 id="ce-qu-est-un-en-tete">Ce qu'est un en-tête, en une image</h2>
+          <p>Quand un visiteur ouvre votre site, votre serveur ne renvoie pas seulement la page. Il renvoie d'abord une liste d'instructions destinées au navigateur : le type de contenu, la langue, la durée de mise en cache, et éventuellement des consignes de sécurité.</p>
+          <p>Imaginez un colis. La page est le contenu, les en-têtes sont ce qui est écrit sur l'étiquette : fragile, ne pas ouvrir, à livrer en main propre. Un colis sans étiquette arrive quand même, mais le transporteur fait ce qu'il veut.</p>
+          <p>Un site sans en-têtes de sécurité fonctionne parfaitement. Il laisse simplement le navigateur décider seul, et le navigateur, par défaut, est permissif.</p>
+
+          <h2 id="les-six-qui-comptent">Les six qui comptent, et ce que chacun empêche</h2>
+          <p><b>Content-Security-Policy.</b> Le plus important et le plus exigeant. Il liste les sources autorisées à charger du code sur votre page. Sans lui, un script injecté par une faille de commentaire ou par une extension compromise s'exécute comme s'il venait de vous, et peut lire ce que vos visiteurs saisissent dans vos formulaires. Il demande un réglage soigneux : posé trop strictement, il casse des fonctionnalités du site.</p>
+          <p><b>Strict-Transport-Security.</b> Il dit au navigateur : pour ce domaine, n'accepte plus jamais une connexion non chiffrée, même si on te le demande. Il ferme la fenêtre pendant laquelle un visiteur sur un réseau public peut être détourné vers une copie de votre site. Un en-tête, une ligne, aucun effet de bord une fois le HTTPS en place partout.</p>
+          <p><b>X-Frame-Options.</b> Il empêche qu'on affiche votre site dans un cadre invisible sur une autre page, technique utilisée pour faire cliquer un visiteur sur un bouton qu'il ne voit pas. Concrètement, il protège vos formulaires et vos boutons d'action.</p>
+          <p><b>X-Content-Type-Options.</b> Une seule valeur possible, <span class="mono">nosniff</span>. Il interdit au navigateur de deviner le type d'un fichier. Sans lui, une image piégée téléversée par un visiteur peut être interprétée comme du code.</p>
+          <p><b>Referrer-Policy.</b> Il contrôle ce que votre site raconte aux autres. Sans lui, un visiteur qui quitte une page d'espace client emmène l'adresse complète de cette page, paramètres compris, vers le site suivant. C'est un sujet de confidentialité autant que de sécurité.</p>
+          <p><b>Permissions-Policy.</b> Il déclare quelles capacités du navigateur votre site n'utilise pas : caméra, micro, géolocalisation, paiement. Déclarer qu'on n'en a pas besoin est plus fort que de ne rien dire.</p>
+
+          <h2 id="les-cookies">Le cas des cookies, souvent oublié</h2>
+          <p>Un cookie mal configuré annule une partie du travail précédent. Trois attributs sont à poser systématiquement :</p>
+          <ul>
+            <li><b>Secure</b> : le cookie n'est jamais transmis en clair.</li>
+            <li><b>HttpOnly</b> : aucun script ne peut le lire, ce qui protège une session même si un script hostile s'exécute.</li>
+            <li><b>SameSite</b> : le cookie n'est pas envoyé quand la requête vient d'un autre site, ce qui bloque une action déclenchée à l'insu du visiteur.</li>
+          </ul>
+          <p>C'est un réglage de trois mots dans la configuration, et il concerne aussi les cookies posés par vos outils de mesure d'audience, sujet que nous traitons dans <a href="/tools/seoplus/conformite/cookies-rgpd-traceurs/">l'article sur les cookies et les traceurs</a>.</p>
+
+          <h2 id="comment-les-poser">Comment les poser, selon votre hébergement</h2>
+          <p>Le principe est le même partout : ces en-têtes se déclarent une fois, dans la configuration du serveur, et s'appliquent à toutes les pages. Vous ne touchez pas au contenu de votre site.</p>
+          <ul>
+            <li><b>Hébergement mutualisé classique</b> : un fichier de configuration à la racine, quelques lignes à ajouter. Votre hébergeur documente la procédure.</li>
+            <li><b>WordPress</b> : une extension de sécurité les pose, ou le fichier de configuration du serveur si vous y avez accès. Préférez le serveur quand c'est possible, une extension de moins est une dépendance de moins.</li>
+            <li><b>Serveur dédié ou machine virtuelle</b> : la configuration de nginx ou d'Apache, un bloc unique.</li>
+          </ul>
+          <p>Un conseil d'ordre : posez d'abord les cinq en-têtes simples, qui n'ont aucun effet de bord. Gardez Content-Security-Policy pour la fin, testez-le sur une page avant de le généraliser, et vérifiez que rien ne casse.</p>
+
+          <h2 id="ce-que-nous-mesurons">Ce que nous mesurons, et ce que nous refusons de mesurer</h2>
+          <p>Notre audit lit seize points dans cette catégorie : les six en-têtes ci-dessus, la solidité réelle de la politique de sécurité du contenu lorsqu'elle existe, les attributs de vos cookies, l'intégrité des ressources chargées depuis d'autres domaines, le point de contact de sécurité, l'isolation entre origines, et la présence d'un pare-feu applicatif.</p>
+          <p>Ce que nous ne faisons pas, volontairement : aucun scan de ports, aucune sonde intrusive, aucune tentative d'exploitation. Nous ne mesurons que ce que n'importe quel visiteur ou robot légitime voit en arrivant sur votre site. C'est une position de principe, expliquée dans notre <a href="/tools/seoplus/methodologie.html">méthodologie</a>, et c'est aussi ce qui rend chaque constat vérifiable par votre prestataire sans nous croire sur parole.</p>
+          <p>Pour la suite des chantiers, le <a href="/tools/seoplus/securite/">guide de la sécurité d'un site</a> donne l'ordre de priorité.</p>
+        </div>
+
+
+<!-- silo:debut -->
+        <nav class="silo-more" aria-label="Plus dans le silo Sécurité & confiance">
+          <b class="silo-more-title">Plus dans Sécurité &amp; confiance</b>
+          <ul class="silo-more-list">
+        <li><a href="/tools/seoplus/securite/"><em class="silo-more-tag">Guide</em><b>Sécuriser son site sans être informaticien</b><span>Les 4 chantiers qui comptent : en-têtes HTTP, certificat, emails authentifiés, fichiers exposés. La carte du silo sécurité.</span></a></li>
+        <li><a href="/tools/seoplus/securite/certificat-ssl-explique/"><b>Le certificat SSL expliqué : ce qu'il protège, ce qu'il ne protège pas</b><span>Le cadenas ne dit pas que votre site est sûr. Ce que le certificat garantit vraiment, les trois pannes qui coûtent le plus cher, et comment vérifier le vôtre.</span></a></li>
+        <li><a href="/tools/seoplus/securite/fichiers-a-ne-jamais-exposer/"><b>Les fichiers qu'il ne faut jamais laisser à la racine de son site</b><span>Sauvegardes, fichiers de configuration, exports de base : ce qui traîne à la racine est servi à qui demande. La liste des chemins testés en premier.</span></a></li>
+        <li><a href="/tools/seoplus/securite/site-pirate-que-faire/"><b>Votre site est piraté : la marche à suivre, dans l'ordre</b><span>Les signes qui ne trompent pas, les six étapes dans le bon ordre, et l'erreur qui fait tout recommencer.</span></a></li>
+        <li><a href="/tools/seoplus/securite/spf-dkim-dmarc/"><b>SPF, DKIM, DMARC : pourquoi vos emails partent en spam</b><span>Les 3 enregistrements DNS qui décident si vos messages arrivent, et l'erreur qui rend DMARC totalement inutile.</span></a></li>
+          </ul>
+        </nav>
+        <!-- silo:fin -->
+
+        <div class="post-cta">
+          <h2>Vos en-têtes sont-ils en place ?</h2>
+          <p>L'audit lit les 16 points d'en-têtes de sécurité de votre site et vous donne la valeur exacte à poser. Gratuit, 30 secondes.</p>
+          <a class="btn btn-primary" href="/tools/seoplus/#analyser">Analyser mon site</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="footer-brand-line" href="/tools/seoplus/#top"><img class="brand-logo" src="/tools/seoplus/assets/img/favicon.svg" alt="" width="30" height="30" loading="lazy"><span class="brand-name">SEO<em style="font-style:normal;color:var(--orange)">Plus!</em></span></a>
+          <p>L'audit SEO et GEO automatisé par IA, conçu par OptimizIA.xyz, agence d'intégration IA et d'automatisation pour TPE et PME.</p>
+        </div>
+        <nav aria-label="Produit">
+          <b class="footer-title">Produit</b>
+          <a href="/tools/seoplus/#analyser">Analyser mon site</a>
+          <a href="/tools/seoplus/#comment">Comment ça marche</a>
+          <a href="/tools/seoplus/#tarifs">Tarifs</a>
+          <a href="/tools/seoplus/rapport.html?url=exemple.com&amp;demo=1">Exemple de rapport</a>
+        </nav>
+        <nav aria-label="Ressources">
+          <b class="footer-title">Ressources</b>
+          <a href="/tools/seoplus/blog/">Blog</a>
+          <a href="/tools/seoplus/classement.html">Classement public</a>
+          <a href="/tools/seoplus/generateur-llms-txt.html">Générateur llms.txt</a>
+          <a href="/tools/seoplus/methodologie.html">Notre méthode</a>
+        </nav>
+        <nav aria-label="Informations">
+          <b class="footer-title">Informations</b>
+          <a href="/tools/seoplus/a-propos.html">À propos</a>
+          <a href="/tools/seoplus/mentions-legales.html">Mentions légales</a>
+          <a href="/tools/seoplus/politique-confidentialite.html">Confidentialité</a>
+          <a href="/tools/seoplus/cgv.html">Conditions générales de vente</a>
+          <a href="mailto:contact@optimizia.xyz">contact@optimizia.xyz</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 SEOPlus! V6.0 par OptimizIA.xyz</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/tools/seoplus/config.js"></script>
+  <script src="/tools/seoplus/assets/app.js?v=20260817"></script>
+</body>
+</html>

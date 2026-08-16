@@ -1,7 +1,7 @@
 # seoplus-site
 
 Canal de livraison de **SEOPlus!**, servi sur
-`https://www.optimizia.xyz/outils/seoplus/`.
+`https://www.optimizia.xyz/tools/seoplus/`.
 
 Ce dépôt ne contient pas le projet : il contient ce qui part en production.
 Le projet, ses générateurs et ses notes vivent dans le vault Obsidian, sous
@@ -20,7 +20,7 @@ Le projet, ses générateurs et ses notes vivent dans le vault Obsidian, sous
 ```
 site/
 ├─ 98 redirections .html + robots.txt + sitemap.xml   <- seoplus.optimizia.xyz
-└─ outils/seoplus/   le site                          <- www.optimizia.xyz/outils/seoplus/
+└─ tools/seoplus/   le site                          <- www.optimizia.xyz/tools/seoplus/
 ```
 
 ## Publier

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Blog SEOPlus! : SEO et visibilité dans les IA</title>
+    <link>https://www.optimizia.xyz/tools/seoplus/blog/</link>
+    <description>Guides pratiques SEO et GEO pour les TPE et PME, par OptimizIA.xyz.</description>
+    <language>fr</language>
+    <lastBuildDate>Wed, 12 Aug 2026 08:00:00 GMT</lastBuildDate>
+    <atom:link href="https://www.optimizia.xyz/tools/seoplus/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Conformité d'un site web : les quatre obligations, dans l'ordre</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/conformite/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/conformite/</guid>
+      <pubDate>Sun, 16 Aug 2026 09:00:00 GMT</pubDate>
+      <description>Mentions légales, information sur les données, consentement aux traceurs, accessibilité. Ce que la loi impose vraiment à un site professionnel français, ce qui se vérifie de l'extérieur, et par quoi commencer.</description>
+    </item>
+    <item>
+      <title>Politique de confidentialité : le modèle utilisable pour une TPE</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/conformite/politique-confidentialite-modele/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/conformite/politique-confidentialite-modele/</guid>
+      <pubDate>Sat, 15 Aug 2026 09:00:00 GMT</pubDate>
+      <description>Les huit rubriques qui doivent y figurer, la façon de les remplir sans jargon, et les deux erreurs qui rendent le document faux dès le premier jour.</description>
+    </item>
+    <item>
+      <title>Les mentions légales obligatoires d'un site de TPE</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/conformite/mentions-legales-obligatoires/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/conformite/mentions-legales-obligatoires/</guid>
+      <pubDate>Sat, 15 Aug 2026 09:00:00 GMT</pubDate>
+      <description>Ce que la loi impose vraiment selon que vous vendez ou non, la liste exacte des informations à publier, et les trois oublis que l'on retrouve sur la majorité des sites.</description>
+    </item>
+    <item>
+      <title>La cohérence de vos coordonnées : la méthode de correction</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/referencement-local/coherence-coordonnees-nap/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/referencement-local/coherence-coordonnees-nap/</guid>
+      <pubDate>Sat, 15 Aug 2026 09:00:00 GMT</pubDate>
+      <description>Un numéro qui diffère d'un annuaire à l'autre, une adresse écrite de trois façons : ce que ça coûte en visibilité locale, et comment reprendre la main en une demi-journée.</description>
+    </item>
+    <item>
+      <title>Pages de zone : couvrir plusieurs villes sans se faire pénaliser</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/referencement-local/pages-de-zone/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/referencement-local/pages-de-zone/</guid>
+      <pubDate>Sat, 15 Aug 2026 09:00:00 GMT</pubDate>
+      <description>Dupliquer une page en changeant le nom de la ville ne marche plus depuis longtemps. Ce qui distingue une page de zone utile d'une page vide, et combien en créer.</description>
+    </item>
+    <item>
+      <title>Obtenir des avis clients sans les acheter</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/referencement-local/avis-clients-obtenir/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/referencement-local/avis-clients-obtenir/</guid>
+      <pubDate>Sat, 15 Aug 2026 09:00:00 GMT</pubDate>
+      <description>Le moment, la formulation et le canal qui font la différence, ce que dit la loi sur les avis, et pourquoi répondre compte autant que collecter.</description>
+    </item>
+    <item>
+      <title>Les fichiers qu'il ne faut jamais laisser à la racine de son site</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/securite/fichiers-a-ne-jamais-exposer/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/securite/fichiers-a-ne-jamais-exposer/</guid>
+      <pubDate>Sat, 15 Aug 2026 09:00:00 GMT</pubDate>
+      <description>Sauvegardes, fichiers de configuration, exports de base de données : ce qui traîne à la racine est servi à qui demande. La liste des chemins testés en premier, et comment vérifier le vôtre.</description>
+    </item>
+    <item>
+      <title>Votre site est piraté : la marche à suivre, dans l'ordre</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/securite/site-pirate-que-faire/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/securite/site-pirate-que-faire/</guid>
+      <pubDate>Sat, 15 Aug 2026 09:00:00 GMT</pubDate>
+      <description>Les signes qui ne trompent pas, les six étapes dans le bon ordre, et l'erreur qui fait tout recommencer. Guide pour un dirigeant qui n'a pas d'informaticien sous la main.</description>
+    </item>
+    <item>
+      <title>Le certificat SSL expliqué : ce qu'il protège, ce qu'il ne protège pas</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/securite/certificat-ssl-explique/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/securite/certificat-ssl-explique/</guid>
+      <pubDate>Sat, 15 Aug 2026 09:00:00 GMT</pubDate>
+      <description>Le cadenas ne dit pas que votre site est sûr. Ce que le certificat garantit vraiment, les trois pannes qui coûtent le plus cher, et comment vérifier le vôtre en deux minutes.</description>
+    </item>
+    <item>
+      <title>Cookies et traceurs : ce que la CNIL exige, ce qu'un audit mesure</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/conformite/cookies-rgpd-traceurs/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/conformite/cookies-rgpd-traceurs/</guid>
+      <description>Consentement préalable, refus aussi simple que l'acceptation, traceurs déposés avant tout choix : les règles réelles, les erreurs les plus fréquentes et comment vérifier votre site.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Thu, 13 Aug 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Accessibilité web : ce que la réglementation européenne a changé</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/conformite/accessibilite-web/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/conformite/accessibilite-web/</guid>
+      <description>Depuis juin 2025, l'accessibilité numérique est une obligation pour de nombreux services en ligne. Qui est concerné, ce que ça exige concrètement, et pourquoi ça sert aussi votre référencement.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Thu, 13 Aug 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Être trouvé près de chez vous : le guide du référencement local</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/referencement-local/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/referencement-local/</guid>
+      <description>Fiche établissement, cohérence des coordonnées, balisage LocalBusiness, avis : ce qui décide vraiment de votre position dans les résultats locaux et dans les réponses des IA.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Thu, 13 Aug 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Les en-têtes de sécurité HTTP, expliqués sans jargon</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/securite/entetes-securite-http/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/securite/entetes-securite-http/</guid>
+      <description>Six en-têtes à poser sur votre serveur, ce que chacun empêche concrètement, et pourquoi une seule intervention suffit à les traiter tous. Sans ligne de code.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Thu, 13 Aug 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>SPF, DKIM, DMARC : pourquoi vos emails partent en spam</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/securite/spf-dkim-dmarc/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/securite/spf-dkim-dmarc/</guid>
+      <description>Les trois enregistrements DNS qui décident si vos emails arrivent en boîte de réception. Ce que fait chacun, dans quel ordre les publier, et l'erreur qui rend DMARC inutile.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Thu, 13 Aug 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Sécuriser son site sans être informaticien : le guide</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/securite/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/securite/</guid>
+      <description>Les quatre chantiers de sécurité qui comptent pour une TPE-PME : en-têtes HTTP, certificat, authentification des emails, fichiers exposés. Ce qu'un audit mesure et pourquoi ça pèse sur votre visibilité.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Thu, 13 Aug 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Le guide du SEO technique pour une TPE-PME</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/seo-technique/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/seo-technique/</guid>
+      <description>Indexation, crawl, Core Web Vitals, données structurées, Search Console : les fondations techniques de votre visibilité, expliquées sans jargon et dans l'ordre.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Wed, 12 Aug 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Être visible dans ChatGPT, Perplexity et les réponses IA : le guide GEO</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/visibilite-ia/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/visibilite-ia/</guid>
+      <description>Le guide complet pour entrer dans les réponses des IA : laisser entrer leurs robots, devenir lisible et citable, construire la notoriété qui fait la confiance.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Wed, 12 Aug 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Écrire des pages que Google et les clients lisent</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/contenu-seo/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/contenu-seo/</guid>
+      <description>Choisir ses mots-clés, écrire des pages assez profondes, soigner titles et metas, éviter la cannibalisation, entretenir l'existant : la méthode contenu complète.</description>
+      <dc:creator>Rémy Ginoux</dc:creator>
+      <pubDate>Wed, 12 Aug 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Se faire connaître et gagner la confiance de Google : le guide autorité</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/autorite-confiance/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/autorite-confiance/</guid>
+      <description>E-E-A-T, fiche Google Business, maillage interne, patience stratégique : comment un site de TPE-PME construit la confiance qui fait monter tout le reste.</description>
+      <dc:creator>Rémy Ginoux</dc:creator>
+      <pubDate>Wed, 12 Aug 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Pourquoi ChatGPT ne connaît pas votre marque (et comment y remédier)</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/visibilite-ia/chatgpt-connait-pas-votre-marque/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/visibilite-ia/chatgpt-connait-pas-votre-marque/</guid>
+      <description>Vos clients demandent aux IA de leur recommander un prestataire et vous n'apparaissez jamais. D'où les modèles tirent leurs connaissances, et les 5 leviers concrets pour entrer dans leurs réponses.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Fri, 24 Jul 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Google Search Console : le guide pour débuter (et les 3 rapports qui comptent)</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/seo-technique/google-search-console-debuter/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/seo-technique/google-search-console-debuter/</guid>
+      <description>Google Search Console est gratuit, officiel, et ignoré par la moitié des sites de PME. Installation en 10 minutes, puis les 3 rapports à regarder chaque mois : Performances, Indexation, Améliorations.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Wed, 22 Jul 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Cannibalisation de mots-clés : quand vos pages se font la guerre</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/contenu-seo/cannibalisation-mots-cles/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/contenu-seo/cannibalisation-mots-cles/</guid>
+      <description>Deux pages qui visent la même requête se neutralisent : Google hésite, aucune ne ranke. Comment détecter la cannibalisation en 10 minutes avec la Search Console, et les 3 façons de la corriger.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Tue, 21 Jul 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Recherche de mots-clés : la méthode simple pour une TPE-PME</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/contenu-seo/recherche-mots-cles-methode/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/contenu-seo/recherche-mots-cles-methode/</guid>
+      <description>Trouver les requêtes que vos clients tapent vraiment, sans outil payant : partir du vocabulaire client, valider avec Google et la Search Console, choisir ses batailles selon la concurrence réelle.</description>
+      <dc:creator>Rémy Ginoux</dc:creator>
+      <pubDate>Fri, 17 Jul 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>E-E-A-T : comment prouver votre expertise à Google (et aux IA)</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/contenu-seo/eeat-prouver-expertise/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/contenu-seo/eeat-prouver-expertise/</guid>
+      <description>Expérience, Expertise, Autorité, Fiabilité : ce que recouvre le E-E-A-T de Google, pourquoi les moteurs IA s'appuient sur les mêmes signaux, et les preuves concrètes à mettre sur votre site.</description>
+      <dc:creator>Rémy Ginoux</dc:creator>
+      <pubDate>Thu, 16 Jul 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Mettre à jour vos anciens contenus : le levier SEO le moins cher</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/contenu-seo/mettre-a-jour-ancien-contenu/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/contenu-seo/mettre-a-jour-ancien-contenu/</guid>
+      <description>Rafraîchir une page qui glisse rapporte plus vite qu'écrire un article neuf : quelles pages mettre à jour en priorité, quoi changer exactement, quoi ne pas toucher, et comment mesurer l'effet.</description>
+      <dc:creator>Rémy Ginoux</dc:creator>
+      <pubDate>Mon, 13 Jul 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>SEO d'un nouveau site : le plan des 90 premiers jours</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/autorite-confiance/seo-nouveau-site-90-jours/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/autorite-confiance/seo-nouveau-site-90-jours/</guid>
+      <description>Un site neuf part sans historique ni autorité. Le plan semaine par semaine : fondations techniques, indexation express, contenu qui cible juste, premiers liens. Objectif : ranker avant 3 mois.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Fri, 10 Jul 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>AI Overviews en France : ce qui change pour votre visibilité</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/visibilite-ia/ai-overviews-france/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/visibilite-ia/ai-overviews-france/</guid>
+      <description>Google AI Overviews répond à la place de vos pages. Comment fonctionnent les réponses IA de Google, qui perd du trafic, et les 4 leviers concrets pour devenir la source citée.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Thu, 09 Jul 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Core Web Vitals : le guide sans jargon pour dirigeants</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/seo-technique/core-web-vitals-guide/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/seo-technique/core-web-vitals-guide/</guid>
+      <description>LCP, INP, CLS : ce que mesurent vraiment les Core Web Vitals de Google, les seuils à viser, et les 3 causes de lenteur les plus fréquentes sur les sites de TPE-PME, avec leurs correctifs.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Tue, 07 Jul 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Fiche Google Business Profile : les champs qui pèsent vraiment</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/referencement-local/fiche-google-business-profile/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/referencement-local/fiche-google-business-profile/</guid>
+      <description>Pour une entreprise locale, la fiche Google Business Profile génère souvent plus de contacts que le site. Les champs prioritaires, la mécanique des avis, les erreurs NAP et comment mesurer.</description>
+      <dc:creator>Rémy Ginoux</dc:creator>
+      <pubDate>Fri, 03 Jul 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Titles et meta descriptions : écrire pour être cliqué</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/contenu-seo/titles-meta-descriptions/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/contenu-seo/titles-meta-descriptions/</guid>
+      <description>Le title est lu par Google, la meta description par les humains. Longueurs cibles (30-60 et 120-160 caractères), formules qui fonctionnent et exemples avant/après pour une TPE-PME.</description>
+      <dc:creator>Rémy Ginoux</dc:creator>
+      <pubDate>Thu, 02 Jul 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Maillage interne : la technique gratuite que presque personne ne fait</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/seo-technique/maillage-interne/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/seo-technique/maillage-interne/</guid>
+      <description>Lier vos propres pages entre elles change la façon dont Google et les IA comprennent votre site. La méthode hub et pages filles, les règles d'ancres, et les erreurs à éviter.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Tue, 30 Jun 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>La barre des 600 mots : pourquoi vos pages maigres ne sortent pas</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/contenu-seo/contenu-600-mots/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/contenu-seo/contenu-600-mots/</guid>
+      <description>Une page service de 150 mots ne donne rien à classer à Google ni rien à citer aux IA. Pourquoi la profondeur compte, le plan type d'une page service qui performe, et où trouver la matière.</description>
+      <dc:creator>Rémy Ginoux</dc:creator>
+      <pubDate>Fri, 26 Jun 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>GEO : comment être cité par ChatGPT, Perplexity et Google AI Overviews</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/visibilite-ia/geo-etre-cite/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/visibilite-ia/geo-etre-cite/</guid>
+      <description>Le GEO (Generative Engine Optimization) expliqué simplement : les 4 conditions à remplir, dans l'ordre, pour que votre entreprise apparaisse dans les réponses des IA. Guide pratique pour TPE et PME.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Wed, 24 Jun 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Pourquoi votre site n'apparaît pas sur Google : les 7 causes mesurables</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/autorite-confiance/pourquoi-site-invisible-google/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/autorite-confiance/pourquoi-site-invisible-google/</guid>
+      <description>Votre site est introuvable sur Google ? Les 7 causes réelles, de la plus fréquente à la plus sournoise, avec le test pour identifier la vôtre et le correctif exact.</description>
+      <dc:creator>Rémy Ginoux</dc:creator>
+      <pubDate>Tue, 23 Jun 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>À quoi ressemble un audit SEO utile ? Ce qu'il doit contenir, ce qui doit vous alerter</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/autorite-confiance/audit-seo-exemple/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/autorite-confiance/audit-seo-exemple/</guid>
+      <description>Comment reconnaître un bon audit SEO : les 4 éléments qu'il doit contenir, les signaux d'alerte d'un rapport décoratif, et ce qu'un score sur 100 vaut vraiment.</description>
+      <dc:creator>Rémy Ginoux</dc:creator>
+      <pubDate>Fri, 19 Jun 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Données structurées : les schémas qui comptent vraiment pour Google et les IA</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/seo-technique/donnees-structurees-json-ld/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/seo-technique/donnees-structurees-json-ld/</guid>
+      <description>JSON-LD expliqué simplement : les 5 types de données structurées utiles à une TPE-PME, un exemple complet à adapter, et les erreurs qui invalident tout.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Wed, 17 Jun 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>llms.txt : le guide complet en français</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/visibilite-ia/llms-txt-guide/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/visibilite-ia/llms-txt-guide/</guid>
+      <description>Le llms.txt expliqué simplement : à quoi sert ce fichier, ce qu'il change pour votre visibilité dans ChatGPT, Claude et Perplexity, comment l'écrire et les erreurs à éviter. Avec générateur gratuit.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Tue, 16 Jun 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>GPTBot, ClaudeBot, PerplexityBot : bloquer ou accueillir les robots des IA ?</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/visibilite-ia/crawlers-ia-robots-txt/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/visibilite-ia/crawlers-ia-robots-txt/</guid>
+      <description>Qui sont les crawlers des IA (GPTBot, ClaudeBot, PerplexityBot, Google-Extended), ce qu'un blocage coûte à votre visibilité, et les lignes exactes à mettre dans votre robots.txt.</description>
+      <dc:creator>Rémy Ginoux</dc:creator>
+      <pubDate>Fri, 12 Jun 2026 08:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Combien de temps met le SEO à produire des résultats ? Le calendrier honnête</title>
+      <link>https://www.optimizia.xyz/tools/seoplus/autorite-confiance/combien-temps-seo/</link>
+      <guid isPermaLink="true">https://www.optimizia.xyz/tools/seoplus/autorite-confiance/combien-temps-seo/</guid>
+      <description>Corrections techniques en jours, contenu en 2-3 mois, autorité en 6-12 mois : le calendrier réaliste du SEO pour une TPE-PME, et comment mesurer sans se raconter d'histoires.</description>
+      <dc:creator>Romain Ben</dc:creator>
+      <pubDate>Tue, 09 Jun 2026 08:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

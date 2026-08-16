@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sécuriser son site sans être informaticien : le guide | SEOPlus!</title>
+  <meta name="description" content="Les quatre chantiers de sécurité qui comptent pour une TPE-PME : en-têtes HTTP, certificat, authentification des emails, fichiers exposés. Ce qu'un audit mesure et pourquoi ça pèse sur votre visibilité.">
+  <link rel="canonical" href="https://www.optimizia.xyz/tools/seoplus/securite/">
+  <link rel="alternate" type="application/rss+xml" title="Blog SEOPlus!" href="/tools/seoplus/feed.xml">
+  <link rel="alternate" hreflang="fr" href="https://www.optimizia.xyz/tools/seoplus/securite/">
+  <link rel="alternate" hreflang="en" href="https://www.optimizia.xyz/tools/seoplus/en/website-security/">
+  <link rel="alternate" hreflang="x-default" href="https://www.optimizia.xyz/tools/seoplus/securite/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.optimizia.xyz/tools/seoplus/assets/img/og.png?v=2">
+  <meta property="og:site_name" content="SEOPlus!">
+  <meta property="og:title" content="Sécuriser son site sans être informaticien : le guide">
+  <meta property="og:description" content="En-têtes HTTP, certificat, emails authentifiés, fichiers exposés : les quatre chantiers de sécurité d'un site de PME, expliqués sans jargon.">
+  <meta property="og:url" content="https://www.optimizia.xyz/tools/seoplus/securite/">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.optimizia.xyz/tools/seoplus/assets/img/og.png?v=2">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "headline": "Sécuriser son site sans être informaticien : le guide",
+        "description": "Les quatre chantiers de sécurité qui comptent pour une TPE-PME : en-têtes HTTP, certificat, authentification des emails, fichiers exposés. Ce qu'un audit mesure et pourquoi ça pèse sur votre visibilité.",
+        "inLanguage": "fr",
+        "datePublished": "2026-08-13",
+        "dateModified": "2026-08-13",
+        "mainEntityOfPage": "https://www.optimizia.xyz/tools/seoplus/securite/",
+        "author": {
+          "@type": "Person",
+          "name": "Romain Ben",
+          "url": "https://www.optimizia.xyz/tools/seoplus/a-propos.html",
+          "worksFor": {
+            "@id": "https://www.optimizia.xyz/#org"
+          }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://www.optimizia.xyz/#org",
+          "name": "OptimizIA.xyz",
+          "url": "https://www.optimizia.xyz",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.optimizia.xyz/tools/seoplus/assets/img/optimizia-logo.png",
+            "width": 1055,
+            "height": 236
+          }
+        },
+        "image": "https://www.optimizia.xyz/tools/seoplus/assets/img/og.png?v=2",
+        "isPartOf": {
+          "@id": "https://www.optimizia.xyz/tools/seoplus/#website"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Accueil",
+            "item": "https://www.optimizia.xyz/tools/seoplus/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.optimizia.xyz/tools/seoplus/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Sécurité",
+            "item": "https://www.optimizia.xyz/tools/seoplus/securite/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "La sécurité d'un site influence-t-elle le référencement Google ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui, mais indirectement pour la plupart des points. Le passage en HTTPS est un critère de classement confirmé par Google depuis 2014. Les autres éléments de sécurité pèsent par leurs effets : un site signalé comme dangereux perd sa visibilité, un site piraté peut être désindexé, et un certificat expiré fait fuir les visiteurs, ce qui dégrade les signaux d'engagement."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Faut-il un développeur pour poser des en-têtes de sécurité ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Non dans la majorité des cas. Sur un hébergement mutualisé, les en-têtes se posent dans un fichier de configuration ou depuis le panneau d'administration. Sur un site WordPress, une extension le fait. La difficulté n'est pas technique, elle est de savoir lesquels poser et avec quelles valeurs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Combien de temps prend la mise en conformité ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Les en-têtes HTTP et le certificat se traitent en une intervention d'une heure. L'authentification des emails demande de publier trois enregistrements DNS et de laisser passer quelques jours d'observation avant de durcir la politique. Les fichiers exposés se traitent au cas par cas, généralement en moins d'une heure."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/tools/seoplus/assets/fonts.css?v=20260814b">
+  <link rel="icon" type="image/svg+xml" href="/tools/seoplus/assets/img/favicon.svg">
+  <link rel="apple-touch-icon" href="/tools/seoplus/assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="/tools/seoplus/assets/style.css?v=20260817">
+</head>
+<body data-page="post">
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <a class="brand-home" href="/tools/seoplus/">
+          <img class="brand-logo" src="/tools/seoplus/assets/img/favicon.svg" alt="" width="30" height="30">
+          <span class="brand-name">SEO<em>Plus!</em></span>
+        </a>
+        <a class="brand-by" href="https://www.optimizia.xyz">by OptimizIA.xyz</a>
+      </div>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="/tools/seoplus/#comment">Comment ça marche</a>
+        <a href="/tools/seoplus/#couverture">L'audit</a>
+        <a href="/tools/seoplus/#tarifs">Tarifs</a>
+        <a href="/tools/seoplus/classement.html">Classement</a>
+        <a href="/tools/seoplus/blog/">Blog</a>
+        <a class="btn btn-primary" href="/tools/seoplus/#analyser">Analyser mon site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="pilier-wrap">
+        <a class="post-back" href="/tools/seoplus/blog/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          Retour au blog
+        </a>
+        <div class="post-head">
+          <p class="eyebrow"><a href="/tools/seoplus/blog/" style="color:inherit;text-decoration:none">Blog</a> · <a href="/tools/seoplus/securite/" style="color:inherit;text-decoration:none">Sécurité &amp; confiance</a></p>
+          <h1>Sécuriser son site sans être informaticien : le guide</h1>
+        </div>
+
+
+
+
+        <div class="post-summary">
+          <b>En bref</b>
+          La sécurité d'un site de PME tient en quatre chantiers : les en-têtes que votre serveur envoie à chaque visite, le certificat qui chiffre la connexion, l'authentification de vos emails, et les fichiers que vous exposez sans le savoir. Aucun ne demande de savoir coder, tous se vérifient en quelques minutes, et trois d'entre eux se corrigent en une seule intervention sur le serveur. Ce guide sert de porte d'entrée aux articles détaillés du silo.
+        </div>
+
+        <div class="pilier-cta">
+          <div class="pilier-cta-texte">
+            <span class="post-rail-tag">SEOPlus!</span>
+            <b>Votre site expose-t-il quelque chose qu'il ne devrait pas ?</b>
+            <p>160 vérifications SEO et GEO, un score sur 100 et le plan d'actions qui va avec.</p>
+          </div>
+          <div class="pilier-cta-action">
+            <a class="btn btn-primary" href="/tools/seoplus/#analyser">Analyser mon site</a>
+            <span class="post-rail-note">30 secondes. Diagnostic gratuit, sans carte bancaire.</span>
+          </div>
+        </div>
+
+
+        <div class="post">
+          <h2 id="pourquoi-la-securite-est-un-sujet-de-visibilite">Pourquoi la sécurité est un sujet de visibilité</h2>
+          <p>Un dirigeant de PME entend « sécurité » et pense piratage. C'est le risque le plus spectaculaire, mais ce n'est pas celui qui coûte le plus cher au quotidien. Ce qui coûte cher, c'est l'accumulation de petits signaux négatifs qui pèsent sur la façon dont votre site est perçu, par les visiteurs comme par les machines.</p>
+          <p>Trois exemples concrets, tous mesurés dans nos audits :</p>
+          <ul>
+            <li><b>Vos emails commerciaux partent en indésirables</b> parce que votre domaine n'est pas authentifié. Vous croyez à un problème de contenu, c'est un problème d'enregistrement DNS.</li>
+            <li><b>Votre site affiche un avertissement</b> à cause d'un certificat expiré ou mal configuré. Le visiteur ferme l'onglet avant même d'avoir lu une ligne.</li>
+            <li><b>Un fichier de sauvegarde traîne à la racine</b> et se télécharge par n'importe qui, avec vos identifiants de base de données dedans.</li>
+          </ul>
+          <p>Aucun de ces trois cas n'est un piratage. Tous trois sont invisibles depuis votre navigateur, et tous trois se détectent en trente secondes depuis l'extérieur.</p>
+
+          <h2 id="les-en-tetes-http">Chantier 1 : les en-têtes que votre serveur envoie</h2>
+          <p>À chaque visite, avant même la première ligne de votre page, votre serveur envoie une série d'instructions au navigateur. Ce sont les en-têtes HTTP. Ils disent au navigateur ce qu'il a le droit de faire : quels scripts exécuter, si la page peut être affichée dans un cadre sur un autre site, quelles informations transmettre en partant.</p>
+          <p>Un site sans ces en-têtes fonctionne parfaitement. Il laisse simplement le navigateur décider seul, ce qui ouvre la porte à des attaques classiques comme l'injection de script ou le détournement de clic. Les six qui comptent vraiment sont détaillés dans notre article dédié : <a href="/tools/seoplus/securite/entetes-securite-http/">les en-têtes de sécurité HTTP expliqués sans jargon</a>.</p>
+          <p>Le point important pour un dirigeant : <b>ils se posent tous au même endroit</b>, dans la configuration du serveur, et une seule intervention les traite en bloc. C'est le meilleur rapport entre l'effort et le nombre de points gagnés dans un audit.</p>
+
+          <h2 id="le-certificat">Chantier 2 : le certificat et le chiffrement</h2>
+          <p>Le cadenas dans la barre d'adresse signifie que la connexion entre le visiteur et votre serveur est chiffrée. C'est le minimum absolu depuis des années, et Google en fait un critère de classement depuis 2014.</p>
+          <p>Trois erreurs reviennent constamment :</p>
+          <ol>
+            <li><b>Le certificat expire.</b> Ils durent trois mois avec Let's Encrypt, un an chez la plupart des autres. Sans renouvellement automatique, l'oubli est une question de temps, et le site devient inaccessible du jour au lendemain avec un message d'alerte rouge.</li>
+            <li><b>La version non sécurisée reste accessible.</b> Le site répond en HTTPS mais aussi en HTTP, sans redirection. Google voit alors deux sites identiques, et le contenu se dilue entre les deux adresses.</li>
+            <li><b>Le certificat ne couvre pas toutes les adresses.</b> Il couvre <span class="mono">votre-site.fr</span> mais pas <span class="mono">www.votre-site.fr</span>, ou l'inverse. Une moitié de vos visiteurs voit une alerte.</li>
+          </ol>
+          <p>La bonne nouvelle : un certificat gratuit renouvelé automatiquement règle les trois cas, et la quasi-totalité des hébergeurs le proposent en une case à cocher.</p>
+
+          <h2 id="authentifier-ses-emails">Chantier 3 : authentifier vos emails</h2>
+          <p>C'est le chantier le plus rentable et le plus ignoré. Sans authentification, n'importe qui peut envoyer un email qui semble venir de votre domaine, et vos propres messages ont toutes les chances d'arriver en indésirables.</p>
+          <p>Trois enregistrements à publier dans votre zone DNS, et une politique à durcir progressivement. Depuis février 2024, Google et Yahoo les exigent des expéditeurs qui envoient en volume : ce n'est plus une bonne pratique, c'est une condition d'accès aux boîtes de réception. Le détail est dans <a href="/tools/seoplus/securite/spf-dkim-dmarc/">notre article sur SPF, DKIM et DMARC</a>.</p>
+          <p>Un signe qui ne trompe pas : si vos clients vous disent régulièrement « je n'ai rien reçu, j'ai regardé dans les spams », le problème n'est presque jamais votre message.</p>
+
+          <h2 id="les-fichiers-exposes">Chantier 4 : ce que vous exposez sans le savoir</h2>
+          <p>Un site publie plus de choses que ses pages. Des fichiers finissent en ligne par accident et restent accessibles à toute personne qui connaît leur adresse, sans le moindre piratage.</p>
+          <p>Ce qu'on trouve le plus souvent :</p>
+          <ul>
+            <li><b>Des sauvegardes</b> nommées <span class="mono">site.zip</span> ou <span class="mono">backup.sql</span> laissées à la racine après une migration.</li>
+            <li><b>Des fichiers de configuration</b> contenant des mots de passe de base de données ou des clés d'accès à des services.</li>
+            <li><b>Le listing de répertoire</b> : un dossier sans page d'accueil affiche la liste complète de son contenu à quiconque en devine l'adresse.</li>
+            <li><b>Des interfaces d'administration</b> laissées ouvertes après une prestation.</li>
+          </ul>
+          <p>C'est la catégorie où le risque n'est pas théorique : ces adresses sont testées en permanence par des robots automatiques, qui n'ont pas besoin de vous cibler pour vous trouver.</p>
+
+          <h2 id="par-ou-commencer">Par où commencer, concrètement</h2>
+          <p>Dans cet ordre, parce qu'il va du plus grave au moins grave et du plus rapide au plus lent :</p>
+          <ol>
+            <li><b>Les fichiers exposés.</b> C'est le seul chantier où un défaut peut mettre votre activité par terre. Une demi-heure.</li>
+            <li><b>Le certificat et la redirection.</b> Visible par tous vos visiteurs, et critère de classement. Une heure.</li>
+            <li><b>Les en-têtes HTTP.</b> Une seule intervention, beaucoup de points gagnés. Une heure.</li>
+            <li><b>L'authentification des emails.</b> Le plus long parce qu'il faut observer avant de durcir, mais le plus rentable commercialement. Quelques jours d'observation.</li>
+          </ol>
+          <p>Notre <a href="/tools/seoplus/#analyser">audit gratuit</a> mesure ces quatre chantiers depuis l'extérieur, exactement comme le ferait un visiteur ou un robot, et vous dit lesquels sont ouverts chez vous. La <a href="/tools/seoplus/methodologie.html">méthodologie</a> détaille ce que nous mesurons et, tout aussi important, ce que nous refusons de mesurer : nous ne faisons aucun scan de ports ni aucune sonde intrusive.</p>
+
+        </div>
+
+
+<!-- silo:debut -->
+        <div class="pilier-articles">
+          <h2>Les articles de ce guide</h2>
+          <div class="blog-grid">
+          <a class="blog-card" href="/tools/seoplus/securite/certificat-ssl-explique/" data-theme="securite">
+            <div class="blog-card-art"><svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs><linearGradient id="g-ssl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0F172A"/><stop offset="1" stop-color="#1E293B"/></linearGradient></defs>
+              <rect width="320" height="180" fill="url(#g-ssl)"/>
+              <circle cx="42" cy="150" r="84" fill="#F97316" opacity=".12"/>
+              <rect x="122" y="86" width="76" height="56" rx="7" fill="none" stroke="#F97316" stroke-width="5"/><path d="M136 86V70a24 24 0 0148 0v16" fill="none" stroke="#F97316" stroke-width="5"/><circle cx="160" cy="112" r="7" fill="#F97316"/>
+              <text x="160" y="166" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" font-weight="700" fill="#FDBA74">TLS · HSTS · contenu mixte</text>
+            </svg></div>
+            <span class="blog-card-tag">Sécurité</span>
+            <h3>Le certificat SSL expliqué : ce qu'il protège, ce qu'il ne protège pas</h3>
+            <p>Le cadenas ne dit pas que votre site est sûr. Ce que le certificat garantit vraiment, les trois pannes qui coûtent le plus cher, et comment vérifier le vôtre.</p>
+            <span class="blog-card-time"><img class="blog-card-avatar" src="/tools/seoplus/assets/img/authors/romain-ben.webp" alt="" width="30" height="30" loading="lazy"><b>Romain Ben</b><time datetime="2026-08-15">15 août 2026</time></span>
+          </a>
+          <a class="blog-card" href="/tools/seoplus/securite/entetes-securite-http/" data-theme="securite">
+            <div class="blog-card-art"><svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs><linearGradient id="g-headers" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0F172A"/><stop offset="1" stop-color="#1E293B"/></linearGradient></defs>
+              <rect width="320" height="180" fill="url(#g-headers)"/>
+              <circle cx="46" cy="146" r="84" fill="#F97316" opacity=".12"/>
+              <rect x="66" y="40" width="188" height="22" rx="6" fill="#F97316"/>
+              <rect x="66" y="72" width="188" height="14" rx="5" fill="#334155"/>
+              <rect x="66" y="94" width="150" height="14" rx="5" fill="#334155"/>
+              <rect x="66" y="116" width="168" height="14" rx="5" fill="#334155"/>
+              <rect x="228" y="94" width="26" height="14" rx="5" fill="#DC2626" opacity=".7"/>
+              <text x="160" y="166" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" font-weight="700" fill="#FDBA74">CSP · HSTS · cookies</text>
+            </svg></div>
+            <span class="blog-card-tag">Sécurité</span>
+            <h3>Les en-têtes de sécurité HTTP, expliqués sans jargon</h3>
+            <p>Six en-têtes, ce que chacun empêche concrètement, et pourquoi une seule intervention suffit à les poser tous.</p>
+            <span class="blog-card-time"><img class="blog-card-avatar" src="/tools/seoplus/assets/img/authors/romain-ben.webp" alt="" width="30" height="30" loading="lazy"><b>Romain Ben</b><time datetime="2026-08-13">13 août 2026</time></span>
+          </a>
+          <a class="blog-card" href="/tools/seoplus/securite/fichiers-a-ne-jamais-exposer/" data-theme="securite">
+            <div class="blog-card-art"><svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs><linearGradient id="g-files" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0F172A"/><stop offset="1" stop-color="#1E293B"/></linearGradient></defs>
+              <rect width="320" height="180" fill="url(#g-files)"/>
+              <circle cx="42" cy="150" r="84" fill="#F97316" opacity=".12"/>
+              <path d="M104 66h44l12 16h56v62a8 8 0 01-8 8h-96a8 8 0 01-8-8z" fill="none" stroke="#F97316" stroke-width="5" stroke-linejoin="round"/><path d="M128 108h64M128 126h44" stroke="#F97316" stroke-width="5" stroke-linecap="round"/>
+              <text x="160" y="166" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" font-weight="700" fill="#FDBA74">.env · backup.sql · .git</text>
+            </svg></div>
+            <span class="blog-card-tag">Sécurité</span>
+            <h3>Les fichiers qu'il ne faut jamais laisser à la racine de son site</h3>
+            <p>Sauvegardes, fichiers de configuration, exports de base : ce qui traîne à la racine est servi à qui demande. La liste des chemins testés en premier.</p>
+            <span class="blog-card-time"><img class="blog-card-avatar" src="/tools/seoplus/assets/img/authors/romain-ben.webp" alt="" width="30" height="30" loading="lazy"><b>Romain Ben</b><time datetime="2026-08-15">15 août 2026</time></span>
+          </a>
+          <a class="blog-card" href="/tools/seoplus/securite/site-pirate-que-faire/" data-theme="securite">
+            <div class="blog-card-art"><svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs><linearGradient id="g-hack" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0F172A"/><stop offset="1" stop-color="#1E293B"/></linearGradient></defs>
+              <rect width="320" height="180" fill="url(#g-hack)"/>
+              <circle cx="42" cy="150" r="84" fill="#F97316" opacity=".12"/>
+              <path d="M160 42l56 22v40c0 33-23 58-56 70-33-12-56-37-56-70V64z" fill="none" stroke="#F97316" stroke-width="5" stroke-linejoin="round"/><path d="M140 92l40 40M180 92l-40 40" stroke="#F97316" stroke-width="6" stroke-linecap="round"/>
+              <text x="160" y="166" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" font-weight="700" fill="#FDBA74">six étapes, dans le bon ordre</text>
+            </svg></div>
+            <span class="blog-card-tag">Sécurité</span>
+            <h3>Votre site est piraté : la marche à suivre, dans l'ordre</h3>
+            <p>Les signes qui ne trompent pas, les six étapes dans le bon ordre, et l'erreur qui fait tout recommencer.</p>
+            <span class="blog-card-time"><img class="blog-card-avatar" src="/tools/seoplus/assets/img/authors/romain-ben.webp" alt="" width="30" height="30" loading="lazy"><b>Romain Ben</b><time datetime="2026-08-15">15 août 2026</time></span>
+          </a>
+          <a class="blog-card" href="/tools/seoplus/securite/spf-dkim-dmarc/" data-theme="securite">
+            <div class="blog-card-art"><svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs><linearGradient id="g-spf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0F172A"/><stop offset="1" stop-color="#1E293B"/></linearGradient></defs>
+              <rect width="320" height="180" fill="url(#g-spf)"/>
+              <circle cx="272" cy="146" r="84" fill="#F97316" opacity=".12"/>
+              <rect x="88" y="52" width="144" height="94" rx="10" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+              <path d="M88 62l72 48 72-48" fill="none" stroke="#F97316" stroke-width="4" stroke-linejoin="round"/>
+              <circle cx="222" cy="132" r="22" fill="#0F172A" stroke="#4ADE80" stroke-width="4"/>
+              <path d="M212 132l7 7 13-15" fill="none" stroke="#4ADE80" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="160" y="166" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" font-weight="700" fill="#FDBA74">SPF · DKIM · DMARC</text>
+            </svg></div>
+            <span class="blog-card-tag">Sécurité</span>
+            <h3>SPF, DKIM, DMARC : pourquoi vos emails partent en spam</h3>
+            <p>Les 3 enregistrements DNS qui décident si vos messages arrivent, et l'erreur qui rend DMARC totalement inutile.</p>
+            <span class="blog-card-time"><img class="blog-card-avatar" src="/tools/seoplus/assets/img/authors/romain-ben.webp" alt="" width="30" height="30" loading="lazy"><b>Romain Ben</b><time datetime="2026-08-13">13 août 2026</time></span>
+          </a>
+          </div>
+        </div>
+        <!-- silo:fin -->
+
+        <section class="pilier-faq">
+          <h2 id="faq">Questions fréquentes</h2>
+          <div class="pilier-faq-grid">
+            <div class="pilier-faq-item">
+              <h3>La sécurité d'un site influence-t-elle le référencement Google ?</h3>
+              <p>Oui, mais indirectement pour la plupart des points. Le passage en HTTPS est un critère de classement confirmé par Google depuis 2014. Les autres éléments de sécurité pèsent par leurs effets : un site signalé comme dangereux perd sa visibilité, un site piraté peut être désindexé, et un certificat expiré fait fuir les visiteurs, ce qui dégrade les signaux d'engagement.</p>
+            </div>
+            <div class="pilier-faq-item">
+              <h3>Faut-il un développeur pour poser des en-têtes de sécurité ?</h3>
+              <p>Non dans la majorité des cas. Sur un hébergement mutualisé, les en-têtes se posent dans un fichier de configuration ou depuis le panneau d'administration. Sur un site WordPress, une extension le fait. La difficulté n'est pas technique, elle est de savoir lesquels poser et avec quelles valeurs.</p>
+            </div>
+            <div class="pilier-faq-item">
+              <h3>Combien de temps prend la mise en conformité ?</h3>
+              <p>Les en-têtes HTTP et le certificat se traitent en une intervention d'une heure. L'authentification des emails demande de publier trois enregistrements DNS et de laisser passer quelques jours d'observation avant de durcir la politique. Les fichiers exposés se traitent au cas par cas, généralement en moins d'une heure.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="post-cta">
+          <h2>Où en est la sécurité de votre site ?</h2>
+          <p>L'audit mesure 39 points de sécurité : en-têtes, certificat, emails, fichiers exposés. Gratuit, 30 secondes.</p>
+          <a class="btn btn-primary" href="/tools/seoplus/#analyser">Analyser mon site</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="footer-brand-line" href="/tools/seoplus/#top"><img class="brand-logo" src="/tools/seoplus/assets/img/favicon.svg" alt="" width="30" height="30" loading="lazy"><span class="brand-name">SEO<em style="font-style:normal;color:var(--orange)">Plus!</em></span></a>
+          <p>L'audit SEO et GEO automatisé par IA, conçu par OptimizIA.xyz, agence d'intégration IA et d'automatisation pour TPE et PME.</p>
+        </div>
+        <nav aria-label="Produit">
+          <b class="footer-title">Produit</b>
+          <a href="/tools/seoplus/#analyser">Analyser mon site</a>
+          <a href="/tools/seoplus/#comment">Comment ça marche</a>
+          <a href="/tools/seoplus/#tarifs">Tarifs</a>
+          <a href="/tools/seoplus/rapport.html?url=exemple.com&amp;demo=1">Exemple de rapport</a>
+        </nav>
+        <nav aria-label="Ressources">
+          <b class="footer-title">Ressources</b>
+          <a href="/tools/seoplus/blog/">Blog</a>
+          <a href="/tools/seoplus/classement.html">Classement public</a>
+          <a href="/tools/seoplus/generateur-llms-txt.html">Générateur llms.txt</a>
+          <a href="/tools/seoplus/methodologie.html">Notre méthode</a>
+        </nav>
+        <nav aria-label="Informations">
+          <b class="footer-title">Informations</b>
+          <a href="/tools/seoplus/a-propos.html">À propos</a>
+          <a href="/tools/seoplus/mentions-legales.html">Mentions légales</a>
+          <a href="/tools/seoplus/politique-confidentialite.html">Confidentialité</a>
+          <a href="/tools/seoplus/cgv.html">Conditions générales de vente</a>
+          <a href="mailto:contact@optimizia.xyz">contact@optimizia.xyz</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 SEOPlus! V6.0 par OptimizIA.xyz</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/tools/seoplus/config.js"></script>
+  <script src="/tools/seoplus/assets/app.js?v=20260817"></script>
+</body>
+</html>
