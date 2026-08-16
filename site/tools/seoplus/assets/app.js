@@ -105,7 +105,7 @@
     if (!dictAudit) {
       dictAudit = new Promise(function (res) {
         var s = document.createElement("script");
-        s.src = "/assets/i18n-en-audit.js?v=20260815c";
+        s.src = BASE + "/assets/i18n-en-audit.js?v=20260815c";
         s.onload = s.onerror = function () { res(); };
         document.head.appendChild(s);
       }).then(function () { dictAudit = true; });
@@ -659,7 +659,7 @@
     if (!sbPromesse) {
       sbPromesse = new Promise(function (res) {
         var s = document.createElement("script");
-        s.src = "/assets/vendor/supabase.min.js?v=20260814b";
+        s.src = BASE + "/assets/vendor/supabase.min.js?v=20260814b";
         s.onload = function () { res(true); };
         s.onerror = function () { res(false); };
         document.head.appendChild(s);
