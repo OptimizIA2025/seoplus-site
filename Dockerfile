@@ -12,6 +12,9 @@
 FROM nginx:1.27-alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Vraies 301 de l'ancien hote seoplus.optimizia.xyz, generees depuis
+# carte-urls.json par "(C) generer-bloc-301-nginx.js" (via publier.ps1).
+COPY redirections-301.conf /etc/nginx/conf.d/redirections-301.conf
 COPY site/ /usr/share/nginx/html/
 
 EXPOSE 80
