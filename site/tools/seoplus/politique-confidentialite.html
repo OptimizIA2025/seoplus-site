@@ -95,6 +95,12 @@
       <p>Le site utilise une mesure d'audience interne, développée et hébergée par OptimizIA.xyz, sans aucun outil tiers. Elle fonctionne sans bandeau de consentement, parce qu'elle remplit les quatre conditions d'exemption posées par la CNIL : finalité strictement limitée à la mesure d'audience, résultats agrégés, aucun destinataire tiers, aucun suivi d'un site à l'autre.</p>
       <p>Le navigateur conserve localement un identifiant de visite aléatoire (localStorage), qui ne contient ni votre nom, ni votre email, ni votre adresse IP, et qui n'est recoupé avec aucun compte. Cet identifiant ne vous rend pas anonyme mais pseudonyme : il ne dit pas qui vous êtes, il distingue une visite d'une autre. Les événements mesurés (pages vues, clics sur les boutons principaux, profondeur de lecture, temps passé, source de campagne) sont envoyés à notre propre serveur d'automatisation (n8n, hébergé par nos soins) et servent uniquement à comprendre l'usage du site. Aucune donnée n'est transmise à un tiers ni utilisée à des fins publicitaires.</p>
       <p>Vous pouvez vous y opposer à tout moment : ajoutez <code>?notrack=1</code> à l'adresse de n'importe quelle page du site, et la mesure est désactivée durablement sur votre navigateur. Vous pouvez aussi demander l'effacement des événements associés à votre visite à <a href="mailto:contact@optimizia.xyz">contact@optimizia.xyz</a>.</p>
+
+      <h2>Rejeu de session (Microsoft Clarity)</h2>
+      <p>Nous utilisons <strong>Microsoft Clarity</strong> pour rejouer les parcours de navigation et produire des cartes de chaleur, afin de comprendre où les visiteurs se bloquent. Le rejeu de session ne relève pas du régime de la mesure d'audience agrégée : aucune exemption ne s'y applique, il est donc <strong>soumis à votre consentement</strong>.</p>
+      <p>Un bandeau vous est présenté à la première visite. Tant que vous n'avez pas accepté, rien n'est chargé et aucun cookie n'est posé. Après acceptation, deux cookies de première partie sont déposés, et eux seuls : <code>_clck</code> et <code>_clsk</code>. Le signal publicitaire est transmis en refus, si bien qu'aucun cookie publicitaire Microsoft n'est posé. Vous pouvez revenir sur votre choix à tout moment par le lien &laquo;&nbsp;Gérer les cookies&nbsp;&raquo; au pied de page ; un refus efface les cookies déjà posés et recharge la page pour interrompre la collecte en cours.</p>
+      <p>Le service est fourni par <strong>Microsoft Ireland Operations Limited</strong> et hébergé sur Azure. Les transferts vers Microsoft Corporation en dehors de l'Union européenne sont encadrés par les clauses contractuelles types de la Commission européenne.</p>
+      <p>La conservation se fait par paliers : les enregistrements sont gardés <strong>30 jours</strong>, puis un échantillon résiduel (1&nbsp;% des enregistrements ou 10 par jour, le plus grand des deux), les sessions marquées et les cartes de chaleur sont conservés <strong>jusqu'à 9 mois</strong>. Le contenu des champs de formulaire est masqué à la source par Clarity, et ce masquage n'est pas désactivable.</p>
     </section>
   </main>
 
@@ -110,6 +116,6 @@
   <script src="config.js"></script>
   <script src="assets/app.js?v=20260819"></script>
   <script src="assets/oia-tracker.js?v=20260819" data-site="seoplus" defer></script>
-  <script src="assets/oia-clarity.js?v=20260819" data-clarity="" data-legal="politique-confidentialite.html" data-accent="#F97316" defer></script>
+  <script src="assets/oia-clarity.js?v=20260819" data-clarity="y4wvew5ezs" data-legal="politique-confidentialite.html" data-accent="#F97316" defer></script>
 </body>
 </html>
