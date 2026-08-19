@@ -4124,20 +4124,16 @@
   });
 })();
 
-/* OptimizIA Tracker V3 (multi-sites) : mesure d'audience anonyme, sans tiers. Opt-out : ?notrack=1 */
+/* OptimizIA Tracker V3 (multi-sites) : mesure d'audience premiere partie, sans tiers.
+   Couche 2 EXEMPTEE de la doctrine 3 couches (art. 82) : aucune banniere, 100 % des
+   visiteurs, opt-out par ?notrack=1. La banniere ne concerne que la couche 3
+   (rejeu de session, /assets/oia-clarity.js de l'agence), jamais cette couche.
+   Aligne le 17/08 sur le modele de oia-tracker.js (agence, romainben.cloud). */
 (function () {
   'use strict';
-  var CFG = { site: 'seoplus', legal: 'politique-confidentialite.html', accent: '#3B82F6' };
+  var CFG = { site: 'seoplus' };
   var N8N = 'https://n8n.romainben.cloud/webhook/oia/sync';
-  var K = { optout: 'optimizia_notrack', consent: 'oia_consent', vid: 'oia_vid', sid: 'oia_sid', src: 'oia_src', cmp: 'oia_cmp' };
-  var isEN = (document.documentElement.lang || '').toLowerCase().indexOf('en') === 0;
-  var TXT = isEN ? {
-    body: 'We measure our audience <strong>anonymously</strong>, with no third parties and no profiling. <a href="politique-confidentialite-en.html">Learn more</a>',
-    accept: 'Accept', refuse: 'Decline'
-  } : {
-    body: 'Nous mesurons notre audience de façon <strong>anonyme</strong>, sans partage tiers ni profilage. <a href="politique-confidentialite.html">En savoir plus</a>',
-    accept: 'Accepter', refuse: 'Refuser'
-  };
+  var K = { optout: 'optimizia_notrack', vid: 'oia_vid', sid: 'oia_sid', src: 'oia_src', cmp: 'oia_cmp' };
 
   var Q = null;
   try { Q = new URLSearchParams(location.search); } catch (e) {}
@@ -4240,47 +4236,5 @@
     document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') sendTime(); });
   }
 
-  function ensureBanner() {
-    var el = document.getElementById('oia-consent');
-    if (el) return el;
-    el = document.createElement('div');
-    el.id = 'oia-consent';
-    el.className = 'oia-injected';
-    el.hidden = true;
-    el.setAttribute('role', 'dialog');
-    el.setAttribute('aria-label', isEN ? 'Audience measurement consent' : "Consentement mesure d'audience");
-    el.innerHTML = '<p class="oia-consent-text"></p><div class="oia-consent-actions"><button type="button" class="oia-btn-refuse"></button><button type="button" class="oia-btn-accept"></button></div>';
-    var st = document.createElement('style');
-    st.textContent = '#oia-consent.oia-injected{position:fixed;left:18px;bottom:18px;z-index:9999;max-width:340px;background:#0F172A;color:#E2E8F0;border:1px solid rgba(148,163,184,.28);border-radius:14px;padding:16px 18px;font-size:13px;line-height:1.55;box-shadow:0 12px 34px rgba(2,6,18,.45);font-family:inherit}#oia-consent.oia-injected[hidden]{display:none}#oia-consent.oia-injected a{color:inherit;text-decoration:underline}#oia-consent.oia-injected .oia-consent-actions{display:flex;gap:8px;margin-top:12px;justify-content:flex-end}#oia-consent.oia-injected button{cursor:pointer;border-radius:8px;font-size:12.5px;padding:7px 14px;font-family:inherit}#oia-consent.oia-injected .oia-btn-accept{border:none;background:#3B82F6;color:#fff;font-weight:600}#oia-consent.oia-injected .oia-btn-refuse{border:1px solid rgba(148,163,184,.4);background:transparent;color:#94A3B8}';
-    document.head.appendChild(st);
-    document.body.appendChild(el);
-    return el;
-  }
-
-  function showBanner() {
-    var el = ensureBanner();
-    if (!el) return;
-    el.querySelector('.oia-consent-text').innerHTML = TXT.body;
-    el.querySelector('.oia-btn-accept').textContent = TXT.accept;
-    el.querySelector('.oia-btn-refuse').textContent = TXT.refuse;
-    el.hidden = false;
-    el.setAttribute('data-show', '1');
-    el.querySelector('.oia-btn-accept').addEventListener('click', function () {
-      try { localStorage.setItem(K.consent, 'accepted'); } catch (e) {}
-      el.removeAttribute('data-show'); el.hidden = true;
-      startTracker();
-    });
-    el.querySelector('.oia-btn-refuse').addEventListener('click', function () {
-      try { localStorage.setItem(K.consent, 'refused'); } catch (e) {}
-      el.removeAttribute('data-show'); el.hidden = true;
-    });
-  }
-
-  var consent = null;
-  try { consent = localStorage.getItem(K.consent); } catch (e) {}
-  if (consent === 'accepted') startTracker();
-  else if (consent !== 'refused') {
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showBanner);
-    else showBanner();
-  }
+  startTracker();
 })();
