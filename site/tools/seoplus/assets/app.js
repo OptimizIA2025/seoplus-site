@@ -1706,8 +1706,8 @@
         loading.hidden = true;
         gate.innerHTML = authCardHtml(
           isEN ? "Your free diagnosis of " + esc(host) + " is ready to run." : "Votre diagnostic gratuit de " + esc(host) + " est prêt à être lancé.",
-          isEN ? "Sign in in 5 seconds (Google or email) and the 160 checks start right away: score out of 100, 16 rated categories and our reading of your site. Free, and the audit stays in your history."
-               : "Connectez-vous en 5 secondes (Google ou email) et les 160 vérifications démarrent aussitôt : score sur 100, 16 catégories notées et notre lecture de votre site. Gratuit, et l'audit reste dans votre historique.",
+          isEN ? "Sign in in 5 seconds (Google or email) and the 161 checks start right away: score out of 100, 16 rated categories and our reading of your site. Free, and the audit stays in your history."
+               : "Connectez-vous en 5 secondes (Google ou email) et les 161 vérifications démarrent aussitôt : score sur 100, 16 catégories notées et notre lecture de votre site. Gratuit, et l'audit reste dans votre historique.",
           tUI("diagReady", "Diagnostic gratuit")
         );
         bindAuthCard(gate);

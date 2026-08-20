@@ -187,7 +187,7 @@
     "Cache navigateur des fichiers statiques": "Browser caching of static files",
     "Bibliotheques JavaScript obsoletes": "Outdated JavaScript libraries",
     "Chemins sensibles reveles par le robots.txt": "Sensitive paths revealed by robots.txt",
-    /* ---- Lot V6 : ciblage, accessibilite, cybersecurite (160 verifications) ---- */
+    /* ---- Lot V6 : ciblage, accessibilite, cybersecurite (161 verifications) ---- */
     "Expression cible identifiable": "Identifiable target phrase",
     "Accord entre le title et le H1": "Agreement between the title and the H1",
     "Terme metier dans le title de l accueil": "Business term in the home page title",
@@ -205,7 +205,7 @@
     "Encodage des caracteres declare": "Declared character encoding",
     "Messages d erreur techniques visibles": "Visible technical error messages",
     "Sous-domaine recuperable par un tiers": "Subdomain claimable by a third party",
-    /* ---- Lot V6 : fiche etablissement et referencement local (160 verifications) ---- */
+    /* ---- Lot V6 : fiche etablissement et referencement local (161 verifications) ---- */
     "Balisage etablissement (LocalBusiness)": "Business markup (LocalBusiness)",
     "Adresse postale complete et balisee": "Complete and marked-up postal address",
     "Coherence des coordonnees (nom, adresse, telephone)": "Consistency of name, address and phone",

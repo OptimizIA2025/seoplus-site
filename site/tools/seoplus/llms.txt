@@ -1,8 +1,8 @@
 # SEOPlus!
 
-> Audit SEO et GEO automatise pour TPE et PME : 160 verifications techniques sur 16 categories (securite, DNS, email, SEO on-page, performance, visibilite IA), score gratuit en 30 secondes, audit complet avec plan d'action priorise et fichiers prets a poser, offert pendant le lancement (9,90 euros ensuite, paiement unique). Edite par OptimizIA.xyz, agence francaise d'integration IA et d'automatisation.
+> Audit SEO et GEO automatise pour TPE et PME : 161 verifications techniques sur 16 categories (securite, DNS, email, SEO on-page, performance, visibilite IA), score gratuit en 30 secondes, audit complet avec plan d'action priorise et fichiers prets a poser, offert pendant le lancement (9,90 euros ensuite, paiement unique). Edite par OptimizIA.xyz, agence francaise d'integration IA et d'automatisation.
 
-Le diagnostic gratuit rend un score global sur 100, une note par categorie et un verdict. Il demande une connexion gratuite en quelques secondes (Google ou email), sans carte bancaire, et archive chaque audit dans l'historique du compte. L'audit complet detaille les 160 verifications avec leur valeur mesuree et le correctif exact, un plan d'action en 4 phases, les fichiers generes prets a poser (robots.txt, sitemap, llms.txt, donnees structurees, en-tetes de securite, SPF, DMARC), 3 comparaisons concurrents et un export PDF.
+Le diagnostic gratuit rend un score global sur 100, une note par categorie et un verdict. Il demande une connexion gratuite en quelques secondes (Google ou email), sans carte bancaire, et archive chaque audit dans l'historique du compte. L'audit complet detaille les 161 verifications avec leur valeur mesuree et le correctif exact, un plan d'action en 4 phases, les fichiers generes prets a poser (robots.txt, sitemap, llms.txt, donnees structurees, en-tetes de securite, SPF, DMARC), 3 comparaisons concurrents et un export PDF.
 
 L'analyse porte sur la page d'accueil, jusqu'a 30 pages cles reperees via le sitemap ou le menu, et les signaux du domaine (DNS, TLS, en-tetes HTTP, fichiers d'indexation). Tout site public est supporte, quelle que soit sa technologie. Les 16 categories notees sont : structure et contenu, conformite legale, configuration email (SPF, DKIM, DMARC, MTA-STS), en-tetes de securite HTTP, SEO on-page, ciblage et mots cles, visibilite SEO et IA, optimisation IA (GEO, 23 verifications), performance, accessibilite et bonnes pratiques, TLS et certificat, nom de domaine et DNS, vie privee et traceurs, exposition de fichiers sensibles, exposition de la couche d'automatisation. La seizieme categorie s'adapte au type de site analyse : fiche etablissement et referencement local, boutique en ligne, media et contenu, presence personnelle, service numerique, ou presence et confiance. Tout rapport en compte seize.
 
@@ -10,7 +10,7 @@ Interface, rapports et blog sont disponibles en francais et en anglais. Les page
 
 ## Pages principales
 
-- [Lancer une analyse](https://www.optimizia.xyz/tools/seoplus/) : score gratuit sur 100 en 30 secondes, 160 verifications SEO et GEO
+- [Lancer une analyse](https://www.optimizia.xyz/tools/seoplus/) : score gratuit sur 100 en 30 secondes, 161 verifications SEO et GEO
 - [Methodologie de l'audit](https://www.optimizia.xyz/tools/seoplus/methodologie.html) : ce qui est mesure, comment, et les limites assumees
 - [A propos](https://www.optimizia.xyz/tools/seoplus/a-propos.html) : qui concoit et maintient l'outil (Remy Ginoux et Romain Ben, cofondateurs d'OptimizIA.xyz)
 - [Generateur de llms.txt](https://www.optimizia.xyz/tools/seoplus/generateur-llms-txt.html) : outil gratuit, sans email ni compte
