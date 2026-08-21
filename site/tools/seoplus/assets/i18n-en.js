@@ -217,7 +217,7 @@ window.SEOPLUS_EN = {
     /* ---- Methodologie : autoriser SEOPlusBot (T-077, 20/08) ---- */
     "Autoriser SEOPlusBot, en une minute": "Allowing SEOPlusBot, in one minute",
     "Notre robot part toujours de la même adresse : vous pouvez l'autoriser précisément, sans ouvrir votre pare-feu à tous les robots.": "Our crawler always comes from the same address: you can allow it precisely, without opening your firewall to every bot.",
-    "User-agent : SEOPlusBot/1.0 (+https://seoplus.optimizia.xyz/methodologie.html)": "User-agent: <span class=\"mono\">SEOPlusBot/1.0 (+https://seoplus.optimizia.xyz/methodologie.html)</span>",
+    "User-agent : SEOPlusBot/1.0 (la signature complète contient un lien vers cette page)": "User-agent: <span class=\"mono\">SEOPlusBot/1.0</span> (the full signature carries a link to this page)",
     "Adresse IP : 148.230.115.190": "IP address: <span class=\"mono\">148.230.115.190</span>",
     "Cloudflare : Sécurité, WAF, onglet Outils, règle d'accès IP « Autoriser » sur 148.230.115.190. Ou une règle personnalisée « Ignorer » quand l'user-agent contient SEOPlusBot.": "<b>Cloudflare</b>: Security, WAF, Tools tab, IP Access Rule \"Allow\" on 148.230.115.190. Or a custom rule \"Skip\" when the user-agent contains SEOPlusBot.",
     "Wordfence (WordPress) : Firewall, Toutes les options, « Adresses IP en liste blanche », ajouter 148.230.115.190.": "<b>Wordfence</b> (WordPress): Firewall, All Options, \"Allowlisted IP addresses\", add 148.230.115.190.",
