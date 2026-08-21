@@ -105,7 +105,7 @@
     if (!dictAudit) {
       dictAudit = new Promise(function (res) {
         var s = document.createElement("script");
-        s.src = BASE + "/assets/i18n-en-audit.js?v=20260815c";
+        s.src = BASE + "/assets/i18n-en-audit.js?v=20260821c";
         s.onload = s.onerror = function () { res(); };
         document.head.appendChild(s);
       }).then(function () { dictAudit = true; });
@@ -1386,13 +1386,36 @@
        vend pas un rapport complet que le moteur ne pourra pas produire. */
     var partBox = $("#rv-partiel");
     if (partBox) {
+      var partNote = $("#rv-partiel-note");
+      var partTitle = partBox.querySelector("b");
+      var allowLink = function () {
+        var lnk = document.createElement("a");
+        lnk.href = "methodologie.html#autoriser-seoplusbot";
+        lnk.className = "roast-partiel-link";
+        lnk.textContent = isEN ? "How to allow SEOPlusBot, in one minute" : "Comment autoriser SEOPlusBot, en une minute";
+        partNote.appendChild(document.createTextNode(" "));
+        partNote.appendChild(lnk);
+      };
       if (data.partiel) {
-        $("#rv-partiel-note").textContent = isEN
-          ? "This website's firewall refused our robots access to its pages. That is not a flaw and it costs you no points: the score above was recalculated on the only layers measurable without page access (email, domain name, certificates, technical files), and nothing was counted against you for what could not be read. These protections are often intermittent: run the analysis again later, or allow our robot, to get the full audit."
+        partNote.textContent = isEN
+          ? "This website's firewall refused our robots access to its pages. That is not a flaw and it costs you no points: the score above was recalculated on the only layers measurable without page access (email, domain name, certificates, technical files, performance measured by Google), and nothing was counted against you for what could not be read. Allow our robot (user-agent SEOPlusBot/1.0, IP 148.230.115.190) for the time of the analysis to get the full audit."
           : (data.partielNote || "Ce site bloque les analyses automatiques. Ce n'est pas un défaut et cela ne vous coûte aucun point : le score a été recalculé sur les seules couches mesurables sans accès aux pages. Relancez l'analyse plus tard pour un audit complet.");
+        allowLink();
         partBox.hidden = false;
         var badge = document.querySelector(".rv-meta .report-badge");
         if (badge) badge.textContent = tUI("partielBadge", "Audit partiel");
+      } else if (data.remesureBloquee) {
+        /* La mesure du jour a echoue sur le pare-feu, mais une mesure complete
+           recente existe : c'est elle qui est servie, datee. Ce n'est pas un
+           audit partiel, c'est un audit complet qui n'est pas d'aujourd'hui. */
+        if (partTitle) partTitle.textContent = isEN
+          ? "Today's re-measurement was refused by this site's firewall."
+          : "La remesure d'aujourd'hui a été refusée par le pare-feu du site.";
+        partNote.textContent = isEN
+          ? "You are seeing the last complete measurement, taken on " + fmtAnalyzedAt(data.analyzedAt) + ". Nothing was recalculated: this is the full audit exactly as it was measured. Allow our robot to get a fresh one."
+          : "Vous voyez la dernière mesure complète, réalisée le " + fmtAnalyzedAt(data.analyzedAt) + ". Rien n'a été recalculé : c'est l'audit complet tel qu'il a été mesuré. Autorisez notre robot pour en obtenir un nouveau.";
+        allowLink();
+        partBox.hidden = false;
       } else {
         partBox.hidden = true;
       }
@@ -1783,13 +1806,33 @@
        partiel ouvert en direct ne doit pas se presenter comme complet. */
     var repPart = $("#rep-partiel-wrap");
     if (repPart) {
+      var repNote = $("#rep-partiel-note");
+      var repTitle = repPart.querySelector("b");
+      var repAllowLink = function () {
+        var lnk = document.createElement("a");
+        lnk.href = "methodologie.html#autoriser-seoplusbot";
+        lnk.className = "roast-partiel-link";
+        lnk.textContent = isEN ? "How to allow SEOPlusBot, in one minute" : "Comment autoriser SEOPlusBot, en une minute";
+        repNote.appendChild(document.createTextNode(" "));
+        repNote.appendChild(lnk);
+      };
       if (data.partiel) {
-        $("#rep-partiel-note").textContent = isEN
-          ? "This site's firewall refused our robots access to its pages. This report only covers the layers measurable without page access: email, domain name, certificates. Run the analysis again later for a full audit."
+        repNote.textContent = isEN
+          ? "This site's firewall refused our robots access to its pages. This report only covers the layers measurable without page access: email, domain name, certificates, technical files, performance measured by Google. Allow our robot (user-agent SEOPlusBot/1.0, IP 148.230.115.190) for the time of the analysis to get the full audit."
           : (data.partielNote || "Ce site bloque les analyses automatiques. Rapport limité aux couches mesurables sans accès aux pages : e-mails, nom de domaine, certificats. Relancez l'analyse plus tard pour un audit complet.");
+        repAllowLink();
         repPart.hidden = false;
         var repTag = document.querySelector("#rep-hero-tags .rep-tag--orange");
         if (repTag) repTag.textContent = tUI("partielBadge", "Audit partiel");
+      } else if (data.remesureBloquee) {
+        if (repTitle) repTitle.textContent = isEN
+          ? "Today's re-measurement was refused by this site's firewall."
+          : "La remesure d'aujourd'hui a été refusée par le pare-feu du site.";
+        repNote.textContent = isEN
+          ? "This is the last complete measurement, taken on " + fmtAnalyzedAt(data.analyzedAt) + ". Nothing was recalculated: it is the full audit exactly as it was measured. Allow our robot to get a fresh one."
+          : "Ceci est la dernière mesure complète, réalisée le " + fmtAnalyzedAt(data.analyzedAt) + ". Rien n'a été recalculé : c'est l'audit complet tel qu'il a été mesuré. Autorisez notre robot pour en obtenir un nouveau.";
+        repAllowLink();
+        repPart.hidden = false;
       } else {
         repPart.hidden = true;
       }

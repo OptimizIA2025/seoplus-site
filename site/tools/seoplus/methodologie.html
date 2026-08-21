@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="assets/fonts.css?v=20260814b">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/style.css?v=20260817">
+  <link rel="stylesheet" href="assets/style.css?v=20260821">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -127,6 +127,17 @@
           <p>Notre robot s'annonce sous le nom <span class="mono">SEOPlusBot/1.0</span>, avec un lien vers cette page dans sa signature. Nous ne nous faisons jamais passer pour un navigateur : si votre pare-feu nous refuse l'accès, nous vous le disons et nous mesurons ce qui reste mesurable de l'extérieur (e-mails, nom de domaine, certificats), plutôt que de nous déguiser pour entrer.</p>
           <p>Si votre site nous bloque et que vous souhaitez un audit complet, autorisez <span class="mono">SEOPlusBot</span> dans votre pare-feu ou votre CDN, le temps de l'analyse. Se protéger des robots est une bonne pratique, et un audit partiel ne vous coûte aucun point : le score est simplement recalculé sur ce qui a pu être mesuré.</p>
 
+          <h3 id="autoriser-seoplusbot">Autoriser SEOPlusBot, en une minute</h3>
+          <p>Notre robot part toujours de la même adresse : vous pouvez l'autoriser précisément, sans ouvrir votre pare-feu à tous les robots.</p>
+          <ul>
+            <li>User-agent : <span class="mono">SEOPlusBot/1.0 (+https://seoplus.optimizia.xyz/methodologie.html)</span></li>
+            <li>Adresse IP : <span class="mono">148.230.115.190</span></li>
+            <li><b>Cloudflare</b> : Sécurité, WAF, onglet Outils, règle d'accès IP « Autoriser » sur 148.230.115.190. Ou une règle personnalisée « Ignorer » quand l'user-agent contient SEOPlusBot.</li>
+            <li><b>Wordfence</b> (WordPress) : Firewall, Toutes les options, « Adresses IP en liste blanche », ajouter 148.230.115.190.</li>
+            <li><b>Sucuri</b> : Firewall, Access Control, « Whitelist IP Addresses », ajouter 148.230.115.190.</li>
+          </ul>
+          <p>Relancez ensuite l'analyse : l'audit complet remplace l'audit partiel. Vous pouvez retirer l'autorisation juste après.</p>
+
           <h2>Ce que nous refusons de mesurer, et pourquoi</h2>
           <p>D'autres outils affichent ces éléments. Nous avons décidé de ne pas le faire, et il nous semble plus honnête de dire pourquoi que de laisser croire à un oubli.</p>
           <ul>
@@ -196,8 +207,8 @@
   </footer>
 
   <script src="config.js"></script>
-  <script src="assets/i18n-en.js?v=20260817"></script>
-  <script src="assets/app.js?v=20260819"></script>
+  <script src="assets/i18n-en.js?v=20260821"></script>
+  <script src="assets/app.js?v=20260821"></script>
   <script src="assets/oia-tracker.js?v=20260819" data-site="seoplus" defer></script>
   <script src="assets/oia-clarity.js?v=20260819" data-clarity="y4wvew5ezs" data-legal="politique-confidentialite.html" data-accent="#F97316" defer></script>
 </body>

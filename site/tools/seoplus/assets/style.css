@@ -1354,6 +1354,7 @@ body.nav-open .nav-mobile {
 }
 .roast-partiel b { display: block; margin-bottom: 6px; color: var(--orange-deep); }
 .roast-partiel p { font-size: .92rem; color: var(--ink-soft); }
+.roast-partiel a.roast-partiel-link { color: var(--orange-deep); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 
 /* ---- Serveur + OG ---- */
 .roast-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
