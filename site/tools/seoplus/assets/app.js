@@ -1382,46 +1382,9 @@
 
     renderAnalyzedAt($("#rv-analyzed"), data);
 
-    /* Rapport partiel (pare-feu anti-robot) : on l'annonce clairement et on ne
-       vend pas un rapport complet que le moteur ne pourra pas produire. */
-    var partBox = $("#rv-partiel");
-    if (partBox) {
-      var partNote = $("#rv-partiel-note");
-      var partTitle = partBox.querySelector("b");
-      var allowLink = function () {
-        var lnk = document.createElement("a");
-        lnk.href = "methodologie.html#autoriser-seoplusbot";
-        lnk.className = "roast-partiel-link";
-        lnk.textContent = isEN ? "How to allow SEOPlusBot, in one minute" : "Comment autoriser SEOPlusBot, en une minute";
-        partNote.appendChild(document.createTextNode(" "));
-        partNote.appendChild(lnk);
-      };
-      if (data.partiel) {
-        partNote.textContent = isEN
-          ? "This website's firewall refused our robots access to its pages. That is not a flaw and it costs you no points: the score above was recalculated on the only layers measurable without page access (email, domain name, certificates, technical files, performance measured by Google), and nothing was counted against you for what could not be read. Allow our robot (user-agent SEOPlusBot/1.0, IP 148.230.115.190) for the time of the analysis to get the full audit."
-          : (data.partielNote || "Ce site bloque les analyses automatiques. Ce n'est pas un défaut et cela ne vous coûte aucun point : le score a été recalculé sur les seules couches mesurables sans accès aux pages. Relancez l'analyse plus tard pour un audit complet.");
-        allowLink();
-        partBox.hidden = false;
-        var badge = document.querySelector(".rv-meta .report-badge");
-        if (badge) badge.textContent = tUI("partielBadge", "Audit partiel");
-      } else if (data.remesureBloquee) {
-        /* La mesure du jour a echoue sur le pare-feu, mais une mesure complete
-           recente existe : c'est elle qui est servie, datee. Ce n'est pas un
-           audit partiel, c'est un audit complet qui n'est pas d'aujourd'hui. */
-        if (partTitle) partTitle.textContent = isEN
-          ? "Today's re-measurement was refused by this site's firewall."
-          : "La remesure d'aujourd'hui a été refusée par le pare-feu du site.";
-        partNote.textContent = isEN
-          ? "You are seeing the last complete measurement, taken on " + fmtAnalyzedAt(data.analyzedAt) + ". Nothing was recalculated: this is the full audit exactly as it was measured. Allow our robot to get a fresh one."
-          : "Vous voyez la dernière mesure complète, réalisée le " + fmtAnalyzedAt(data.analyzedAt) + ". Rien n'a été recalculé : c'est l'audit complet tel qu'il a été mesuré. Autorisez notre robot pour en obtenir un nouveau.";
-        allowLink();
-        partBox.hidden = false;
-      } else {
-        partBox.hidden = true;
-      }
-    }
-    var ctaBox = document.querySelector(".roast-final-cta");
-    if (ctaBox) ctaBox.hidden = !!data.partiel;
+    /* Les audits partiels ont ete retires le 25/08/2026 : un site qui bloque
+       SEOPlusBot n'atteint plus cet ecran, le moteur repond une erreur 422
+       avec la consigne d'autorisation (voir showAuditError). */
 
     // Anneau de score
     var ring = $("#rv-ring-value");
@@ -1642,11 +1605,11 @@
         .then(function (t) {
           var data = null;
           try { data = JSON.parse(t); } catch (e) {}
-          if (!data || data.ok === false) throw new Error((data && data.error) || "");
+          if (!data || data.ok === false) { fail(data); return; }
           reveal(data);
         })
-        .catch(function (err) {
-          fail((err && err.message) || "On n'a pas réussi à analyser ce site. Il est peut-être injoignable ou protégé. Vérifiez l'URL et réessayez.");
+        .catch(function () {
+          fail(null);
         });
     }
 
@@ -1695,12 +1658,11 @@
       }
     }
 
-    function fail(msg) {
+    function fail(err) {
       var wait = Math.max(0, minDelay - (Date.now() - startedAt));
       setTimeout(function () {
         loading.hidden = true;
-        if (msg) $("#roast-error-msg").textContent = msg;
-        $("#roast-error").hidden = false;
+        showAuditError(err);
       }, wait);
     }
 
@@ -1802,41 +1764,9 @@
     var host = data.host || data.url;
     $("#rep-host").textContent = host;
 
-    /* Rapport partiel (pare-feu anti-robot) : on l'annonce aussi ici, un audit
-       partiel ouvert en direct ne doit pas se presenter comme complet. */
-    var repPart = $("#rep-partiel-wrap");
-    if (repPart) {
-      var repNote = $("#rep-partiel-note");
-      var repTitle = repPart.querySelector("b");
-      var repAllowLink = function () {
-        var lnk = document.createElement("a");
-        lnk.href = "methodologie.html#autoriser-seoplusbot";
-        lnk.className = "roast-partiel-link";
-        lnk.textContent = isEN ? "How to allow SEOPlusBot, in one minute" : "Comment autoriser SEOPlusBot, en une minute";
-        repNote.appendChild(document.createTextNode(" "));
-        repNote.appendChild(lnk);
-      };
-      if (data.partiel) {
-        repNote.textContent = isEN
-          ? "This site's firewall refused our robots access to its pages. This report only covers the layers measurable without page access: email, domain name, certificates, technical files, performance measured by Google. Allow our robot (user-agent SEOPlusBot/1.0, IP 148.230.115.190) for the time of the analysis to get the full audit."
-          : (data.partielNote || "Ce site bloque les analyses automatiques. Rapport limité aux couches mesurables sans accès aux pages : e-mails, nom de domaine, certificats. Relancez l'analyse plus tard pour un audit complet.");
-        repAllowLink();
-        repPart.hidden = false;
-        var repTag = document.querySelector("#rep-hero-tags .rep-tag--orange");
-        if (repTag) repTag.textContent = tUI("partielBadge", "Audit partiel");
-      } else if (data.remesureBloquee) {
-        if (repTitle) repTitle.textContent = isEN
-          ? "Today's re-measurement was refused by this site's firewall."
-          : "La remesure d'aujourd'hui a été refusée par le pare-feu du site.";
-        repNote.textContent = isEN
-          ? "This is the last complete measurement, taken on " + fmtAnalyzedAt(data.analyzedAt) + ". Nothing was recalculated: it is the full audit exactly as it was measured. Allow our robot to get a fresh one."
-          : "Ceci est la dernière mesure complète, réalisée le " + fmtAnalyzedAt(data.analyzedAt) + ". Rien n'a été recalculé : c'est l'audit complet tel qu'il a été mesuré. Autorisez notre robot pour en obtenir un nouveau.";
-        repAllowLink();
-        repPart.hidden = false;
-      } else {
-        repPart.hidden = true;
-      }
-    }
+    /* Les audits partiels ont ete retires le 25/08/2026 : un site qui bloque
+       SEOPlusBot n'atteint plus ce rendu, le moteur repond une erreur 422
+       avec la consigne d'autorisation (voir showAuditError). */
 
     /* URL unique du rapport (Markdown), a confier a une IA pour executer le plan */
     var iaBtn = $("#rep-ia-url");
@@ -2551,6 +2481,44 @@
     } else { done(); }
   });
 
+  /* ---------- Erreur d'analyse (partagee bilan / rapport) ----------
+     Fin des audits partiels (25/08/2026) : quand le site vise bloque
+     SEOPlusBot, le moteur repond 422 avec firewall:true et la consigne
+     d'autorisation. On affiche cette consigne avec un bouton de relance,
+     jamais un score ampute. Accepte un objet d'erreur du moteur, une
+     chaine, ou rien (erreur reseau). */
+  function showAuditError(err) {
+    if (typeof err === "string") err = { error: err };
+    var box = $("#roast-error");
+    if (!box) return;
+    var title = box.querySelector("h1");
+    var msg = $("#roast-error-msg");
+    var cta = box.querySelector("a.btn");
+    if (err && err.firewall === true) {
+      if (title) title.textContent = isEN ? "This website blocks our analysis robot." : "Ce site bloque notre robot d'analyse.";
+      if (msg) {
+        msg.textContent = isEN
+          ? "The website exists, but its firewall or anti-bot protection refuses our robot, which is not a flaw. To get your audit, allow it in your firewall or CDN: user-agent SEOPlusBot/1.0, IP address 148.230.115.190. Once the robot is allowed, run the analysis again: it is immediate."
+          : (err.error || "Ce site bloque les analyses automatiques. Autorisez notre robot (user-agent SEOPlusBot/1.0, adresse IP 148.230.115.190) dans votre pare-feu, puis relancez l'analyse.");
+        var lnk = document.createElement("a");
+        lnk.href = "methodologie.html#autoriser-seoplusbot";
+        lnk.className = "roast-partiel-link";
+        lnk.textContent = isEN ? "How to allow SEOPlusBot, in one minute" : "Comment autoriser SEOPlusBot, en une minute";
+        msg.appendChild(document.createTextNode(" "));
+        msg.appendChild(lnk);
+      }
+      if (cta) {
+        cta.textContent = isEN ? "I allowed the robot, run the analysis again" : "J'ai autorisé le robot, relancer l'analyse";
+        cta.href = window.location.href;
+      }
+    } else if (msg) {
+      msg.textContent = (err && err.error) || (isEN
+        ? "We could not analyse this website. It may be unreachable or protected. Check the URL and try again."
+        : "On n'a pas réussi à analyser ce site. Il est peut-être injoignable ou protégé. Vérifiez l'URL et réessayez.");
+    }
+    box.hidden = false;
+  }
+
   /* ---------- L4 : benchmark concurrent ---------- */
 
   function fetchAnalysis(url) {
@@ -2568,7 +2536,11 @@
       .then(function (t) {
         var d = null;
         try { d = JSON.parse(t); } catch (e) {}
-        if (!d || d.ok === false) throw new Error((d && d.error) || "");
+        if (!d || d.ok === false) {
+          var err = new Error((d && d.error) || "");
+          if (d && d.firewall === true) err.firewall = true;
+          throw err;
+        }
         return d;
       });
   }
@@ -2846,8 +2818,12 @@
           prog.abort();
           bb.disabled = false; bb.textContent = oldT;
           /* Le moteur explique lui-meme pourquoi il refuse (domaine inexistant,
-             serveur muet, quota). Son message est plus utile que le notre. */
-          berr.textContent = (err && err.message) || "Impossible d'analyser ce concurrent. Il est peut-être injoignable.";
+             serveur muet, quota). Son message est plus utile que le notre.
+             Exception : la consigne pare-feu s'adresse au proprietaire du site,
+             pas a celui qui compare un concurrent. */
+          berr.textContent = (err && err.firewall)
+            ? (isEN ? "This competitor blocks analysis robots: comparison impossible. Pick another competitor." : "Ce concurrent bloque les robots d'analyse : comparaison impossible. Choisissez un autre concurrent.")
+            : ((err && err.message) || "Impossible d'analyser ce concurrent. Il est peut-être injoignable.");
           berr.hidden = false;
         });
     });
@@ -2977,7 +2953,40 @@
       $("#pay-host").textContent = host;
       var payCta = $("#pay-cta");
       payCta.href = stripeLink + (stripeLink.indexOf("?") > -1 ? "&" : "?") + "client_reference_id=" + encodeURIComponent(host);
-      payCta.addEventListener("click", function () { store.set("seoplus_pending", host); });
+      /* Verrou pare-feu avant paiement (25/08/2026) : personne ne paie un
+         audit que le pare-feu de son site rendrait impossible. Sonde precheck
+         cote serveur (deux requetes sur la page d'accueil, ~2 s) ; si le robot
+         est bloque, la consigne d'autorisation s'affiche au lieu d'encaisser.
+         Si notre moteur ne repond pas, on ne redirige pas non plus : encaisser
+         puis echouer serait pire que faire patienter. */
+      payCta.addEventListener("click", function (ev) {
+        if (!CFG.ROAST_WEBHOOK_URL) { store.set("seoplus_pending", host); return; }
+        ev.preventDefault();
+        var oldLabel = payCta.textContent;
+        payCta.textContent = isEN ? "Checking robot access..." : "Vérification de l'accès à votre site...";
+        fetch(CFG.ROAST_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=UTF-8" },
+          body: JSON.stringify({ url: url, precheck: true })
+        })
+          .then(function (r) { return r.text(); })
+          .then(function (t) {
+            var d = null;
+            try { d = JSON.parse(t); } catch (e) {}
+            if (d && d.ok === true && d.botAllowed === true) {
+              store.set("seoplus_pending", host);
+              window.location.href = payCta.href;
+              return;
+            }
+            $("#rep-paywall").hidden = true;
+            showAuditError(d);
+          })
+          .catch(function () {
+            payCta.textContent = oldLabel;
+            $("#rep-paywall").hidden = true;
+            showAuditError(null);
+          });
+      });
       $("#rep-paywall").hidden = false;
       return;
     }
@@ -3073,14 +3082,14 @@
         .then(function (t) {
           var data = null;
           try { data = JSON.parse(t); } catch (e) {}
-          if (!data || data.ok === false) throw new Error((data && data.error) || "");
+          if (!data || data.ok === false) { fail(data); return; }
           /* Mesure reprise du bilan gratuit : rien ne tourne, inutile de faire
              patienter devant une barre de progression qui simule un travail
              deja fait. Le rapport reste archive normalement, c'est bien le
              rapport complet que la personne vient d'ouvrir. */
           reveal(data, data.repris === true);
         })
-        .catch(function (err) { fail((err && err.message) || "On n'a pas réussi à analyser ce site. Il est peut-être injoignable ou protégé. Vérifiez l'URL et réessayez."); });
+        .catch(function () { fail(null); });
     }
 
     function reveal(data, instantane) {
@@ -3226,12 +3235,11 @@
       }
     }
 
-    function fail(msg) {
+    function fail(err) {
       var wait = Math.max(0, minDelay - (Date.now() - startedAt));
       setTimeout(function () {
         loading.hidden = true;
-        if (msg) $("#roast-error-msg").textContent = msg;
-        $("#roast-error").hidden = false;
+        showAuditError(err);
       }, wait);
     }
 
