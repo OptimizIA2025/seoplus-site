@@ -179,59 +179,62 @@
     el.hidden = false;
   }
 
-  /* Checks non conformes : lien vers l'article du blog qui explique le point.
-     Cle = libelle exact du moteur (sans accents), valeur = [article FR, article EN].
-     Les chemins sont ecrits sans le prefixe du site : learnMore() ajoute BASE.
-     Les checks sans article pedagogique (securite, TLS, email) ne sont pas mappes. */
+  /* Checks non conformes : lien vers le guide qui explique le point.
+     Cle = libelle exact du moteur (sans accents), valeur = [cible FR, cible EN].
+     Depuis le 29/08 les guides vivent dans les silos /seo/ et /geo/ du site
+     agence, a la racine du domaine : chemins absolus, learnMore n'ajoute rien.
+     Les checks sans guide pedagogique (securite, TLS, email) ne sont pas mappes. */
   var LEARN_MORE = {
-    "Fichier robots.txt": ["/visibilite-ia/crawlers-ia-robots-txt/", "/en/ai-visibility/ai-crawlers-robots-txt/"],
-    "Indexation robots.txt": ["/visibilite-ia/crawlers-ia-robots-txt/", "/en/ai-visibility/ai-crawlers-robots-txt/"],
-    "Directives crawlers IA": ["/visibilite-ia/crawlers-ia-robots-txt/", "/en/ai-visibility/ai-crawlers-robots-txt/"],
-    "Sitemap XML": ["/autorite-confiance/pourquoi-site-invisible-google/", "/en/authority-trust/website-invisible-on-google/"],
-    "Sitemap declare": ["/autorite-confiance/pourquoi-site-invisible-google/", "/en/authority-trust/website-invisible-on-google/"],
-    "Indexation autorisee": ["/autorite-confiance/pourquoi-site-invisible-google/", "/en/authority-trust/website-invisible-on-google/"],
-    "Pages internes en erreur": ["/autorite-confiance/pourquoi-site-invisible-google/", "/en/authority-trust/website-invisible-on-google/"],
-    "Fraicheur du sitemap": ["/contenu-seo/mettre-a-jour-ancien-contenu/", "/en/seo-content/update-old-content/"],
-    "Fichier llms.txt": ["/visibilite-ia/llms-txt-guide/", "/en/ai-visibility/llms-txt-guide/"],
-    "Guidage IA (llms.txt)": ["/visibilite-ia/llms-txt-guide/", "/en/ai-visibility/llms-txt-guide/"],
-    "Donnees structurees JSON-LD": ["/seo-technique/donnees-structurees-json-ld/", "/en/technical-seo/structured-data-json-ld/"],
-    "Schema entreprise (Organization)": ["/seo-technique/donnees-structurees-json-ld/", "/en/technical-seo/structured-data-json-ld/"],
-    "Syntaxe JSON-LD": ["/seo-technique/donnees-structurees-json-ld/", "/en/technical-seo/structured-data-json-ld/"],
-    "Liens de confiance (sameAs)": ["/visibilite-ia/chatgpt-connait-pas-votre-marque/", "/en/ai-visibility/chatgpt-doesnt-know-your-brand/"],
-    "Contenu en questions / FAQ": ["/visibilite-ia/ai-overviews-france/", "/en/ai-visibility/ai-overviews-france/"],
-    "Passages extractibles (listes)": ["/visibilite-ia/geo-etre-cite/", "/en/ai-visibility/geo-get-cited/"],
-    "Faits et chiffres citables": ["/visibilite-ia/geo-etre-cite/", "/en/ai-visibility/geo-get-cited/"],
-    "Flux RSS / Atom": ["/visibilite-ia/geo-etre-cite/", "/en/ai-visibility/geo-get-cited/"],
-    "Signaux E-E-A-T": ["/contenu-seo/eeat-prouver-expertise/", "/en/seo-content/eeat-prove-expertise/"],
-    "Volume de contenu": ["/contenu-seo/contenu-600-mots/", "/en/seo-content/content-600-words/"],
-    "Contenu des pages internes": ["/contenu-seo/contenu-600-mots/", "/en/seo-content/content-600-words/"],
-    "Profondeur de contenu": ["/contenu-seo/contenu-600-mots/", "/en/seo-content/content-600-words/"],
-    "Balise title": ["/contenu-seo/titles-meta-descriptions/", "/en/seo-content/titles-meta-descriptions/"],
-    "Meta description": ["/contenu-seo/titles-meta-descriptions/", "/en/seo-content/titles-meta-descriptions/"],
-    "Titles uniques sur le site": ["/contenu-seo/titles-meta-descriptions/", "/en/seo-content/titles-meta-descriptions/"],
-    "Meta descriptions internes": ["/contenu-seo/titles-meta-descriptions/", "/en/seo-content/titles-meta-descriptions/"],
-    "Balise H1": ["/contenu-seo/titles-meta-descriptions/", "/en/seo-content/titles-meta-descriptions/"],
-    "Hierarchie des titres": ["/contenu-seo/titles-meta-descriptions/", "/en/seo-content/titles-meta-descriptions/"],
-    "Maillage interne": ["/seo-technique/maillage-interne/", "/en/technical-seo/internal-linking/"],
-    "URL canonique": ["/contenu-seo/cannibalisation-mots-cles/", "/en/seo-content/keyword-cannibalization/"],
-    "Score performance Google (Lighthouse mobile)": ["/seo-technique/core-web-vitals-guide/", "/en/technical-seo/core-web-vitals-guide/"],
-    "Chargement (LCP)": ["/seo-technique/core-web-vitals-guide/", "/en/technical-seo/core-web-vitals-guide/"],
-    "Stabilite visuelle (CLS)": ["/seo-technique/core-web-vitals-guide/", "/en/technical-seo/core-web-vitals-guide/"],
+    "Fichier robots.txt": ["/geo/", "/geo/"],
+    "Indexation robots.txt": ["/geo/", "/geo/"],
+    "Directives crawlers IA": ["/geo/", "/geo/"],
+    "Sitemap XML": ["/seo/", "/seo/"],
+    "Sitemap declare": ["/seo/", "/seo/"],
+    "Indexation autorisee": ["/seo/", "/seo/"],
+    "Pages internes en erreur": ["/seo/", "/seo/"],
+    "Fraicheur du sitemap": ["/seo/", "/seo/"],
+    "Fichier llms.txt": ["/geo/", "/geo/"],
+    "Guidage IA (llms.txt)": ["/geo/", "/geo/"],
+    "Donnees structurees JSON-LD": ["/seo/", "/seo/"],
+    "Schema entreprise (Organization)": ["/seo/", "/seo/"],
+    "Syntaxe JSON-LD": ["/seo/", "/seo/"],
+    "Liens de confiance (sameAs)": ["/geo/chatgpt-doesnt-know-your-brand/", "/geo/chatgpt-doesnt-know-your-brand/"],
+    "Contenu en questions / FAQ": ["/geo/", "/geo/"],
+    "Passages extractibles (listes)": ["/geo/", "/geo/"],
+    "Faits et chiffres citables": ["/geo/", "/geo/"],
+    "Flux RSS / Atom": ["/geo/", "/geo/"],
+    "Signaux E-E-A-T": ["/seo/", "/seo/"],
+    "Volume de contenu": ["/seo/", "/seo/"],
+    "Contenu des pages internes": ["/seo/", "/seo/"],
+    "Profondeur de contenu": ["/seo/", "/seo/"],
+    "Balise title": ["/seo/", "/seo/"],
+    "Meta description": ["/seo/", "/seo/"],
+    "Titles uniques sur le site": ["/seo/", "/seo/"],
+    "Meta descriptions internes": ["/seo/", "/seo/"],
+    "Balise H1": ["/seo/", "/seo/"],
+    "Hierarchie des titres": ["/seo/", "/seo/"],
+    "Maillage interne": ["/seo/", "/seo/"],
+    "URL canonique": ["/seo/", "/seo/"],
+    "Score performance Google (Lighthouse mobile)": ["/seo/", "/seo/"],
+    "Chargement (LCP)": ["/seo/", "/seo/"],
+    "Stabilite visuelle (CLS)": ["/seo/", "/seo/"],
     /* Le moteur ecrit "Reactivite (INP)" quand les donnees terrain CrUX
        existent et "(INP estime)" sinon : sans les deux clefs, le lien
        disparaissait justement pour les sites qui ont de vraies mesures. */
-    "Reactivite (INP)": ["/seo-technique/core-web-vitals-guide/", "/en/technical-seo/core-web-vitals-guide/"],
-    "Reactivite (INP estime)": ["/seo-technique/core-web-vitals-guide/", "/en/technical-seo/core-web-vitals-guide/"],
-    "Compression HTTP": ["/seo-technique/core-web-vitals-guide/", "/en/technical-seo/core-web-vitals-guide/"],
-    "Poids de la page": ["/seo-technique/core-web-vitals-guide/", "/en/technical-seo/core-web-vitals-guide/"],
-    "Lazy loading images": ["/seo-technique/core-web-vitals-guide/", "/en/technical-seo/core-web-vitals-guide/"],
-    "Ressources bloquantes": ["/seo-technique/core-web-vitals-guide/", "/en/technical-seo/core-web-vitals-guide/"]
+    "Reactivite (INP)": ["/seo/", "/seo/"],
+    "Reactivite (INP estime)": ["/seo/", "/seo/"],
+    "Compression HTTP": ["/seo/", "/seo/"],
+    "Poids de la page": ["/seo/", "/seo/"],
+    "Lazy loading images": ["/seo/", "/seo/"],
+    "Ressources bloquantes": ["/seo/", "/seo/"]
   };
 
   function learnMore(label) {
     var art = LEARN_MORE[label];
     if (!art) return "";
-    return '<a class="learn-more" href="' + BASE + art[isEN ? 1 : 0] + '" target="_blank" rel="noopener">' +
+    /* Les guides vivent a la racine du domaine depuis le 29/08 (silos /seo/ et
+       /geo/ du site agence), plus sous le prefixe de l'outil. */
+    return '<a class="learn-more" href="' + art[isEN ? 1 : 0] + '" target="_blank" rel="noopener">' +
       tUI("learnMore", "En savoir plus") + "</a>";
   }
 
@@ -601,36 +604,9 @@
     /* Le contenu construit en JS (bilan, rapport, classement) n'est pas dans le
        HTML : le traduire suppose de le redessiner a partir de ses donnees. */
     if (typeof REDESSINER === "function") { try { REDESSINER(); } catch (e) {} }
-    /* Les liens internes portent la langue pour les pages qui n'ont pas d'URL
-       anglaise dediee. Sans ca, un clic sur Tarifs repartait en francais.
-       L'accueil se lie desormais par « / » (16/08, une seule forme d'URL en
-       circulation), et le fragment est CONSERVE : l'ancienne version le
-       perdait, un clic sur Tarifs en anglais arrivait en haut de page. */
-    $$('a[href]').forEach(function (a) {
-      var h = a.getAttribute("href") || "";
-      if (/^(https?:|mailto:|tel:|#)/i.test(h)) return;
-      var i = h.indexOf("#");
-      var frag = i > -1 ? h.slice(i) : "";
-      var base = h.split("?")[0].split("#")[0];
-      /* Les liens du HTML portent le prefixe du site depuis la migration en
-         sous-dossier. Les comparaisons se font sur le chemin sans prefixe, et
-         le prefixe est remis avant l'ecriture : sans ca, « /tools/seoplus/ »
-         ne ressemble ni a « / » ni a une page de I18N_PAGES, et la bascule de
-         langue ne reecrivait plus aucun lien. */
-      var rel = base.indexOf(BASE) === 0 ? base.slice(BASE.length) : base;
-      /* Le blog n'existe plus qu'en anglais : son lien ne bascule plus. Sans
-         ce garde, passer le tunnel en francais renvoyait vers /blog/, adresse
-         qui n'est plus servie que par une redirection. */
-      if (rel === "/blog/" || rel === "/en/blog/") {
-        a.setAttribute("href", BASE + "/en/blog/" + frag);
-        return;
-      }
-      var cible = rel === "/" ? "home"
-        : /\.html$/i.test(rel) ? rel.replace(/^\//, "").replace(/\.html$/, "").replace(/^index$/, "home")
-        : null;
-      if (cible === null || I18N_PAGES.indexOf(cible) === -1) return;
-      a.setAttribute("href", base + (vers === "en" ? "?lang=en" : "") + frag);
-    });
+    /* Plus aucune reecriture de liens : depuis le 29/08 les URLs ne portent
+       plus la langue (ni ?lang=, ni /en/ commutable). La preference vit dans
+       localStorage et chaque page du tunnel la relit au chargement. */
     document.dispatchEvent(new CustomEvent("seoplus:langue", { detail: { lang: vers } }));
   }
 
@@ -986,12 +962,12 @@
   }
 
   /* Icone compte (bonhomme) en haut a droite, sur toutes les pages, connecte
-     ou non : compte.html affiche la connexion si besoin, puis l'historique. */
+     ou non : account.html affiche la connexion si besoin, puis l'historique. */
   function initAccountLink() {
     var nav = $(".nav-links");
     if (!nav) return;
     var a = document.createElement("a");
-    a.href = BASE + "/compte.html";
+    a.href = BASE + "/account.html";
     a.className = "nav-account";
     a.setAttribute("aria-label", "Mon compte");
     a.title = "Mon compte";
@@ -1082,7 +1058,7 @@
     return v;
   }
 
-  /* Lignes du classement public (partage entre la home et classement.html) */
+  /* Lignes du classement public (partage entre la home et leaderboard.html) */
   function rankRowsHtml(sites) {
     var html = '<div class="rank-row rank-row--head"><span>' + (isEN ? "Rank" : "Rang") + "</span><span>Site</span><span>Score</span></div>";
     sites.forEach(function (s) {
@@ -1165,7 +1141,7 @@
         var url = normalizeUrl(input.value);
         try { new URL(url); } catch (err) { input.focus(); return; }
         var optin = $("#hero-optin");
-        window.location.href = BASE + "/bilan.html?url=" + encodeURIComponent(url) + (optin && optin.checked ? "&classement=1" : "");
+        window.location.href = BASE + "/snapshot.html?url=" + encodeURIComponent(url) + (optin && optin.checked ? "&classement=1" : "");
       });
     }
 
@@ -1530,7 +1506,7 @@
     $("#og-note").textContent = og.note || "";
 
     // CTA : ouvre l'audit complet deverrouille (le paiement Stripe sera un seam en amont)
-    var q = "rapport.html?url=" + encodeURIComponent(data.url || "");
+    var q = "report.html?url=" + encodeURIComponent(data.url || "");
     $("#final-cta").href = q;
   }
 
@@ -1652,7 +1628,7 @@
           var box = $("#rank-feedback");
           if (!box || !res || !res.ok) return;
           if (res.listed) {
-            box.innerHTML = 'Votre site apparaît au <a href="classement.html">classement public</a>.';
+            box.innerHTML = 'Votre site apparaît au <a href="leaderboard.html">classement public</a>.';
           } else {
             var gap = Math.max(1, (res.minScore || 60) - Number(res.score));
             box.innerHTML = "<b>Classement public :</b> il vous manque " + gap + " point" + (gap > 1 ? "s" : "") +
@@ -2507,7 +2483,7 @@
           ? "The website exists, but its firewall or anti-bot protection refuses our robot, which is not a flaw. To get your audit, allow it in your firewall or CDN: user-agent SEOPlusBot/1.0, IP address 148.230.115.190. Once the robot is allowed, run the analysis again: it is immediate."
           : (err.error || "Ce site bloque les analyses automatiques. Autorisez notre robot (user-agent SEOPlusBot/1.0, adresse IP 148.230.115.190) dans votre pare-feu, puis relancez l'analyse.");
         var lnk = document.createElement("a");
-        lnk.href = "methodologie.html#autoriser-seoplusbot";
+        lnk.href = "methodology.html#allow-seoplusbot";
         lnk.className = "roast-partiel-link";
         lnk.textContent = isEN ? "How to allow SEOPlusBot, in one minute" : "Comment autoriser SEOPlusBot, en une minute";
         msg.appendChild(document.createTextNode(" "));
@@ -2943,7 +2919,7 @@
       if (pendingHost) {
         store.set("seoplus_paid_" + pendingHost, params.get("paid"));
         store.del("seoplus_pending");
-        if (!params.get("url")) { window.location.replace(BASE + "/rapport.html?url=" + encodeURIComponent(pendingHost)); return; }
+        if (!params.get("url")) { window.location.replace(BASE + "/report.html?url=" + encodeURIComponent(pendingHost)); return; }
       }
     }
 
@@ -4041,9 +4017,9 @@
         /* Diagnostic gratuit : le payload ne donne pas droit au rapport complet
            (non paye). On garde le score et on propose de passer a l'audit. */
         var actions = full
-          ? '<a class="btn btn-primary" href="rapport.html?rid=' + encodeURIComponent(r.id) + '">' + tUI("compteView", "Revoir le rapport") + "</a>" +
+          ? '<a class="btn btn-primary" href="report.html?rid=' + encodeURIComponent(r.id) + '">' + tUI("compteView", "Revoir le rapport") + "</a>" +
             (CFG.RAPPORT_IA_URL ? '<button type="button" class="compte-ghost" data-ia>' + tUI("compteIa", "URL pour votre IA") + "</button>" : "")
-          : '<a class="compte-ghost" href="rapport.html?url=' + encodeURIComponent(r.host) + '">' + tUI("compteUpgrade", "Passer à l'audit complet") + "</a>";
+          : '<a class="compte-ghost" href="report.html?url=' + encodeURIComponent(r.host) + '">' + tUI("compteUpgrade", "Passer à l'audit complet") + "</a>";
         return '<article class="compte-row" data-id="' + esc(r.id) + '" data-host="' + esc(r.host) + '">' +
           '<div class="compte-row-score ' + cls + '"><b>' + (r.score == null ? "–" : esc(r.score)) + '</b><span>' + esc(r.grade || "") + "</span></div>" +
           '<div class="compte-row-main"><b>' + esc(r.host) +
@@ -4059,8 +4035,8 @@
       rows = allReports;
       if (!rows.length) {
         list.innerHTML = isEN
-          ? '<p class="compte-empty">No report yet. <a href="index.html#analyser">Run your first audit</a>: it will show up here automatically.</p>'
-          : '<p class="compte-empty">Aucun rapport pour l\'instant. <a href="index.html#analyser">Lancez votre premier audit</a> : il apparaîtra ici automatiquement.</p>';
+          ? '<p class="compte-empty">No report yet. <a href="index.html#analyze">Run your first audit</a>: it will show up here automatically.</p>'
+          : '<p class="compte-empty">Aucun rapport pour l\'instant. <a href="index.html#analyze">Lancez votre premier audit</a> : il apparaîtra ici automatiquement.</p>';
         return;
       }
       list.innerHTML = rows.slice(0, REPORTS_SHOWN).map(reportRowHtml).join("");

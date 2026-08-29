@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mon compte | SEOPlus!</title>
+  <meta name="description" content="Votre espace SEOPlus! : retrouvez l'historique de vos audits complets et rouvrez chaque rapport à tout moment.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="assets/fonts.css?v=20260814b">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/style.css?v=20260821">
+</head>
+<body data-page="compte">
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <a class="brand-home" href="/tools/seoplus/">
+          <img class="brand-logo" src="assets/img/favicon.svg" alt="" width="30" height="30">
+          <span class="brand-name">SEO<em>Plus!</em></span>
+        </a>
+        <a class="brand-by" href="https://www.optimizia.xyz">by OptimizIA.xyz</a>
+      </div>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="/tools/seoplus/#how-it-works">Comment ça marche</a>
+        <a href="/tools/seoplus/#coverage">L'audit</a>
+        <a href="/tools/seoplus/#pricing">Tarifs</a>
+        <a href="leaderboard.html">Classement</a>
+        <a class="btn btn-primary" href="/tools/seoplus/#analyze">Analyser mon site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="compte-section">
+      <div class="container">
+
+        <div id="compte-gate" hidden></div>
+
+        <div id="compte-main" class="compte-grid" hidden>
+          <aside class="compte-side">
+            <div class="compte-side-inner">
+              <div class="compte-card">
+                <p class="eyebrow" data-i18n="compte.eyebrow">Mon compte</p>
+                <h1 id="compte-name"></h1>
+                <p class="compte-id"><span data-i18n="compte.connected">Connecté avec</span> <b id="compte-email"></b></p>
+
+                <div class="compte-field">
+                  <label for="compte-company" data-i18n="compte.company">Votre société</label>
+                  <div class="compte-field-row">
+                    <input type="text" id="compte-company" maxlength="120" placeholder="Nom de votre société" data-i18n-ph="compte.companyPh">
+                    <button type="button" class="btn btn-primary" id="compte-company-save" data-i18n="compte.companysave">Enregistrer</button>
+                  </div>
+                </div>
+
+                <button type="button" class="compte-logout" id="compte-logout" data-i18n="compte.logout">Se déconnecter</button>
+              </div>
+
+            </div>
+          </aside>
+
+          <div class="compte-body">
+          <h2 class="compte-reports-title" id="mes-rapports" data-i18n="compte.reports">Mes rapports</h2>
+          <p class="compte-sub" data-i18n="compte.sub">Chaque audit généré en étant connecté, diagnostic gratuit comme audit complet, est archivé ici automatiquement. Rouvrez un rapport quand vous voulez, ou copiez son URL à confier à une IA.</p>
+
+          <div class="compte-list" id="compte-list">
+            <p class="compte-empty" data-i18n="compte.loading">Chargement de votre historique...</p>
+          </div>
+
+          </div>
+
+          <!-- Pleine largeur : "Vos retours" ne doit pas rester coince dans la
+               colonne de droite comme la liste des rapports. -->
+          <div class="compte-wide">
+          <h2 class="compte-reports-title" id="feedback" data-i18n="compte.fbTitle">Vos retours</h2>
+          <p class="compte-sub" data-i18n="compte.fbSub">Une idée de fonctionnalité, un bug, un avis sur l'outil ? Dites-le ici : on lit chaque message et les meilleures idées finissent dans SEOPlus!.</p>
+
+          <form id="fb-form" class="fb-form">
+            <div class="fb-cats" role="radiogroup" aria-label="Type de retour">
+              <label class="fb-cat"><input type="radio" name="fbcat" value="idee" checked><span data-i18n="compte.fbIdea">Idée</span></label>
+              <label class="fb-cat"><input type="radio" name="fbcat" value="bug"><span data-i18n="compte.fbBug">Bug</span></label>
+              <label class="fb-cat"><input type="radio" name="fbcat" value="autre"><span data-i18n="compte.fbOther">Autre</span></label>
+            </div>
+            <textarea id="fb-msg" rows="4" maxlength="2000" required placeholder="Racontez : ce qui vous a plu, ce qui manque, ce qui coince..." data-i18n-ph="compte.fbPh"></textarea>
+
+            <!-- Piece jointe : une capture vaut mieux qu'une description de bug.
+                 Stockage prive, lisible de vous seul et de l'equipe. -->
+            <div class="fb-file">
+              <label class="fb-file-btn" for="fb-image">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v13"/></svg>
+                <span data-i18n="compte.fbImgAdd">Joindre une capture</span>
+              </label>
+              <input type="file" id="fb-image" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+              <span class="fb-file-hint" data-i18n="compte.fbImgHint">PNG ou JPG, 5 Mo max. Visible par vous et par nous uniquement.</span>
+            </div>
+            <div class="fb-preview" id="fb-preview" hidden>
+              <img id="fb-preview-img" alt="Aperçu de la capture jointe">
+              <div class="fb-preview-meta">
+                <span id="fb-preview-name"></span>
+                <button type="button" class="fb-preview-del" id="fb-image-clear" data-i18n="compte.fbImgRemove">Retirer</button>
+              </div>
+            </div>
+
+            <div class="fb-actions">
+              <button type="submit" class="btn btn-primary" data-i18n="compte.fbSend">Envoyer mon retour</button>
+              <p class="fb-status" hidden></p>
+            </div>
+          </form>
+
+          <div id="fb-list" class="fb-list"></div>
+
+          <!-- Le formulaire de temoignage vit desormais sur la home, la ou il est vu.
+               Ici on ne garde que le chemin vers lui. -->
+          <aside class="tm-cta">
+            <div class="tm-cta-text">
+              <b data-i18n="compte.tmCtaTitle">Un témoignage porte plus loin qu'un retour privé.</b>
+              <span data-i18n="compte.tmCtaSub">Les retours ci-dessus restent entre nous et servent à corriger l'outil. Un témoignage, lui, est publié sur la page d'accueil et aide les prochains à se décider.</span>
+            </div>
+            <a class="btn btn-primary" href="/tools/seoplus/#testimonials" data-i18n="compte.tmCtaBtn">Écrire mon témoignage</a>
+          </aside>
+
+          <section class="fd-block" id="fondateur" hidden>
+            <h2 class="compte-reports-title" data-i18n="compte.fdTitle">Votre retour Fondateur</h2>
+            <p class="compte-sub" data-i18n="compte.fdSub">Cinq questions orientées usage. Ni note ni satisfaction : ce qui vous a servi, ce qui vous a bloqué. C'est la contrepartie de votre place, et c'est ce qui fait avancer l'outil.</p>
+            <form id="fd-form" class="fd-form">
+              <label class="fd-q"><span data-i18n="compte.fdQ1">Qu'est-ce que vous cherchiez en lançant l'audit ?</span>
+                <textarea name="q_objectif" rows="2" maxlength="800" required></textarea></label>
+              <label class="fd-q"><span data-i18n="compte.fdQ2">Qu'est-ce que vous n'avez pas compris dans le rapport ?</span>
+                <textarea name="q_incompris" rows="2" maxlength="800" required></textarea></label>
+              <label class="fd-q"><span data-i18n="compte.fdQ3">Qu'avez-vous appliqué ?</span>
+                <textarea name="q_applique" rows="2" maxlength="800" required></textarea></label>
+              <label class="fd-q"><span data-i18n="compte.fdQ4">Qu'avez-vous laissé tomber, et pourquoi ?</span>
+                <textarea name="q_abandonne" rows="2" maxlength="800" required></textarea></label>
+              <label class="fd-q"><span data-i18n="compte.fdQ5">Qu'est-ce qui manque pour que l'outil vous serve vraiment ?</span>
+                <textarea name="q_manque" rows="2" maxlength="800" required></textarea></label>
+              <div class="fb-actions">
+                <button type="submit" class="btn btn-primary" data-i18n="compte.fdSend">Envoyer mon retour</button>
+                <p class="fd-status fb-status" hidden></p>
+              </div>
+            </form>
+          </section>
+
+          <div class="rank-how">
+            <h2>Votre score et le classement public</h2>
+            <ol>
+              <li>Relancez l'audit depuis la <a href="/tools/seoplus/#analyze">page d'accueil</a> en cochant « Afficher mon site dans le classement public » pour y figurer.</li>
+              <li>Votre score est mesuré par le moteur, puis inscrit automatiquement. Tous les sites inscrits sont affichés, sans plancher ni top 20 : à partir de 90/100, vous passez dans le cercle Élite en haut du <a href="leaderboard.html">classement</a>.</li>
+              <li>Votre score se met à jour à chaque nouvel audit de votre site.</li>
+            </ol>
+            <p class="rank-note">Le moteur exécute 161 vérifications sur 16 catégories, et il analyse désormais jusqu'à 30 pages de votre site au lieu de 12. Les scores du classement ont été recalculés avec cette version le 15 août 2026, hormis les sites qui bloquent notre robot ou ne répondent plus. Si un de vos anciens rapports affiche une note plus haute que votre audit d'aujourd'hui, votre site n'a pas régressé : en regardant plus du double de pages, le moteur mesure des pages internes qui lui échappaient.</p>
+            <p class="rank-note">L'inscription au classement est volontaire : aucun site n'est listé sans avoir coché la case. Pour retirer le vôtre, un email suffit : <a href="mailto:contact@optimizia.xyz?subject=Retrait%20du%20classement%20SEOPlus">contact@optimizia.xyz</a>.</p>
+          </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="footer-brand-line" href="/tools/seoplus/#top"><img class="brand-logo" src="assets/img/favicon.svg" alt="" width="30" height="30" loading="lazy"><span class="brand-name">SEO<em style="font-style:normal;color:var(--orange)">Plus!</em></span></a>
+          <p>L'audit SEO et GEO automatisé par IA, conçu par OptimizIA.xyz, agence d'intégration IA et d'automatisation pour TPE et PME.</p>
+        </div>
+        <nav aria-label="Produit">
+          <b class="footer-title">Produit</b>
+          <a href="/tools/seoplus/#analyze">Analyser mon site</a>
+          <a href="/tools/seoplus/#how-it-works">Comment ça marche</a>
+          <a href="/tools/seoplus/#pricing">Tarifs</a>
+          <a href="report.html?url=exemple.com&amp;demo=1">Exemple de rapport</a>
+        </nav>
+        <nav aria-label="Ressources">
+          <b class="footer-title">Ressources</b>
+          <a href="/seo/">SEO guides</a>
+          <a href="/geo/">GEO guides</a>
+          <a href="leaderboard.html">Classement public</a>
+          <a href="llms-txt-generator.html">Générateur llms.txt</a>
+          <a href="methodology.html">Notre méthode</a>
+        </nav>
+        <nav aria-label="Informations">
+          <b class="footer-title">Informations</b>
+          <a href="https://www.optimizia.xyz/about.html">À propos</a>
+          <a href="mentions-legales-en.html">Mentions légales</a>
+          <a href="politique-confidentialite-en.html">Confidentialité</a>
+          <a href="cgv-en.html">Conditions générales de vente</a>
+          <a href="mailto:contact@optimizia.xyz">contact@optimizia.xyz</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 SEOPlus! V6.0 par OptimizIA.xyz</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="assets/i18n-en.js?v=20260829"></script>
+  <script src="assets/app.js?v=20260829"></script>
+  <script src="assets/oia-tracker.js?v=20260819" data-site="seoplus" defer></script>
+  <script src="assets/oia-clarity.js?v=20260819" data-clarity="y4wvew5ezs" data-legal="politique-confidentialite-en.html" data-accent="#F97316" defer></script>
+</body>
+</html>
