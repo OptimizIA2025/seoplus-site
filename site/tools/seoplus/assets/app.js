@@ -55,8 +55,13 @@
   })();
   var ENDICT = window.SEOPLUS_EN || null;
   var isEN = LANG === "en" && !!ENDICT;
-  /* Pages traduisibles. Blog/articles (contenu editorial FR) et pages legales (droit francais) restent en francais. */
-  var I18N_PAGES = ["home", "roast", "bilan", "rapport", "compte", "classement", "methodologie", "llms", "a-propos"];
+  /* Le site est ecrit en anglais depuis le 29/08 : accueil, classement,
+     methode, generateur et a-propos n'ont plus rien a traduire, leur source
+     EST l'anglais. Ne restent traduisibles que les ecrans du tunnel d'audit,
+     dont le moteur emet le payload en francais et qui sont le livrable du
+     client : un dirigeant francais garde son rapport dans sa langue. Les pages
+     legales restent en francais, seule version qui fait foi. */
+  var I18N_PAGES = ["roast", "bilan", "rapport", "compte"];
 
   function tUI(key, fr) {
     if (isEN && ENDICT.ui[key] != null) return ENDICT.ui[key];
@@ -613,10 +618,11 @@
          ne ressemble ni a « / » ni a une page de I18N_PAGES, et la bascule de
          langue ne reecrivait plus aucun lien. */
       var rel = base.indexOf(BASE) === 0 ? base.slice(BASE.length) : base;
-      /* Le blog a de vraies URLs par langue : le lien de nav bascule entre les
-         deux listings au lieu de porter un parametre. */
+      /* Le blog n'existe plus qu'en anglais : son lien ne bascule plus. Sans
+         ce garde, passer le tunnel en francais renvoyait vers /blog/, adresse
+         qui n'est plus servie que par une redirection. */
       if (rel === "/blog/" || rel === "/en/blog/") {
-        a.setAttribute("href", BASE + (vers === "en" ? "/en/blog/" : "/blog/") + frag);
+        a.setAttribute("href", BASE + "/en/blog/" + frag);
         return;
       }
       var cible = rel === "/" ? "home"
@@ -704,7 +710,7 @@
       "</form>" +
       '<button type="button" class="auth-again" data-auth-again hidden>' + tUI("authAgain", "Recevoir un nouveau code") + "</button>" +
       '<p class="auth-status" data-auth-status hidden></p>' +
-      '<p class="auth-note">' + tUI("authNote", "Gratuit, sans carte bancaire. Votre email sert à retrouver vos rapports et à vous prévenir quand un nouvel audit de votre site est utile. Jamais de publicité, jamais de revente.") + ' <a href="politique-confidentialite.html">' + tUI("authPrivacy", "Confidentialité") + "</a></p>" +
+      '<p class="auth-note">' + tUI("authNote", "Gratuit, sans carte bancaire. Votre email sert à retrouver vos rapports et à vous prévenir quand un nouvel audit de votre site est utile. Jamais de publicité, jamais de revente.") + ' <a href="politique-confidentialite-en.html">' + tUI("authPrivacy", "Confidentialité") + "</a></p>" +
     "</div>";
   }
 
@@ -3386,7 +3392,7 @@
     var band = document.createElement("div");
     band.className = "nl-foot";
     band.innerHTML = '<div class="nl-foot-text"><b>' + tUI("nlTitle", "Des tips SEO, zéro spam") + '<span class="nl-cursor" aria-hidden="true">_</span></b>' +
-      "<span>" + tUI("nlSub", "Un conseil actionnable chaque lundi matin, désinscription en un clic.") + ' <a href="politique-confidentialite.html">' + tUI("authPrivacy", "Confidentialité") + "</a></span></div>" +
+      "<span>" + tUI("nlSub", "Un conseil actionnable chaque lundi matin, désinscription en un clic.") + ' <a href="politique-confidentialite-en.html">' + tUI("authPrivacy", "Confidentialité") + "</a></span></div>" +
       '<form class="nl-form">' +
       '<input type="email" name="email" required placeholder="' + tUI("emailPlaceholder", "votre@email.fr") + '" autocomplete="email" aria-label="Email">' +
       '<button type="submit" class="btn btn-primary">' + tUI("nlBtn", "S'inscrire") + "</button>" +

@@ -1,585 +1,310 @@
-# SEOPlus! - contenu detaille
+# SEOPlus! - detailed content
 
-> Resume de chaque page publique de https://www.optimizia.xyz/tools/seoplus, genere depuis les pages elles-memes. Ce fichier accompagne https://www.optimizia.xyz/tools/seoplus/llms.txt, qui en est l'index. Genere le 2026-08-16.
+> A summary of every public page of https://www.optimizia.xyz/tools/seoplus, generated from the pages themselves. This file accompanies https://www.optimizia.xyz/tools/seoplus/llms.txt, which is its index. Generated on 2026-08-29.
 
-# Pages principales
+# Main pages
 
-## Votre audit SEO et GEO, en 30 secondes.
+## Your SEO and GEO audit, in 30 seconds.
 
 https://www.optimizia.xyz/tools/seoplus/
 
-161 vérifications : sécurité, SEO, performance et visibilité dans ChatGPT et les IA. Score gratuit en 30 secondes, plan d'action et fichiers prêts à poser.
+161 checks: security, SEO, performance and visibility in ChatGPT and AI engines. Free score in 30 seconds, an action plan and ready-to-paste files.
 
-## Ce que l'audit mesure, comment, et ce qu'il ne fait pas.
+## What the audit measures, how, and what it does not do.
 
 https://www.optimizia.xyz/tools/seoplus/methodologie.html
 
-Les 161 vérifications de l'audit SEOPlus!, mesurées sur votre site, un score traçable point par point, et la liste honnête de ce que l'outil ne fait pas.
+The 161 checks of the SEOPlus! audit, measured on your website, a score that is traceable point by point, and an honest list of what the tool does not do.
 
-## Qui est derrière SEOPlus!
+## Who is behind SEOPlus!
 
 https://www.optimizia.xyz/tools/seoplus/a-propos.html
 
-SEOPlus! est conçu et maintenu par Rémy Ginoux et Romain Ben, cofondateurs d'OptimizIA.xyz. Qui nous sommes, pourquoi l'outil existe, et où nous trouver.
+SEOPlus! is designed and maintained by Rémy Ginoux and Romain Ben, co-founders of OptimizIA.xyz. Who we are, why the tool exists, and where to find us.
 
-## Générez votre fichier llms.txt en 2 minutes.
+## Generate your llms.txt file in 2 minutes.
 
 https://www.optimizia.xyz/tools/seoplus/generateur-llms-txt.html
 
-Créez votre llms.txt en 2 minutes : le standard qui aide ChatGPT, Claude et Perplexity à comprendre et citer votre site. Gratuit, sans email, sans compte.
+Create your llms.txt in 2 minutes: the standard that helps ChatGPT, Claude and Perplexity understand and cite your website. Free, no email, no account.
 
-## Les sites qui assument leur score.
+## The websites that own their score.
 
 https://www.optimizia.xyz/tools/seoplus/classement.html
 
-Tous les sites audités qui ont choisi d'afficher leur score, du premier au dernier. 161 vérifications SEO et GEO, un score sur 100, à jour à chaque audit.
+Every audited website that chose to display its score, from first to last. 161 SEO and GEO checks, a score out of 100, updated with every audit.
 
-# Guides en francais
-
-## Conformité d'un site web : les quatre obligations, dans l'ordre
-
-https://www.optimizia.xyz/tools/seoplus/conformite/
-Publie le 2026-08-16
-
-Un site professionnel français porte quatre obligations distinctes, qui viennent de quatre textes différents et ne se traitent pas ensemble. Les mentions légales relèvent de la LCEN et sont dues par tout éditeur. L'information sur les données personnelles relève du RGPD. Le consentement aux traceurs relève de l'article 82 de la loi Informatique et Libertés, et il est indépendant du RGPD. L'accessibilité ne concerne qu'une partie des entreprises, mais son périmètre s'est élargi en juin 2025. Les deux premières se règlent en une après-midi, la troisième demande de toucher au code, la quatrième est un chantier.
-
-## Le certificat SSL expliqué : ce qu'il protège, ce qu'il ne protège pas
-
-https://www.optimizia.xyz/tools/seoplus/securite/certificat-ssl-explique/
-Publie le 2026-08-15
-
-Un certificat valide prouve deux choses, et deux seulement : que la connexion est chiffrée, et que le serveur est bien celui du domaine affiché. Il ne dit rien de la qualité du site, ni de son honnêteté. Les trois pannes qui coûtent cher sont l'expiration, le certificat qui ne couvre pas toutes les variantes du domaine, et la page en HTTPS qui charge des ressources en HTTP. Les trois se mesurent de l'extérieur, sans accès au serveur.
-
-## Votre site est piraté : la marche à suivre, dans l'ordre
-
-https://www.optimizia.xyz/tools/seoplus/securite/site-pirate-que-faire/
-Publie le 2026-08-15
-
-Un piratage de site vitrine ne ressemble presque jamais à un film. Le plus souvent, votre site sert des pages qui ne sont pas de vous, vers des sujets qui n'ont rien à voir avec votre métier, et vous ne le voyez pas parce qu'elles ne s'affichent que pour Google. L'ordre des opérations compte plus que la vitesse : restaurer avant d'avoir fermé la porte d'entrée revient à se faire pirater deux fois.
-
-## Les fichiers qu'il ne faut jamais laisser à la racine de son site
-
-https://www.optimizia.xyz/tools/seoplus/securite/fichiers-a-ne-jamais-exposer/
-Publie le 2026-08-15
-
-Un serveur web sert par défaut tout ce qui se trouve dans son dossier public, y compris ce que vous n'avez pas eu l'intention de publier. Un fichier de configuration renommé, un export de base laissé après une migration, un dossier .git oublié : chacun se demande par son adresse, sans authentification, et les robots les testent en boucle. Aucune de ces adresses n'a besoin d'être devinée, elles sont toutes dans des listes publiques.
-
-## Obtenir des avis clients sans les acheter
-
-https://www.optimizia.xyz/tools/seoplus/referencement-local/avis-clients-obtenir/
-Publie le 2026-08-15
-
-Les avis pèsent sur trois choses à la fois : votre position dans les résultats locaux, le taux de clic sur votre fiche, et ce qu'une IA répond quand on lui demande de recommander un prestataire. La bonne nouvelle, c'est qu'ils se collectent honnêtement, et que la méthode tient en trois décisions : quand demander, comment formuler, et où envoyer. La mauvaise, c'est qu'acheter des avis est une pratique commerciale trompeuse, sanctionnée comme telle.
-
-## Pages de zone : couvrir plusieurs villes sans se faire pénaliser
-
-https://www.optimizia.xyz/tools/seoplus/referencement-local/pages-de-zone/
-Publie le 2026-08-15
-
-La page de zone est utile quand elle contient quelque chose de propre à la zone : un chantier réalisé, un délai d'intervention, une contrainte locale, un interlocuteur. Elle est nuisible quand elle est le même texte avec un nom de ville remplacé, parce qu'elle rejoint alors le stock de pages quasi identiques que Google regroupe et déclasse. Le bon nombre n'est pas le nombre de communes de votre zone, c'est le nombre de pages que vous pouvez réellement nourrir.
-
-## La cohérence de vos coordonnées : la méthode de correction
-
-https://www.optimizia.xyz/tools/seoplus/referencement-local/coherence-coordonnees-nap/
-Publie le 2026-08-15
-
-Nom, adresse, téléphone : ces trois informations servent à un moteur de recherche à décider que deux fiches parlent bien de la même entreprise. Quand elles divergent entre votre site, votre fiche d'établissement et les annuaires, le moteur hésite, et l'hésitation se paie en visibilité locale. La correction n'est pas compliquée, elle est fastidieuse : elle consiste à choisir une écriture de référence, puis à la propager partout, en commençant par les sources qui pèsent.
-
-## Les mentions légales obligatoires d'un site de TPE
-
-https://www.optimizia.xyz/tools/seoplus/conformite/mentions-legales-obligatoires/
-Publie le 2026-08-15
-
-Tout site professionnel doit permettre d'identifier qui est derrière, et de le joindre. La liste dépend de votre statut et du fait que vous vendiez en ligne ou non. Les trois oublis que nous retrouvons le plus souvent sont le directeur de la publication, les coordonnées de l'hébergeur, et le médiateur de la consommation pour les sites qui vendent aux particuliers. Ce ne sont pas des détails de forme : ce sont les points que contrôle l'administration.
-
-## Politique de confidentialité : le modèle utilisable pour une TPE
-
-https://www.optimizia.xyz/tools/seoplus/conformite/politique-confidentialite-modele/
-Publie le 2026-08-15
-
-Une politique de confidentialité n'est pas un texte juridique à copier, c'est la description honnête de ce que vous faites réellement des données. Huit rubriques suffisent pour une TPE. Les deux erreurs qui la rendent fausse dès le premier jour sont de recopier un modèle sans l'adapter, et d'oublier les destinataires réels des données, c'est-à-dire les outils que vous utilisez sans y penser.
-
-## Sécuriser son site sans être informaticien : le guide
-
-https://www.optimizia.xyz/tools/seoplus/securite/
-Publie le 2026-08-13
-
-La sécurité d'un site de PME tient en quatre chantiers : les en-têtes que votre serveur envoie à chaque visite, le certificat qui chiffre la connexion, l'authentification de vos emails, et les fichiers que vous exposez sans le savoir. Aucun ne demande de savoir coder, tous se vérifient en quelques minutes, et trois d'entre eux se corrigent en une seule intervention sur le serveur. Ce guide sert de porte d'entrée aux articles détaillés du silo.
-
-## SPF, DKIM, DMARC : pourquoi vos emails partent en spam
-
-https://www.optimizia.xyz/tools/seoplus/securite/spf-dkim-dmarc/
-Publie le 2026-08-13
-
-SPF dit quels serveurs ont le droit d'envoyer en votre nom, DKIM signe vos messages, DMARC dit quoi faire quand un message échoue aux deux premiers. Sans les trois, vos emails passent pour suspects et n'importe qui peut se faire passer pour vous. Depuis février 2024, Google et Yahoo les exigent des expéditeurs en volume. L'erreur la plus fréquente n'est pas de les oublier, c'est de publier DMARC en mode observation et de ne jamais le durcir : dans cet état, il ne protège de rien.
-
-## Les en-têtes de sécurité HTTP, expliqués sans jargon
-
-https://www.optimizia.xyz/tools/seoplus/securite/entetes-securite-http/
-Publie le 2026-08-13
-
-Les en-têtes de sécurité sont des instructions que votre serveur envoie au navigateur avant votre page. Ils lui disent ce qu'il a le droit de faire. Six d'entre eux comptent vraiment, ils se posent tous au même endroit, et une intervention d'une heure les traite en bloc. C'est le meilleur rapport entre l'effort fourni et les points gagnés dans un audit, et pourtant la catégorie où les sites de PME obtiennent les scores les plus bas.
-
-## Être trouvé près de chez vous : le guide du référencement local
-
-https://www.optimizia.xyz/tools/seoplus/referencement-local/
-Publie le 2026-08-13
-
-Le référencement local se joue sur trois choses : une fiche d'établissement complète et tenue à jour, des coordonnées rigoureusement identiques partout où elles apparaissent, et un balisage qui permet à une machine de lire votre adresse sans l'interpréter. Les deux premières relèvent de la discipline, la troisième d'une intervention unique sur votre site. C'est le domaine où une petite entreprise peut dépasser un concurrent bien plus gros, parce que la proximité et la cohérence pèsent davantage que la puissance du domaine.
-
-## Accessibilité web : ce que la réglementation européenne a changé
-
-https://www.optimizia.xyz/tools/seoplus/conformite/accessibilite-web/
-Publie le 2026-08-13
-
-La directive européenne sur l'accessibilité s'applique depuis le 28 juin 2025 à plusieurs catégories de services en ligne, dont le commerce électronique. Les micro-entreprises en sont largement exemptées, mais l'exemption ne vaut pas dispense de bon sens : les corrections d'accessibilité les plus utiles sont aussi celles qui améliorent le référencement, parce qu'un robot d'indexation lit une page à peu près comme un lecteur d'écran. Six corrections couvrent l'essentiel et aucune ne demande de refonte.
-
-## Cookies et traceurs : ce que la CNIL exige, ce qu'un audit mesure
-
-https://www.optimizia.xyz/tools/seoplus/conformite/cookies-rgpd-traceurs/
-Publie le 2026-08-13
-
-La règle tient en une phrase : aucun traceur non essentiel ne doit être déposé avant que le visiteur ait dit oui, et refuser doit être aussi simple qu'accepter. La plupart des sites que nous mesurons échouent sur le premier point sans le savoir, parce que leur bandeau s'affiche pendant que les scripts se sont déjà chargés. C'est mesurable de l'extérieur, en une visite, et c'est le premier écart que constate un contrôle.
-
-## Le guide du SEO technique pour une TPE-PME
-
-https://www.optimizia.xyz/tools/seoplus/seo-technique/
-Publie le 2026-08-12
-
-Le SEO technique, c'est tout ce qui permet à Google de trouver, lire, comprendre et servir vos pages. Avant les mots-clés, avant le contenu : si la machine bloque, rien d'autre ne compte. Ce guide rassemble les cinq chantiers dans l'ordre où les traiter : indexation, accès des robots, vitesse, données structurées, mesure. Chaque chantier renvoie vers son guide détaillé. Une TPE qui coche ces cinq cases dépasse déjà la moitié de ses concurrents.
-
-## Être visible dans ChatGPT, Perplexity et les réponses IA : le guide GEO
-
-https://www.optimizia.xyz/tools/seoplus/visibilite-ia/
-Publie le 2026-08-12
-
-Une part croissante de vos clients ne tape plus « plombier Lyon » dans Google : elle demande à ChatGPT ou Perplexity de lui recommander quelqu'un. Le GEO (Generative Engine Optimization), c'est faire en sorte que la réponse parle de vous. Trois chantiers, dans l'ordre : laisser entrer les robots des IA, rendre votre site lisible et citable pour eux, puis construire la notoriété qui leur donne confiance. Ce guide relie nos quatre articles détaillés sur le sujet.
-
-## Écrire des pages que Google et les clients lisent
-
-https://www.optimizia.xyz/tools/seoplus/contenu-seo/
-Publie le 2026-08-12
-
-Le contenu qui rapporte n'est pas une affaire d'inspiration : c'est une méthode. Choisir les requêtes que vos clients tapent vraiment, écrire une page assez profonde pour y répondre, soigner le title et la meta description qui font cliquer, éviter que deux pages se battent sur la même requête, et rafraîchir ce qui glisse au lieu d'empiler du neuf. Ce guide déroule les cinq étapes et renvoie vers leur mode d'emploi détaillé.
-
-## Se faire connaître et gagner la confiance de Google (et des IA)
-
-https://www.optimizia.xyz/tools/seoplus/autorite-confiance/
-Publie le 2026-08-12
-
-À contenu égal, Google classe celui en qui il a le plus confiance, et les IA citent celui qu'elles connaissent. Cette confiance se construit sur quatre fronts : les preuves d'expertise visibles sur votre site (E-E-A-T), votre fiche Google Business pour l'ancrage local, un maillage interne qui distribue la force au bon endroit, et le temps, qu'il faut compter honnêtement plutôt que subir. Ce guide relie nos cinq articles détaillés sur le sujet.
-
-## Pourquoi ChatGPT ne connaît pas votre marque (et comment y remédier)
-
-https://www.optimizia.xyz/tools/seoplus/visibilite-ia/chatgpt-connait-pas-votre-marque/
-Publie le 2026-07-24
-
-Demandez à ChatGPT de recommander un prestataire de votre métier dans votre ville : si vous n'êtes pas dans la réponse, vos concurrents cités récupèrent des prospects qui ne sauront jamais que vous existez. Les modèles construisent leurs réponses à partir du web public : votre site, les annuaires, les avis, les mentions de presse. Cinq leviers pour y entrer : une page d'accueil qui dit qui vous êtes en clair, des données structurées, un llms.txt, des crawlers IA non bloqués et des mentions externes cohérentes. Le diagnostic gratuit mesure les quatre premiers en 30 secondes.
-
-## Google Search Console : le guide pour débuter (et les 3 rapports qui comptent)
-
-https://www.optimizia.xyz/tools/seoplus/seo-technique/google-search-console-debuter/
-Publie le 2026-07-22
-
-Google Search Console est le seul endroit où Google vous dit directement ce qu'il voit de votre site : sur quelles requêtes vous apparaissez, combien de clics vous recevez, quelles pages il refuse d'indexer et pourquoi. C'est gratuit, sans code, et l'installation prend 10 minutes. Trois rapports concentrent l'essentiel : Performances pour savoir ce qui rapporte, Indexation pour savoir ce qui est invisible, et les alertes par email pour savoir quand quelque chose casse. Complément idéal de notre audit : lui mesure ce qu'il faut corriger, la Search Console mesure ce que ça rapporte.
-
-## Cannibalisation de mots-clés : quand vos pages se font la guerre
-
-https://www.optimizia.xyz/tools/seoplus/contenu-seo/cannibalisation-mots-cles/
-Publie le 2026-07-21
-
-Il y a cannibalisation quand deux pages de votre site visent la même requête : Google hésite entre les deux, alterne, et aucune ne s'installe dans le haut du classement. Les signaux se diluent, une page moins pertinente peut doubler la bonne, et vos efforts de contenu se neutralisent. Détection en 10 minutes dans la Search Console : filtrez une requête et regardez si plusieurs URL apparaissent. Trois correctifs selon le cas : fusionner les pages, différencier leurs intentions, ou rediriger la plus faible vers la plus forte.
-
-## Recherche de mots-clés : la méthode simple pour une TPE-PME
-
-https://www.optimizia.xyz/tools/seoplus/contenu-seo/recherche-mots-cles-methode/
-Publie le 2026-07-17
-
-La recherche de mots-clés n'exige pas un abonnement à 100 € par mois. La matière première, vous l'avez déjà : les mots que vos clients emploient au téléphone et dans leurs emails. La méthode en quatre temps : lister le vocabulaire client réel, l'élargir avec les suggestions Google et la Search Console, choisir les requêtes où une TPE-PME peut réellement gagner (spécifiques et locales plutôt que génériques), puis affecter une requête cible à chaque page, jamais deux pages sur la même requête, sous peine de cannibalisation.
-
-## E-E-A-T : comment prouver votre expertise à Google (et aux IA)
-
-https://www.optimizia.xyz/tools/seoplus/contenu-seo/eeat-prouver-expertise/
-Publie le 2026-07-16
-
-E-E-A-T résume les quatre qualités que Google évalue : l'Expérience vécue, l'Expertise, l'Autorité reconnue et la Fiabilité. Ce n'est pas un score technique, c'est un faisceau de preuves : auteurs identifiés avec leur parcours, cas clients chiffrés, avis, mentions externes, coordonnées vérifiables. Les moteurs IA utilisent les mêmes signaux pour décider qui citer et qui recommander. Trois pages portent l'essentiel : la page à propos, les pages auteur et les études de cas. Le vernis (badges décoratifs, biographies inventées) ne trompe ni Google ni les modèles.
-
-## Mettre à jour vos anciens contenus : le levier SEO le moins cher
-
-https://www.optimizia.xyz/tools/seoplus/contenu-seo/mettre-a-jour-ancien-contenu/
-Publie le 2026-07-13
-
-Une page publiée il y a deux ans qui glisse de la position 5 à la position 12 est votre meilleur investissement SEO : elle a déjà un historique, des liens et une position de départ, là où un article neuf part de zéro. Repérez les candidates dans la Search Console (impressions stables, clics en baisse, positions 5 à 15), puis mettez à jour ce qui compte : les faits datés, la réponse en tête de page, les sections manquantes face aux concurrents actuels, le maillage interne. Changez la date seulement si le contenu a réellement changé, et gardez l'URL.
-
-## SEO d'un nouveau site : le plan des 90 premiers jours
-
-https://www.optimizia.xyz/tools/seoplus/autorite-confiance/seo-nouveau-site-90-jours/
-Publie le 2026-07-10
-
-Un site neuf part de zéro : Google ne le connaît pas, ne lui fait pas confiance, et le met en observation. Les 90 premiers jours servent à raccourcir cette période. Jours 1-15 : fondations techniques (HTTPS, vitesse, robots.txt, sitemap, données structurées). Jours 15-30 : indexation via la Search Console et la fiche Google. Jours 30-60 : une page par requête cible, en commençant par les pages qui vendent. Jours 60-90 : premiers liens externes et premiers contenus de fond. À 90 jours, un site local bien exécuté ranke sur ses requêtes ville + métier.
-
-## AI Overviews en France : ce qui change pour votre visibilité
-
-https://www.optimizia.xyz/tools/seoplus/visibilite-ia/ai-overviews-france/
-Publie le 2026-07-09
-
-Les AI Overviews sont les réponses générées par l'IA de Google, affichées au-dessus des résultats classiques. Elles répondent directement à la question de l'internaute en citant quelques sources. Conséquence : moins de clics sur les liens classiques, mais une prime énorme aux sites cités. Devenir citable n'est pas de la magie : contenu factuel structuré, entité claire, données structurées et autorité. C'est mesurable, et c'est exactement ce que la catégorie GEO de notre audit gratuit vérifie.
-
-## Core Web Vitals : le guide sans jargon pour dirigeants
-
-https://www.optimizia.xyz/tools/seoplus/seo-technique/core-web-vitals-guide/
-Publie le 2026-07-07
-
-Les Core Web Vitals sont les trois mesures d'expérience de chargement que Google utilise comme signal de classement : LCP (vitesse d'affichage, viser moins de 2,5 s), INP (réactivité, moins de 200 ms) et CLS (stabilité visuelle, moins de 0,1). Sur les sites de TPE-PME, trois causes expliquent l'essentiel des mauvais scores : images trop lourdes, scripts tiers, hébergement sous-dimensionné. Notre audit gratuit mesure vos CWV réels via l'API PageSpeed de Google.
-
-## Fiche Google Business Profile : les champs qui pèsent vraiment
-
-https://www.optimizia.xyz/tools/seoplus/referencement-local/fiche-google-business-profile/
-Publie le 2026-07-03
-
-Pour un commerce, un artisan ou une entreprise de services locale, la fiche Google Business Profile est souvent le premier générateur de contacts, avant le site. Trois facteurs décident de votre position dans le pack local : la pertinence (catégories et description), la distance, et la notoriété (avis, régularité, cohérence des informations). Une fiche complète avec des avis réguliers et répondus bat presque toujours une fiche riche mais dormante.
-
-## Titles et meta descriptions : écrire pour être cliqué
-
-https://www.optimizia.xyz/tools/seoplus/contenu-seo/titles-meta-descriptions/
-Publie le 2026-07-02
-
-Le title (30 à 60 caractères) est un signal de classement lu par Google : il doit contenir votre mot-clé principal et votre marque. La meta description (120 à 160 caractères) ne classe pas, mais elle décide du clic : c'est votre annonce gratuite dans les résultats. La formule qui marche : ce que vous faites + pour qui + la preuve ou le différenciant. Notre audit vérifie les deux balises sur toutes les pages analysées.
-
-## Maillage interne : la technique gratuite que presque personne ne fait
-
-https://www.optimizia.xyz/tools/seoplus/seo-technique/maillage-interne/
-Publie le 2026-06-30
-
-Le maillage interne, c'est l'ensemble des liens entre les pages de votre propre site. Il guide les robots vers vos pages importantes, transmet leur autorité et montre à Google quelle page répond à quelle question. La méthode qui marche : une page hub par grand sujet, des pages filles précises reliées au hub et entre elles, avec des ancres descriptives. Gratuit, faisable en une après-midi, et pourtant absent de la majorité des sites qu'on audite.
-
-## La barre des 600 mots : pourquoi vos pages maigres ne sortent pas
-
-https://www.optimizia.xyz/tools/seoplus/contenu-seo/contenu-600-mots/
-Publie le 2026-06-26
-
-Sur la majorité des sites de TPE-PME qu'on audite, les pages services font 100 à 300 mots : un paragraphe de présentation, trois puces, un bouton contact. Résultat : rien à classer pour Google, rien à citer pour les IA. La barre pragmatique : viser 600 mots et plus sur chaque page qui doit générer des clients, en répondant aux vraies questions (quoi, pour qui, comment, combien, pourquoi vous). La matière existe déjà : c'est ce que vous répondez au téléphone toute la journée.
-
-## GEO : comment être cité par ChatGPT, Perplexity et Google AI Overviews
-
-https://www.optimizia.xyz/tools/seoplus/visibilite-ia/geo-etre-cite/
-Publie le 2026-06-24
-
-Le GEO (Generative Engine Optimization) consiste à rendre votre site lisible, compréhensible, citable et crédible pour les IA qui répondent à la place des pages de résultats. Ces 4 conditions sont séquentielles : si la première n'est pas remplie, les suivantes ne servent à rien. La plupart se vérifient et se corrigent en quelques heures.
-
-## Pourquoi votre site n'apparaît pas sur Google : les 7 causes mesurables
-
-https://www.optimizia.xyz/tools/seoplus/autorite-confiance/pourquoi-site-invisible-google/
-Publie le 2026-06-23
-
-Un site invisible sur Google a presque toujours une cause mesurable : il n'est pas indexé, il bloque les robots sans le savoir, ou il ne donne pas assez de matière à classer. Les 7 causes ci-dessous couvrent la quasi-totalité des cas que nous rencontrons en audit. Chacune se vérifie en quelques minutes, et la plupart se corrigent sans budget.
-
-## À quoi ressemble un audit SEO utile ? Ce qu'il doit contenir, ce qui doit vous alerter
-
-https://www.optimizia.xyz/tools/seoplus/autorite-confiance/audit-seo-exemple/
-Publie le 2026-06-19
-
-Un audit SEO utile contient 4 choses : des faits mesurés (pas des impressions), un correctif précis pour chaque constat, une priorisation, et un livrable exploitable sans être expert. Un rapport qui vous donne une note sans vous montrer d'où elle vient, ou 80 pages de captures d'écran sans plan d'action, est un document commercial, pas un audit.
-
-## Données structurées : les schémas qui comptent vraiment pour Google et les IA
-
-https://www.optimizia.xyz/tools/seoplus/seo-technique/donnees-structurees-json-ld/
-Publie le 2026-06-17
-
-Les données structurées sont quelques lignes de code JSON-LD posées dans vos pages qui déclarent aux machines qui vous êtes, ce que vous vendez et où. Pour une TPE-PME, 5 types couvrent l'essentiel : Organization (ou LocalBusiness), WebSite, FAQPage, Article et Person. Une heure de travail, un effet double : Google enrichit vos résultats, les IA cessent de vous confondre avec un autre.
-
-## llms.txt : le guide complet en français
-
-https://www.optimizia.xyz/tools/seoplus/visibilite-ia/llms-txt-guide/
-Publie le 2026-06-16
-
-Le llms.txt est un fichier texte posé à la racine de votre site (votresite.fr/llms.txt) qui résume votre activité, vos offres et vos pages clés à destination des IA. Il réduit les erreurs quand ChatGPT, Claude ou Perplexity parlent de vous, et augmente vos chances d'être cité correctement. Il s'écrit en 15 minutes, ou en 2 avec notre générateur gratuit.
-
-## GPTBot, ClaudeBot, PerplexityBot : bloquer ou accueillir les robots des IA ?
-
-https://www.optimizia.xyz/tools/seoplus/visibilite-ia/crawlers-ia-robots-txt/
-Publie le 2026-06-12
-
-Pour une TPE ou PME qui veut des clients, bloquer les crawlers IA revient à se rendre invisible dans les réponses de ChatGPT, Perplexity et Google AI Overviews. Sauf cas particulier (contenu payant, données sensibles), la bonne décision est de les autoriser explicitement dans votre robots.txt. Beaucoup de sites les bloquent sans le savoir.
-
-## Combien de temps met le SEO à produire des résultats ? Le calendrier honnête
-
-https://www.optimizia.xyz/tools/seoplus/autorite-confiance/combien-temps-seo/
-Publie le 2026-06-09
-
-Trois horloges tournent en parallèle. Les corrections techniques produisent leur effet en quelques jours à quelques semaines. Le contenu s'installe en 2 à 3 mois. L'autorité (liens, mentions, réputation) se construit en 6 à 12 mois. Quiconque promet la première page en 2 semaines ment ; quiconque dit qu'il faut « au moins un an » pour voir un premier effet exagère dans l'autre sens.
-
-# Guides in English
+# Guides
 
 ## Website compliance: the four obligations, in order
 
 https://www.optimizia.xyz/tools/seoplus/en/compliance/
-Publie le 2026-08-16
+Published on 2026-08-16
 
 A French business website carries four distinct obligations. They come from four different texts and they are not handled together. The legal notice comes from the LCEN and is owed by every publisher. Information about personal data comes from the GDPR. Tracker consent comes from article 82 of the French Data Protection Act, and it is independent of the GDPR. Accessibility only concerns some companies, but its scope widened in June 2025. The first two take an afternoon, the third means touching the code, the fourth is a project.
 
 ## The SSL certificate explained: what it protects, what it does not
 
 https://www.optimizia.xyz/tools/seoplus/en/website-security/ssl-certificate-explained/
-Publie le 2026-08-15
+Published on 2026-08-15
 
 A valid certificate proves two things, and only two: the connection is encrypted, and the server really is the one that controls the domain shown. It says nothing about the quality of the website, nor about its honesty. The three failures that cost the most are expiry, a certificate that does not cover every variant of the domain, and an HTTPS page loading resources over HTTP. All three are measurable from the outside, with no server access.
 
 ## Your website has been hacked: the steps, in the right order
 
 https://www.optimizia.xyz/tools/seoplus/en/website-security/website-hacked-what-to-do/
-Publie le 2026-08-15
+Published on 2026-08-15
 
 A hacked brochure site almost never looks like a film. Most often, your website serves pages that are not yours, on subjects unrelated to your business, and you do not see them because they only appear for Google. The order of operations matters more than speed: restoring before you have closed the way in means getting hacked twice.
 
 ## The files you should never leave at the root of your website
 
 https://www.optimizia.xyz/tools/seoplus/en/website-security/files-never-expose/
-Publie le 2026-08-15
+Published on 2026-08-15
 
 A web server serves everything in its public folder by default, including what you never intended to publish. A renamed configuration file, a database export left after a migration, a forgotten .git folder: each is requested by its address, with no authentication, and bots test them on a loop. None of these addresses needs guessing, they are all on public lists.
 
 ## Getting customer reviews without buying them
 
 https://www.optimizia.xyz/tools/seoplus/en/local-seo/get-customer-reviews/
-Publie le 2026-08-15
+Published on 2026-08-15
 
 Reviews weigh on three things at once: your position in local results, the click-through rate on your listing, and what an AI answers when asked to recommend a provider. The good news is that they can be collected honestly, and the method comes down to three decisions: when to ask, how to word it, and where to send. The bad news is that buying reviews is a misleading commercial practice, and is punished as one.
 
 ## Location pages: covering several towns without being penalised
 
 https://www.optimizia.xyz/tools/seoplus/en/local-seo/location-pages/
-Publie le 2026-08-15
+Published on 2026-08-15
 
 A location page is useful when it contains something specific to that location: a job completed, a response time, a local constraint, a named contact. It is harmful when it is the same text with a town name replaced, because it then joins the pile of near-identical pages that Google groups and demotes. The right number is not the number of towns in your area, it is the number of pages you can actually feed.
 
 ## Name, address, phone: the consistency method
 
 https://www.optimizia.xyz/tools/seoplus/en/local-seo/nap-consistency/
-Publie le 2026-08-15
+Published on 2026-08-15
 
 Name, address, phone: these three pieces of information are what a search engine uses to decide that two listings describe the same business. When they diverge between your website, your business listing and directories, the engine hesitates, and hesitation is paid for in local visibility. The correction is not difficult, it is tedious: choose a reference spelling, then propagate it everywhere, starting with the sources that weigh.
 
 ## The legal notice a small business website must publish
 
 https://www.optimizia.xyz/tools/seoplus/en/compliance/legal-notice-requirements/
-Publie le 2026-08-15
+Published on 2026-08-15
 
 Any professional website must let a visitor identify who is behind it, and reach them. The list depends on your status and on whether you sell online. The three omissions we find most often are the publication director, the host's details, and the consumer mediator for websites selling to individuals. These are not formalities: they are the points an inspection looks at.
 
 ## Privacy policy: the usable template for a small business
 
 https://www.optimizia.xyz/tools/seoplus/en/compliance/privacy-policy-template/
-Publie le 2026-08-15
+Published on 2026-08-15
 
 A privacy policy is not a legal text to copy, it is an honest description of what you actually do with data. Eight sections are enough for a small business. The two mistakes that make it false from day one are copying a template without adapting it, and forgetting the real recipients of the data, that is, the tools you use without thinking about them.
 
 ## Securing your website without being an IT person: the guide
 
 https://www.optimizia.xyz/tools/seoplus/en/website-security/
-Publie le 2026-08-13
+Published on 2026-08-13
 
 A small company's website security comes down to four projects: the headers your server sends on every visit, the certificate that encrypts the connection, the authentication of your emails, and the files you expose without knowing it. None requires knowing how to code, all can be checked in a few minutes, and three of them are fixed in a single intervention on the server. This guide is the entry point to the detailed articles in the silo.
 
 ## SPF, DKIM, DMARC: why your emails end up in spam
 
 https://www.optimizia.xyz/tools/seoplus/en/website-security/spf-dkim-dmarc/
-Publie le 2026-08-13
+Published on 2026-08-13
 
 SPF says which servers may send in your name, DKIM signs your messages, DMARC says what to do when a message fails the first two. Without all three, your emails look suspicious and anyone can impersonate you. Since February 2024, Google and Yahoo require them from bulk senders. The most common mistake is not forgetting them, it is publishing DMARC in observation mode and never tightening it: in that state it protects against nothing.
 
 ## HTTP security headers, explained without jargon
 
 https://www.optimizia.xyz/tools/seoplus/en/website-security/http-security-headers/
-Publie le 2026-08-13
+Published on 2026-08-13
 
 Security headers are instructions your server sends to the browser ahead of your page. They tell it what it is allowed to do. Six of them really count, they are all set in the same place, and a one-hour intervention handles them as a block. It is the best ratio between effort spent and points gained in an audit, and yet it is the category where small business websites score lowest.
 
 ## Being found near you: the local SEO guide
 
 https://www.optimizia.xyz/tools/seoplus/en/local-seo/
-Publie le 2026-08-13
+Published on 2026-08-13
 
 Local SEO turns on three things: a complete, up-to-date business listing, contact details that are rigorously identical everywhere they appear, and markup that lets a machine read your address without interpreting it. The first two are a matter of discipline, the third a one-off intervention on your site. It is the area where a small company can overtake a much bigger competitor, because proximity and consistency weigh more than domain authority.
 
 ## Web accessibility: what the European regulation changed
 
 https://www.optimizia.xyz/tools/seoplus/en/compliance/web-accessibility/
-Publie le 2026-08-13
+Published on 2026-08-13
 
 The European accessibility directive has applied since 28 June 2025 to several categories of online service, including e-commerce. Micro-enterprises are largely exempt, but the exemption is not a dispensation from common sense: the most useful accessibility fixes are also the ones that improve SEO, because an indexing bot reads a page much the way a screen reader does. Six fixes cover the essentials and none requires a rebuild.
 
 ## Cookies and trackers: what the CNIL requires, what an audit measures
 
 https://www.optimizia.xyz/tools/seoplus/en/compliance/cookies-gdpr-trackers/
-Publie le 2026-08-13
+Published on 2026-08-13
 
 The rule fits in one sentence: no non-essential tracker may be dropped before the visitor has said yes, and refusing must be as easy as accepting. Most of the sites we measure fail the first point without knowing it, because their banner appears while the scripts have already loaded. It is measurable from the outside, in a single visit, and it is the first gap an inspection finds.
 
 ## The technical SEO guide for small businesses
 
 https://www.optimizia.xyz/tools/seoplus/en/technical-seo/
-Publie le 2026-08-12
+Published on 2026-08-12
 
 Technical SEO is everything that lets Google find, read, understand and serve your pages. Before keywords, before content: if the machine is blocked, nothing else counts. This guide gathers the five projects in the order to tackle them: indexing, crawler access, speed, structured data, measurement. Each project links to its detailed guide. A small business that ticks these five boxes is already ahead of half its competitors.
 
 ## Getting visible in ChatGPT, Perplexity and AI answers: the GEO guide
 
 https://www.optimizia.xyz/tools/seoplus/en/ai-visibility/
-Publie le 2026-08-12
+Published on 2026-08-12
 
 A growing share of your customers no longer type "plumber Lyon" into Google: they ask ChatGPT or Perplexity to recommend someone. GEO (Generative Engine Optimization) means making sure the answer mentions you. Three projects, in order: let AI crawlers in, make your website readable and citable for them, then build the reputation that earns their trust. This guide connects our four detailed articles on the subject.
 
 ## Writing pages that Google and customers read
 
 https://www.optimizia.xyz/tools/seoplus/en/seo-content/
-Publie le 2026-08-12
+Published on 2026-08-12
 
 Content that pays is not a matter of inspiration: it is a method. Pick the queries your customers actually type, write a page deep enough to answer them, polish the title and meta description that earn the click, keep two pages from fighting over the same query, and refresh what slips instead of piling up new pages. This guide walks through the five steps and links to their detailed how-tos.
 
 ## Building recognition and earning Google's trust (and the AIs')
 
 https://www.optimizia.xyz/tools/seoplus/en/authority-trust/
-Publie le 2026-08-12
+Published on 2026-08-12
 
 With equal content, Google ranks whoever it trusts most, and AIs cite whoever they know. That trust is built on four fronts: the proof of expertise visible on your website (E-E-A-T), your Google Business Profile for local anchoring, internal linking that distributes strength where it matters, and time, which you should count honestly rather than endure. This guide connects our five detailed articles on the subject.
 
 ## Why ChatGPT doesn't know your brand (and how to fix it)
 
 https://www.optimizia.xyz/tools/seoplus/en/ai-visibility/chatgpt-doesnt-know-your-brand/
-Publie le 2026-07-24
+Published on 2026-07-24
 
 Ask ChatGPT to recommend a provider in your trade in your city: if you are not in the answer, the competitors it cites are picking up prospects who will never know you exist. The models build their answers from the public web: your website, directories, reviews, press mentions. Five levers to get in: a homepage that says who you are in plain words, structured data, an llms.txt, unblocked AI crawlers and consistent external mentions. The free diagnostic measures the first four in 30 seconds.
 
 ## Google Search Console: the beginner's guide (and the 3 reports that matter)
 
 https://www.optimizia.xyz/tools/seoplus/en/technical-seo/google-search-console-basics/
-Publie le 2026-07-22
+Published on 2026-07-22
 
 Google Search Console is the only place where Google tells you directly what it sees of your website: which queries you appear on, how many clicks you get, which pages it refuses to index and why. It is free, requires no code, and setup takes 10 minutes. Three reports concentrate the essentials: Performance to know what pays off, Indexing to know what is invisible, and the email alerts to know when something breaks. The ideal complement to our audit: the audit measures what to fix, Search Console measures what it earns you.
 
 ## Keyword cannibalization: when your pages fight each other
 
 https://www.optimizia.xyz/tools/seoplus/en/seo-content/keyword-cannibalization/
-Publie le 2026-07-21
+Published on 2026-07-21
 
 Keyword cannibalization happens when two pages on your website target the same query: Google hesitates between them, alternates, and neither settles at the top of the rankings. Your signals get diluted, a less relevant page can overtake the right one, and your content efforts cancel each other out. Detection takes 10 minutes in Search Console: filter on a query and check whether several URLs show up. Three fixes depending on the case: merge the pages, differentiate their intents, or redirect the weaker one to the stronger one.
 
 ## Keyword research: the simple method for small businesses
 
 https://www.optimizia.xyz/tools/seoplus/en/seo-content/keyword-research-method/
-Publie le 2026-07-17
+Published on 2026-07-17
 
 Keyword research does not require a €100-a-month subscription. You already have the raw material: the words your customers use on the phone and in their emails. The method has four steps: list your customers' real vocabulary, expand it with Google's suggestions and Search Console, choose the queries a small business can actually win (specific and local rather than generic), then assign one target query to each page, never two pages on the same query, or you invite keyword cannibalization.
 
 ## E-E-A-T: how to prove your expertise to Google (and to AI)
 
 https://www.optimizia.xyz/tools/seoplus/en/seo-content/eeat-prove-expertise/
-Publie le 2026-07-16
+Published on 2026-07-16
 
 E-E-A-T sums up the four qualities Google evaluates: first-hand Experience, Expertise, recognized Authoritativeness and Trustworthiness. It is not a technical score, it is a body of evidence: identified authors with their background, client cases with numbers, reviews, external mentions, verifiable contact details. AI engines use the same signals to decide whom to cite and whom to recommend. Three pages carry most of it: the about page, the author pages and the case studies. Window dressing (decorative badges, invented biographies) fools neither Google nor the models.
 
 ## Updating your old content: the cheapest SEO lever
 
 https://www.optimizia.xyz/tools/seoplus/en/seo-content/update-old-content/
-Publie le 2026-07-13
+Published on 2026-07-13
 
 A page published two years ago that slips from position 5 to position 12 is your best SEO investment: it already has history, links and a starting position, where a new article starts from zero. Spot the candidates in Search Console (stable impressions, declining clicks, positions 5 to 15), then update what matters: dated facts, the answer at the top of the page, the sections missing compared to today's competitors, internal linking. Change the date only if the content has genuinely changed, and keep the URL.
 
 ## SEO for a new website: the first 90 days plan
 
 https://www.optimizia.xyz/tools/seoplus/en/authority-trust/new-website-seo-90-days/
-Publie le 2026-07-10
+Published on 2026-07-10
 
 A brand-new website starts from zero: Google does not know it, does not trust it, and keeps it under observation. The first 90 days are about shortening that period. Days 1-15: technical foundations (HTTPS, speed, robots.txt, sitemap, structured data). Days 15-30: indexing via Search Console and your Google Business Profile. Days 30-60: one page per target query, starting with the pages that sell. Days 60-90: first external links and first in-depth content. At 90 days, a well-executed local website ranks on its city + trade queries.
 
 ## AI Overviews in France: what changes for your visibility
 
 https://www.optimizia.xyz/tools/seoplus/en/ai-visibility/ai-overviews-france/
-Publie le 2026-07-09
+Published on 2026-07-09
 
 AI Overviews are the answers generated by Google's AI, displayed above the classic results. They answer the searcher's question directly while citing a few sources. The consequence: fewer clicks on classic links, but a huge premium for the sites that get cited. Becoming citable is not magic: structured factual content, a clear entity, structured data and authority. It is measurable, and it is exactly what the GEO category of our free audit checks.
 
 ## Core Web Vitals: the no-jargon guide for business owners
 
 https://www.optimizia.xyz/tools/seoplus/en/technical-seo/core-web-vitals-guide/
-Publie le 2026-07-07
+Published on 2026-07-07
 
 Core Web Vitals are the three loading-experience measurements Google uses as a ranking signal: LCP (display speed, aim for under 2.5 s), INP (responsiveness, under 200 ms) and CLS (visual stability, under 0.1). On small-business websites, three causes explain most bad scores: oversized images, third-party scripts, and underpowered hosting. Our free audit measures your real CWV through Google's PageSpeed API.
 
 ## Google Business Profile: the fields that actually matter
 
 https://www.optimizia.xyz/tools/seoplus/en/local-seo/google-business-profile/
-Publie le 2026-07-03
+Published on 2026-07-03
 
 For a shop, a tradesperson or a local service business, the Google Business Profile is often the number one source of contacts, ahead of the website. Three factors decide your position in the local pack: relevance (categories and description), distance, and prominence (reviews, regularity, consistency of your information). A complete profile with regular, answered reviews almost always beats a rich but dormant one.
 
 ## Title tags and meta descriptions: writing to earn the click
 
 https://www.optimizia.xyz/tools/seoplus/en/seo-content/titles-meta-descriptions/
-Publie le 2026-07-02
+Published on 2026-07-02
 
 The title tag (30 to 60 characters) is a ranking signal read by Google: it should contain your main keyword and your brand. The meta description (120 to 160 characters) does not rank, but it decides the click: it is your free ad in the search results. The formula that works: what you do + who it is for + the proof or the differentiator. Our audit checks both tags on every page analyzed.
 
 ## Internal linking: the free technique almost nobody uses
 
 https://www.optimizia.xyz/tools/seoplus/en/technical-seo/internal-linking/
-Publie le 2026-06-30
+Published on 2026-06-30
 
 Internal linking is the set of links between the pages of your own website. It guides crawlers to your important pages, passes along their authority and shows Google which page answers which question. The method that works: one hub page per major topic, specific child pages linked to the hub and to each other, with descriptive anchor text. Free, doable in one afternoon, and yet missing from most of the websites we audit.
 
 ## The 600-word bar: why your thin pages never rank
 
 https://www.optimizia.xyz/tools/seoplus/en/seo-content/content-600-words/
-Publie le 2026-06-26
+Published on 2026-06-26
 
 On most of the small-business websites we audit, service pages run 100 to 300 words: one intro paragraph, three bullets, a contact button. The result: nothing for Google to rank, nothing for AI engines to cite. The pragmatic bar: aim for 600 words and up on every page that is supposed to bring in customers, answering the real questions (what, for whom, how, how much, why you). The material already exists: it is what you answer on the phone all day long.
 
 ## GEO: How to Get Cited by ChatGPT, Perplexity and Google AI Overviews
 
 https://www.optimizia.xyz/tools/seoplus/en/ai-visibility/geo-get-cited/
-Publie le 2026-06-24
+Published on 2026-06-24
 
 GEO (Generative Engine Optimization) means making your website readable, understandable, citable and credible for the AI systems that now answer instead of showing a results page. These 4 conditions are sequential: if the first one is not met, the others are useless. Most of them can be checked and fixed in a few hours.
 
 ## Why Your Website Doesn't Appear on Google: The 7 Measurable Causes
 
 https://www.optimizia.xyz/tools/seoplus/en/authority-trust/website-invisible-on-google/
-Publie le 2026-06-23
+Published on 2026-06-23
 
 A website invisible on Google almost always has a measurable cause: it is not indexed, it blocks crawlers without knowing it, or it does not give Google enough material to rank. The 7 causes below cover nearly every case we see in audits. Each one can be checked in a few minutes, and most can be fixed without a budget.
 
 ## What does a useful SEO audit look like? What it should contain, what should alert you
 
 https://www.optimizia.xyz/tools/seoplus/en/authority-trust/seo-audit-example/
-Publie le 2026-06-19
+Published on 2026-06-19
 
 A useful SEO audit contains 4 things: measured facts (not impressions), a precise fix for every finding, clear prioritization, and a deliverable you can act on without being an expert. A report that gives you a grade without showing where it comes from, or 80 pages of screenshots with no action plan, is a sales document, not an audit.
 
 ## Structured Data: The Schemas That Actually Matter for Google and AI
 
 https://www.optimizia.xyz/tools/seoplus/en/technical-seo/structured-data-json-ld/
-Publie le 2026-06-17
+Published on 2026-06-17
 
 Structured data is a few lines of JSON-LD code placed in your pages that tell machines who you are, what you sell and where. For a small business, 5 types cover the essentials: Organization (or LocalBusiness), WebSite, FAQPage, Article and Person. One hour of work, a double effect: Google enriches your results, and AI stops confusing you with someone else.
 
 ## llms.txt: The Complete Guide for Small Businesses
 
 https://www.optimizia.xyz/tools/seoplus/en/ai-visibility/llms-txt-guide/
-Publie le 2026-06-16
+Published on 2026-06-16
 
 llms.txt is a text file placed at the root of your website (yoursite.com/llms.txt) that summarizes your business, your offers and your key pages for AI systems. It reduces errors when ChatGPT, Claude or Perplexity talk about you, and increases your chances of being cited correctly. It takes 15 minutes to write, or 2 with our free generator.
 
 ## GPTBot, ClaudeBot, PerplexityBot: Should You Block or Welcome AI Crawlers?
 
 https://www.optimizia.xyz/tools/seoplus/en/ai-visibility/ai-crawlers-robots-txt/
-Publie le 2026-06-12
+Published on 2026-06-12
 
 For a small business that wants customers, blocking AI crawlers means making yourself invisible in the answers of ChatGPT, Perplexity and Google AI Overviews. Except in special cases (paid content, sensitive data), the right call is to explicitly allow them in your robots.txt. Many websites block them without knowing it.
 
 ## How long does SEO take to show results? The honest timeline
 
 https://www.optimizia.xyz/tools/seoplus/en/authority-trust/how-long-does-seo-take/
-Publie le 2026-06-09
+Published on 2026-06-09
 
 Three clocks run in parallel. Technical fixes take effect in a few days to a few weeks. Content settles in over 2 to 3 months. Authority (links, mentions, reputation) builds over 6 to 12 months. Anyone promising page one in 2 weeks is lying; anyone claiming you need "at least a year" to see any effect at all is exaggerating in the other direction.

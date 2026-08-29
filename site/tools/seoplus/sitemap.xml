@@ -2,154 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.optimizia.xyz/tools/seoplus/</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.optimizia.xyz/tools/seoplus/generateur-llms-txt.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.optimizia.xyz/tools/seoplus/methodologie.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.optimizia.xyz/tools/seoplus/a-propos.html</loc>
-    <lastmod>2026-08-17</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.optimizia.xyz/tools/seoplus/classement.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/blog/</loc>
-    <lastmod>2026-08-11</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/seo-technique/</loc>
-    <lastmod>2026-08-12</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/visibilite-ia/</loc>
-    <lastmod>2026-08-12</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/contenu-seo/</loc>
-    <lastmod>2026-08-12</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/autorite-confiance/</loc>
-    <lastmod>2026-08-12</lastmod>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/visibilite-ia/chatgpt-connait-pas-votre-marque/</loc>
-    <lastmod>2026-07-24</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/seo-technique/google-search-console-debuter/</loc>
-    <lastmod>2026-07-22</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/contenu-seo/cannibalisation-mots-cles/</loc>
-    <lastmod>2026-08-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/contenu-seo/recherche-mots-cles-methode/</loc>
-    <lastmod>2026-07-17</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/contenu-seo/eeat-prouver-expertise/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/contenu-seo/mettre-a-jour-ancien-contenu/</loc>
-    <lastmod>2026-07-13</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/autorite-confiance/seo-nouveau-site-90-jours/</loc>
-    <lastmod>2026-07-10</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/visibilite-ia/ai-overviews-france/</loc>
-    <lastmod>2026-07-09</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/seo-technique/core-web-vitals-guide/</loc>
-    <lastmod>2026-08-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/referencement-local/fiche-google-business-profile/</loc>
-    <lastmod>2026-07-03</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/contenu-seo/titles-meta-descriptions/</loc>
-    <lastmod>2026-08-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/seo-technique/maillage-interne/</loc>
-    <lastmod>2026-06-30</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/contenu-seo/contenu-600-mots/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/visibilite-ia/geo-etre-cite/</loc>
-    <lastmod>2026-08-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/visibilite-ia/llms-txt-guide/</loc>
-    <lastmod>2026-08-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/visibilite-ia/crawlers-ia-robots-txt/</loc>
-    <lastmod>2026-06-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/autorite-confiance/pourquoi-site-invisible-google/</loc>
-    <lastmod>2026-06-23</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/seo-technique/donnees-structurees-json-ld/</loc>
-    <lastmod>2026-08-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/autorite-confiance/audit-seo-exemple/</loc>
-    <lastmod>2026-08-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/autorite-confiance/combien-temps-seo/</loc>
-    <lastmod>2026-08-11</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.optimizia.xyz/tools/seoplus/en/blog/</loc>
@@ -176,7 +50,6 @@
     <lastmod>2026-08-12</lastmod>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://www.optimizia.xyz/tools/seoplus/en/ai-visibility/geo-get-cited/</loc>
     <lastmod>2026-08-11</lastmod>
@@ -278,36 +151,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/securite/</loc>
-    <lastmod>2026-08-13</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/securite/spf-dkim-dmarc/</loc>
-    <lastmod>2026-08-13</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/securite/entetes-securite-http/</loc>
-    <lastmod>2026-08-13</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/referencement-local/</loc>
-    <lastmod>2026-08-13</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/conformite/accessibilite-web/</loc>
-    <lastmod>2026-08-13</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/conformite/cookies-rgpd-traceurs/</loc>
-    <lastmod>2026-08-13</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://www.optimizia.xyz/tools/seoplus/en/website-security/</loc>
     <lastmod>2026-08-13</lastmod>
     <priority>0.8</priority>
@@ -336,38 +179,6 @@
     <loc>https://www.optimizia.xyz/tools/seoplus/en/compliance/cookies-gdpr-trackers/</loc>
     <lastmod>2026-08-13</lastmod>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/securite/certificat-ssl-explique/</loc>
-    <lastmod>2026-08-15</lastmod>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/securite/site-pirate-que-faire/</loc>
-    <lastmod>2026-08-15</lastmod>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/securite/fichiers-a-ne-jamais-exposer/</loc>
-    <lastmod>2026-08-15</lastmod>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/referencement-local/avis-clients-obtenir/</loc>
-    <lastmod>2026-08-15</lastmod>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/referencement-local/pages-de-zone/</loc>
-    <lastmod>2026-08-15</lastmod>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/referencement-local/coherence-coordonnees-nap/</loc>
-    <lastmod>2026-08-15</lastmod>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/conformite/mentions-legales-obligatoires/</loc>
-    <lastmod>2026-08-15</lastmod>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/conformite/politique-confidentialite-modele/</loc>
-    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://www.optimizia.xyz/tools/seoplus/en/website-security/ssl-certificate-explained/</loc>
@@ -400,10 +211,6 @@
   <url>
     <loc>https://www.optimizia.xyz/tools/seoplus/en/compliance/privacy-policy-template/</loc>
     <lastmod>2026-08-15</lastmod>
-  </url>
-  <url>
-    <loc>https://www.optimizia.xyz/tools/seoplus/conformite/</loc>
-    <lastmod>2026-08-16</lastmod>
   </url>
   <url>
     <loc>https://www.optimizia.xyz/tools/seoplus/en/compliance/</loc>
