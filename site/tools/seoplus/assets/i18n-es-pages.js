@@ -570,4 +570,15 @@
       "titleCompte": "Tu cuenta | SEOPlus!"
   };
   Object.keys(_U).forEach(function (k) { U[k] = _U[k]; });
+
+  /* Titre de l onglet, pose par applyI18nStatic selon data-page. */
+  var T = D.titles || (D.titles = {});
+  var _T = {
+      "home": "SEOPlus! | Auditoría SEO y GEO de tu sitio en 30 segundos",
+      "classement": "Clasificación pública | SEOPlus!",
+      "methodologie": "Nuestro método de auditoría | SEOPlus!",
+      "llms": "Generador gratuito de llms.txt | SEOPlus!",
+      "a-propos": "Quiénes somos: quién está detrás de SEOPlus! | SEOPlus!"
+  };
+  Object.keys(_T).forEach(function (k) { T[k] = _T[k]; });
 })();

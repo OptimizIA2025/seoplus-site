@@ -166,7 +166,7 @@
       dictAuditLang = LANG;
       dictAudit = new Promise(function (res) {
         var s = document.createElement("script");
-        s.src = BASE + "/assets/i18n-" + LANG + "-audit.js?v=20260908";
+        s.src = BASE + "/assets/i18n-" + LANG + "-audit.js?v=20260909";
         s.onload = s.onerror = function () { res(); };
         document.head.appendChild(s);
       }).then(function () { dictAudit = true; });
@@ -3773,11 +3773,17 @@
     getUser(function (user) {
       if (!user) {
         if (!sbConfigure() || !gate) { window.location.href = BASE + "/"; return; }
-        gate.innerHTML = authCardHtml(
-          tEN("Retrieve your reports.", "Retrouvez vos rapports."),
-          tEN("Sign in to access your audit history and reopen any report at any time.", "Connectez-vous pour accéder à votre historique d'audits et rouvrir chaque rapport à tout moment."));
-        bindAuthCard(gate);
-        gate.hidden = false;
+        /* Meme regle que la carte des temoignages : ses libelles sont poses au
+           montage, elle doit donc etre repeinte au changement de langue. */
+        function peindreGate() {
+          gate.innerHTML = authCardHtml(
+            tEN("Retrieve your reports.", "Retrouvez vos rapports."),
+            tEN("Sign in to access your audit history and reopen any report at any time.", "Connectez-vous pour accéder à votre historique d'audits et rouvrir chaque rapport à tout moment."));
+          bindAuthCard(gate);
+          gate.hidden = false;
+        }
+        peindreGate();
+        aRedessiner("compte", peindreGate);
         return;
       }
       main.hidden = false;

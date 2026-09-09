@@ -304,4 +304,15 @@
       "© 2026 SEOPlus! by OptimizIA.xyz": "© 2026 SEOPlus! par OptimizIA.xyz"
   };
   Object.keys(_P).forEach(function (k) { P[k] = _P[k]; });
+
+  /* Titre de l onglet, pose par applyI18nStatic selon data-page. */
+  var T = D.titles || (D.titles = {});
+  var _T = {
+      "home": "SEOPlus! | Audit SEO et GEO de votre site en 30 secondes",
+      "classement": "Classement public | SEOPlus!",
+      "methodologie": "Notre méthode d'audit | SEOPlus!",
+      "llms": "Générateur llms.txt gratuit | SEOPlus!",
+      "a-propos": "À propos : qui est derrière SEOPlus! | SEOPlus!"
+  };
+  Object.keys(_T).forEach(function (k) { T[k] = _T[k]; });
 })();

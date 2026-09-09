@@ -634,3 +634,44 @@ window.SEOPLUS_EN = {
      que le complement n'est pas arrive : ils rendent alors le francais. */
   checks: {}, descs: {}, cats: {}, fixes: {}, rules: []
 };
+
+/* ---- Complement 09/09 : chaines du tunnel jamais couvertes ---- */
+/* Ecrans de chargement, pied de page et quelques libelles n avaient ni
+   attribut data-i18n ni entree ici : ils sortaient en francais dans la
+   version anglaise depuis le debut. */
+(function () {
+  var P = window.SEOPLUS_EN.pages;
+  var AJOUT = {
+        "161 vérifications": "161 checks",
+        "Audit complet": "Full audit",
+        "Le rapport de votre-site.fr est prêt.": "The report for <em id=\"pay-host\">your-website.com</em> is ready.",
+        "161 vérifications détaillées, plan d'action priorisé, fichiers prêts à poser et 3 comparaisons concurrents avec verdict IA. Paiement unique, accès immédiat.": "161 detailed checks, a prioritized action plan, ready-to-deploy files and 3 competitor comparisons with an AI verdict. One-off payment, immediate access.",
+        "Débloquer mon audit complet, 9,90 €": "Unlock my full audit, €9.90",
+        "Paiement sécurisé par Stripe. Vous revenez ici automatiquement après le paiement.": "Secure payment through Stripe. You come back here automatically once it is done.",
+        "Analyse impossible.": "Analysis impossible.",
+        "On n'a pas réussi à joindre ce site. Vérifiez l'URL et réessayez.": "We could not reach this site. Check the URL and try again.",
+        "Réessayer": "Try again",
+      "Audit complet en cours": "Full audit in progress",
+      "On passe votre site au crible.": "We are putting <em id=\"loading-host\">your website</em> under the microscope.",
+      "Chaque vérification, sa mesure exacte et son correctif. Quelques secondes.": "Every check, its exact measurement and its fix. A few seconds.",
+      "Résolution DNS et géolocalisation du serveur": "DNS resolution and server geolocation",
+      "Crawl de la page d'accueil et des pages clés": "Crawl of the homepage and key pages",
+      "En-têtes HTTP, TLS et sécurité": "HTTP headers, TLS and security",
+      "Performance et Core Web Vitals": "Performance and Core Web Vitals",
+      "Robots.txt, sitemap, llms.txt et crawlers IA": "robots.txt, sitemap, llms.txt and AI crawlers",
+      "Rédaction du verdict et du plan d'action": "Writing the verdict and the action plan",
+      "Page d'accueil, pages clés + signaux du domaine": "Homepage + key pages + domain signals",
+      "Points d'amélioration": "Improvement points",
+      "On analyse le concurrent avec les mêmes 161 vérifications que votre site.": "We analyse <em id=\"bench-loading-host\">the competitor</em> with the same 161 checks as your site.",
+      "Connexion au site et géolocalisation du serveur": "Connecting to the site and geolocating the server",
+      "Performance et Core Web Vitals mesurés par Google": "Performance and Core Web Vitals measured by Google",
+      "Mise en regard des deux scores, catégorie par catégorie": "Both scores placed side by side, category by category",
+      "Un avis, un bug, une critique ? On est preneur de tout : admin@optimizia.xyz": "An opinion, a bug, a criticism? We will take anything: ",
+      "Auditer un autre site.": "<a href=\"/tools/seoplus/\">Audit another site.</a>",
+      "© 2026 SEOPlus! V6.0 par OptimizIA.xyz": "© 2026 SEOPlus! V6.0 by OptimizIA.xyz",
+      "Retour à l'accueil": "<a href=\"/tools/seoplus/\">Back to the homepage</a>",
+      "Guides SEO": "SEO guides",
+      "Guides GEO": "GEO guides"
+  };
+  Object.keys(AJOUT).forEach(function (k) { P[k] = AJOUT[k]; });
+})();
