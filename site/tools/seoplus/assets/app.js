@@ -29,11 +29,27 @@
      Le moteur emet le payload en francais ; la traduction se fait au rendu via
      le dictionnaire assets/i18n-en.js. Cle absente = repli silencieux sur le FR. */
 
+  /* Le francais est la SOURCE, les autres langues sont des dictionnaires.
+     La liste se calcule sur ce qui est REELLEMENT charge : le fichier de
+     dictionnaire d'une langue est declare avant app.js dans la page, donc sa
+     presence se lit ici. Une langue sans dictionnaire n'est ni proposee au
+     selecteur ni retenue depuis le navigateur, sinon elle ferait retomber le
+     visiteur sur le francais alors que l'anglais lui parle davantage. */
+  /* La langue dans laquelle la page est ECRITE. Francais par defaut : c'est
+     le cas du tunnel d'audit, dont le moteur n8n emet le payload en francais.
+     Les pages publiques, anglaises depuis le 29/08, portent data-source="en". */
+  var SOURCE = document.body.dataset.source || "fr";
+  /* Une langue est proposee si elle est la source, ou si son dictionnaire est
+     charge. Sans ce filtre, un navigateur espagnol serait tombe sur la langue
+     source faute de dictionnaire, alors que l'anglais lui parle davantage. */
+  var LANGUES = [SOURCE].concat(["fr", "en", "es", "de"].filter(function (l) {
+    return l !== SOURCE && !!window["SEOPLUS_" + l.toUpperCase()];
+  }));
   var LANG = (function () {
     /* Pages statiques traduites en fichiers séparés (blog EN, légal EN) :
        la langue est celle du fichier, pas celle de la préférence stockée. */
     var forced = document.body.getAttribute("data-lang");
-    if (forced === "fr" || forced === "en") return forced;
+    if (LANGUES.indexOf(forced) !== -1) return forced;
 
     /* ?lang= porte la langue d'une page a l'autre. Sans lui, un lecteur anglais
        venu d'un article EN et dont le navigateur est en francais retombait en
@@ -41,30 +57,64 @@
        n'ont pas d'URL anglaise dediee, elles se traduisent au rendu. Les liens
        des pages EN portent donc ?lang=en. La preference est memorisee pour que
        la suite de la visite reste dans la meme langue. */
-    var q = (location.search.match(/[?&]lang=(fr|en)\b/) || [])[1];
+    var q = (location.search.match(/[?&]lang=(fr|en|es|de)\b/) || [])[1];
     if (q) {
       try { localStorage.setItem("seoplus_lang", q); } catch (e) {}
       return q;
     }
     try {
       var s = localStorage.getItem("seoplus_lang");
-      if (s === "fr" || s === "en") return s;
+      if (LANGUES.indexOf(s) !== -1) return s;
     } catch (e) {}
-    var n = (navigator.language || "fr").toLowerCase();
-    return n.indexOf("fr") === 0 ? "fr" : "en";
+    var n = (navigator.language || "fr").toLowerCase().slice(0, 2);
+    return LANGUES.indexOf(n) !== -1 ? n : SOURCE;
   })();
-  var ENDICT = window.SEOPLUS_EN || null;
-  var isEN = LANG === "en" && !!ENDICT;
+  /* Un dictionnaire par langue traduite. Le francais est la SOURCE : le moteur
+     n8n emet en francais et les chaines de ce fichier sont francaises, il n'a
+     donc pas de table. Sens inverse du site agence, ou la cle est l'anglais. */
+  function dicoDe(l) { return l === SOURCE ? null : (window["SEOPLUS_" + l.toUpperCase()] || null); }
+  /* Table de reference de la langue SOURCE. Les litteraux de repli ecrits dans
+     ce fichier sont francais : quand la page est ecrite dans une autre langue,
+     tUI n'a rien de juste a rendre sans elle. */
+  var DICO_SOURCE = SOURCE === "fr" ? null : (window["SEOPLUS_" + SOURCE.toUpperCase()] || null);
+  var ENDICT = dicoDe(LANG);
+  /* isEN ne dit pas « anglais » mais « il faut traduire ». Le nom est garde :
+     le renommer toucherait 121 lignes pour un resultat identique a l'ecran. */
+  var isEN = LANG !== SOURCE && !!ENDICT;
+
+  /* Repli en cascade sur l'anglais : une cle absente d'un dictionnaire jeune
+     rend l'anglais plutot que le francais, plus proche pour un hispanophone ou
+     un germanophone que la langue source. */
+  function tEN(en, fr) {
+    /* La paire litterale est toujours anglais/francais, quelle que soit la
+       source de la page : ces ternaires vivent dans le rendu du tunnel. */
+    if (LANG === "fr") return fr;
+    if (LANG === "en" || !ENDICT || !ENDICT.inline) return en;
+    var v = ENDICT.inline[en];
+    return v === undefined ? en : v;
+  }
+  var LOCALES = { fr: "fr-FR", en: "en-GB", es: "es-ES", de: "de-DE" };
+  function LOCALE() { return LOCALES[LANG] || "en-GB"; }
   /* Le site est ecrit en anglais depuis le 29/08 : accueil, classement,
      methode, generateur et a-propos n'ont plus rien a traduire, leur source
      EST l'anglais. Ne restent traduisibles que les ecrans du tunnel d'audit,
      dont le moteur emet le payload en francais et qui sont le livrable du
      client : un dirigeant francais garde son rapport dans sa langue. Les pages
      legales restent en francais, seule version qui fait foi. */
-  var I18N_PAGES = ["roast", "bilan", "rapport", "compte"];
+  /* Pages traduites AU RENDU. Les quatre premieres sont le tunnel d'audit,
+     de source francaise. Les cinq suivantes sont les pages publiques, de
+     source anglaise depuis le 29/08 : elles n'avaient jusqu'ici aucune couche
+     i18n ni selecteur, leur rel="alternate" etant un flux RSS et non un
+     hreflang. Les noms viennent de data-page, restes francais. */
+  var I18N_PAGES = ["roast", "bilan", "rapport", "compte",
+                    "home", "methodologie", "classement", "llms", "legal"];
 
   function tUI(key, fr) {
-    if (isEN && ENDICT.ui[key] != null) return ENDICT.ui[key];
+    if (isEN && ENDICT.ui && ENDICT.ui[key] != null) return ENDICT.ui[key];
+    /* Le litteral de repli est ecrit en francais : il ne convient donc qu au
+       francais. Pour toute autre langue sans entree, la langue de la page vaut
+       mieux qu un mot francais glisse au milieu. */
+    if (LANG !== "fr" && DICO_SOURCE && DICO_SOURCE.ui && DICO_SOURCE.ui[key] != null) return DICO_SOURCE.ui[key];
     return fr;
   }
   function tFmt(key, fr, vars) {
@@ -105,12 +155,18 @@
      ce dictionnaire existe. Mieux vaut ca qu'une page qui ne s'affiche pas. */
   var dictAudit = null;
   function dictAuditPret() { return !isEN || dictAudit === true; }
+  /* Le complement suit la langue : changer de langue invalide celui qui est
+     charge, sinon un rapport bascule en espagnol garderait les constats de la
+     langue precedente. */
+  var dictAuditLang = null;
   function chargerDictAudit(cb) {
+    if (dictAuditLang !== null && dictAuditLang !== LANG) { dictAudit = null; dictAuditLang = null; }
     if (dictAuditPret()) { if (cb) cb(); return; }
     if (!dictAudit) {
+      dictAuditLang = LANG;
       dictAudit = new Promise(function (res) {
         var s = document.createElement("script");
-        s.src = BASE + "/assets/i18n-en-audit.js?v=20260821c";
+        s.src = BASE + "/assets/i18n-" + LANG + "-audit.js?v=20260908";
         s.onload = s.onerror = function () { res(); };
         document.head.appendChild(s);
       }).then(function () { dictAudit = true; });
@@ -138,22 +194,20 @@
   }
 
   function texteNonApplicable() {
-    return isEN
-      ? "This category applies only to establishments and local service businesses. We found no sign of one on your site: no business markup, no opening hours, no map, and not two of the physical signals we require. It is therefore not counted in your score, and nothing here is held against you."
-      : "Cette catégorie ne concerne que les établissements et les services de proximité. Nous n'en avons trouvé aucun signe sur votre site : ni balisage d'établissement, ni horaires, ni carte, ni deux des signaux physiques que nous exigeons. Elle n'entre donc pas dans votre score, et rien ici ne vous est reproché.";
+    return tEN("This category applies only to establishments and local service businesses. We found no sign of one on your site: no business markup, no opening hours, no map, and not two of the physical signals we require. It is therefore not counted in your score, and nothing here is held against you.", "Cette catégorie ne concerne que les établissements et les services de proximité. Nous n'en avons trouvé aucun signe sur votre site : ni balisage d'établissement, ni horaires, ni carte, ni deux des signaux physiques que nous exigeons. Elle n'entre donc pas dans votre score, et rien ici ne vous est reproché.");
   }
 
   function titreNonApplicable() {
-    return isEN ? "Not applicable" : "Non applicable";
+    return tEN("Not applicable", "Non applicable");
   }
 
-  function trCheck(label) { return (isEN && ENDICT.checks[label]) || label; }
-  function trCat(label) { return (isEN && ENDICT.cats[label]) || label; }
+  function trCheck(label) { return (isEN && ENDICT.checks && ENDICT.checks[label]) || label; }
+  function trCat(label) { return (isEN && ENDICT.cats && ENDICT.cats[label]) || label; }
   function trVal(v) {
     if (!isEN || !v) return v;
     v = String(v);
-    if (ENDICT.fixes[v]) return ENDICT.fixes[v];
-    for (var i = 0; i < ENDICT.rules.length; i++) v = v.replace(ENDICT.rules[i][0], ENDICT.rules[i][1]);
+    if (ENDICT.fixes && ENDICT.fixes[v]) return ENDICT.fixes[v];
+    if (ENDICT.rules) for (var i = 0; i < ENDICT.rules.length; i++) v = v.replace(ENDICT.rules[i][0], ENDICT.rules[i][1]);
     return v;
   }
   var trFix = trVal;
@@ -164,7 +218,7 @@
   function fmtAnalyzedAt(iso) {
     var d = iso ? new Date(iso) : null;
     if (!d || isNaN(d.getTime())) return "";
-    return d.toLocaleString(isEN ? "en-GB" : "fr-FR", {
+    return d.toLocaleString(LOCALE(), {
       day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
     });
   }
@@ -478,25 +532,29 @@
   /* Chaque ecran depose ici de quoi se redessiner : le contenu du bilan, du
      rapport ou du classement est construit en JS, il ne suffit pas de traduire
      le HTML deja pose. */
-  var REDESSINER = null;
+  var REDESSINER = {};
+  function aRedessiner(nom, fn) { REDESSINER[nom] = fn; }
 
   function applyI18nStatic(vers) {
     if (I18N_PAGES.indexOf(page) === -1) return;
-    var en = vers === "en" && !!ENDICT;
-    document.documentElement.lang = en ? "en" : "fr";
+    var en = vers !== SOURCE && !!ENDICT;
+    /* Table absente : on retombe sur la valeur memorisee, comme pour une cle
+       manquante. Les pages publiques n'ont pas d'interface d'audit a traduire. */
+    var H = (en && ENDICT.html) || null;
+    document.documentElement.lang = vers;
     $$("[data-i18n]").forEach(function (el) {
       var fr = memoriser(el, "text", el.textContent);
-      var v = en ? ENDICT.html[el.dataset.i18n] : null;
+      var v = H ? H[el.dataset.i18n] : null;
       el.textContent = v != null ? v : fr;
     });
     $$("[data-i18n-html]").forEach(function (el) {
       var fr = memoriser(el, "html", el.innerHTML);
-      var v = en ? ENDICT.html[el.dataset.i18nHtml] : null;
+      var v = H ? H[el.dataset.i18nHtml] : null;
       el.innerHTML = v != null ? v : fr;
     });
     $$("[data-i18n-ph]").forEach(function (el) {
       var fr = memoriser(el, "ph", el.placeholder);
-      var v = en ? ENDICT.html[el.dataset.i18nPh] : null;
+      var v = H ? H[el.dataset.i18nPh] : null;
       el.placeholder = v != null ? v : fr;
     });
     /* Capture paresseuse : le titre est retenu au moment de passer en anglais,
@@ -506,16 +564,20 @@
     if (!en) { if (TITRE_FR !== null) document.title = TITRE_FR; return; }
     if (TITRE_FR === null) TITRE_FR = document.title;
     var tKey = { rapport: "titleRapport", roast: "titleRoast", compte: "titleCompte" }[page];
-    if (tKey && ENDICT.ui[tKey]) document.title = ENDICT.ui[tKey];
+    if (tKey && ENDICT.ui && ENDICT.ui[tKey]) document.title = ENDICT.ui[tKey];
     if (ENDICT.titles && ENDICT.titles[page]) document.title = ENDICT.titles[page];
   }
 
   /* Pages statiques (home, classement, methodologie, generateur) : traduction par
      correspondance exacte du texte des elements, sans toucher au HTML source. */
   function applyPageMap(vers) {
-    if (!ENDICT || !ENDICT.pages || I18N_PAGES.indexOf(page) === -1) return;
-    var en = vers === "en";
-    var map = ENDICT.pages;
+    if (I18N_PAGES.indexOf(page) === -1) return;
+    var en = vers !== SOURCE;
+    var map = (ENDICT && ENDICT.pages) || null;
+    /* Retour a la langue source : elle n'a pas de table, mais il faut quand
+       meme rendre a chaque element son HTML d'origine. Exiger un dictionnaire
+       ici laissait la page figee dans la langue precedente. */
+    if (en && !map) return;
     var sel = "main h1, main h2, main h3, main p, main li, main span, main a, main b, main small, main summary, main label, main cite, main button, main div, main dt, main dd, header .nav-links a, footer a, footer p, footer b, footer span";
     $$(sel).forEach(function (el) {
       /* La cle est le texte FRANCAIS. Une fois l'element traduit, son texte
@@ -523,6 +585,7 @@
          retient donc la cle et le HTML d'origine des le premier passage. */
       var cle = origine(el, "cle");
       if (cle == null) {
+        if (!map) return;
         var k = (el.textContent || "").replace(/\s+/g, " ").trim();
         if (map[k] == null) return;
         memoriser(el, "cle", k);
@@ -544,6 +607,7 @@
     $$("input[placeholder], textarea[placeholder]").forEach(function (el) {
       var cle = origine(el, "phCle");
       if (cle == null) {
+        if (!map) return;
         if (map[el.placeholder] == null) return;
         cle = memoriser(el, "phCle", el.placeholder);
       }
@@ -567,19 +631,59 @@
        de flotter seule a droite de la barre. */
     var nav = $(".nav-links") || $(".nav-inner");
     if (!nav) return;
+
+    /* Page traduite au rendu : les quatre langues d'un coup. Un menu deroulant
+       pour quatre codes de deux lettres couterait un clic de plus pour cacher
+       ce qui tient deja sur une ligne. */
+    if (!altLink) {
+      var grp = document.createElement("div");
+      grp.className = "lang-pills";
+      grp.setAttribute("role", "group");
+      grp.setAttribute("aria-label", "Langue");
+      var NOMS = { fr: "Français", en: "English", es: "Español", de: "Deutsch" };
+      var boutons = {};
+      LANGUES.forEach(function (l) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "lang-pill";
+        /* Le libelle visible est le code, le nom complet reste lu par les
+           lecteurs d'ecran : « ES » seul ne dit rien a la voix. */
+        b.textContent = l.toUpperCase();
+        b.setAttribute("aria-label", NOMS[l]);
+        b.addEventListener("click", function () {
+          if (l === LANG) return;
+          try { localStorage.setItem("seoplus_lang", l); } catch (e) {}
+          basculerLangue(l);
+          marquer();
+        });
+        boutons[l] = b;
+        grp.appendChild(b);
+      });
+      function marquer() {
+        LANGUES.forEach(function (l) {
+          var on = l === LANG;
+          boutons[l].classList.toggle("lang-pill--on", on);
+          boutons[l].setAttribute("aria-pressed", on ? "true" : "false");
+        });
+      }
+      marquer();
+      nav.appendChild(grp);
+      return;
+    }
+
     var btn = document.createElement("button");
     btn.type = "button";
     btn.className = "lang-pill";
     function habiller() {
       /* Sur une page a jumeau, la pilule decrit le FICHIER courant, pas la
          preference stockee : un article FR affiche EN meme si pref=en. */
-      var l = altLink ? cur : LANG;
+      var l = cur;
       btn.textContent = l === "en" ? "FR" : "EN";
       btn.setAttribute("aria-label", l === "en" ? "Passer en français" : "Switch to English");
     }
     habiller();
     btn.addEventListener("click", function () {
-      var vers = (altLink ? cur : LANG) === "en" ? "fr" : "en";
+      var vers = cur === "en" ? "fr" : "en";
       try { localStorage.setItem("seoplus_lang", vers); } catch (e) {}
       /* Article de blog : sa traduction est un autre fichier, on y va.
          Chemin absolu, pas basename : depuis la migration en silos du 16/08,
@@ -587,9 +691,7 @@
          rechargeait la meme page, panne signalee par RBE). Le pathname du
          hreflang marche en prod comme sur le serveur local, tous deux servis
          a la racine. */
-      if (altLink) { location.href = new URL(altLink.href).pathname; return; }
-      basculerLangue(vers);
-      habiller();
+      location.href = new URL(altLink.href).pathname;
     });
     nav.appendChild(btn);
   }
@@ -598,12 +700,15 @@
      la page est conservee : c'est le meme document, seuls ses textes changent. */
   function basculerLangue(vers) {
     LANG = vers;
-    isEN = vers === "en" && !!ENDICT;
+    ENDICT = dicoDe(vers);
+    isEN = vers !== SOURCE && !!ENDICT;
     applyI18nStatic(vers);
     applyPageMap(vers);
     /* Le contenu construit en JS (bilan, rapport, classement) n'est pas dans le
        HTML : le traduire suppose de le redessiner a partir de ses donnees. */
-    if (typeof REDESSINER === "function") { try { REDESSINER(); } catch (e) {} }
+    Object.keys(REDESSINER).forEach(function (nom) {
+      try { REDESSINER[nom](); } catch (e) {}
+    });
     /* Plus aucune reecriture de liens : depuis le 29/08 les URLs ne portent
        plus la langue (ni ?lang=, ni /en/ commutable). La preference vit dans
        localStorage et chaque page du tunnel la relit au chargement. */
@@ -943,7 +1048,7 @@
           updated_at: new Date().toISOString()
         }).then(function () {}, function () {});
         try { localStorage.setItem("seoplus_company_done", "1"); } catch (e) {}
-        card.innerHTML = '<div class="company-text"><b>' + (isEN ? "Thanks!" : "Merci !") + "</b><p>" + tUI("companyDone", "C'est noté.") + "</p></div>";
+        card.innerHTML = '<div class="company-text"><b>' + (tEN("Thanks!", "Merci !")) + "</b><p>" + tUI("companyDone", "C'est noté.") + "</p></div>";
         setTimeout(function () { card.remove(); }, 2200);
       });
     }, function () {});
@@ -1060,7 +1165,7 @@
 
   /* Lignes du classement public (partage entre la home et leaderboard.html) */
   function rankRowsHtml(sites) {
-    var html = '<div class="rank-row rank-row--head"><span>' + (isEN ? "Rank" : "Rang") + "</span><span>Site</span><span>Score</span></div>";
+    var html = '<div class="rank-row rank-row--head"><span>' + (tEN("Rank", "Rang")) + "</span><span>Site</span><span>Score</span></div>";
     sites.forEach(function (s) {
       var score = Math.max(0, Math.min(100, Math.round(Number(s.score) || 0)));
       var cls = score >= 70 ? "good" : score >= 50 ? "warn" : "bad";
@@ -1105,7 +1210,7 @@
   /* Rend le classement complet : podium Elite au-dessus, tableau pour le reste.
      Un site n'apparait jamais dans les deux, sinon le total affiche est faux. */
   function renderRanking(sites, eliteEl, tableEl, headEl) {
-    REDESSINER = function () { renderRanking(sites, eliteEl, tableEl, headEl); };
+    aRedessiner("classement", function () { renderRanking(sites, eliteEl, tableEl, headEl); });
     var elite = sites.filter(function (s) { return Number(s.score) >= ELITE_MIN; });
     var rest = sites.filter(function (s) { return Number(s.score) < ELITE_MIN; });
 
@@ -1307,7 +1412,7 @@
     /* Le bilan est entierement construit en JS : sans ce rappel, une bascule de
        langue traduirait l'habillage de la page et laisserait le rapport en
        francais au milieu. */
-    REDESSINER = function () { renderRoast(data); };
+    aRedessiner("roast", function () { renderRoast(data); });
     /* Rien ne s'affiche avant que la traduction des constats soit la, sinon le
        rapport sortirait a moitie en francais le temps du telechargement. */
     if (!dictAuditPret()) { chargerDictAudit(function () { renderRoast(data); }); return; }
@@ -1331,9 +1436,7 @@
     if (trajNow) trajNow.textContent = score;
     if (trajGoal) trajGoal.textContent = cible;
     if (trajLabel) {
-      trajLabel.textContent = isEN
-        ? (cible - score) + " points within reach in 4 weeks"
-        : (cible - score) + " points à gagner en 4 semaines";
+      trajLabel.textContent = tEN((cible - score) + " points within reach in 4 weeks", (cible - score) + " points à gagner en 4 semaines");
     }
 
     /* Compteurs : on ne compte plus des fautes, on compte des points d'appui,
@@ -1351,9 +1454,7 @@
     if (jump) {
       jump.hidden = !aTraiter;
       if (aTraiter && jumpTxt) {
-        jumpTxt.textContent = isEN
-          ? "See the " + aTraiter + " errors and warnings found"
-          : "Voir les " + aTraiter + " erreurs et avertissements relevés";
+        jumpTxt.textContent = tEN("See the " + aTraiter + " errors and warnings found", "Voir les " + aTraiter + " erreurs et avertissements relevés");
       }
       jump.onclick = function (ev) {
         ev.preventDefault();
@@ -1520,7 +1621,7 @@
     try { host = new URL(url).hostname.replace(/^www\./, ""); }
     catch (e) { window.location.href = BASE + "/"; return; }
     $("#loading-host").textContent = host;
-    document.title = (isEN ? "Snapshot of " : "Bilan de ") + host + " | SEOPlus!";
+    document.title = (tEN("Snapshot of ", "Bilan de ")) + host + " | SEOPlus!";
 
     var steps = $$("#roast-checklist li");
     var fill = $("#roast-progress");
@@ -1672,9 +1773,8 @@
       if (!user && gate && sbConfigure()) {
         loading.hidden = true;
         gate.innerHTML = authCardHtml(
-          isEN ? "Your free diagnosis of " + esc(host) + " is ready to run." : "Votre diagnostic gratuit de " + esc(host) + " est prêt à être lancé.",
-          isEN ? "Sign in in 5 seconds (Google or email) and the 161 checks start right away: score out of 100, 16 rated categories and our reading of your site. Free, and the audit stays in your history."
-               : "Connectez-vous en 5 secondes (Google ou email) et les 161 vérifications démarrent aussitôt : score sur 100, 16 catégories notées et notre lecture de votre site. Gratuit, et l'audit reste dans votre historique.",
+          tEN("Your free diagnosis of " + esc(host) + " is ready to run.", "Votre diagnostic gratuit de " + esc(host) + " est prêt à être lancé."),
+          tEN("Sign in in 5 seconds (Google or email) and the 161 checks start right away: score out of 100, 16 rated categories and our reading of your site. Free, and the audit stays in your history.", "Connectez-vous en 5 secondes (Google ou email) et les 161 vérifications démarrent aussitôt : score sur 100, 16 catégories notées et notre lecture de votre site. Gratuit, et l'audit reste dans votre historique."),
           tUI("diagReady", "Diagnostic gratuit")
         );
         bindAuthCard(gate);
@@ -1737,7 +1837,7 @@
   }
 
   function renderRapport(data) {
-    REDESSINER = function () { renderRapport(data); };
+    aRedessiner("rapport", function () { renderRapport(data); });
     if (!dictAuditPret()) { chargerDictAudit(function () { renderRapport(data); }); return; }
     currentReport = data;
     /* Rapport fraichement genere : le quota de comparaisons repart a 3 */
@@ -1784,9 +1884,7 @@
     if (repNow) repNow.textContent = score;
     if (repGoal) repGoal.textContent = repCible;
     if (repLabel) {
-      repLabel.textContent = isEN
-        ? (repCible - score) + " points within reach in 4 weeks"
-        : (repCible - score) + " points à gagner en 4 semaines";
+      repLabel.textContent = tEN((repCible - score) + " points within reach in 4 weeks", (repCible - score) + " points à gagner en 4 semaines");
     }
 
     $("#rep-counts").innerHTML =
@@ -1797,7 +1895,7 @@
     var cats = data.categories || [];
 
     // Meta d'audit (hero)
-    $("#rep-date").textContent = new Date().toLocaleDateString(isEN ? "en-GB" : "fr-FR", { day: "numeric", month: "long", year: "numeric" });
+    $("#rep-date").textContent = new Date().toLocaleDateString(LOCALE(), { day: "numeric", month: "long", year: "numeric" });
     /* Reference du rapport : SP-AAAAMMJJ-XXX, deterministe pour un hote et un
        jour de mesure donnes. Elle sert a citer un rapport precis, pas a
        securiser quoi que ce soit. */
@@ -1816,7 +1914,7 @@
        laisser en dur affichait "152 vérifications sur 16 catégories" sur un
        rapport qui n'en portait que 15. */
     $("#rep-nbchecks").textContent = (nbChecks || 160) + " " + tUI("checksWord", "vérifications")
-      + (cats.length ? " " + (isEN ? "across " + cats.length + " categories" : "sur " + cats.length + " catégories") : "");
+      + (cats.length ? " " + (tEN("across " + cats.length + " categories", "sur " + cats.length + " catégories")) : "");
     var scopeEl = $("#rep-scope");
     if (scopeEl) {
       var nbPages = Number(data.scanned) || 1;
@@ -1867,7 +1965,7 @@
     var baseTxt = score >= 85 ? "des fondations solides" : score >= 70 ? "une base saine" : score >= 50 ? "une base exploitable" : "des fondations fragiles";
     var errN = Number(c.erreurs) || 0;
     var warnN = Number(c.avertissements) || 0;
-    var weakLabels = ranked.slice(-2).reverse().map(function (cat) { return trCat(cat.label); }).join(isEN ? " and " : " et ");
+    var weakLabels = ranked.slice(-2).reverse().map(function (cat) { return trCat(cat.label); }).join(tEN(" and ", " et "));
     var oneliner;
     if (isEN) {
       var baseEn = score >= 85 ? tUI("olGoodBase", baseTxt) : score >= 70 ? tUI("olHealthy", baseTxt) : score >= 50 ? tUI("olUsable", baseTxt) : tUI("olFragile", baseTxt);
@@ -2020,9 +2118,7 @@
           '<svg class="finding-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></summary>' +
           '<div class="check-grid"><article class="check-card info">' +
             '<p class="check-what">' + esc(texteNonApplicable()) + "</p>" +
-            '<p class="check-meas">' + esc(isEN
-              ? "If your business does receive customers at an address, publish it with opening hours and a map: the category will then appear and audit its eight checks."
-              : "Si votre activité reçoit bien du public à une adresse, publiez-la avec vos horaires et une carte : la catégorie apparaîtra alors et auditera ses huit vérifications.") + "</p>" +
+            '<p class="check-meas">' + esc(tEN("If your business does receive customers at an address, publish it with opening hours and a map: the category will then appear and audit its eight checks.", "Si votre activité reçoit bien du public à une adresse, publiez-la avec vos horaires et une carte : la catégorie apparaîtra alors et auditera ses huit vérifications.")) + "</p>" +
           "</article></div>" +
         "</details>"
       : "");
@@ -2106,9 +2202,9 @@
     var nWarn = items.length - nBad;
 
     var title = $("#rep-findings-title");
-    if (title && items.length) title.textContent = isEN ? tFmt("findingsTitle", "", { n: items.length }) : "Les " + items.length + " points d'amélioration";
+    if (title && items.length) title.textContent = tEN(tFmt("findingsTitle", "", { n: items.length }), "Les " + items.length + " points d'amélioration");
     var tagF = $("#rep-tag-findings");
-    if (tagF) tagF.textContent = isEN ? tFmt("findingsTag", "", { n: items.length }) : items.length + " points d'amélioration";
+    if (tagF) tagF.textContent = tEN(tFmt("findingsTag", "", { n: items.length }), items.length + " points d'amélioration");
 
     $("#rep-findings-tabs").innerHTML = items.length === 0 ? "" :
       '<button class="tab-btn active" type="button" data-sev="all">' + tUI("tabAll", "Tous") + " (" + items.length + ")</button>" +
@@ -2360,7 +2456,7 @@
      Sceau orange, sans score ni compteur : le badge dit l'appartenance, pas la
      note. Un site qui progresse garde le meme badge, il n'a rien a re-coller. */
   function trustBadgeHtml() {
-    var line1 = isEN ? "AUDITED BY" : "AUDITÉ PAR";
+    var line1 = tEN("AUDITED BY", "AUDITÉ PAR");
     return '<a href="https://www.optimizia.xyz/tools/seoplus/?utm_source=badge&amp;utm_medium=referral" target="_blank" rel="noopener" ' +
       'style="display:inline-flex;align-items:center;gap:11px;padding:9px 16px 9px 12px;border-radius:12px;' +
       'background:linear-gradient(135deg,#F97316,#EA580C);box-shadow:0 2px 10px rgba(234,88,12,.28);' +
@@ -2387,20 +2483,16 @@
     var aCorriger = files.length;
     var sub = $("#rep-files-sub");
     if (!aCorriger && sub) {
-      sub.textContent = isEN
-        ? "Nothing to generate: your robots.txt, sitemap, llms.txt, structured data, security headers and email records are already in place. Here is your badge."
-        : "Rien à générer : votre robots.txt, votre sitemap, votre llms.txt, vos données structurées, vos en-têtes de sécurité et vos enregistrements e-mail sont déjà en place. Voici votre badge.";
+      sub.textContent = tEN("Nothing to generate: your robots.txt, sitemap, llms.txt, structured data, security headers and email records are already in place. Here is your badge.", "Rien à générer : votre robots.txt, votre sitemap, votre llms.txt, vos données structurées, vos en-têtes de sécurité et vos enregistrements e-mail sont déjà en place. Voici votre badge.");
     }
 
     var badgeHtml = trustBadgeHtml();
     files.push({
-      name: isEN ? "Trust badge" : "Badge de confiance",
-      loc: isEN ? "in your footer" : "en pied de page",
+      name: tEN("Trust badge", "Badge de confiance"),
+      loc: tEN("in your footer", "en pied de page"),
       badge: true,
       preview: badgeHtml,
-      desc: isEN
-        ? "A website that displays its audit inspires confidence. This badge shows your visitors that your online presence is verified and monitored by an independent tool: more credibility when they are about to contact you. Paste it in your footer. Styles are inline, so it looks the same on any website, with no CSS to add."
-        : "Un site qui affiche son audit inspire confiance. Ce badge montre à vos visiteurs que votre présence en ligne est vérifiée et suivie par un outil indépendant : plus de sérieux perçu, plus de crédibilité au moment de vous contacter. Collez-le en pied de page. Les styles sont en ligne, il s'affiche donc à l'identique sur n'importe quel site, sans CSS à ajouter.",
+      desc: tEN("A website that displays its audit inspires confidence. This badge shows your visitors that your online presence is verified and monitored by an independent tool: more credibility when they are about to contact you. Paste it in your footer. Styles are inline, so it looks the same on any website, with no CSS to add.", "Un site qui affiche son audit inspire confiance. Ce badge montre à vos visiteurs que votre présence en ligne est vérifiée et suivie par un outil indépendant : plus de sérieux perçu, plus de crédibilité au moment de vous contacter. Collez-le en pied de page. Les styles sont en ligne, il s'affiche donc à l'identique sur n'importe quel site, sans CSS à ajouter."),
       code: badgeHtml
     });
     host.innerHTML = files.map(function (f, i) {
@@ -2477,26 +2569,22 @@
     var msg = $("#roast-error-msg");
     var cta = box.querySelector("a.btn");
     if (err && err.firewall === true) {
-      if (title) title.textContent = isEN ? "This website blocks our analysis robot." : "Ce site bloque notre robot d'analyse.";
+      if (title) title.textContent = tEN("This website blocks our analysis robot.", "Ce site bloque notre robot d'analyse.");
       if (msg) {
-        msg.textContent = isEN
-          ? "The website exists, but its firewall or anti-bot protection refuses our robot, which is not a flaw. To get your audit, allow it in your firewall or CDN: user-agent SEOPlusBot/1.0, IP address 148.230.115.190. Once the robot is allowed, run the analysis again: it is immediate."
-          : (err.error || "Ce site bloque les analyses automatiques. Autorisez notre robot (user-agent SEOPlusBot/1.0, adresse IP 148.230.115.190) dans votre pare-feu, puis relancez l'analyse.");
+        msg.textContent = tEN("The website exists, but its firewall or anti-bot protection refuses our robot, which is not a flaw. To get your audit, allow it in your firewall or CDN: user-agent SEOPlusBot/1.0, IP address 148.230.115.190. Once the robot is allowed, run the analysis again: it is immediate.", (err.error || "Ce site bloque les analyses automatiques. Autorisez notre robot (user-agent SEOPlusBot/1.0, adresse IP 148.230.115.190) dans votre pare-feu, puis relancez l'analyse."));
         var lnk = document.createElement("a");
         lnk.href = "methodology.html#allow-seoplusbot";
         lnk.className = "roast-partiel-link";
-        lnk.textContent = isEN ? "How to allow SEOPlusBot, in one minute" : "Comment autoriser SEOPlusBot, en une minute";
+        lnk.textContent = tEN("How to allow SEOPlusBot, in one minute", "Comment autoriser SEOPlusBot, en une minute");
         msg.appendChild(document.createTextNode(" "));
         msg.appendChild(lnk);
       }
       if (cta) {
-        cta.textContent = isEN ? "I allowed the robot, run the analysis again" : "J'ai autorisé le robot, relancer l'analyse";
+        cta.textContent = tEN("I allowed the robot, run the analysis again", "J'ai autorisé le robot, relancer l'analyse");
         cta.href = window.location.href;
       }
     } else if (msg) {
-      msg.textContent = (err && err.error) || (isEN
-        ? "We could not analyse this website. It may be unreachable or protected. Check the URL and try again."
-        : "On n'a pas réussi à analyser ce site. Il est peut-être injoignable ou protégé. Vérifiez l'URL et réessayez.");
+      msg.textContent = (err && err.error) || (tEN("We could not analyse this website. It may be unreachable or protected. Check the URL and try again.", "On n'a pas réussi à analyser ce site. Il est peut-être injoignable ou protégé. Vérifiez l'URL et réessayez."));
     }
     box.hidden = false;
   }
@@ -2636,8 +2724,8 @@
          pas la meme situation que 60/100 sur neuf. On affiche les deux. */
       var yn = rates(c), tn = t ? rates(t) : null;
       var detail = tn == null
-        ? (isEN ? "not measured on their site" : "non mesurée chez lui")
-        : (isEN ? (yn + " vs " + tn + " findings to fix") : (yn + " contre " + tn + " constats à corriger"));
+        ? (tEN("not measured on their site", "non mesurée chez lui"))
+        : (tEN((yn + " vs " + tn + " findings to fix"), (yn + " contre " + tn + " constats à corriger")));
       return '<div class="bench-row">' +
         '<span class="bench-cat">' + esc(c.label) + '<em class="bench-cat-note">' + esc(detail) + "</em></span>" +
         '<span class="bench-val ' + (win === "you" ? "win" : win === "them" ? "lose" : "") + '">' + ys + "</span>" +
@@ -2647,10 +2735,8 @@
 
     var ecart = Math.abs(yScore - tScore);
     var gapTxt = yScore === tScore
-      ? (isEN ? "Neck and neck" : "Au coude à coude")
-      : (isEN
-          ? (ecart + " point" + (ecart > 1 ? "s" : "") + (yScore > tScore ? " ahead" : " behind"))
-          : (ecart + " point" + (ecart > 1 ? "s" : "") + (yScore > tScore ? " d'avance" : " de retard")));
+      ? (tEN("Neck and neck", "Au coude à coude"))
+      : (tEN((ecart + " point" + (ecart > 1 ? "s" : "") + (yScore > tScore ? " ahead" : " behind")), (ecart + " point" + (ecart > 1 ? "s" : "") + (yScore > tScore ? " d'avance" : " de retard"))));
 
     var d = benchDiff(you, them);
     function bloc(titre, intro, items, rendu) {
@@ -2661,35 +2747,29 @@
         '<h4 class="bench-diff-h">' + esc(titre) + " <span>" + items.length + "</span></h4>" +
         '<p class="bench-diff-sub">' + esc(intro) + "</p>" +
         '<ul class="bench-diff-list">' + items.slice(0, MAX).map(rendu).join("") + "</ul>" +
-        (reste > 0 ? '<p class="bench-diff-more">' + esc(isEN
-          ? ("and " + reste + " more, listed category by category above.")
-          : ("et " + reste + " autre" + (reste > 1 ? "s" : "") + ", détaillés catégorie par catégorie plus haut.")) + "</p>" : "") +
+        (reste > 0 ? '<p class="bench-diff-more">' + esc(tEN(("and " + reste + " more, listed category by category above."), ("et " + reste + " autre" + (reste > 1 ? "s" : "") + ", détaillés catégorie par catégorie plus haut."))) + "</p>" : "") +
       "</div>";
     }
 
     var blocLui = bloc(
-      isEN ? "What they get right and you do not" : "Ce qu'il réussit et que vous ratez",
-      isEN
-        ? "Each line is a check they pass and you fail. This is the shortest path to closing the gap."
-        : "Chaque ligne est un constat qu'il valide et que vous ratez. C'est le chemin le plus court pour combler l'écart.",
+      tEN("What they get right and you do not", "Ce qu'il réussit et que vous ratez"),
+      tEN("Each line is a check they pass and you fail. This is the shortest path to closing the gap.", "Chaque ligne est un constat qu'il valide et que vous ratez. C'est le chemin le plus court pour combler l'écart."),
       d.ilGagne,
       function (it) {
         return '<li class="bench-diff-item bench-diff-item--' + it.level + '">' +
           '<span class="bench-diff-cat">' + esc(it.cat) + "</span>" +
           "<b>" + esc(it.label) + "</b>" +
           '<span class="bench-diff-vs">' +
-            (isEN ? "them: " : "lui : ") + esc(it.saValeur || (isEN ? "compliant" : "conforme")) +
-            (it.votreValeur ? " · " + (isEN ? "you: " : "vous : ") + esc(it.votreValeur) : "") +
+            (tEN("them: ", "lui : ")) + esc(it.saValeur || (tEN("compliant", "conforme"))) +
+            (it.votreValeur ? " · " + (tEN("you: ", "vous : ")) + esc(it.votreValeur) : "") +
           "</span>" +
           (it.fix ? '<span class="bench-diff-fix">' + esc(it.fix) + "</span>" : "") +
         "</li>";
       });
 
     var blocVous = bloc(
-      isEN ? "What you have and they do not" : "Ce que vous avez et qu'il n'a pas",
-      isEN
-        ? "Advantages you already hold over this competitor. Worth saying out loud on your site."
-        : "Des avantages que vous avez déjà sur ce concurrent. Ils méritent d'être dits sur votre site.",
+      tEN("What you have and they do not", "Ce que vous avez et qu'il n'a pas"),
+      tEN("Advantages you already hold over this competitor. Worth saying out loud on your site.", "Des avantages que vous avez déjà sur ce concurrent. Ils méritent d'être dits sur votre site."),
       d.vousGagnez,
       function (it) {
         return '<li class="bench-diff-item bench-diff-item--good">' +
@@ -2707,11 +2787,11 @@
 
     box.innerHTML =
       '<div class="bench-head">' +
-        '<div class="bench-col you"><span>' + (isEN ? "You" : "Vous") + '</span><b>' + yScore + '</b><em class="mono">' + esc(you.host || "") + "</em></div>" +
+        '<div class="bench-col you"><span>' + (tEN("You", "Vous")) + '</span><b>' + yScore + '</b><em class="mono">' + esc(you.host || "") + "</em></div>" +
         '<div class="bench-vs"><span class="bench-vs-word">vs</span><span class="bench-gap">' + esc(gapTxt) + "</span></div>" +
-        '<div class="bench-col them"><span>' + (isEN ? "Competitor" : "Concurrent") + '</span><b>' + tScore + '</b><em class="mono">' + esc(them.host || "") + "</em></div>" +
+        '<div class="bench-col them"><span>' + (tEN("Competitor", "Concurrent")) + '</span><b>' + tScore + '</b><em class="mono">' + esc(them.host || "") + "</em></div>" +
       "</div>" +
-      '<div class="bench-rows"><div class="bench-row bench-row--head"><span class="bench-cat">' + (isEN ? "Category" : "Catégorie") + '</span><span class="bench-val">' + (isEN ? "You" : "Vous") + '</span><span class="bench-val">' + (isEN ? "Them" : "Lui") + "</span></div>" + rows + "</div>" +
+      '<div class="bench-rows"><div class="bench-row bench-row--head"><span class="bench-cat">' + (tEN("Category", "Catégorie")) + '</span><span class="bench-val">' + (tEN("You", "Vous")) + '</span><span class="bench-val">' + (tEN("Them", "Lui")) + "</span></div>" + rows + "</div>" +
       blocLui + blocVous +
       '<p class="bench-summary">' + esc(summary) + "</p>" +
       '<div class="bench-verdict" id="bench-verdict" hidden></div>';
@@ -2804,7 +2884,7 @@
              Exception : la consigne pare-feu s'adresse au proprietaire du site,
              pas a celui qui compare un concurrent. */
           berr.textContent = (err && err.firewall)
-            ? (isEN ? "This competitor blocks analysis robots: comparison impossible. Pick another competitor." : "Ce concurrent bloque les robots d'analyse : comparaison impossible. Choisissez un autre concurrent.")
+            ? (tEN("This competitor blocks analysis robots: comparison impossible. Pick another competitor.", "Ce concurrent bloque les robots d'analyse : comparaison impossible. Choisissez un autre concurrent."))
             : ((err && err.message) || "Impossible d'analyser ce concurrent. Il est peut-être injoignable.");
           berr.hidden = false;
         });
@@ -2856,9 +2936,8 @@
         if (!user && gate && sbConfigure()) {
           loading.hidden = true;
           gate.innerHTML = authCardHtml(
-            isEN ? "Retrieve your saved report." : "Retrouvez votre rapport sauvegardé.",
-            isEN ? "Sign in with the account used during the audit to reopen this report from your history." : "Connectez-vous avec le compte utilisé lors de l'audit pour rouvrir ce rapport depuis votre historique."
-          );
+            tEN("Retrieve your saved report.", "Retrouvez votre rapport sauvegardé."),
+            tEN("Sign in with the account used during the audit to reopen this report from your history.", "Connectez-vous avec le compte utilisé lors de l'audit pour rouvrir ce rapport depuis votre historique."));
           bindAuthCard(gate);
           gate.hidden = false;
           return;
@@ -2877,25 +2956,21 @@
           }
           /* Un diagnostic gratuit archive ne donne pas acces au rapport complet. */
           if (res.data.kind && res.data.kind !== "complet") {
-            ridFail(isEN
-              ? "This entry is a free diagnosis: it only includes the score. Run the full audit to get the complete report."
-              : "Cette entrée est un diagnostic gratuit : elle ne contient que le score. Lancez l'audit complet pour obtenir le rapport détaillé.");
+            ridFail(tEN("This entry is a free diagnosis: it only includes the score. Run the full audit to get the complete report.", "Cette entrée est un diagnostic gratuit : elle ne contient que le score. Lancez l'audit complet pour obtenir le rapport détaillé."));
             return;
           }
           var data = res.data.payload;
           loading.hidden = true;
-          document.title = (isEN ? "Full audit of " : "Audit complet de ") + (data.host || res.data.host) + " | SEOPlus!";
+          document.title = (tEN("Full audit of ", "Audit complet de ")) + (data.host || res.data.host) + " | SEOPlus!";
           renderRapport(data);
           /* Rapport fige : les mesures datent du jour de l'audit, pas d'aujourd'hui.
              renderRapport ecrit la date du jour, on la corrige ici. */
           var auditedAt = new Date(res.data.created_at);
-          var auditedTxt = auditedAt.toLocaleDateString(isEN ? "en-GB" : "fr-FR", { day: "numeric", month: "long", year: "numeric" });
+          var auditedTxt = auditedAt.toLocaleDateString(LOCALE(), { day: "numeric", month: "long", year: "numeric" });
           $("#rep-date").textContent = auditedTxt;
           var arch = $("#rep-archive-note");
           if (arch) {
-            arch.textContent = isEN
-              ? "Archived report. These measurements are the ones taken on " + auditedTxt + ", they are not refreshed. Run a new audit to measure your progress."
-              : "Rapport archivé. Ces mesures sont celles du " + auditedTxt + ", elles ne sont pas rafraîchies. Relancez un audit pour mesurer vos progrès.";
+            arch.textContent = tEN("Archived report. These measurements are the ones taken on " + auditedTxt + ", they are not refreshed. Run a new audit to measure your progress.", "Rapport archivé. Ces mesures sont celles du " + auditedTxt + ", elles ne sont pas rafraîchies. Relancez un audit pour mesurer vos progrès.");
             arch.hidden = false;
           }
           $("#rep-result").hidden = false;
@@ -2928,7 +3003,7 @@
     try { host = new URL(url).hostname.replace(/^www\./, ""); }
     catch (e) { window.location.href = BASE + "/"; return; }
     $("#loading-host").textContent = host;
-    document.title = (isEN ? "Full audit of " : "Audit complet de ") + host + " | SEOPlus!";
+    document.title = (tEN("Full audit of ", "Audit complet de ")) + host + " | SEOPlus!";
 
     if (stripeLink && !params.get("demo") && !store.get("seoplus_paid_" + host)) {
       loading.hidden = true;
@@ -2945,7 +3020,7 @@
         if (!CFG.ROAST_WEBHOOK_URL) { store.set("seoplus_pending", host); return; }
         ev.preventDefault();
         var oldLabel = payCta.textContent;
-        payCta.textContent = isEN ? "Checking robot access..." : "Vérification de l'accès à votre site...";
+        payCta.textContent = tEN("Checking robot access...", "Vérification de l'accès à votre site...");
         fetch(CFG.ROAST_WEBHOOK_URL, {
           method: "POST",
           headers: { "Content-Type": "text/plain;charset=UTF-8" },
@@ -2985,9 +3060,7 @@
          exemple.com pour un client reel dont on publierait les defauts. */
       var badge = document.querySelector(".rep-hero-badge");
       if (badge) {
-        badge.lastChild.textContent = isEN
-          ? " Sample report : exemple.com is a fictional website"
-          : " Exemple de rapport : exemple.com est un site fictif";
+        badge.lastChild.textContent = tEN(" Sample report : exemple.com is a fictional website", " Exemple de rapport : exemple.com est un site fictif");
       }
       fetch(BASE + "/assets/demo-exemple.json")
         .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
@@ -3020,9 +3093,8 @@
       if (!user && gate && sbConfigure()) {
         loading.hidden = true;
         gate.innerHTML = authCardHtml(
-          isEN ? tFmt("rapportGateTitle", "", { host: esc(host) }) : "Votre audit complet de " + esc(host) + " est prêt à être généré.",
-          isEN ? "Sign in to open it: every check with its fix, the 4-phase action plan, your generated files and 3 competitor comparisons. <s>€9.90</s> free during launch." : "Connectez-vous pour l'ouvrir : chaque vérification avec son correctif, le plan d'action en 4 phases, vos fichiers générés et 3 comparaisons concurrents. <s>9,90 €</s> offert pendant le lancement."
-        );
+          tEN(tFmt("rapportGateTitle", "", { host: esc(host) }), "Votre audit complet de " + esc(host) + " est prêt à être généré."),
+          tEN("Sign in to open it: every check with its fix, the 4-phase action plan, your generated files and 3 competitor comparisons. <s>€9.90</s> free during launch.", "Connectez-vous pour l'ouvrir : chaque vérification avec son correctif, le plan d'action en 4 phases, vos fichiers générés et 3 comparaisons concurrents. <s>9,90 €</s> offert pendant le lancement."));
         bindAuthCard(gate);
         gate.hidden = false;
         return;
@@ -3119,19 +3191,17 @@
       var grid = $("#rep-cwv-grid");
       var note = $("#rep-cwv-note");
       if (!grid) return;
-      var ratingLabel = isEN
-        ? { good: "Good", warn: "Watch", bad: "Fix" }
-        : { good: "Bon", warn: "À surveiller", bad: "À corriger" };
+      var ratingLabel = tEN({ good: "Good", warn: "Watch", bad: "Fix" }, { good: "Bon", warn: "À surveiller", bad: "À corriger" });
       var isProxy = d.inp && d.inp.proxy;
-      var metrics = isEN ? [
+      var metrics = tEN([
         { key: "lcp", label: "Loading (LCP)", desc: "Main content display", ideal: "≤ 2.5 s" },
         { key: "inp", label: isProxy ? "Responsiveness (estimated INP)" : "Responsiveness (INP)", desc: "Response delay to interactions", ideal: "≤ 200 ms" },
         { key: "cls", label: "Visual stability (CLS)", desc: "Layout shifts while loading", ideal: "≤ 0.10" }
-      ] : [
+      ], [
         { key: "lcp", label: "Chargement (LCP)", desc: "Affichage du contenu principal", ideal: "≤ 2,5 s" },
         { key: "inp", label: isProxy ? "Réactivité (INP estimé)" : "Réactivité (INP)", desc: "Délai de réponse aux interactions", ideal: "≤ 200 ms" },
         { key: "cls", label: "Stabilité visuelle (CLS)", desc: "Décalages de mise en page au chargement", ideal: "≤ 0,10" }
-      ];
+      ]);
       /* Trois metriques sur quatre venaient de la mesure TERRAIN (vos vrais
          visiteurs Chrome sur 28 jours) tandis que le score de performance vient
          TOUJOURS d'un passage en laboratoire, sur un mobile bride simule. Les
@@ -3140,8 +3210,8 @@
          et un score a 47 en rouge juste a cote. Chaque carte porte donc
          desormais sa source. */
       var terrain = d.source === "field";
-      var tagTerrain = isEN ? "field" : "terrain";
-      var tagLabo = isEN ? "lab" : "labo";
+      var tagTerrain = tEN("field", "terrain");
+      var tagLabo = tEN("lab", "labo");
 
       var html = "";
       metrics.forEach(function (m) {
@@ -3152,16 +3222,12 @@
         if (!v || v.value == null) {
           html += '<div class="cwv-card cwv-na">' +
             '<span class="cwv-metric">' + esc(m.label) + '</span>' +
-            '<b class="cwv-value cwv-value--na">' + (isEN ? "Not measured" : "Non mesuré") + '</b>' +
-            '<span class="cwv-rating">' + (isEN ? "No data" : "Sans donnée") + '</span>' +
+            '<b class="cwv-value cwv-value--na">' + (tEN("Not measured", "Non mesuré")) + '</b>' +
+            '<span class="cwv-rating">' + (tEN("No data", "Sans donnée")) + '</span>' +
             '<span class="cwv-desc">' + esc(terrain
-              ? (isEN
-                  ? "Google has not collected enough Chrome visits on your site to publish this one. The other three are there."
-                  : "Google n'a pas recueilli assez de visites Chrome sur votre site pour publier celle-ci. Les trois autres y sont.")
-              : (isEN
-                  ? "This metric was not returned by the lab run."
-                  : "Cette mesure n'a pas été renvoyée par le passage en laboratoire.")) + '</span>' +
-            '<span class="cwv-ideal">' + (isEN ? "Target " : "Cible ") + esc(m.ideal) + '</span>' +
+              ? (tEN("Google has not collected enough Chrome visits on your site to publish this one. The other three are there.", "Google n'a pas recueilli assez de visites Chrome sur votre site pour publier celle-ci. Les trois autres y sont."))
+              : (tEN("This metric was not returned by the lab run.", "Cette mesure n'a pas été renvoyée par le passage en laboratoire."))) + '</span>' +
+            '<span class="cwv-ideal">' + (tEN("Target ", "Cible ")) + esc(m.ideal) + '</span>' +
             '</div>';
           return;
         }
@@ -3172,22 +3238,20 @@
           '<b class="cwv-value">' + esc(v.value) + (v.unit ? '<small> ' + esc(v.unit) + '</small>' : '') + '</b>' +
           '<span class="cwv-rating">' + ratingLabel[rating] + '</span>' +
           '<span class="cwv-desc">' + esc(m.desc) + '</span>' +
-          '<span class="cwv-ideal">' + (isEN ? "Target " : "Cible ") + esc(m.ideal) + '</span>' +
+          '<span class="cwv-ideal">' + (tEN("Target ", "Cible ")) + esc(m.ideal) + '</span>' +
           '</div>';
       });
       if (typeof d.perfScore === "number") {
         var pr = d.perfScore >= 90 ? "good" : d.perfScore >= 50 ? "warn" : "bad";
         html += '<div class="cwv-card cwv-' + pr + '">' +
           '<span class="cwv-src">' + esc(tagLabo) + '</span>' +
-          '<span class="cwv-metric">' + (isEN ? "Performance score" : "Score performance") + '</span>' +
+          '<span class="cwv-metric">' + (tEN("Performance score", "Score performance")) + '</span>' +
           '<b class="cwv-value">' + d.perfScore + '<small> /100</small></b>' +
           '<span class="cwv-rating">' + ratingLabel[pr] + '</span>' +
-          '<span class="cwv-desc">' + (isEN
-            ? "Lighthouse lab run on a throttled mobile. It weighs more than the three vitals above, in particular main-thread blocking, which is why it can be low while they are green."
-            : "Passage Lighthouse en laboratoire, sur un mobile bridé. Il pèse plus que les trois mesures ci-dessus, en particulier le blocage du fil principal : c'est pourquoi il peut être bas alors qu'elles sont au vert.") + '</span>' +
+          '<span class="cwv-desc">' + (tEN("Lighthouse lab run on a throttled mobile. It weighs more than the three vitals above, in particular main-thread blocking, which is why it can be low while they are green.", "Passage Lighthouse en laboratoire, sur un mobile bridé. Il pèse plus que les trois mesures ci-dessus, en particulier le blocage du fil principal : c'est pourquoi il peut être bas alors qu'elles sont au vert.")) + '</span>' +
           '</div>';
       }
-      grid.innerHTML = html || '<div class="cwv-loading">' + (isEN ? "Performance measurement unavailable for this site." : "Mesure de performance indisponible pour ce site.") + '</div>';
+      grid.innerHTML = html || '<div class="cwv-loading">' + (tEN("Performance measurement unavailable for this site.", "Mesure de performance indisponible pour ce site.")) + '</div>';
       if (note) {
         note.hidden = false;
         /* Deux sources dans la meme grille, il faut le dire ici aussi : la note
@@ -3240,8 +3304,8 @@
     }
 
     function build() {
-      var name = val("#llms-name") || (isEN ? "Company name" : "Nom de l'entreprise");
-      var host = cleanHost(val("#llms-url")) || (isEN ? "yoursite.com" : "votresite.fr");
+      var name = val("#llms-name") || (tEN("Company name", "Nom de l'entreprise"));
+      var host = cleanHost(val("#llms-url")) || (tEN("yoursite.com", "votresite.fr"));
       var desc = val("#llms-desc");
       var offers = val("#llms-offers").split("\n").map(function (s) { return s.trim(); }).filter(Boolean);
       var pages = val("#llms-pages").split("\n").map(function (s) { return s.trim(); }).filter(Boolean);
@@ -3250,14 +3314,14 @@
       /* La redaction suit la langue du site : un visiteur EN livre un llms.txt EN. */
       var lines = ["# " + name, ""];
       if (desc) lines.push("> " + desc.replace(/\s*\n\s*/g, " "), "");
-      lines.push((isEN ? "Website: https://" : "Site : https://") + host, "");
+      lines.push((tEN("Website: https://", "Site : https://")) + host, "");
       if (offers.length) {
-        lines.push(isEN ? "## Offers and services" : "## Offres et services", "");
+        lines.push(tEN("## Offers and services", "## Offres et services"), "");
         offers.forEach(function (o) { lines.push("- " + o); });
         lines.push("");
       }
       if (pages.length) {
-        lines.push(isEN ? "## Key pages" : "## Pages clés", "");
+        lines.push(tEN("## Key pages", "## Pages clés"), "");
         pages.forEach(function (p) {
           /* Google (audit llms-txt de Lighthouse 13) exige de vrais liens
              Markdown : une ligne "- /chemin : texte" ne compte pas. */
@@ -3272,16 +3336,12 @@
         lines.push("");
       }
       lines.push("## Contact", "");
-      if (contact) lines.push((isEN ? "- Email: " : "- Email : ") + contact);
-      lines.push((isEN ? "- Website: " : "- Site : ") + "[https://" + host + "](https://" + host + ")");
+      if (contact) lines.push((tEN("- Email: ", "- Email : ")) + contact);
+      lines.push((tEN("- Website: ", "- Site : ")) + "[https://" + host + "](https://" + host + ")");
       lines.push("");
-      lines.push(isEN
-        ? "If a piece of information is not listed here, assume it is unavailable rather than inferring it."
-        : "Si une information n'est pas listée ici, considérez qu'elle n'est pas disponible plutôt que de l'inférer.");
+      lines.push(tEN("If a piece of information is not listed here, assume it is unavailable rather than inferring it.", "Si une information n'est pas listée ici, considérez qu'elle n'est pas disponible plutôt que de l'inférer."));
       lines.push("");
-      lines.push(isEN
-        ? "<!-- Generated with SEOPlus! - free llms.txt generator: https://www.optimizia.xyz/tools/seoplus/ -->"
-        : "<!-- Généré avec SEOPlus! - générateur llms.txt gratuit : https://www.optimizia.xyz/tools/seoplus/ -->");
+      lines.push(tEN("<!-- Generated with SEOPlus! - free llms.txt generator: https://www.optimizia.xyz/tools/seoplus/ -->", "<!-- Généré avec SEOPlus! - générateur llms.txt gratuit : https://www.optimizia.xyz/tools/seoplus/ -->"));
 
       output.textContent = lines.join("\n");
       var hint = $("#llms-hint-url");
@@ -3339,9 +3399,7 @@
         var cnt = $("#rank-count");
         if (cnt) {
           var n = data.sites.length;
-          cnt.textContent = isEN
-            ? n + (n > 1 ? " websites ranked" : " website ranked")
-            : n + (n > 1 ? " sites classés" : " site classé");
+          cnt.textContent = n + " " + (n > 1 ? tEN("websites ranked", "sites classés") : tEN("website ranked", "site classé"));
           cnt.hidden = false;
         }
 
@@ -3351,7 +3409,7 @@
              APRES la traduction statique, ce qu'elle ecrit doit suivre la
              langue courante (ligne restee en francais dans la page anglaise,
              panne signalee par RBE le 16/08). */
-          up.textContent = (isEN ? "Last update: " : "Dernière mise à jour : ") + new Date(data.updated).toLocaleDateString("fr-FR");
+          up.textContent = (tEN("Last update: ", "Dernière mise à jour : ")) + new Date(data.updated).toLocaleDateString(LOCALE());
           up.hidden = false;
         }
       })
@@ -3365,6 +3423,12 @@
     if (!footer || !CFG.NEWSLETTER_URL) return;
     var box = $(".container", footer);
     if (!box) return;
+    /* Rejouable : les libelles sont poses au montage, pas par attribut, donc
+       un changement de langue reconstruit la bande. Sans ce retrait elle se
+       dedoublerait a chaque bascule. */
+    var ancienne = $(".nl-foot", footer);
+    if (ancienne) ancienne.remove();
+    aRedessiner("newsletter", initNewsletter);
     var band = document.createElement("div");
     band.className = "nl-foot";
     band.innerHTML = '<div class="nl-foot-text"><b>' + tUI("nlTitle", "Des tips SEO, zéro spam") + '<span class="nl-cursor" aria-hidden="true">_</span></b>' +
@@ -3535,7 +3599,7 @@
         .then(function (res) {
           if (res.error || !res.data || !res.data.length) { tmList.innerHTML = ""; return; }
           tmList.innerHTML = res.data.map(function (t) {
-            var date = new Date(t.created_at).toLocaleDateString(isEN ? "en-GB" : "fr-FR", { day: "numeric", month: "long", year: "numeric" });
+            var date = new Date(t.created_at).toLocaleDateString(LOCALE(), { day: "numeric", month: "long", year: "numeric" });
             return '<div class="fb-item" data-tm="' + esc(t.id) + '"><div class="fb-item-head">' +
               '<span class="fb-badge fb-badge--' + esc(t.status) + '">' + esc(STATUS_LABEL[t.status] || t.status) + "</span>" +
               '<span class="tm-score">' + esc(t.rating) + "/5</span>" +
@@ -3613,17 +3677,20 @@
     var form = $("#tm-form");
     var gate = $("#tm-authgate");
     if (!form) return;
-    getUser(function (user) {
-      if (user) { form.hidden = false; initTestimonial(user); return; }
-      if (!gate || !sbConfigure()) return;
+    function peindreGate() {
       gate.innerHTML = authCardHtml(
-        isEN ? "Sign in to leave your testimonial." : "Connectez-vous pour laisser votre témoignage.",
-        isEN ? "We read it before publishing, and you can withdraw it at any time."
-             : "On le relit avant publication, et vous pouvez le retirer à tout moment.",
+        tEN("Sign in to leave your testimonial.", "Connectez-vous pour laisser votre témoignage."),
+        tEN("We read it before publishing, and you can withdraw it at any time.", "On le relit avant publication, et vous pouvez le retirer à tout moment."),
         tUI("tmBadge", "Votre avis")
       );
       bindAuthCard(gate);
       gate.hidden = false;
+    }
+    getUser(function (user) {
+      if (user) { form.hidden = false; initTestimonial(user); return; }
+      if (!gate || !sbConfigure()) return;
+      peindreGate();
+      aRedessiner("temoignage", peindreGate);
     });
   }
 
@@ -3670,7 +3737,7 @@
           var n = Math.max(0, Math.min(5, Number(t.rating) || 0));
           var stars = "";
           for (var i = 0; i < 5; i++) stars += i < n ? "\u2605" : "\u2606";
-          var who = esc(t.name || (isEN ? "Anonymous" : "Anonyme"));
+          var who = esc(t.name || (tEN("Anonymous", "Anonyme")));
           if (t.company) who += ' <span>' + esc(t.company) + "</span>";
           return '<figure class="tm-card"><div class="tm-card-stars" aria-label="' + n + '/5">' + stars + "</div>" +
             "<blockquote><p>" + esc(t.message) + "</p></blockquote>" +
@@ -3707,9 +3774,8 @@
       if (!user) {
         if (!sbConfigure() || !gate) { window.location.href = BASE + "/"; return; }
         gate.innerHTML = authCardHtml(
-          isEN ? "Retrieve your reports." : "Retrouvez vos rapports.",
-          isEN ? "Sign in to access your audit history and reopen any report at any time." : "Connectez-vous pour accéder à votre historique d'audits et rouvrir chaque rapport à tout moment."
-        );
+          tEN("Retrieve your reports.", "Retrouvez vos rapports."),
+          tEN("Sign in to access your audit history and reopen any report at any time.", "Connectez-vous pour accéder à votre historique d'audits et rouvrir chaque rapport à tout moment."));
         bindAuthCard(gate);
         gate.hidden = false;
         return;
@@ -3737,7 +3803,7 @@
             company: (companyInput.value || "").trim() || null,
             updated_at: new Date().toISOString()
           }).then(function (res) {
-            btn.textContent = res.error ? (isEN ? "Try again" : "Réessayer") : (isEN ? "Saved!" : "Enregistré !");
+            btn.textContent = res.error ? (tEN("Try again", "Réessayer")) : (tEN("Saved!", "Enregistré !"));
             if (!res.error) { try { localStorage.setItem("seoplus_company_done", "1"); } catch (e) {} }
             setTimeout(function () { btn.textContent = tUI("companySave", "Enregistrer"); }, 2000);
           }, function () {});
@@ -3778,9 +3844,7 @@
         block.hidden = false;
         if (navLink) navLink.hidden = false;
         if (row.feedback_at) {
-          form.innerHTML = '<p class="compte-empty">' + (isEN
-            ? "Feedback received, thank you. We come back to you at the 60-day re-audit."
-            : "Retour bien reçu, merci. On revient vers vous au re-audit des 60 jours.") + "</p>";
+          form.innerHTML = '<p class="compte-empty">' + (tEN("Feedback received, thank you. We come back to you at the 60-day re-audit.", "Retour bien reçu, merci. On revient vers vous au re-audit des 60 jours.")) + "</p>";
           return;
         }
         form.addEventListener("submit", function (e) {
@@ -3794,7 +3858,7 @@
             vals[k] = v;
           });
           if (missing) {
-            status.textContent = isEN ? "The five answers are needed, even short ones." : "Les cinq réponses sont nécessaires, même courtes.";
+            status.textContent = tEN("The five answers are needed, even short ones.", "Les cinq réponses sont nécessaires, même courtes.");
             status.classList.add("bad");
             status.hidden = false;
             return;
@@ -3804,17 +3868,15 @@
           sbClient().from("founders").update(vals).eq("id", row.id).then(function (r2) {
             if (r2.error) {
               btn.disabled = false;
-              status.textContent = isEN ? "Sending failed. Try again." : "L'envoi n'a pas abouti. Réessayez.";
+              status.textContent = tEN("Sending failed. Try again.", "L'envoi n'a pas abouti. Réessayez.");
               status.classList.add("bad");
               status.hidden = false;
               return;
             }
-            form.innerHTML = '<p class="compte-empty">' + (isEN
-              ? "Feedback received, thank you. We come back to you at the 60-day re-audit."
-              : "Retour bien reçu, merci. On revient vers vous au re-audit des 60 jours.") + "</p>";
+            form.innerHTML = '<p class="compte-empty">' + (tEN("Feedback received, thank you. We come back to you at the 60-day re-audit.", "Retour bien reçu, merci. On revient vers vous au re-audit des 60 jours.")) + "</p>";
           }, function () {
             btn.disabled = false;
-            status.textContent = isEN ? "Sending failed. Try again." : "L'envoi n'a pas abouti. Réessayez.";
+            status.textContent = tEN("Sending failed. Try again.", "L'envoi n'a pas abouti. Réessayez.");
             status.hidden = false;
           });
         });
@@ -3842,13 +3904,13 @@
           .then(function (res) {
             if (res.error || !res.data || !res.data.length) { fbList.innerHTML = ""; return; }
             fbList.innerHTML = res.data.map(function (f) {
-              var date = new Date(f.created_at).toLocaleDateString(isEN ? "en-GB" : "fr-FR", { day: "numeric", month: "long", year: "numeric" });
+              var date = new Date(f.created_at).toLocaleDateString(LOCALE(), { day: "numeric", month: "long", year: "numeric" });
               return '<div class="fb-item"><div class="fb-item-head">' +
                 '<span class="fb-badge fb-badge--' + esc(f.category) + '">' + esc(CAT_LABEL[f.category] || f.category) + "</span>" +
                 "<span>" + esc(date) + "</span></div>" +
                 "<p>" + esc(f.message) + "</p>" +
                 (f.image_path
-                  ? '<a class="fb-shot" data-path="' + esc(f.image_path) + '" target="_blank" rel="noopener"><img alt="' + (isEN ? "Screenshot attached to this feedback" : "Capture jointe à ce retour") + '" loading="lazy"></a>'
+                  ? '<a class="fb-shot" data-path="' + esc(f.image_path) + '" target="_blank" rel="noopener"><img alt="' + (tEN("Screenshot attached to this feedback", "Capture jointe à ce retour")) + '" loading="lazy"></a>'
                   : "") +
                 "</div>";
             }).join("");
@@ -3917,11 +3979,11 @@
           var f = fileInput.files && fileInput.files[0];
           if (!f) { clearImage(); return; }
           if (!/^image\//.test(f.type)) {
-            showStatus(isEN ? "Images only (PNG, JPG, WebP)." : "Images uniquement (PNG, JPG, WebP).", true);
+            showStatus(tEN("Images only (PNG, JPG, WebP).", "Images uniquement (PNG, JPG, WebP)."), true);
             clearImage(); return;
           }
           if (f.size > MAX_MB * 1024 * 1024) {
-            showStatus(isEN ? "This image is over 5 MB. Pick a lighter one." : "Cette image dépasse 5 Mo. Choisissez-en une plus légère.", true);
+            showStatus(tEN("This image is over 5 MB. Pick a lighter one.", "Cette image dépasse 5 Mo. Choisissez-en une plus légère."), true);
             clearImage(); return;
           }
           if (fbStatus) fbStatus.hidden = true;
@@ -3973,7 +4035,7 @@
                part quand meme, et on le dit plutot que de laisser croire que
                la capture est arrivee. */
             showStatus(imageFailed
-              ? (isEN ? "Feedback received, but the screenshot could not be uploaded." : "Retour bien reçu, mais la capture n'a pas pu être envoyée.")
+              ? (tEN("Feedback received, but the screenshot could not be uploaded.", "Retour bien reçu, mais la capture n'a pas pu être envoyée."))
               : tUI("fbOk", "Merci ! Votre retour est bien arrivé, on lit tout."), !!imageFailed);
             setTimeout(function () { if (status) status.hidden = true; }, 5000);
             loadMine();
@@ -3982,7 +4044,7 @@
 
         if (!pendingImage) { insertRow(null, false); return; }
 
-        btn.textContent = isEN ? "Uploading..." : "Envoi de la capture...";
+        btn.textContent = tEN("Uploading...", "Envoi de la capture...");
         var type = pendingImage.type || "image/jpeg";
         var ext = type === "image/png" ? "png" : type === "image/webp" ? "webp" : type === "image/gif" ? "gif" : "jpg";
         // Prefixe = user id : c'est ce segment que la policy RLS du bucket controle.
@@ -4010,8 +4072,8 @@
 
     function reportRowHtml(r) {
         var d = new Date(r.created_at);
-        var date = d.toLocaleDateString(isEN ? "en-GB" : "fr-FR", { day: "numeric", month: "long", year: "numeric" });
-        var time = d.toLocaleTimeString(isEN ? "en-GB" : "fr-FR", { hour: "2-digit", minute: "2-digit" });
+        var date = d.toLocaleDateString(LOCALE(), { day: "numeric", month: "long", year: "numeric" });
+        var time = d.toLocaleTimeString(LOCALE(), { hour: "2-digit", minute: "2-digit" });
         var cls = r.score >= 75 ? "good" : r.score >= 50 ? "warn" : "bad";
         var full = r.kind === "complet";
         /* Diagnostic gratuit : le payload ne donne pas droit au rapport complet
@@ -4024,7 +4086,7 @@
           '<div class="compte-row-score ' + cls + '"><b>' + (r.score == null ? "–" : esc(r.score)) + '</b><span>' + esc(r.grade || "") + "</span></div>" +
           '<div class="compte-row-main"><b>' + esc(r.host) +
             '<span class="compte-kind' + (full ? " compte-kind--full" : "") + '">' + (full ? tUI("compteKindFull", "Audit complet") : tUI("compteKindRoast", "Diagnostic")) + "</span></b>" +
-            "<span>" + (isEN ? "Audit of " + esc(date) + " at " + esc(time) : "Audit du " + esc(date) + " à " + esc(time)) + "</span></div>" +
+            "<span>" + (tEN("Audit of " + esc(date) + " at " + esc(time), "Audit du " + esc(date) + " à " + esc(time))) + "</span></div>" +
           '<div class="compte-row-actions">' + actions +
             '<button type="button" class="compte-del" data-del>' + tUI("compteDelete", "Supprimer") + "</button>" +
           "</div></article>";
@@ -4034,9 +4096,7 @@
       if (rows) allReports = rows;
       rows = allReports;
       if (!rows.length) {
-        list.innerHTML = isEN
-          ? '<p class="compte-empty">No report yet. <a href="index.html#analyze">Run your first audit</a>: it will show up here automatically.</p>'
-          : '<p class="compte-empty">Aucun rapport pour l\'instant. <a href="index.html#analyze">Lancez votre premier audit</a> : il apparaîtra ici automatiquement.</p>';
+        list.innerHTML = tEN('<p class="compte-empty">No report yet. <a href="index.html#analyze">Run your first audit</a>: it will show up here automatically.</p>', '<p class="compte-empty">Aucun rapport pour l\'instant. <a href="index.html#analyze">Lancez votre premier audit</a> : il apparaîtra ici automatiquement.</p>');
         return;
       }
       list.innerHTML = rows.slice(0, REPORTS_SHOWN).map(reportRowHtml).join("");
@@ -4047,9 +4107,7 @@
         var b = document.createElement("button");
         b.type = "button";
         b.className = "compte-showall";
-        b.textContent = isEN
-          ? "See all my audits (" + rows.length + ")"
-          : "Voir tous mes audits (" + rows.length + ")";
+        b.textContent = tEN("See all my audits (" + rows.length + ")", "Voir tous mes audits (" + rows.length + ")");
         b.addEventListener("click", openHistory);
         list.appendChild(b);
       }
@@ -4073,12 +4131,11 @@
       histBox.innerHTML =
         '<div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="hist-title">' +
           '<div class="modal-head">' +
-            '<h2 id="hist-title">' + (isEN ? "All my audits" : "Tous mes audits") + '</h2>' +
-            '<button type="button" class="modal-close" aria-label="' + (isEN ? "Close" : "Fermer") + '">&times;</button>' +
+            '<h2 id="hist-title">' + (tEN("All my audits", "Tous mes audits")) + '</h2>' +
+            '<button type="button" class="modal-close" aria-label="' + (tEN("Close", "Fermer")) + '">&times;</button>' +
           '</div>' +
           '<p class="modal-sub">' + allReports.length +
-            (isEN ? (allReports.length > 1 ? " audits, newest first." : " audit.")
-                  : (allReports.length > 1 ? " audits, du plus récent au plus ancien." : " audit.")) + '</p>' +
+            (tEN((allReports.length > 1 ? " audits, newest first." : " audit."), (allReports.length > 1 ? " audits, du plus récent au plus ancien." : " audit."))) + '</p>' +
           '<div class="modal-body compte-list" id="hist-list"></div>' +
         '</div>';
       var body = $("#hist-list", histBox);

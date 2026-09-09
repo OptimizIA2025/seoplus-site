@@ -3043,6 +3043,19 @@ a.rep-som-row:focus-visible { outline: 2px solid var(--orange); outline-offset: 
 .top-actions-note { margin: 16px 0 0; font-size: .82rem; }
 .top-actions-note a { color: var(--orange-deep); }
 
+/* ---- Selecteur de langue (pages traduites au rendu) ----
+   Quatre pilules a plat plutot qu'un menu deroulant : quatre codes de deux
+   lettres tiennent sur une ligne, et le visiteur voit d'un coup ce qui existe
+   au lieu d'ouvrir un menu pour le decouvrir. Les pages a jumeau de fichier
+   (articles, legales) gardent la pilule unique : il n'y a que deux fichiers. */
+.lang-pills { display: inline-flex; gap: 4px; }
+.lang-pills .lang-pill { padding: 7px 9px; }
+.lang-pill--on {
+  color: var(--orange-deep); border-color: var(--orange);
+  background: color-mix(in srgb, var(--orange) 8%, #fff);
+  cursor: default;
+}
+
 /* ---- Toggle langue FR/EN (pages du tunnel audit) ---- */
 .lang-pill {
   border: 1px solid var(--border); border-radius: var(--pill);
