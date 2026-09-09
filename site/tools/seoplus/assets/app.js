@@ -107,7 +107,8 @@
      i18n ni selecteur, leur rel="alternate" etant un flux RSS et non un
      hreflang. Les noms viennent de data-page, restes francais. */
   var I18N_PAGES = ["roast", "bilan", "rapport", "compte",
-                    "home", "methodologie", "classement", "llms", "legal"];
+                    "home", "methodologie", "classement", "llms", "legal",
+                    "mentions", "confidentialite", "cgv"];
 
   function tUI(key, fr) {
     if (isEN && ENDICT.ui && ENDICT.ui[key] != null) return ENDICT.ui[key];
@@ -166,7 +167,7 @@
       dictAuditLang = LANG;
       dictAudit = new Promise(function (res) {
         var s = document.createElement("script");
-        s.src = BASE + "/assets/i18n-" + LANG + "-audit.js?v=20260909";
+        s.src = BASE + "/assets/i18n-" + LANG + "-audit.js?v=20260909b";
         s.onload = s.onerror = function () { res(); };
         document.head.appendChild(s);
       }).then(function () { dictAudit = true; });
@@ -615,85 +616,219 @@
     });
   }
 
-  function initLangToggle() {
-    /* Blog et articles : la traduction vit dans un fichier separe (hreflang
-       alternate) ; la pilule navigue vers ce fichier au lieu de recharger. */
-    var altLink = null, cur = LANG;
-    if (I18N_PAGES.indexOf(page) === -1) {
-      /* Ici la langue courante est celle du FICHIER (documentElement.lang),
-         pas la preference stockee : une page FR reste FR meme si pref=en. */
-      cur = document.documentElement.lang === "en" ? "en" : "fr";
-      var want = cur === "en" ? "fr" : "en";
-      altLink = $('link[rel="alternate"][hreflang="' + want + '"]');
-      if (!altLink || !altLink.href) return;
-    }
-    /* Dans .nav-links : la pilule suit le flux des liens (gap commun) au lieu
-       de flotter seule a droite de la barre. */
-    var nav = $(".nav-links") || $(".nav-inner");
-    if (!nav) return;
+  /* ---------- Selecteur de langue ----------
+     Meme composant que le site agence : un bouton globe qui ouvre la liste des
+     langues ecrites en toutes lettres. Les pilules a plat ne disaient pas ce
+     que « DE » veut dire, et la barre s'allongeait d'un cran a chaque langue
+     ajoutee. Le panneau mobile garde les pilules : il est deja ouvert, y
+     nicher un second menu deroulant serait une cible tactile de plus pour rien.
 
-    /* Page traduite au rendu : les quatre langues d'un coup. Un menu deroulant
-       pour quatre codes de deux lettres couterait un clic de plus pour cacher
-       ce qui tient deja sur une ligne. */
-    if (!altLink) {
-      var grp = document.createElement("div");
-      grp.className = "lang-pills";
-      grp.setAttribute("role", "group");
-      grp.setAttribute("aria-label", "Langue");
-      var NOMS = { fr: "Français", en: "English", es: "Español", de: "Deutsch" };
-      var boutons = {};
-      LANGUES.forEach(function (l) {
-        var b = document.createElement("button");
-        b.type = "button";
-        b.className = "lang-pill";
-        /* Le libelle visible est le code, le nom complet reste lu par les
-           lecteurs d'ecran : « ES » seul ne dit rien a la voix. */
-        b.textContent = l.toUpperCase();
-        b.setAttribute("aria-label", NOMS[l]);
-        b.addEventListener("click", function () {
-          if (l === LANG) return;
-          try { localStorage.setItem("seoplus_lang", l); } catch (e) {}
-          basculerLangue(l);
-          marquer();
+     Les pages a jumeau de fichier (un article FR et son article EN) ont
+     disparu le 29/08 avec le blog, et les pages legales sont traduites au
+     rendu depuis le 09/09 : la pilule unique qui naviguait vers le hreflang
+     alternate n'avait plus rien a servir. */
+
+  var NOMS_LANGUE = { fr: "Français", en: "English", es: "Español", de: "Deutsch" };
+
+  /* Icones en ligne plutot qu'un fichier de plus : quelques centaines
+     d'octets, aucune requete, et elles heritent de currentColor donc suivent
+     le survol et l'etat actif sans regle CSS dediee. */
+  var GLOBE = '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true">'
+    + '<circle cx="8" cy="8" r="6.25"/><ellipse cx="8" cy="8" rx="2.75" ry="6.25"/>'
+    + '<path d="M1.9 8h12.2" stroke-linecap="round"/></svg>';
+  var CHEVRON = '<svg class="lang-chev" viewBox="0 0 12 12" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+    + '<path d="M2.6 4.4 6 7.8l3.4-3.4"/></svg>';
+  var COCHE = '<svg viewBox="0 0 12 12" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+    + '<path d="M2 6.3 4.7 9 10 3.4"/></svg>';
+
+  var pickers = [];
+
+  function choisirLangue(l) {
+    if (l === LANG) return;
+    try { localStorage.setItem("seoplus_lang", l); } catch (e) {}
+    basculerLangue(l);
+  }
+
+  function majPicker() {
+    pickers.forEach(function (p) {
+      if (p.pills) {
+        $$(".lang-pill", p.hote).forEach(function (b) {
+          var on = b.getAttribute("data-code") === LANG;
+          b.classList.toggle("lang-pill--on", on);
+          b.setAttribute("aria-pressed", on ? "true" : "false");
         });
-        boutons[l] = b;
-        grp.appendChild(b);
-      });
-      function marquer() {
-        LANGUES.forEach(function (l) {
-          var on = l === LANG;
-          boutons[l].classList.toggle("lang-pill--on", on);
-          boutons[l].setAttribute("aria-pressed", on ? "true" : "false");
-        });
+        return;
       }
-      marquer();
-      nav.appendChild(grp);
-      return;
-    }
+      /* Seul le code est reecrit : le bouton porte aussi deux SVG, qu'un
+         textContent effacerait a la premiere bascule de langue. */
+      p.code.textContent = LANG.toUpperCase();
+      p.btn.setAttribute("aria-label", NOMS_LANGUE[LANG] || LANG);
+      $$("li", p.liste).forEach(function (li) {
+        var on = li.getAttribute("data-code") === LANG;
+        li.setAttribute("aria-selected", on ? "true" : "false");
+        li.classList.toggle("lang-active", on);
+      });
+    });
+  }
 
+  function fermerPicker(p) {
+    if (p.pills) return;
+    p.liste.hidden = true;
+    p.hote.classList.remove("lang-ouvert");
+    p.btn.setAttribute("aria-expanded", "false");
+  }
+
+  function ouvrirPicker(p) {
+    p.liste.hidden = false;
+    p.hote.classList.add("lang-ouvert");
+    p.btn.setAttribute("aria-expanded", "true");
+  }
+
+  function construirePills(hote) {
+    var grp = document.createElement("div");
+    grp.className = "lang-pills";
+    grp.setAttribute("role", "group");
+    grp.setAttribute("aria-label", "Langue");
+    LANGUES.forEach(function (l) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "lang-pill";
+      b.setAttribute("data-code", l);
+      /* Le libelle visible est le code, le nom complet reste lu par les
+         lecteurs d'ecran : « ES » seul ne dit rien a la voix. */
+      b.setAttribute("aria-label", NOMS_LANGUE[l] || l);
+      b.textContent = l.toUpperCase();
+      b.addEventListener("click", function () { choisirLangue(l); });
+      grp.appendChild(b);
+    });
+    hote.textContent = "";
+    hote.appendChild(grp);
+    pickers.push({ hote: hote, pills: true });
+  }
+
+  function construireMenu(hote, i) {
+    hote.textContent = "";
     var btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "lang-pill";
-    function habiller() {
-      /* Sur une page a jumeau, la pilule decrit le FICHIER courant, pas la
-         preference stockee : un article FR affiche EN meme si pref=en. */
-      var l = cur;
-      btn.textContent = l === "en" ? "FR" : "EN";
-      btn.setAttribute("aria-label", l === "en" ? "Passer en français" : "Switch to English");
-    }
-    habiller();
-    btn.addEventListener("click", function () {
-      var vers = cur === "en" ? "fr" : "en";
-      try { localStorage.setItem("seoplus_lang", vers); } catch (e) {}
-      /* Article de blog : sa traduction est un autre fichier, on y va.
-         Chemin absolu, pas basename : depuis la migration en silos du 16/08,
-         l'URL d'un article finit par « / » et son basename est VIDE (la pilule
-         rechargeait la meme page, panne signalee par RBE). Le pathname du
-         hreflang marche en prod comme sur le serveur local, tous deux servis
-         a la racine. */
-      location.href = new URL(altLink.href).pathname;
+    btn.className = "lang-btn";
+    btn.id = "lang-btn-" + i;
+    btn.setAttribute("aria-haspopup", "listbox");
+    btn.setAttribute("aria-expanded", "false");
+    btn.innerHTML = GLOBE + '<span class="lang-code"></span>' + CHEVRON;
+
+    var liste = document.createElement("ul");
+    liste.className = "lang-list";
+    liste.setAttribute("role", "listbox");
+    liste.setAttribute("aria-labelledby", btn.id);
+    liste.hidden = true;
+
+    var p = { hote: hote, btn: btn, code: btn.querySelector(".lang-code"), liste: liste, pills: false };
+
+    LANGUES.forEach(function (l) {
+      var li = document.createElement("li");
+      li.className = "lang-opt";
+      li.setAttribute("role", "option");
+      li.setAttribute("data-code", l);
+      /* -1 et non 0 : les options n'entrent pas dans l'ordre de tabulation de
+         la page, on y circule aux fleches une fois la liste ouverte. */
+      li.setAttribute("tabindex", "-1");
+      li.innerHTML = '<span class="lang-nom"></span>' + COCHE;
+      li.querySelector(".lang-nom").textContent = NOMS_LANGUE[l] || l;
+      li.addEventListener("click", function () {
+        choisirLangue(l);
+        fermerPicker(p);
+        btn.focus();
+      });
+      liste.appendChild(li);
     });
-    nav.appendChild(btn);
+
+    /* Deplacement aux fleches, comme attendu d'une listbox. */
+    liste.addEventListener("keydown", function (e) {
+      var opts = $$("li", liste);
+      var pos = opts.indexOf(document.activeElement);
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        if (pos >= 0) opts[pos].click();
+        return;
+      }
+      var vers = null;
+      if (e.key === "ArrowDown") vers = pos < 0 ? 0 : (pos + 1) % opts.length;
+      else if (e.key === "ArrowUp") vers = pos <= 0 ? opts.length - 1 : pos - 1;
+      else if (e.key === "Home") vers = 0;
+      else if (e.key === "End") vers = opts.length - 1;
+      if (vers === null) return;
+      e.preventDefault();
+      opts[vers].focus();
+    });
+
+    btn.addEventListener("click", function () {
+      var ouvert = liste.hidden === false;
+      pickers.forEach(fermerPicker);
+      if (!ouvert) ouvrirPicker(p);
+    });
+    /* Ouverture au clavier avec le focus pose sur la langue courante, pour ne
+       pas obliger a parcourir la liste depuis le debut. */
+    btn.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+      e.preventDefault();
+      if (liste.hidden) { pickers.forEach(fermerPicker); ouvrirPicker(p); }
+      var actif = liste.querySelector(".lang-active") || liste.firstChild;
+      if (actif) actif.focus();
+    });
+
+    hote.appendChild(btn);
+    hote.appendChild(liste);
+    pickers.push(p);
+  }
+
+  /* Le panneau mobile est vide puis reconstruit a chaque ouverture : les
+     pilules sont creees une seule fois et re-attachees, jamais recreees,
+     sinon chaque ouverture en empilerait un jeu de plus dans pickers. */
+  var pillsMobiles = null;
+  function langueMobile() {
+    if (LANGUES.length < 2) return null;
+    if (!pillsMobiles) {
+      pillsMobiles = document.createElement("div");
+      pillsMobiles.className = "lang-toggle lang-toggle-mobile";
+      construirePills(pillsMobiles);
+      majPicker();
+    }
+    return pillsMobiles;
+  }
+
+  function initLangToggle() {
+    /* Une seule langue disponible : pas de selecteur. C'est le cas d'une page
+       qui ne charge aucun dictionnaire. */
+    if (LANGUES.length < 2) return;
+    /* Dans .nav-links : le selecteur suit le flux des liens (gap commun) au
+       lieu de flotter seul a droite de la barre. */
+    var nav = $(".nav-links") || $(".nav-inner");
+    if (!nav) return;
+    var hote = document.createElement("div");
+    hote.className = "lang-toggle";
+    nav.appendChild(hote);
+    construireMenu(hote, pickers.length);
+
+    document.addEventListener("click", function (e) {
+      pickers.forEach(function (p) {
+        if (!p.pills && !p.hote.contains(e.target)) fermerPicker(p);
+      });
+    });
+    /* Echap rend le focus au bouton : sans cela il resterait sur une option
+       devenue invisible, et la tabulation repartirait du haut de la page. */
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      pickers.forEach(function (p) {
+        if (p.pills || p.liste.hidden) return;
+        fermerPicker(p);
+        p.btn.focus();
+      });
+    });
+
+    /* La bascule peut venir d'ailleurs que du selecteur : il se remet a jour
+       avec le reste de la page. */
+    aRedessiner("selecteur-langue", majPicker);
+    majPicker();
   }
 
   /* Bascule sur place. Aucune requete, aucun rechargement, et la position dans
@@ -791,7 +926,7 @@
       "</form>" +
       '<button type="button" class="auth-again" data-auth-again hidden>' + tUI("authAgain", "Recevoir un nouveau code") + "</button>" +
       '<p class="auth-status" data-auth-status hidden></p>' +
-      '<p class="auth-note">' + tUI("authNote", "Gratuit, sans carte bancaire. Votre email sert à retrouver vos rapports et à vous prévenir quand un nouvel audit de votre site est utile. Jamais de publicité, jamais de revente.") + ' <a href="politique-confidentialite-en.html">' + tUI("authPrivacy", "Confidentialité") + "</a></p>" +
+      '<p class="auth-note">' + tUI("authNote", "Gratuit, sans carte bancaire. Votre email sert à retrouver vos rapports et à vous prévenir quand un nouvel audit de votre site est utile. Jamais de publicité, jamais de revente.") + ' <a href="politique-confidentialite.html">' + tUI("authPrivacy", "Confidentialité") + "</a></p>" +
     "</div>";
   }
 
@@ -1112,6 +1247,11 @@
           if (a.classList.contains("nav-account")) return;
           panel.appendChild(a.cloneNode(true));
         });
+        /* Le selecteur de la barre est masque sous 900px : les langues vivent
+           ici, a plat. Le noeud est cree une fois puis re-attache, sinon
+           chaque ouverture en empilerait un de plus. */
+        var lg = langueMobile();
+        if (lg) panel.appendChild(lg);
       }
       document.body.classList.toggle("nav-open", open);
       btn.setAttribute("aria-expanded", open ? "true" : "false");
@@ -3432,7 +3572,7 @@
     var band = document.createElement("div");
     band.className = "nl-foot";
     band.innerHTML = '<div class="nl-foot-text"><b>' + tUI("nlTitle", "Des tips SEO, zéro spam") + '<span class="nl-cursor" aria-hidden="true">_</span></b>' +
-      "<span>" + tUI("nlSub", "Un conseil actionnable chaque lundi matin, désinscription en un clic.") + ' <a href="politique-confidentialite-en.html">' + tUI("authPrivacy", "Confidentialité") + "</a></span></div>" +
+      "<span>" + tUI("nlSub", "Un conseil actionnable chaque lundi matin, désinscription en un clic.") + ' <a href="politique-confidentialite.html">' + tUI("authPrivacy", "Confidentialité") + "</a></span></div>" +
       '<form class="nl-form">' +
       '<input type="email" name="email" required placeholder="' + tUI("emailPlaceholder", "votre@email.fr") + '" autocomplete="email" aria-label="Email">' +
       '<button type="submit" class="btn btn-primary">' + tUI("nlBtn", "S'inscrire") + "</button>" +

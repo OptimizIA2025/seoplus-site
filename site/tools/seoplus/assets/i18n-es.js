@@ -198,7 +198,7 @@
       "Mise en regard des deux scores, catégorie par catégorie": "Las dos puntuaciones cara a cara, categoría por categoría",
       "Un avis, un bug, une critique ? On est preneur de tout : admin@optimizia.xyz": "¿Una opinión, un fallo, una crítica? Lo aceptamos todo: ",
       "Auditer un autre site.": "<a href=\"/tools/seoplus/\">Auditar otro sitio.</a>",
-      "© 2026 SEOPlus! V6.0 par OptimizIA.xyz": "© 2026 SEOPlus! V6.0 de OptimizIA.xyz",
+      "© 2026 SEOPlus! V6.1 par OptimizIA.xyz": "© 2026 SEOPlus! V6.1 de OptimizIA.xyz",
       "Retour à l'accueil": "<a href=\"/tools/seoplus/\">Volver al inicio</a>",
       "Guides SEO": "Guías SEO",
       "Guides GEO": "Guías GEO",

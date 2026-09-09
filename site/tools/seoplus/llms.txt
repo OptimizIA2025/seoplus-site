@@ -4,7 +4,7 @@
 
 The free snapshot returns an overall score out of 100, a grade per category and a verdict. It requires a free sign-in that takes a few seconds (Google or email), no credit card, and archives every audit in the account history. The full audit details the 161 checks with their measured value and the exact fix, a 4-phase action plan, generated files ready to paste (robots.txt, sitemap, llms.txt, structured data, security headers, SPF, DMARC), 3 competitor comparisons and a PDF export.
 
-The analysis covers the homepage, up to 30 key pages found through the sitemap or the menu, and domain signals (DNS, TLS, HTTP headers, indexing files). Any public website is supported, whatever its technology. Audit reports are delivered in English or French, following the reader's browser. Legal pages exist in French, the only version that is legally binding, with an English courtesy translation. If a piece of information is not listed here, treat it as unavailable rather than inferring it.
+The analysis covers the homepage, up to 30 key pages found through the sitemap or the menu, and domain signals (DNS, TLS, HTTP headers, indexing files). Any public website is supported, whatever its technology. The site and the audit reports are available in English, French, Spanish and German, following the reader's browser, at a single address per page. Legal pages exist at one address each and are translated the same way, but only the French version is legally binding, as those pages state themselves. If a piece of information is not listed here, treat it as unavailable rather than inferring it.
 
 The editorial guides that used to live on this tool now belong to the OptimizIA.xyz content silos: https://www.optimizia.xyz/seo/ (get found on Google) and https://www.optimizia.xyz/geo/ (get cited by AI).
 
@@ -21,7 +21,7 @@ The editorial guides that used to live on this tool now belong to the OptimizIA.
 
 ## Information
 
-- [Legal notice](https://www.optimizia.xyz/tools/seoplus/mentions-legales-en.html) : publisher, host, publication director
+- [Legal notice](https://www.optimizia.xyz/tools/seoplus/mentions-legales.html) : publisher, host, publication director
 - [Privacy policy](https://www.optimizia.xyz/tools/seoplus/politique-confidentialite-en.html) : data collected, retention, rights
 - [Terms of sale](https://www.optimizia.xyz/tools/seoplus/cgv-en.html) : terms of the full audit
 - [OptimizIA.xyz](https://www.optimizia.xyz) : the publishing agency, co-founded by Remy Ginoux and Romain Ben. Contact : contact@optimizia.xyz

@@ -189,7 +189,7 @@
       "Legal notice": "Mentions légales",
       "Privacy": "Confidentialité",
       "Terms of sale": "CGV",
-      "© 2026 SEOPlus! V6.0 by OptimizIA.xyz": "© 2026 SEOPlus! V6.0 par OptimizIA.xyz",
+      "© 2026 SEOPlus! V6.1 by OptimizIA.xyz": "© 2026 SEOPlus! V6.1 par OptimizIA.xyz",
       "Start with the free score. The full audit is €9.90 free during launch.": "Commencez par le score gratuit. L'audit complet est <s>9,90 €</s> gratuit pendant le lancement.",
       "Transparency": "Transparence",
       "What the audit measures, how, and what it does not do.": "Ce que l'audit mesure, comment, et ce qu'il ne fait pas.",

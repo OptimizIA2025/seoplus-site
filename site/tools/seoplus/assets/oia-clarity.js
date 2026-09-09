@@ -40,20 +40,40 @@
        pouvoir revenir sur son choix dans le delai de 13 mois. */
     var VALIDITE = { granted: 397, denied: 183 };
 
-    var isEN = (document.documentElement.lang || '').toLowerCase().indexOf('en') === 0;
-    var TXT = isEN ? {
-        region: 'Session replay consent',
-        titre: 'Session replay',
-        /* « sans vous identifier » et non « anonyme » : la mesure est pseudonyme,
-           l'ancienne formulation etait juridiquement fausse. */
-        corps: 'We use Microsoft Clarity to replay browsing sessions and improve this site, without identifying you and without advertising cookies. <a href="' + LEGAL + '">Learn more</a>',
-        oui: 'Accept', non: 'Decline', gerer: 'Manage cookies'
-    } : {
-        region: 'Consentement au rejeu de session',
-        titre: 'Rejeu de session',
-        corps: 'Nous utilisons Microsoft Clarity pour rejouer les parcours et améliorer ce site, sans vous identifier et sans cookie publicitaire. <a href="' + LEGAL + '">En savoir plus</a>',
-        oui: 'Accepter', non: 'Refuser', gerer: 'Gérer les cookies'
+    /* « sans vous identifier » et non « anonyme » : la mesure est pseudonyme,
+       l'ancienne formulation etait juridiquement fausse. */
+    var LANGUES = {
+        fr: {
+            region: 'Consentement au rejeu de session',
+            titre: 'Rejeu de session',
+            corps: 'Nous utilisons Microsoft Clarity pour rejouer les parcours et améliorer ce site, sans vous identifier et sans cookie publicitaire. <a href="' + LEGAL + '">En savoir plus</a>',
+            oui: 'Accepter', non: 'Refuser', gerer: 'Gérer les cookies'
+        },
+        en: {
+            region: 'Session replay consent',
+            titre: 'Session replay',
+            corps: 'We use Microsoft Clarity to replay browsing sessions and improve this site, without identifying you and without advertising cookies. <a href="' + LEGAL + '">Learn more</a>',
+            oui: 'Accept', non: 'Decline', gerer: 'Manage cookies'
+        },
+        es: {
+            region: 'Consentimiento para la repetición de sesión',
+            titre: 'Repetición de sesión',
+            corps: 'Usamos Microsoft Clarity para reproducir los recorridos y mejorar este sitio, sin identificarte y sin cookies publicitarias. <a href="' + LEGAL + '">Más información</a>',
+            oui: 'Aceptar', non: 'Rechazar', gerer: 'Gestionar las cookies'
+        },
+        de: {
+            region: 'Einwilligung in die Sitzungsaufzeichnung',
+            titre: 'Sitzungsaufzeichnung',
+            corps: 'Wir nutzen Microsoft Clarity, um Navigationswege nachzuspielen und diese Website zu verbessern, ohne Sie zu identifizieren und ohne Werbe-Cookies. <a href="' + LEGAL + '">Mehr erfahren</a>',
+            oui: 'Annehmen', non: 'Ablehnen', gerer: 'Cookies verwalten'
+        }
     };
+    /* La langue se lit sur <html lang>, que le moteur i18n reecrit a chaque
+       bascule : le bandeau n'a donc pas sa propre preference a tenir. */
+    function TXT() {
+        var l = (document.documentElement.lang || 'fr').toLowerCase().slice(0, 2);
+        return LANGUES[l] || LANGUES.fr;
+    }
 
     var CSS =
         '#oia-clarity{position:fixed;left:18px;bottom:18px;z-index:9999;max-width:360px;' +
@@ -129,7 +149,7 @@
         bandeau = document.createElement('div');
         bandeau.id = 'oia-clarity';
         bandeau.setAttribute('role', 'region');
-        bandeau.setAttribute('aria-label', TXT.region);
+        bandeau.setAttribute('aria-label', TXT().region);
         bandeau.hidden = true;
         bandeau.innerHTML =
             '<p class="oiac-t"></p><p class="oiac-b"></p>' +
@@ -142,10 +162,7 @@
            tot au clavier et par un lecteur d'ecran, meme si elle s'affiche en bas. */
         document.body.insertBefore(bandeau, document.body.firstChild);
 
-        bandeau.querySelector('.oiac-t').textContent = TXT.titre;
-        bandeau.querySelector('.oiac-b').innerHTML = TXT.corps;
-        bandeau.querySelector('[data-oiac="non"]').textContent = TXT.non;
-        bandeau.querySelector('[data-oiac="oui"]').textContent = TXT.oui;
+        peindre();
 
         bandeau.querySelector('[data-oiac="non"]').addEventListener('click', function () {
             ecrire('denied');
@@ -158,6 +175,22 @@
             charger();
         });
     }
+
+    /* Un seul endroit ecrit les libelles, appele au montage et a chaque
+       changement de langue. */
+    var rappel = null;
+    function peindre() {
+        var T = TXT();
+        if (bandeau) {
+            bandeau.setAttribute('aria-label', T.region);
+            bandeau.querySelector('.oiac-t').textContent = T.titre;
+            bandeau.querySelector('.oiac-b').innerHTML = T.corps;
+            bandeau.querySelector('[data-oiac="non"]').textContent = T.non;
+            bandeau.querySelector('[data-oiac="oui"]').textContent = T.oui;
+        }
+        if (rappel) rappel.textContent = T.gerer;
+    }
+    document.addEventListener('seoplus:langue', peindre);
 
     function afficher() {
         if (!bandeau) construire();
@@ -180,7 +213,8 @@
         var b = document.createElement('button');
         b.type = 'button';
         b.className = 'oiac-relink';
-        b.textContent = TXT.gerer;
+        b.textContent = TXT().gerer;
+        rappel = b;
         b.addEventListener('click', afficher);
         wrap.appendChild(document.createTextNode(' · '));
         wrap.appendChild(b);
