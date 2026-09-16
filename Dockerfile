@@ -9,7 +9,7 @@
 #
 # Ici, elle est dans le depot. Le conteneur redevient jetable.
 
-FROM nginx:1.27-alpine
+FROM nginx:1.31-alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Vraies 301 de l'ancien hote seoplus.optimizia.xyz, generees depuis
