@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  # Construit l'image de production et la vérifie avant tout déploiement :
+  # configuration nginx valide, pages servies, redirections, en-têtes de
+  # sécurité et compression. C'est le filet qui manquait avant de fusionner une
+  # montée de version de l'image nginx.
+  image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Construire l'image
+        run: docker build -t site .
+
+      - name: Vérifier la configuration nginx
+        run: docker run --rm site nginx -t
+
+      - name: Lancer le conteneur
+        run: |
+          docker run -d --name site -p 8080:80 site
+          sleep 3
+
+      - name: Vérifier les pages, les redirections, les en-têtes et la compression
+        run: bash scripts/verifier-image.sh | tee verification.log
+
+      - name: Publier le résultat
+        if: always()
+        run: |
+          {
+            echo "## Vérification de l'image"
+            echo
+            echo '```text'
+            cat verification.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Journal du conteneur
+        if: failure()
+        run: docker logs site
+
+      - name: Arrêter le conteneur
+        if: always()
+        run: docker rm -f site
+
+  docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Lint du Markdown avec markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v24
+        with:
+          globs: "**/*.md"
+
+      # Le mode hors ligne vérifie les liens vers les fichiers du dépôt et les
+      # ancres des documents Markdown, sans dépendre des sites externes.
+      - name: Vérifier les liens des documents avec lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --include-fragments --no-progress "**/*.md"
+          jobSummary: true

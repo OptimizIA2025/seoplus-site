@@ -1,0 +1,20 @@
+# Configuration de markdownlint, utilisée par la CI et par `npx markdownlint-cli2`.
+config:
+  # Les paragraphes ne sont pas coupés : les lignes longues sont autorisées.
+  MD013: false
+  # Le même titre peut apparaître dans des sections différentes.
+  MD024:
+    siblings_only: true
+
+globs:
+  - "**/*.md"
+
+ignores:
+  # GitHub préremplit la description des pull requests avec ce fichier : il
+  # commence volontairement par un titre de second niveau.
+  - ".github/pull_request_template.md"
+  # Le site servi n'est pas de la documentation.
+  - "site/**"
+  - "_meeeters/**"
+
+gitignore: true

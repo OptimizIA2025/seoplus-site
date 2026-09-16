@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Signaler une faille de sécurité
+    url: https://github.com/OptimizIA2025/seoplus-site/security/advisories/new
+    about: Merci de signaler les vulnérabilités en privé plutôt que dans une issue publique.

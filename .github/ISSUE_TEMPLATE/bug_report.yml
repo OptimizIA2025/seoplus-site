@@ -1,0 +1,52 @@
+name: Rapport de bug
+description: Signaler une page cassée, une redirection fausse, un en-tête manquant ou un problème de documentation.
+title: "[Bug] : "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de prendre le temps de signaler un bug.
+        Les failles de sécurité ne se signalent pas ici : suivre la [politique de sécurité](https://github.com/OptimizIA2025/seoplus-site/security/policy).
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Composant
+      options:
+        - "Pages du site (site/tools/seoplus/)"
+        - "Redirections de l'ancien hôte (site/*.html, redirections-301.conf)"
+        - "Serveur nginx (nginx.conf, Dockerfile)"
+        - "CI / GitHub Actions"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Que s'est-il passé, et qu'attendiez-vous ?
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: URL concernée
+      placeholder: "https://www.optimizia.xyz/tools/seoplus/"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Étapes pour reproduire
+      description: Navigateur, appareil, actions effectuées.
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Captures d'écran ou en-têtes de réponse
+      description: Captures, ou la sortie de `curl -I`.

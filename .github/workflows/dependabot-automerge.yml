@@ -1,0 +1,43 @@
+name: Dependabot Auto-Merge
+
+on:
+  pull_request:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+
+    # Uniquement les pull requests ouvertes par Dependabot dans ce dépôt.
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'OptimizIA2025/seoplus-site'
+
+    steps:
+      - name: Métadonnées Dependabot
+        id: metadata
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # L'auto-merge attend les vérifications requises par le ruleset de main
+      # (image, docs, dependency-review) avant de fusionner. La fusion sur main
+      # déclenche le déploiement Coolify.
+      - name: Activer l'auto-merge des mises à jour patch et mineures
+        if: |
+          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+          steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Demander une relecture manuelle des mises à jour majeures
+        if: steps.metadata.outputs.update-type == 'version-update:semver-major'
+        run: |
+          gh pr comment "$PR_URL" --body "Mise à jour majeure (${DEPENDENCIES}) : vérifier les changements incompatibles avant de fusionner à la main."
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          DEPENDENCIES: ${{ steps.metadata.outputs.dependency-names }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
