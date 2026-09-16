@@ -1,0 +1,32 @@
+name: Proposition d'amélioration
+description: Proposer une page, un réglage serveur, une amélioration SEO ou de la documentation.
+title: "[Amélioration] : "
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: component
+    attributes:
+      label: Composant
+      options:
+        - "Contenu et pages"
+        - "SEO, GEO et métadonnées"
+        - "Serveur nginx, cache, en-têtes"
+        - "Outillage et CI"
+        - "Documentation"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Besoin
+      description: Qu'est-ce qui manque ou pourrait être amélioré, et pour qui ?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solution proposée
+    validations:
+      required: true

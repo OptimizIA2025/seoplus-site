@@ -1,0 +1,42 @@
+version: 2
+
+# Dépendances suivies : l'image nginx du Dockerfile (FROM nginx:...-alpine) et
+# les GitHub Actions des workflows. Le site lui-même n'a aucune dépendance
+# déclarée : polices et bibliothèques sont versionnées en clair, leur mise à
+# jour reste manuelle.
+#
+# Docker n'est couvert que par les montées de version, pas par les alertes de
+# sécurité. Chaque montée de nginx passe par une pull request que la CI
+# vérifie (image construite, nginx -t, pages servies, compression) avant que
+# l'auto-merge ne la fusionne : le déploiement Coolify ne part qu'après.
+
+updates:
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 2
+    commit-message:
+      prefix: "deps"
+    groups:
+      docker-patch-minor:
+        update-types:
+          - "patch"
+          - "minor"
+        patterns:
+          - "*"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "deps"
+    groups:
+      actions-patch-minor:
+        update-types:
+          - "patch"
+          - "minor"
+        patterns:
+          - "*"
