@@ -1142,6 +1142,14 @@
     });
   }
 
+  /* Bascule clair / sombre (assets/oia-theme.js), a droite du selecteur de langue. */
+  function initThemeToggle() {
+    var nav = $(".nav-links");
+    if (!nav || !window.OIA_THEME) return;
+    nav.appendChild(window.OIA_THEME.bouton());
+    window.OIA_THEME.peindre();
+  }
+
   /* Icone compte (bonhomme) en haut a droite, sur toutes les pages, connecte
      ou non : account.html affiche la connexion si besoin, puis l'historique. */
   function initAccountLink() {
@@ -1171,6 +1179,7 @@
     btn.setAttribute("aria-expanded", "false");
     btn.innerHTML = "<span></span><span></span><span></span>";
     inner.appendChild(btn);
+    var themeMobile = null;
     var panel = document.createElement("nav");
     panel.className = "nav-mobile";
     panel.setAttribute("aria-label", "Navigation mobile");
@@ -1193,6 +1202,11 @@
            chaque ouverture en empilerait un de plus. */
         var lg = langueMobile();
         if (lg) panel.appendChild(lg);
+        if (window.OIA_THEME) {
+          if (!themeMobile) themeMobile = window.OIA_THEME.bouton();
+          panel.appendChild(themeMobile);
+          window.OIA_THEME.peindre();
+        }
       }
       document.body.classList.toggle("nav-open", open);
       btn.setAttribute("aria-expanded", open ? "true" : "false");
@@ -4324,6 +4338,7 @@
        reglait les deux. Meme rendu quel que soit le chemin d'entree. */
     basculerLangue(LANG);
     initLangToggle();
+    initThemeToggle();
     handleAuthReturn();
     initAccountLink();
     initMobileNav();
