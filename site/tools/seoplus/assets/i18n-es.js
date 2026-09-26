@@ -200,8 +200,6 @@
       "Auditer un autre site.": "<a href=\"/tools/seoplus/\">Auditar otro sitio.</a>",
       "© 2026 SEOPlus! V6.1 par OptimizIA.xyz": "© 2026 SEOPlus! V6.1 de OptimizIA.xyz",
       "Retour à l'accueil": "<a href=\"/tools/seoplus/\">Volver al inicio</a>",
-      "Guides SEO": "Guías SEO",
-      "Guides GEO": "Guías GEO",
       "Audit complet": "Auditoría completa",
       "Le rapport de votre-site.fr est prêt.": "El informe de <em id=\"pay-host\">tu-sitio.com</em> está listo.",
       "161 vérifications détaillées, plan d'action priorisé, fichiers prêts à poser et 3 comparaisons concurrents avec verdict IA. Paiement unique, accès immédiat.": "161 comprobaciones detalladas, un plan de acción priorizado, archivos listos para desplegar y 3 comparaciones con la competencia con veredicto de IA. Pago único, acceso inmediato.",
