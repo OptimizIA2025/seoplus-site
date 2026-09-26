@@ -670,8 +670,6 @@ window.SEOPLUS_EN = {
       "Auditer un autre site.": "<a href=\"/tools/seoplus/\">Audit another site.</a>",
       "© 2026 SEOPlus! V6.1 par OptimizIA.xyz": "© 2026 SEOPlus! V6.1 by OptimizIA.xyz",
       "Retour à l'accueil": "<a href=\"/tools/seoplus/\">Back to the homepage</a>",
-      "Guides SEO": "SEO guides",
-      "Guides GEO": "GEO guides"
   };
   Object.keys(AJOUT).forEach(function (k) { P[k] = AJOUT[k]; });
 })();

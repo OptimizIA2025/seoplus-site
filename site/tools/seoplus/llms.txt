@@ -6,8 +6,6 @@ The free snapshot returns an overall score out of 100, a grade per category and 
 
 The analysis covers the homepage, up to 30 key pages found through the sitemap or the menu, and domain signals (DNS, TLS, HTTP headers, indexing files). Any public website is supported, whatever its technology. The site and the audit reports are available in English, French, Spanish and German, following the reader's browser, at a single address per page. Legal pages exist at one address each and are translated the same way, but only the French version is legally binding, as those pages state themselves. If a piece of information is not listed here, treat it as unavailable rather than inferring it.
 
-The editorial guides that used to live on this tool now belong to the OptimizIA.xyz content silos: https://www.optimizia.xyz/seo/ (get found on Google) and https://www.optimizia.xyz/geo/ (get cited by AI).
-
 ## Main pages
 
 - [Run an analysis](https://www.optimizia.xyz/tools/seoplus/) : free score out of 100 in 30 seconds, 161 SEO and GEO checks

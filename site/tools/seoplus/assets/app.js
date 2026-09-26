@@ -234,65 +234,6 @@
     el.hidden = false;
   }
 
-  /* Checks non conformes : lien vers le guide qui explique le point.
-     Cle = libelle exact du moteur (sans accents), valeur = [cible FR, cible EN].
-     Depuis le 29/08 les guides vivent dans les silos /seo/ et /geo/ du site
-     agence, a la racine du domaine : chemins absolus, learnMore n'ajoute rien.
-     Les checks sans guide pedagogique (securite, TLS, email) ne sont pas mappes. */
-  var LEARN_MORE = {
-    "Fichier robots.txt": ["/geo/", "/geo/"],
-    "Indexation robots.txt": ["/geo/", "/geo/"],
-    "Directives crawlers IA": ["/geo/", "/geo/"],
-    "Sitemap XML": ["/seo/", "/seo/"],
-    "Sitemap declare": ["/seo/", "/seo/"],
-    "Indexation autorisee": ["/seo/", "/seo/"],
-    "Pages internes en erreur": ["/seo/", "/seo/"],
-    "Fraicheur du sitemap": ["/seo/", "/seo/"],
-    "Fichier llms.txt": ["/geo/", "/geo/"],
-    "Guidage IA (llms.txt)": ["/geo/", "/geo/"],
-    "Donnees structurees JSON-LD": ["/seo/", "/seo/"],
-    "Schema entreprise (Organization)": ["/seo/", "/seo/"],
-    "Syntaxe JSON-LD": ["/seo/", "/seo/"],
-    "Liens de confiance (sameAs)": ["/geo/chatgpt-doesnt-know-your-brand/", "/geo/chatgpt-doesnt-know-your-brand/"],
-    "Contenu en questions / FAQ": ["/geo/", "/geo/"],
-    "Passages extractibles (listes)": ["/geo/", "/geo/"],
-    "Faits et chiffres citables": ["/geo/", "/geo/"],
-    "Flux RSS / Atom": ["/geo/", "/geo/"],
-    "Signaux E-E-A-T": ["/seo/", "/seo/"],
-    "Volume de contenu": ["/seo/", "/seo/"],
-    "Contenu des pages internes": ["/seo/", "/seo/"],
-    "Profondeur de contenu": ["/seo/", "/seo/"],
-    "Balise title": ["/seo/", "/seo/"],
-    "Meta description": ["/seo/", "/seo/"],
-    "Titles uniques sur le site": ["/seo/", "/seo/"],
-    "Meta descriptions internes": ["/seo/", "/seo/"],
-    "Balise H1": ["/seo/", "/seo/"],
-    "Hierarchie des titres": ["/seo/", "/seo/"],
-    "Maillage interne": ["/seo/", "/seo/"],
-    "URL canonique": ["/seo/", "/seo/"],
-    "Score performance Google (Lighthouse mobile)": ["/seo/", "/seo/"],
-    "Chargement (LCP)": ["/seo/", "/seo/"],
-    "Stabilite visuelle (CLS)": ["/seo/", "/seo/"],
-    /* Le moteur ecrit "Reactivite (INP)" quand les donnees terrain CrUX
-       existent et "(INP estime)" sinon : sans les deux clefs, le lien
-       disparaissait justement pour les sites qui ont de vraies mesures. */
-    "Reactivite (INP)": ["/seo/", "/seo/"],
-    "Reactivite (INP estime)": ["/seo/", "/seo/"],
-    "Compression HTTP": ["/seo/", "/seo/"],
-    "Poids de la page": ["/seo/", "/seo/"],
-    "Lazy loading images": ["/seo/", "/seo/"],
-    "Ressources bloquantes": ["/seo/", "/seo/"]
-  };
-
-  function learnMore(label) {
-    var art = LEARN_MORE[label];
-    if (!art) return "";
-    /* Les guides vivent a la racine du domaine depuis le 29/08 (silos /seo/ et
-       /geo/ du site agence), plus sous le prefixe de l'outil. */
-    return '<a class="learn-more" href="' + art[isEN ? 1 : 0] + '" target="_blank" rel="noopener">' +
-      tUI("learnMore", "En savoir plus") + "</a>";
-  }
-
   /* "Ce qu'on vérifie" : une phrase par vérification, affichée dans le détail par
      catégorie. Vit côté front (clé = libellé exact du moteur) : zéro octet de plus
      dans le payload et les rapports archivés en profitent aussi. */
@@ -2145,7 +2086,6 @@
               '<span class="pitem-badge ' + it.level + '">' + (it.level === "bad" ? tUI("critical", "Critique") : tUI("recommended", "Recommandé")) + "</span></div>" +
               (it.value ? '<span class="plan-val mono">' + esc(trVal(it.value)) + "</span>" : "") +
               (it.fix ? '<p class="plan-fix">' + esc(trFix(it.fix)) + "</p>" : "") +
-              learnMore(it.label) +
               '<span class="pitem-cat">' + esc(trCat(it.cat)) + "</span></div>" +
             "</div>";
           }).join("");
@@ -2236,7 +2176,6 @@
             (desc ? '<p class="check-what">' + esc(desc) + "</p>" : "") +
             (d.value ? '<p class="check-meas"><b>' + tUI("findingMeasured", "Mesuré :") + '</b> <span class="mono">' + esc(trVal(d.value)) + "</span></p>" : "") +
             (d.fix ? '<p class="rep-check-fix"><b>' + tUI("findingFix", "Correctif :") + "</b> " + esc(trFix(d.fix)) + "</p>" : "") +
-            (d.level === "good" || d.level === "info" ? "" : learnMore(d.label)) +
           "</article>";
         }).join("") + "</div>";
       } else {
@@ -2364,7 +2303,6 @@
             '<div class="finding-body">' +
               (it.value ? '<p class="finding-desc"><b>' + tUI("findingMeasured", "Mesuré :") + '</b> <span class="mono">' + esc(trVal(it.value)) + "</span></p>" : "") +
               (it.fix ? '<div class="finding-fix"><strong>' + tUI("findingFix", "Correctif :") + "</strong> " + esc(trFix(it.fix)) + "</div>" : '<div class="finding-fix">' + tUI("findingFixRef", "Détail dans la catégorie correspondante ci-dessous.") + "</div>") +
-              learnMore(it.label) +
             "</div>" +
           "</details>";
         }).join("");
