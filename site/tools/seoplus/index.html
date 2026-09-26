@@ -158,7 +158,7 @@
   <link rel="stylesheet" href="assets/fonts.css?v=20260814b">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/style.css?v=20260926">
+  <link rel="stylesheet" href="assets/style.css?v=20260926v7">
 </head>
 <body data-page="home" data-source="en">
 
@@ -174,7 +174,7 @@
       <nav class="nav-links" aria-label="Navigation principale">
         <a href="#how-it-works">How it works</a>
         <a href="#coverage">The audit</a>
-        <a href="#pricing">What's included</a>
+        <a href="#pricing">Offer</a>
         <a href="leaderboard.html">Leaderboard</a>
         <a class="btn btn-primary" href="#analyze">Analyze my website</a>
       </nav>
@@ -183,341 +183,281 @@
 
   <main>
 
-    <!-- ===================== HERO ===================== -->
-    <section class="hero" id="analyze">
-      <div class="container hero-grid">
+    <!-- ═══════ HERO : le champ URL, et l'audit qui tourne ═══════ -->
+    <section class="hm-hero" id="analyze">
+      <div class="container hm-hero-grid">
         <div>
-          <p class="eyebrow">Automated SEO, GEO &amp; security audit</p>
-          <!-- Title et H1 doivent parler du meme sujet : c'est notre propre
-             verification "Accord entre le title et le H1". Avant le 13/08 ils
-             ne partageaient qu'un mot, "secondes", et le moteur nous notait
-             25 %. La visibilite Google et IA reste dite juste en dessous. -->
-        <h1>Your SEO and GEO audit, <em>in 30 seconds.</em></h1>
-          <p class="lead">161 checks across 16 categories, from security to your visibility in ChatGPT and Google AI Overviews. Paste your URL, sign in in 5 seconds, and the analysis runs before your eyes. Free, no credit card.</p>
-          <form class="hero-roast" id="hero-roast-form" novalidate="">
+          <span class="overline">Automated SEO, GEO &amp; security audit</span>
+          <!-- Title et H1 parlent du meme sujet : c'est notre propre verification
+               « Accord entre le title et le H1 ». -->
+          <h1>Your SEO and GEO audit,<br> <span class="accent">in 30 seconds.</span></h1>
+          <p class="hm-lead">161 checks across 16 categories, from security to your visibility in ChatGPT and Google AI Overviews. Paste your URL, sign in in 5 seconds, and <strong>the analysis runs before your eyes.</strong></p>
+          <form class="sp-url" id="hero-roast-form" novalidate="">
+            <span aria-hidden="true">https://</span>
             <label for="hero-url" class="sr-only">Your website address</label>
             <input type="url" id="hero-url" name="url" placeholder="your-website.com" required="" autocomplete="url" inputmode="url" spellcheck="false">
-            <button type="submit" class="btn btn-primary">Diagnose my website</button>
+            <button type="submit" class="btn btn-orange">Diagnose my website</button>
           </form>
-          <label class="hero-optin"><input type="checkbox" id="hero-optin" checked="">Show my website on the public leaderboard</label>
-          <p class="hero-note">Free, no credit card. A 5-second sign-in (Google or email) runs the analysis and keeps your reports. <b>The full audit is included.</b></p>
+          <label class="sp-optin"><input type="checkbox" id="hero-optin" checked="">Show my website on the public leaderboard</label>
+          <!-- Le nombre est ECRIT ici (entretenu par le generateur de snapshot au
+               deploiement) : le webhook ne fait que le rafraichir a l'ecran. -->
+          <p class="hm-trust"><span>No credit card · A 5-second sign-in, Google or email</span> · <span id="stat-audits"><b>312</b> <span>audits run</span></span></p>
         </div>
-
-        <!-- Signature : le rapport se dessine sous les yeux du visiteur -->
-        <div class="report-live" role="img" aria-label="Aperçu animé d'un rapport SEOPlus : score global 58 sur 100 et scores par catégorie">
-          <div class="report-live-head">
-            <span class="site">your-website.com</span>
-            <span class="report-badge">SEO-GEO-Security audit</span>
+        <div>
+          <div class="hm-flow" aria-label="Aperçu animé d'un audit SEOPlus : quatre étapes puis le score global">
+            <div class="hm-flow-top"><b>SEOPlus! <span>· your-website.com</span></b><span class="hm-live">Live analysis · about 30 s</span></div>
+            <ol class="hm-nodes">
+              <li class="hm-node"><span class="hm-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span><div><b>Reads your website</b><small>Homepage and up to 30 key pages</small></div><span class="hm-state">OK</span></li>
+              <li class="hm-node"><span class="hm-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 7 2 2 4-4"/><path d="m3 15 2 2 4-4"/><path d="M13 8h8M13 16h8"/></svg></span><div><b>Runs the 161 checks</b><small>16 categories, from DNS to security headers</small></div><span class="hm-state">OK</span></li>
+              <li class="hm-node"><span class="hm-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.9L19 9.7l-5.2 1.8L12 16.5l-1.8-5L5 9.7l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span><div><b>Measures your AI visibility</b><small>23 GEO checks, crawlers to llms.txt</small></div><span class="hm-state">OK</span></li>
+              <li class="hm-node"><span class="hm-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4"/><path d="m9 14 2 2 4-4"/></svg></span><div><b>Writes your fixes</b><small>Action plan and ready-to-deploy files</small></div><span class="hm-state">OK</span></li>
+            </ol>
+            <div class="hm-flow-out"><div><span>Overall score</span><br><b><i id="spScore">58</i>/100<small>target 78 in 4 weeks</small></b></div><a href="report.html?url=exemple.com&amp;demo=1">See a sample report</a></div>
           </div>
-          <div class="report-score-row">
-            <div class="score-ring">
-              <svg width="108" height="108" viewBox="0 0 108 108" aria-hidden="true">
-                <defs><linearGradient id="sp-ring-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F97316"></stop><stop offset="1" stop-color="#EA580C"></stop></linearGradient></defs>
-                <circle class="track" cx="54" cy="54" r="48" fill="none" stroke-width="9"></circle>
-                <circle class="value" cx="54" cy="54" r="48" fill="none" stroke-width="9"></circle>
-              </svg>
-              <div class="score-num"><strong>0</strong><span>/ 100</span></div>
-            </div>
-            <div class="score-meta">
-              <p>Overall score</p>
-              <small>4-week target: 78/100 with the action plan</small>
-            </div>
-          </div>
-          <div class="cat-bars" aria-hidden="true">
-            <div class="cat-bar"><label>Structure &amp; content</label><div class="track"><div class="fill bad" data-value="38"></div></div><output>38</output></div>
-            <div class="cat-bar"><label>On-page SEO</label><div class="track"><div class="fill good" data-value="72"></div></div><output>72</output></div>
-            <div class="cat-bar"><label>HTTP security</label><div class="track"><div class="fill bad" data-value="24"></div></div><output>24</output></div>
-            <div class="cat-bar"><label>Performance</label><div class="track"><div class="fill warn" data-value="61"></div></div><output>61</output></div>
-            <div class="cat-bar"><label>AI optimization (GEO)</label><div class="track"><div class="fill warn" data-value="47"></div></div><output>47</output></div>
-          </div>
-          <div class="report-finding"><b>Quick win detected:</b> no meta description on 6 key pages. Estimated fix: 45 min, immediate CTR impact.</div>
+          <p class="hm-flow-cap">What runs after you paste your URL, shown on a sample website.</p>
         </div>
       </div>
     </section>
 
-    <!-- ===================== STATS ===================== -->
-    <div class="stats-band">
-      <div class="container stats-grid">
-        <div class="stat"><b>161</b><span>checks per site</span></div>
-        <div class="stat"><b>16</b><span>graded categories</span></div>
-        <div class="stat"><b>30 s</b><span>from URL to verdict</span></div>
-        <div class="stat"><b>9</b><span>files generated for you</span></div>
-        <!-- Le nombre est ECRIT ici (entretenu par le generateur de snapshot au
-             deploiement) : cache jusqu'a la reponse du webhook, il n'existait
-             pas pour les crawlers, qui n'executent pas JavaScript. Le webhook
-             ne sert plus qu'a rafraichir le chiffre a l'ecran. -->
-        <div class="stat" id="stat-audits"><b>312</b><span>audits run</span></div>
+    <!-- ═══════ ROBOTS : ceux que l'audit verifie (a la place des logos) ═══════ -->
+    <div class="hm-logos">
+      <div class="container hm-logos-grid">
+        <div class="hm-logos-txt">
+          <h2 class="hm-logos-title">The AI crawlers we check you let in</h2>
+          <p>One line in robots.txt is enough to shut one out, and with it the answers of the assistant behind it.</p>
+        </div>
+        <div class="hm-marquee"><div><span class="hm-brand"><b class="sp-bot">GPTBot</b><small>OpenAI</small></span><span class="hm-brand"><b class="sp-bot">OAI-SearchBot</b><small>ChatGPT search</small></span><span class="hm-brand"><b class="sp-bot">ClaudeBot</b><small>Anthropic</small></span><span class="hm-brand"><b class="sp-bot">PerplexityBot</b><small>Perplexity</small></span><span class="hm-brand"><b class="sp-bot">Google-Extended</b><small>Google Gemini</small></span></div><div aria-hidden="true"><span class="hm-brand"><b class="sp-bot">GPTBot</b><small>OpenAI</small></span><span class="hm-brand"><b class="sp-bot">OAI-SearchBot</b><small>ChatGPT search</small></span><span class="hm-brand"><b class="sp-bot">ClaudeBot</b><small>Anthropic</small></span><span class="hm-brand"><b class="sp-bot">PerplexityBot</b><small>Perplexity</small></span><span class="hm-brand"><b class="sp-bot">Google-Extended</b><small>Google Gemini</small></span></div></div>
       </div>
     </div>
 
-    <!-- ===================== COMMENT ÇA MARCHE ===================== -->
-    <section id="how-it-works">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">How it works</p>
-          <h2>Thirty seconds on your side. The rest is on us.</h2>
+    <!-- ═══════ CONSTAT ═══════ -->
+    <section class="hm-sec" id="why-now">
+      <div class="container hm-story-grid">
+        <div class="hm-story-side">
+          <span class="overline">Why now</span>
+          <h2 class="hm-h2">Being found no longer ends at Google's results</h2>
+          <p>Your visibility now plays out in two places: the results pages, and the answers AIs write. <strong>SEOPlus! is one of the few audits that measures both.</strong></p>
+          <ol class="hm-index" id="hmPainIndex"><li class="on">Cost</li><li>AI answers</li><li>Action</li></ol>
         </div>
-        <div class="steps">
-          <div class="step">
-            <span class="step-num">Step 1</span>
-            <h3>Paste your URL</h3>
-            <p>No access to grant, no code to install. Sign in in 5 seconds (Google or email) and the engine analyzes your site live, before your eyes.</p>
-          </div>
-          <div class="step">
-            <span class="step-num">Step 2</span>
-            <h3>Get your score and our reading</h3>
-            <p>Score out of 100, points within reach in 4 weeks, 16 graded categories, AI-written verdict and your server's location. Free.</p>
-          </div>
-          <div class="step">
-            <span class="step-num">Step 3</span>
-            <h3>Open the full audit</h3>
-            <p>Every check with its exact fix, a 4-phase action plan, your generated ready-to-deploy files and the comparison with your competitors. Free, in full.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== COUVERTURE ===================== -->
-    <section id="coverage" style="padding-top:0">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">What the audit covers</p>
-          <h2>16 categories, the same an agency could bill €1,500 for.</h2>
-          <p>Each category gets a score out of 100. The full audit adds the detail of the 161 checks, the measured value and the exact fix.</p>
-        </div>
-        <div class="cats">
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg>
-            <h3>Structure &amp; content</h3>
-            <p>robots.txt, sitemap, heading hierarchy, content depth, web history.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle></svg>
-            <h3>On-page SEO</h3>
-            <p>Title, meta description, H1, canonical, internal linking, alt attributes.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-            <h3>Targeting and keywords</h3>
-            <p>What each page is actually trying to rank for: title / H1 agreement, cannibalization, readable URLs, intents covered.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            <h3>Your site's profile</h3>
-            <p>A category matched to what you are: business listing, online store, media, personal presence, digital service, or company.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
-            <h3>SEO / AI visibility</h3>
-            <p>Indexability, AI crawler access (GPTBot, ClaudeBot, PerplexityBot), discoverability.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path></svg>
-            <h3>AI optimization (GEO)</h3>
-            <p>JSON-LD, organization schema, FAQ, citable passages, quantified facts, llms.txt. 18 dedicated checks.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
-            <h3>Performance</h3>
-            <p>Response time, compression, page weight, caching.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            <h3>TLS / certificate</h3>
-            <p>HTTPS, certificate validity, TLS version, secure redirects.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
-            <h3>Domain name and DNS</h3>
-            <p>Age, expiry, CAA, DNSSEC, possible takeover of an abandoned subdomain.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="1"></circle><path d="m9 20 3-6 3 6"></path><path d="m6 8 6 2 6-2"></path><path d="M12 10v4"></path></svg>
-            <h3>Accessibility and best practices</h3>
-            <p>Heading outline, zoom allowed on mobile, labelled form fields, structural landmarks, declared encoding.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>
-            <h3>Security headers</h3>
-            <p>CSP, HSTS, X-Frame-Options, protection against clickjacking and injection.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-            <h3>Email (SPF / DMARC)</h3>
-            <p>Email authentication, protection against domain spoofing.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg>
-            <h3>Legal compliance</h3>
-            <p>Legal notice, privacy policy, mandatory pages.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-            <h3>Privacy &amp; trackers</h3>
-            <p>Cookies, third-party trackers, analytics, visitor respect.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"></path></svg>
-            <h3>Exposure &amp; sensitive files</h3>
-            <p>Exposed .git repository, .env file, backups, deployment scripts, directory listing, CMS version on display.</p>
-          </div>
-          <div class="cat-card">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"></rect><path d="M7 11v4a2 2 0 0 0 2 2h4"></path><rect width="8" height="8" x="13" y="13" rx="2"></rect></svg>
-            <h3>Automation layer</h3>
-            <p>n8n, Make or Zapier editors left reachable, guessable webhooks, API keys in the page source.</p>
-          </div>
-        </div>
-        <div class="section-more">
-          <a class="btn btn-ghost" href="methodology.html">Discover our method in detail</a>
+        <div>
+          <article class="hm-prow">
+            <span class="hm-stat">€800 to €2,500 per audit</span>
+            <h3>A serious audit is rarely within reach</h3>
+            <p>That is what a serious SEO-GEO agency audit usually costs. For most small business owners, the decision keeps slipping: <span class="highlight-text">it is never the right time, nor the priority.</span></p>
+          </article>
+          <article class="hm-prow">
+            <span class="hm-stat">The fastest-growing channel</span>
+            <h3>AIs answer in place of result pages</h3>
+            <p>ChatGPT, Perplexity and Google AI Overviews answer the question directly. A website they cannot read or cite <span class="highlight-text">loses the fastest-growing channel.</span></p>
+          </article>
+          <article class="hm-prow">
+            <span class="hm-stat">A list is not a plan</span>
+            <h3>Most audits stop at the diagnosis</h3>
+            <p>A report that lists problems without the fix leaves you where you started. What moves a score is <span class="highlight-text">the exact fix, in the right order,</span> ready to apply.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ===================== GEO / IA (dark) ===================== -->
-    <section style="padding-top:0">
+    <!-- La phrase s'allume au defilement : le texte vit dans un span en ligne pour
+         que le degrade suive les lignes, et reste un seul noeud texte traduisible. -->
+    <section class="hm-pivot hm-alt">
       <div class="container">
-        <div class="geo">
-          <div class="geo-grid">
-            <div>
-              <p class="eyebrow">The GEO differentiator</p>
-              <h2>AIs already recommend businesses. Yours?</h2>
-              <p class="lead" style="margin-top:1rem">ChatGPT, Perplexity and Google AI Overviews answer in place of result pages. A site invisible to AIs loses the fastest-growing channel. SEOPlus! is one of the few audits that measures it.</p>
-              <div class="geo-points">
-                <div class="geo-point">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>
-                  <div><b>AI crawler accessibility</b><span>GPTBot, ClaudeBot, PerplexityBot: blocked or welcome on your site?</span></div>
-                </div>
-                <div class="geo-point">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="m9 15 2 2 4-4"></path></svg>
-                  <div><b>llms.txt compliance</b><span>The emerging standard that tells AIs what to read and what to cite on your site.</span></div>
-                </div>
-                <div class="geo-point">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg>
-                  <div><b>Citability of your content</b><span>Are your pages structured to be quoted word for word in an AI answer?</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="geo-terminal" aria-label="Extrait de vérification GEO" data-i18n-html="geo.terminal"><span class="dim">$ seoplus check --geo your-website.com</span><br>GPTBot / ClaudeBot .. <span class="ko">blocked</span><br>llms.txt ............ <span class="ko">missing</span><br>company schema ...... <span class="ko">missing</span><br>FAQ content ......... <span class="ko">missing</span><br>citable passages .... <span class="ok">12 detected</span><br>quantified facts .... <span class="ok">7 detected</span><br><span class="dim">verdict: citation crawlers blocked, no entity signal</span></div>
-          </div>
+        <p class="hm-say"><span id="hmSay">We don't sell you a diagnosis. We hand you the prescription.</span></p>
+        <p class="hm-pivot-more">Every check comes back with the value measured on your website, the exact fix and its place in a 4-phase action plan. <strong>Enough to act on your own, almost without an agency.</strong></p>
+      </div>
+    </section>
+
+    <!-- ═══════ BENEFICES ═══════ -->
+    <section class="hm-sec hm-benefits" id="benefits">
+      <div class="container hm-story-grid">
+        <div class="hm-story-side">
+          <span class="overline">Inside the full audit</span>
+          <h2 class="hm-h2">Your efforts, guided step by step</h2>
+          <p>Every fix explained, prioritized and ready to apply. The full audit is free, in full, for every website you analyze.</p>
+          <ul class="hm-levers">
+            <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></i><div><b>The exact fix, for every issue</b><span>All 161 checks, with the value measured on your site and the steps to follow, organized into a 4-phase action plan.</span></div></li>
+            <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4M9 13h6M9 17h4"/></svg></i><div><b>Your files, generated for you</b><span>robots.txt, sitemap, llms.txt, structured data, security headers, SPF, DMARC: every missing file is generated for your domain, ready to copy-paste.</span></div></li>
+            <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></i><div><b>The comparison with your competitors</b><span>Enter a competitor's URL: the same analysis runs on their site, puts your scores face to face and our AI writes the verdict. 3 comparisons included.</span></div></li>
+          </ul>
+          <a href="#pricing" class="hm-link">See the full offer</a>
+        </div>
+        <div>
+          <p class="hm-changes-title">What concretely changes</p>
+          <article class="hm-srow"><div class="hm-swap"><div class="hm-before"><span class="hm-k">Agency audit</span><span class="hm-v">€800</span></div><div class="hm-after"><span class="hm-k">SEOPlus! full audit</span><span class="hm-v">Free</span></div></div></article>
+          <article class="hm-srow"><div class="hm-swap"><div class="hm-before"><span class="hm-k">Checking by hand</span><span class="hm-v">Hours</span></div><div class="hm-after"><span class="hm-k">From URL to verdict</span><span class="hm-v">30 s</span></div></div></article>
+          <article class="hm-srow"><div class="hm-swap"><div class="hm-before"><span class="hm-k">Missing files</span><span class="hm-v">To write</span></div><div class="hm-after"><span class="hm-k">Generated for you</span><span class="hm-v">9 files</span></div></div></article>
+          <article class="hm-srow"><div class="hm-swap"><div class="hm-before"><span class="hm-k">AI visibility</span><span class="hm-v">Unknown</span></div><div class="hm-after"><span class="hm-k">Dedicated GEO checks</span><span class="hm-v">23</span></div></div></article>
         </div>
       </div>
     </section>
 
-    <!-- ===================== AUDIT COMPLET ===================== -->
-    <section style="padding-top:0">
+    <!-- ═══════ COMMENT CA MARCHE : 3 etapes, et le rapport qui revient ═══════ -->
+    <section class="hm-sec hm-alt hm-method" id="how-it-works">
+      <div class="container hm-method-grid">
+        <div>
+          <span class="overline">How it works</span>
+          <h2 class="hm-h2">Thirty seconds on your side. The rest is on us.</h2>
+          <p class="hm-intro">Three steps and one sign-in. Every report stays in your history, ready to reopen.</p>
+          <ol class="hm-tl">
+            <li><span class="hm-dur">5 seconds</span><h3>Paste your URL</h3><p>No access to grant, no code to install. Sign in in 5 seconds (Google or email) and the engine analyzes your site live, before your eyes.</p></li>
+            <li><span class="hm-dur">About 30 seconds</span><h3>Get your score and our reading</h3><p>Score out of 100, points within reach in 4 weeks, 16 graded categories, AI-written verdict and your server's location. Free.</p></li>
+            <li><span class="hm-dur">Free, in full</span><h3>Open the full audit</h3><p>Every check with its exact fix, a 4-phase action plan, your generated ready-to-deploy files and the comparison with your competitors. Free, in full.</p></li>
+          </ol>
+        </div>
+        <aside class="hm-example sp-report">
+          <span class="overline">A sample report</span>
+          <h3>What comes back, 30 seconds later</h3>
+          <div class="sp-rep">
+            <div class="sp-ring" style="--off: 116.1"><svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="spGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#F97316"/></linearGradient></defs><circle class="bg" cx="50" cy="50" r="44"/><circle class="fg" cx="50" cy="50" r="44"/></svg><b><i data-score="58">58</i><small>/ 100</small></b></div>
+            <div><p>Overall score</p><span>4-week target: 78/100 with the action plan</span></div>
+          </div>
+          <ul class="sp-bars">
+            <li class="low" style="--v:38%; --d:0.20s"><span>Structure &amp; content</span><output>38</output><i></i></li>
+            <li class="" style="--v:72%; --d:0.35s"><span>On-page SEO</span><output>72</output><i></i></li>
+            <li class="low" style="--v:24%; --d:0.50s"><span>HTTP security</span><output>24</output><i></i></li>
+            <li class="" style="--v:61%; --d:0.65s"><span>Performance</span><output>61</output><i></i></li>
+            <li class="low" style="--v:47%; --d:0.80s"><span>AI optimization (GEO)</span><output>47</output><i></i></li>
+          </ul>
+          <p class="sp-find"><b>Quick win detected:</b> no meta description on 6 key pages. Estimated fix: 45 min, immediate CTR impact.</p>
+          <a href="report.html?url=exemple.com&amp;demo=1" class="hm-link">See a full sample report</a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ═══════ LES 16 CATEGORIES ═══════ -->
+    <section class="hm-sec" id="coverage">
       <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Inside the full audit</p>
-          <h2>We don't sell you a diagnosis. We hand you the prescription.</h2>
-          <p>Your efforts guided step by step: every fix explained, prioritized and ready to apply.</p>
+        <div class="hm-uses-head">
+          <div><span class="overline">What the audit covers</span><h2 class="hm-h2" style="margin-bottom:0">16 categories, the same an agency could bill €1,500 for.</h2></div>
+          <p class="hm-intro">Each category gets a score out of 100. The full audit adds the detail of the 161 checks, the measured value and the exact fix.</p>
         </div>
-        <div class="steps">
-          <div class="step">
-            <h3>The exact fix, for every issue</h3>
-            <p>All 161 checks, with the value measured on your site and the steps to follow, organized into a 4-phase action plan.</p>
-          </div>
-          <div class="step">
-            <h3>Your files, generated for you</h3>
-            <p>robots.txt, sitemap, llms.txt, structured data, security headers, SPF, DMARC: every missing file is generated for your domain, ready to copy-paste.</p>
-          </div>
-          <div class="step">
-            <h3>The comparison with your competitors</h3>
-            <p>Enter a competitor's URL: the same analysis runs on their site, puts your scores face to face and our AI writes the verdict. 3 comparisons included.</p>
-          </div>
+        <div class="hm-use-grid sp-cats">
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg></i><h3>Structure &amp; content</h3><p>robots.txt, sitemap, heading hierarchy, content depth, web history.</p></div>
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle></svg></i><h3>On-page SEO</h3><p>Title, meta description, H1, canonical, internal linking, alt attributes.</p></div>
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></i><h3>Targeting and keywords</h3><p>What each page is actually trying to rank for: title / H1 agreement, cannibalization, readable URLs, intents covered.</p></div>
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg></i><h3>Your site's profile</h3><p>A category matched to what you are: business listing, online store, media, personal presence, digital service, or company.</p></div>
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg></i><h3>SEO / AI visibility</h3><p>Indexability, AI crawler access (GPTBot, ClaudeBot, PerplexityBot), discoverability.</p></div>
+          <div class="hm-use sp-hot"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path></svg></i><h3>AI optimization (GEO)</h3><p>JSON-LD, organization schema, FAQ, citable passages, quantified facts, llms.txt. 18 dedicated checks.</p></div>
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg></i><h3>Performance</h3><p>Response time, compression, page weight, caching.</p></div>
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></i><h3>TLS / certificate</h3><p>HTTPS, certificate validity, TLS version, secure redirects.</p></div>
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg></i><h3>Domain name and DNS</h3><p>Age, expiry, CAA, DNSSEC, possible takeover of an abandoned subdomain.</p></div>
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="1"></circle><path d="m9 20 3-6 3 6"></path><path d="m6 8 6 2 6-2"></path><path d="M12 10v4"></path></svg></i><h3>Accessibility and best practices</h3><p>Heading outline, zoom allowed on mobile, labelled form fields, structural landmarks, declared encoding.</p></div>
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></i><h3>Security headers</h3><p>CSP, HSTS, X-Frame-Options, protection against clickjacking and injection.</p></div>
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></i><h3>Email (SPF / DMARC)</h3><p>Email authentication, protection against domain spoofing.</p></div>
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg></i><h3>Legal compliance</h3><p>Legal notice, privacy policy, mandatory pages.</p></div>
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg></i><h3>Privacy &amp; trackers</h3><p>Cookies, third-party trackers, analytics, visitor respect.</p></div>
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"></path></svg></i><h3>Exposure &amp; sensitive files</h3><p>Exposed .git repository, .env file, backups, deployment scripts, directory listing, CMS version on display.</p></div>
+          <div class="hm-use"><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"></rect><path d="M7 11v4a2 2 0 0 0 2 2h4"></path><rect width="8" height="8" x="13" y="13" rx="2"></rect></svg></i><h3>Automation layer</h3><p>n8n, Make or Zapier editors left reachable, guessable webhooks, API keys in the page source.</p></div>
         </div>
-        <div class="dfy-band">
-          <div>
-            <p class="dfy-tag">audit → fixes applied</p>
-            <h3>No desire or time to do it yourself?</h3>
-            <p>OptimizIA.xyz applies the fixes, writes the content and gets your visibility back on track on Google and in AIs. You validate, we execute.</p>
-          </div>
-          <a class="btn btn-primary" href="https://www.optimizia.xyz">We do it for you</a>
+        <p class="sp-more"><a href="methodology.html" class="hm-link">Discover our method in detail</a></p>
+      </div>
+    </section>
+
+    <!-- ═══════ GEO ═══════ -->
+    <section class="hm-sec hm-alt" id="geo">
+      <div class="container sp-geo-grid">
+        <div>
+          <span class="overline">The GEO differentiator</span>
+          <h2 class="hm-h2">AIs already recommend businesses. Yours?</h2>
+          <p class="hm-intro">ChatGPT, Perplexity and Google AI Overviews answer in place of result pages. A site invisible to AIs loses the fastest-growing channel. SEOPlus! is one of the few audits that measures it.</p>
+          <ul class="hm-levers">
+            <li><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg></i><div><b>AI crawler accessibility</b><span>GPTBot, ClaudeBot, PerplexityBot: blocked or welcome on your site?</span></div></li>
+            <li><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="m9 15 2 2 4-4"></path></svg></i><div><b>llms.txt compliance</b><span>The emerging standard that tells AIs what to read and what to cite on your site.</span></div></li>
+            <li><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></i><div><b>Citability of your content</b><span>Are your pages structured to be quoted word for word in an AI answer?</span></div></li>
+          </ul>
+        </div>
+        <div class="sp-term" aria-label="Extrait de vérification GEO">
+          <div class="sp-term-top"><b>GEO check <span>· your-website.com</span></b><em>23 AI checks</em></div>
+          <div class="sp-term-body"><span class="ln" style="--d:0.00s"><span class="dim">$ seoplus check --geo your-website.com</span></span><span class="ln" style="--d:0.22s">GPTBot / ClaudeBot .. <span class="ko">blocked</span></span><span class="ln" style="--d:0.44s">llms.txt ............ <span class="ko">missing</span></span><span class="ln" style="--d:0.66s">company schema ...... <span class="ko">missing</span></span><span class="ln" style="--d:0.88s">FAQ content ......... <span class="ko">missing</span></span><span class="ln" style="--d:1.10s">citable passages .... <span class="ok">12 detected</span></span><span class="ln" style="--d:1.32s">quantified facts .... <span class="ok">7 detected</span></span><span class="ln" style="--d:1.54s"><span class="dim">verdict: citation crawlers blocked, no entity signal</span></span></div>
         </div>
       </div>
     </section>
 
-    <!-- ===================== TARIFS ===================== -->
-    <section id="pricing" style="padding-top:24px">
+    <!-- ═══════ OFFRE : tout est inclus, gratuitement ═══════ -->
+    <section class="hm-sec" id="pricing">
       <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">What you get</p>
-          <h2>Everything, free. No plan to pick.</h2>
+        <div class="hm-offers-head">
+          <span class="overline">What you get</span>
+          <h2 class="hm-h2">Everything, free. No plan to pick.</h2>
+          <p class="hm-intro">Every check, every fix, for every website you analyze. No credit card.</p>
         </div>
-        <div class="pricing-grid pricing-grid-one">
-          <div class="price-card featured">
-            <span class="featured-tag">Included</span>
+        <div class="sp-offer">
+          <div class="sp-offer-l">
+            <span class="hm-badge">Included</span>
             <h3>Full audit</h3>
-            <div class="price">Free</div>
-            <p class="price-desc">Every check, every fix, for every website you analyze. No credit card.</p>
-            <ul class="price-features">
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Overall score out of 100 and points within reach</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>16 graded categories</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Our reading of your website, written by AI</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Your server's location</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>161 detailed checks with fixes</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Prioritized 4-phase action plan</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Files generated for your domain, ready to deploy</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>3 competitor benchmarks with AI verdict</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>In-depth GEO analysis: 23 AI checks</li>
-            </ul>
-            <a class="btn btn-primary btn-block" href="#analyze">Run my audit</a>
-            <a class="price-demo-link" href="report.html?url=exemple.com&amp;demo=1">See a full sample report</a>
+            <div class="sp-price">Free</div>
+            <p>A 5-second sign-in (Google or email) runs the analysis and keeps your reports.</p>
+            <div class="sp-offer-cta"><a href="#analyze" class="btn btn-orange btn-lg">Run my audit</a><a href="report.html?url=exemple.com&amp;demo=1" class="hm-link">See a full sample report</a></div>
           </div>
+          <ul class="hm-ticks">
+            <li>Overall score out of 100 and points within reach</li>
+            <li>16 graded categories</li>
+            <li>Our reading of your website, written by AI</li>
+            <li>Your server's location</li>
+            <li>161 detailed checks with fixes</li>
+            <li>Prioritized 4-phase action plan</li>
+            <li>Files generated for your domain, ready to deploy</li>
+            <li>3 competitor benchmarks with AI verdict</li>
+            <li>In-depth GEO analysis: 23 AI checks</li>
+          </ul>
         </div>
-
         <!-- L'audit est offert, et on dit franchement ce qu'on attend en echange :
-             sans ca, "offert" ressemble a un piege. -->
-        <div class="price-deal">
-          <div class="price-deal-text">
-            <b>The only thing we ask: your feedback.</b>
-            <p>The full audit is free. In exchange we ask one thing: honest feedback. What helped, what you did not understand, what is missing. That is what moves the tool forward.</p>
-          </div>
-          <span class="price-deal-badge">Fair trade</span>
+             sans ca, « offert » ressemble a un piege. -->
+        <div class="sp-deal">
+          <div><b>The only thing we ask: your feedback.</b><p>The full audit is free. In exchange we ask one thing: honest feedback. What helped, what you did not understand, what is missing. That is what moves the tool forward.</p></div>
+          <span class="hm-badge">Fair trade</span>
+        </div>
+        <div class="sp-dfy">
+          <div><small>Audit › fixes applied</small><h3>No desire or time to do it yourself?</h3><p>OptimizIA.xyz applies the fixes, writes the content and gets your visibility back on track on Google and in AIs. You validate, we execute.</p></div>
+          <a href="https://www.optimizia.xyz" class="btn btn-orange">We do it for you</a>
         </div>
       </div>
     </section>
 
-    <!-- ===================== FONDATEURS / GENÈSE ===================== -->
-    <section style="padding-top:0">
+    <!-- ═══════ CLASSEMENT PUBLIC : lignes au lieu de cartes (meme balisage que
+         eliteCardsHtml et le generateur de snapshot, seul le style change) ═══════ -->
+    <section class="hm-sec hm-alt sp-rank" id="leaderboard">
       <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">The origin story</p>
-          <h2>Built for ourselves, open to everyone.</h2>
-        </div>
-        <div class="founders">
-          <div class="founders-id">
-            <div class="founders-avatars">
-              <div class="avatar"><img src="assets/img/authors/remy-ginoux.webp" alt="Portrait de Rémy Ginoux" width="64" height="64" loading="lazy"></div>
-              <div class="avatar"><img src="assets/img/authors/romain-ben.webp" alt="Portrait de Romain Ben" width="64" height="64" loading="lazy"></div>
+        <div class="hm-numbers-head">
+          <div><span class="overline">Public leaderboard</span><h2 class="hm-h2" style="margin-bottom:0">The websites that own their score.</h2></div>
+          <div>
+            <p class="hm-intro">Every listed site was audited by the engine and chose to appear. The score is verified server-side: no cheating possible.</p>
+            <div id="home-rank-elite-head" class="elite-head elite-head--home">
+              <h3>The Elite circle</h3>
+              <p>90/100 and above: the technical foundation and AI readability are both in place.</p>
             </div>
-            <cite>Rémy Ginoux and Romain Ben, co-founders of OptimizIA.xyz</cite>
-          </div>
-          <div class="founders-body">
-            <blockquote>
-              <p>“At first, we built it only for ourselves. It was a first MVP to quickly assess the health of our clients' websites, then more easily explain the action plan to optimize their rankings.</p>
-              <p>A serious SEO-GEO agency audit usually costs between €800 and €2,500 depending on complexity. For most small business owners, investing in this area remains a very hard decision: it is never the right time, nor the priority.</p>
-              <p>So we asked ourselves what better alternative we could offer them. That is how the idea of a SaaS was born.</p>
-              <p>We reworked the proposal for a few weeks and, pleased to produce such results in record time, we decided to put this service within everyone's reach. To offer, at no cost, not only a real, serious diagnosis, but also its associated action plan, achievable almost without an agency. We are here only if you need us.</p>
-              <p>SEOPlus! was born. It can now join the toolkit of every SEO-GEO doctor.”</p>
-            </blockquote>
-            <p class="founders-contact">We would love to hear your improvement ideas for the next releases: <a href="mailto:contact@optimizia.xyz">contact@optimizia.xyz</a>, or gladly during a <a href="https://www.optimizia.xyz/contact.html#booking">meeting</a>.</p>
           </div>
         </div>
+        <div id="home-rank-loading" class="rank-state" hidden="">Loading the leaderboard…</div>
+        <div id="home-rank-empty" class="rank-state" hidden=""><b>The leaderboard is brand new.</b><br>Audit your site, tick the box, and take first place.</div>
+        <div id="home-rank-elite" class="elite-grid" aria-live="polite"><!-- snapshot:home-rank-elite:debut --><article class="elite-card"><span class="elite-rank mono">#1</span><span class="elite-tag">Elite</span><h3 class="elite-host">romainben.cloud</h3><p class="elite-score mono"><b>94</b><span>/100</span></p></article><article class="elite-card"><span class="elite-rank mono">#2</span><span class="elite-tag">Elite</span><h3 class="elite-host">seoplus.optimizia.xyz</h3><p class="elite-score mono"><b>93</b><span>/100</span></p></article><article class="elite-card"><span class="elite-rank mono">#3</span><span class="elite-tag">Elite</span><h3 class="elite-host">grappil.com</h3><p class="elite-score mono"><b>92</b><span>/100</span></p></article><article class="elite-card"><span class="elite-rank mono">#4</span><span class="elite-tag">Elite</span><h3 class="elite-host">candidatop.com</h3><p class="elite-score mono"><b>91</b><span>/100</span></p></article><article class="elite-card"><span class="elite-rank mono">#5</span><span class="elite-tag">Elite</span><h3 class="elite-host">ginoux.xyz</h3><p class="elite-score mono"><b>90</b><span>/100</span></p></article><!-- snapshot:home-rank-elite:fin --></div>
+        <div id="home-rank-table" class="rank-rows" hidden=""></div>
+        <p class="sp-rank-foot"><a href="leaderboard.html" class="hm-link">See the full leaderboard</a><span>Tick the box when you run your audit to appear in it.</span></p>
       </div>
     </section>
 
-    <!-- ===================== TÉMOIGNAGES ===================== -->
-    <section class="tm-home" id="testimonials" style="padding-top:0">
+    <!-- ═══════ GENESE + TEMOIGNAGES ═══════ -->
+    <section class="hm-sec" id="story">
       <div class="container">
-        <div class="section-head">
-          <p class="eyebrow" data-i18n="home.tmEyebrow">Your testimonials</p>
-          <h2 data-i18n="home.tmTitle">What SEOPlus! changes, told by the people who use it.</h2>
-          <p data-i18n="home.tmLead">Every review published here comes from a real account, after a real audit. None of them are written by us, and each can be withdrawn by its author.</p>
-        </div>
-
-        <div id="tm-showcase" class="tm-showcase" hidden=""></div>
-
-        <div class="tm-write">
+        <span class="overline">The origin story</span>
+        <h2 class="hm-h2">Built for ourselves, open to everyone.</h2>
+        <figure class="hm-tcard">
+          <div class="sp-duo"><img src="assets/img/authors/remy-ginoux-portrait.webp" width="700" height="1244" alt="Portrait de Rémy Ginoux" loading="lazy" style="object-position: center 22%;"><img src="assets/img/authors/romain-ben-portrait.webp" width="900" height="906" alt="Portrait de Romain Ben" loading="lazy" style="object-position: center 18%;"></div>
+          <div>
+            <blockquote><p>“At first, <mark>we built it only for ourselves</mark>. It was a first MVP to quickly assess the health of our clients' websites, then more easily explain the action plan to optimize their rankings.</p></blockquote>
+            <figcaption><a class="hm-name" href="https://www.ginoux.xyz" target="_blank" rel="noopener">Rémy Ginoux</a> <span>and</span> <a class="hm-name" href="https://romainben.cloud" target="_blank" rel="noopener">Romain Ben</a> · <span>Co-founders of OptimizIA.xyz</span></figcaption>
+            <details class="hm-more"><summary>Read more</summary><div><p>A serious SEO-GEO agency audit usually costs between €800 and €2,500 depending on complexity. For most small business owners, investing in this area remains a very hard decision: it is never the right time, nor the priority.</p><p>So we asked ourselves what better alternative we could offer them. That is how the idea of a SaaS was born.</p><p>We reworked the proposal for a few weeks and, pleased to produce such results in record time, we decided to put this service within everyone's reach. To offer, at no cost, not only a real, serious diagnosis, but also its associated action plan, achievable almost without an agency. We are here only if you need us.</p><p>SEOPlus! was born. It can now join the toolkit of every SEO-GEO doctor.”</p></div></details>
+            <p class="sp-contact">We would love to hear your improvement ideas for the next releases: <a href="mailto:contact@optimizia.xyz">contact@optimizia.xyz</a>, or gladly during a <a href="https://www.optimizia.xyz/contact.html#booking">meeting</a>.</p>
+          </div>
+        </figure>
+        <div class="hm-recos tm-home" id="testimonials">
+          <div class="hm-recos-head">
+            <h3 data-i18n="home.tmTitle">What SEOPlus! changes, told by the people who use it.</h3>
+            <p data-i18n="home.tmLead">Every review published here comes from a real account, after a real audit. None of them are written by us, and each can be withdrawn by its author.</p>
+          </div>
+          <div id="tm-showcase" class="tm-showcase" hidden=""></div>
+          <div class="tm-write">
           <h3 data-i18n="home.tmWrite">Used SEOPlus!? Tell us about it.</h3>
           <p class="compte-sub" data-i18n="home.tmWriteSub">We read it before publishing, and you keep the right to withdraw it whenever you want.</p>
 
@@ -547,73 +487,35 @@
           </form>
           <div id="tm-list" class="fb-list"></div>
         </div>
-      </div>
-    </section>
-
-    <!-- ===================== CLASSEMENT PUBLIC ===================== -->
-    <section class="home-rank" style="padding-top:0">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Public leaderboard</p>
-          <h2>The websites that own their score.</h2>
-          <p>Every listed site was audited by the engine and chose to appear. The score is verified server-side: no cheating possible.</p>
-        </div>
-        <div id="home-rank-loading" class="rank-state" hidden="">Loading the leaderboard…</div>
-        <div id="home-rank-empty" class="rank-state" hidden=""><b>The leaderboard is brand new.</b><br>Audit your site, tick the box, and take first place.</div>
-        <div id="home-rank-elite-head" class="elite-head elite-head--home">
-          <h3>The Elite circle</h3>
-          <p>90/100 and above: the technical foundation and AI readability are both in place.</p>
-        </div>
-        <div id="home-rank-elite" class="elite-grid" aria-live="polite"><!-- snapshot:home-rank-elite:debut --><article class="elite-card"><span class="elite-rank mono">#1</span><span class="elite-tag">Elite</span><h3 class="elite-host">romainben.cloud</h3><p class="elite-score mono"><b>94</b><span>/100</span></p></article><article class="elite-card"><span class="elite-rank mono">#2</span><span class="elite-tag">Elite</span><h3 class="elite-host">seoplus.optimizia.xyz</h3><p class="elite-score mono"><b>93</b><span>/100</span></p></article><article class="elite-card"><span class="elite-rank mono">#3</span><span class="elite-tag">Elite</span><h3 class="elite-host">grappil.com</h3><p class="elite-score mono"><b>92</b><span>/100</span></p></article><article class="elite-card"><span class="elite-rank mono">#4</span><span class="elite-tag">Elite</span><h3 class="elite-host">candidatop.com</h3><p class="elite-score mono"><b>91</b><span>/100</span></p></article><article class="elite-card"><span class="elite-rank mono">#5</span><span class="elite-tag">Elite</span><h3 class="elite-host">ginoux.xyz</h3><p class="elite-score mono"><b>90</b><span>/100</span></p></article><!-- snapshot:home-rank-elite:fin --></div>
-        <div id="home-rank-table" class="rank-rows" hidden=""></div>
-        <div class="home-rank-actions">
-          <a class="btn btn-ghost" href="leaderboard.html">See the full leaderboard</a>
         </div>
       </div>
     </section>
 
-    <!-- ===================== FAQ ===================== -->
-    <section id="faq" style="padding-top:0">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Frequently asked questions</p>
-          <h2>Everything we get asked before clicking.</h2>
+    <!-- ═══════ FAQ ═══════ -->
+    <section class="hm-sec hm-alt" id="faq">
+      <div class="container hm-faq-grid">
+        <div class="hm-faq-side">
+          <span class="overline">FAQ</span>
+          <h2 class="hm-h2">Everything we get asked before clicking.</h2>
+          <p>A question that isn't here? <a href="mailto:contact@optimizia.xyz">Write to us</a>, reply within 72h.</p>
         </div>
-        <div class="faq-grid">
-          <div class="faq-block">
-            <h3>How long does the audit take?</h3>
-            <p>About 30 seconds. You paste your URL, sign in in 5 seconds (Google or email), and the analysis runs live before your eyes. Signing in is free: it archives your report in your history so you can reopen it whenever you want.</p>
-          </div>
-          <div class="faq-block">
-            <h3>What kinds of websites can you audit?</h3>
-            <p>Any public website: WordPress, Wix, Shopify, Webflow, custom sites. The analysis covers your homepage, up to 30 key pages found through your sitemap or menu, and domain signals (DNS, security, indexing files).</p>
-          </div>
-          <div class="faq-block">
-            <h3>What exactly is GEO?</h3>
-            <p>Generative Engine Optimization: your visibility in AI-generated answers (ChatGPT, Perplexity, Google AI Overviews). The audit devotes 23 checks to it: AI crawler access, llms.txt in the format Google validates, organization schema, structured data syntax, question-style content, citable passages, quantified facts, E-E-A-T signals, RSS feed, machine-readable contact path, cited sources and hidden instructions aimed at AIs.</p>
-          </div>
-          <div class="faq-block">
-            <h3>How do the generated files work?</h3>
-            <p>The full audit detects what is missing on your site (robots.txt, sitemap, llms.txt, structured data, security headers, SPF, DMARC) and generates each file with your domain and your information already in place. You copy, you paste in the right spot, done.</p>
-          </div>
-          <div class="faq-block">
-            <h3>What if the analysis fails?</h3>
-            <p>The audit costs you nothing: if your site is unreachable, try again later. If our crawler is blocked by your firewall, the report tells you exactly what to allow.</p>
-          </div>
-          <div class="faq-block">
-            <h3>Who applies the recommendations?</h3>
-            <p>You, your webmaster, or us. The generated files can be deployed without technical skills. For the rest, OptimizIA.xyz offers full handling of the fixes, with a re-audit to measure progress.</p>
-          </div>
+        <div>
+          <details class="hm-qa" open><summary><h3>How long does the audit take?</h3><i aria-hidden="true"></i></summary><p>About 30 seconds. You paste your URL, sign in in 5 seconds (Google or email), and the analysis runs live before your eyes. Signing in is free: it archives your report in your history so you can reopen it whenever you want.</p></details>
+          <details class="hm-qa"><summary><h3>What kinds of websites can you audit?</h3><i aria-hidden="true"></i></summary><p>Any public website: WordPress, Wix, Shopify, Webflow, custom sites. The analysis covers your homepage, up to 30 key pages found through your sitemap or menu, and domain signals (DNS, security, indexing files).</p></details>
+          <details class="hm-qa"><summary><h3>What exactly is GEO?</h3><i aria-hidden="true"></i></summary><p>Generative Engine Optimization: your visibility in AI-generated answers (ChatGPT, Perplexity, Google AI Overviews). The audit devotes 23 checks to it: AI crawler access, llms.txt in the format Google validates, organization schema, structured data syntax, question-style content, citable passages, quantified facts, E-E-A-T signals, RSS feed, machine-readable contact path, cited sources and hidden instructions aimed at AIs.</p></details>
+          <details class="hm-qa"><summary><h3>How do the generated files work?</h3><i aria-hidden="true"></i></summary><p>The full audit detects what is missing on your site (robots.txt, sitemap, llms.txt, structured data, security headers, SPF, DMARC) and generates each file with your domain and your information already in place. You copy, you paste in the right spot, done.</p></details>
+          <details class="hm-qa"><summary><h3>What if the analysis fails?</h3><i aria-hidden="true"></i></summary><p>The audit costs you nothing: if your site is unreachable, try again later. If our crawler is blocked by your firewall, the report tells you exactly what to allow.</p></details>
+          <details class="hm-qa"><summary><h3>Who applies the recommendations?</h3><i aria-hidden="true"></i></summary><p>You, your webmaster, or us. The generated files can be deployed without technical skills. For the rest, OptimizIA.xyz offers full handling of the fixes, with a re-audit to measure progress.</p></details>
         </div>
       </div>
     </section>
 
-    <!-- ===================== CTA FINAL ===================== -->
-    <section class="final-cta" style="padding-top:0">
+    <section class="hm-final">
       <div class="container">
         <h2>In 30 seconds, you will know exactly where you stand.</h2>
         <p>Start with the score. The full audit follows, free.</p>
-        <a class="btn btn-primary" href="#analyze">Analyze my website</a>
+        <a href="#analyze" class="btn btn-orange btn-lg">Analyze my website</a>
+        <p class="final-micro">No credit card · Any public website · Report kept in your history</p>
       </div>
     </section>
 
@@ -630,7 +532,7 @@
           <b class="footer-title">Product</b>
           <a href="/tools/seoplus/#analyze">Analyze my website</a>
           <a href="/tools/seoplus/#how-it-works">How it works</a>
-          <a href="/tools/seoplus/#pricing">What's included</a>
+          <a href="/tools/seoplus/#pricing">Offer</a>
           <a href="report.html?url=exemple.com&amp;demo=1">Sample report</a>
         </nav>
         <nav aria-label="Ressources">
@@ -648,18 +550,18 @@
         </nav>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 SEOPlus! V6.1 by OptimizIA.xyz</span>
+        <span>© 2026 SEOPlus! V7 by OptimizIA.xyz</span>
         <button type="button" class="footer-cookies" data-oia-cookies data-consent></button>
       </div>
     </div>
   </footer>
 
   <script src="config.js"></script>
-  <script src="assets/i18n-en-pages.js?v=20260926"></script>
-  <script src="assets/i18n-fr-pages.js?v=20260926"></script>
-  <script src="assets/i18n-es-pages.js?v=20260926"></script>
-  <script src="assets/i18n-de-pages.js?v=20260926"></script>
-  <script src="assets/app.js?v=20260926b"></script>
+  <script src="assets/i18n-en-pages.js?v=20260926v7"></script>
+  <script src="assets/i18n-fr-pages.js?v=20260926v7"></script>
+  <script src="assets/i18n-es-pages.js?v=20260926v7"></script>
+  <script src="assets/i18n-de-pages.js?v=20260926v7"></script>
+  <script src="assets/app.js?v=20260926v7"></script>
   <script src="assets/oia-tracker.js?v=20260916" data-site="seoplus" defer=""></script>
   <script src="assets/oia-clarity.js?v=20260926" data-clarity="y4wvew5ezs" data-legal="politique-confidentialite.html" data-accent="#F97316" defer=""></script>
 

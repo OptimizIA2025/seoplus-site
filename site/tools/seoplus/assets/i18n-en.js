@@ -8,7 +8,7 @@ window.SEOPLUS_EN = {
     /* ---- Bilan gratuit (renommage + mecanique trajectoire, 12/08) ---- */
     "bilan.freeBadge": "Free snapshot",
     "bilan.trajLabel": "points within reach in 4 weeks",
-    "bilan.jump": "See the errors and warnings found",
+    "bilan.jump": "Run my full audit",
     "bilan.catsH2": "Everything that was checked on your website",
     "bilan.catsSub": "One dot per check, chapter by chapter: green passing, orange to improve, red to fix. Every flaw is named below; its exact measurement and its fix are reserved for the full report.",
     "bilan.p6": "AI reading of the website",
@@ -99,7 +99,7 @@ window.SEOPLUS_EN = {
     "cta.sub": "OptimizIA.xyz applies the fixes, writes the content and gets your visibility back on track on Google and in AIs. You validate, we execute.",
     "cta.btn": "Have it done for you",
 
-    "nav.tarifs": "What's included",
+    "nav.tarifs": "Offer",
     "nav.another": "Diagnose another site",
     "roast.eyebrow": "Live analysis",
     "roast.dissect": "Dissecting",
@@ -179,7 +179,7 @@ window.SEOPLUS_EN = {
 
   /* ---- Pages statiques : texte FR (normalise) vers EN ---- */
   pages: {
-      "Ce qui est inclus": "What's included",
+      "Offre": "Offer",
     /* ---- Page A propos (17/08) + lien footer ---- */
     "À propos": "About us",
     "Qui est derrière SEOPlus!": "Who is behind SEOPlus!",
@@ -657,7 +657,7 @@ window.SEOPLUS_EN = {
       "Mise en regard des deux scores, catégorie par catégorie": "Both scores placed side by side, category by category",
       "Un avis, un bug, une critique ? On est preneur de tout : admin@optimizia.xyz": "An opinion, a bug, a criticism? We will take anything: ",
       "Auditer un autre site.": "<a href=\"/tools/seoplus/\">Audit another site.</a>",
-      "© 2026 SEOPlus! V6.1 par OptimizIA.xyz": "© 2026 SEOPlus! V6.1 by OptimizIA.xyz",
+      "© 2026 SEOPlus! V7 par OptimizIA.xyz": "© 2026 SEOPlus! V7 by OptimizIA.xyz",
       "Retour à l'accueil": "<a href=\"/tools/seoplus/\">Back to the homepage</a>",
   };
   Object.keys(AJOUT).forEach(function (k) { P[k] = AJOUT[k]; });

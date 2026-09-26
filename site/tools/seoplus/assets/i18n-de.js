@@ -89,7 +89,7 @@
       "about.s2": "SEO-/GEO- und KI-Sichtbarkeitsaudit, Platzierungen und Zitierfähigkeit für LLMs",
       "about.s3": "Maßgeschneiderte KI-Agenten und Einführung von n8n-Workflows",
       "about.s4": "Schnelle, souveräne, DSGVO-konforme Websites",
-      "nav.tarifs": "Was enthalten ist",
+      "nav.tarifs": "Angebot",
       "nav.another": "Eine andere Website diagnostizieren",
       "roast.eyebrow": "Live-Analyse",
       "roast.dissect": "Wird seziert",
@@ -104,7 +104,7 @@
       "roast.errMsg": "Wir konnten diese Website nicht erreichen. Prüfen Sie die URL und versuchen Sie es erneut.",
       "roast.retry": "Erneut versuchen",
       "bilan.freeBadge": "Kostenloser Kurzbefund",
-      "bilan.jump": "Die gefundenen Fehler und Warnungen ansehen",
+      "bilan.jump": "Mein vollständiges Audit starten",
       "roast.aiRead": "Unsere Einschätzung Ihrer Website",
       "bilan.aiMarket": "Ihre Position, gemessen",
       "bilan.catsH2": "Alles, was auf Ihrer Website geprüft wurde",
@@ -149,7 +149,7 @@
   /* Correspondance exacte du texte des elements. Cle = chaine francaise. */
   var P = D.pages || (D.pages = {});
   var _P = {
-      "Ce qui est inclus": "Was enthalten ist",
+      "Offre": "Angebot",
       "Classement": "Rangliste",
       "Auditer un autre site": "Eine andere Website auditieren",
       "Rapport d'audit SEOPlus! by OptimizIA.xyz": "Audit-Bericht SEOPlus! by OptimizIA.xyz",
@@ -199,7 +199,7 @@
       "Mise en regard des deux scores, catégorie par catégorie": "Die beiden Punktzahlen gegenübergestellt, Kategorie für Kategorie",
       "Un avis, un bug, une critique ? On est preneur de tout : admin@optimizia.xyz": "Eine Meinung, ein Fehler, eine Kritik? Wir nehmen alles: ",
       "Auditer un autre site.": "<a href=\"/tools/seoplus/\">Eine andere Website auditieren.</a>",
-      "© 2026 SEOPlus! V6.1 par OptimizIA.xyz": "© 2026 SEOPlus! V6.1 von OptimizIA.xyz",
+      "© 2026 SEOPlus! V7 par OptimizIA.xyz": "© 2026 SEOPlus! V7 von OptimizIA.xyz",
       "Retour à l'accueil": "<a href=\"/tools/seoplus/\">Zurück zur Startseite</a>",
       "Audit complet": "Vollständiges Audit",
       "Le rapport de votre-site.fr est prêt.": "Der Bericht von <em id=\"pay-host\">ihre-website.de</em> ist fertig.",

@@ -9,7 +9,7 @@
   /* Correspondance exacte du texte des elements. */
   var P = D.pages || (D.pages = {});
   var _P = {
-      "Ce qui est inclus": "What's included",
+      "Offre": "Offer",
       "Les présentes conditions régissent l'utilisation de l'Audit Complet SEOPlus!, un rapport d'analyse numérique de site web proposé sous l'enseigne commerciale OptimizIA.xyz, exploitée par Rémy Ginoux dans le cadre d'un contrat de portage salarial avec PORTAGE D'OC, SARL au capital de 50 000 €, SIREN 799 198 841, dont le siège social est situé 23B Boulevard Président Kennedy, 34500 Béziers. Toute utilisation du service vaut acceptation de ces conditions.": "These terms govern the use of the SEOPlus! Full Audit, a digital website analysis report offered under the OptimizIA.xyz trade name, operated by Rémy Ginoux under an umbrella employment contract with PORTAGE D'OC, SARL with a share capital of €50,000, SIREN 799 198 841, whose registered office is at 23B Boulevard Président Kennedy, 34500 Béziers, France. Any use of the service constitutes acceptance of these terms.",
       "L'Audit Complet est fourni gratuitement, sans commande ni paiement. Un retour d'expérience est sollicité par email, sans obligation : il ne conditionne ni l'accès au rapport, ni sa conservation, ni aucune fonctionnalité du service.": "The Full Audit is provided free of charge, with no order and no payment. Feedback is requested by email, with no obligation: it does not condition access to the report, its retention, or any feature of the service.",
       "L'accès au rapport est immédiat, sur la page de rapport du site analysé. Le rapport est exportable en PDF par le client. En cas de problème d'accès, écrivez à contact@optimizia.xyz : nous rétablissons l'accès.": "Access to the report is immediate, on the report page of the analyzed website. The report can be exported to PDF by the client. In case of an access problem, write to <a href=\"mailto:contact@optimizia.xyz\">contact@optimizia.xyz</a>: we restore access.",
@@ -41,7 +41,7 @@
       "politique de confidentialité": "privacy policy",
       "Cookies": "Cookies",
       "SEOPlus! ne dépose aucun cookie de suivi ni traceur publicitaire. Le navigateur mémorise localement (localStorage) votre session de connexion et l'accès à vos audits, uniquement sur votre appareil.": "SEOPlus! sets no tracking cookie and no advertising tracker. The browser stores locally (localStorage) your sign-in session and access to your audits, on your device only.",
-      "© 2026 SEOPlus! V6.1 par OptimizIA.xyz": "© 2026 SEOPlus! V6.1 by OptimizIA.xyz",
+      "© 2026 SEOPlus! V7 par OptimizIA.xyz": "© 2026 SEOPlus! V7 by OptimizIA.xyz",
       "Conditions générales de vente": "<a href=\"cgv.html\">Terms of sale</a>",
       "Politique de confidentialité": "Privacy policy",
       "Dernière mise à jour : 6 août 2026.": "Last updated: 6 August 2026.",
