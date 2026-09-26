@@ -44,15 +44,22 @@ jobs:
             exit 0
           fi
           jour=$(TZ=Europe/Paris date +%d/%m/%Y)
-          branche="snapshot/classement-$(date -u +%Y%m%d-%H%M)"
+          # Une seule branche : un passage qui a echoue est repris et ecrase par
+          # le suivant, au lieu de laisser une branche orpheline par nuit.
+          branche="snapshot/classement"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$branche"
           git commit -am "Snapshot du classement du $jour"
-          git push origin "$branche"
-          url=$(gh pr create --base main --head "$branche" \
-            --title "Snapshot du classement du $jour" \
-            --body "Classement public et compteur d'analyses figes dans le HTML par le workflow de nuit. Fusion automatique apres les verifications requises.")
+          git push --force origin "$branche"
+          url=$(gh pr list --head "$branche" --state open --json url --jq '.[0].url')
+          if [ -n "$url" ]; then
+            gh pr edit "$url" --title "Snapshot du classement du $jour"
+          else
+            url=$(gh pr create --base main --head "$branche" \
+              --title "Snapshot du classement du $jour" \
+              --body "Classement public et compteur d'analyses figes dans le HTML par le workflow de nuit. Fusion automatique apres les verifications requises.")
+          fi
           gh pr merge --auto --squash --delete-branch "$url"
           # Une pull request ouverte avec le jeton du workflow ne declenche pas
           # les workflows pull_request : les verifications requises sont lancees
