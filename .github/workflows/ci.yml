@@ -4,6 +4,8 @@ on:
   push:
     branches: ["main"]
   pull_request:
+  # Lance par le snapshot du classement sur sa branche (voir snapshot-classement.yml).
+  workflow_dispatch:
 
 permissions:
   contents: read
