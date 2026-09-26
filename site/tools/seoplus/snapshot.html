@@ -12,7 +12,7 @@
   <meta name="twitter:image" content="https://www.optimizia.xyz/tools/seoplus/assets/img/og.png?v=2">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/style.css?v=20260926">
+  <link rel="stylesheet" href="assets/style.css?v=20260926v7">
 </head>
 <body data-page="bilan">
 
@@ -26,7 +26,7 @@
         <a class="brand-by" href="https://www.optimizia.xyz">by OptimizIA.xyz</a>
       </div>
       <nav class="nav-links" aria-label="Navigation principale">
-        <a href="/tools/seoplus/#pricing" data-i18n="nav.tarifs">Ce qui est inclus</a>
+        <a href="/tools/seoplus/#pricing" data-i18n="nav.tarifs">Offre</a>
         <a href="/tools/seoplus/" data-i18n="nav.another">Diagnostiquer un autre site</a>
       </nav>
     </div>
@@ -94,12 +94,9 @@
             <div class="rv-punch">
               <p class="rv-punch-text" id="rv-punch">Bon... ça tient debout, mais faut pas pousser trop fort.</p>
               <div class="rv-counts" id="rv-counts"></div>
-              <!-- Le visiteur qui voit une bonne note s'arrete la. Ce bouton lui
-                   dit qu'il reste quelque chose a voir, et l'y emmene. -->
-              <a class="rv-jump" id="rv-jump" href="#rv-cats" hidden>
-                <span class="rv-jump-dots" aria-hidden="true"><i class="bad"></i><i class="warn"></i></span>
-                <span class="rv-jump-text" id="rv-jump-text" data-i18n="bilan.jump">Voir les erreurs et avertissements</span>
-              </a>
+              <!-- Le visiteur qui voit une bonne note s'arrete la. Ce bouton
+                   l'emmene directement a l'audit complet (lien pose par app.js). -->
+              <a class="btn btn-primary rv-jump" id="rv-jump" href="report.html" hidden data-i18n="bilan.jump">Lancer mon audit complet</a>
             </div>
           </div>
           <p class="analyzed-at" id="rv-analyzed" hidden></p>
@@ -186,7 +183,7 @@
           <b class="footer-title">Produit</b>
           <a href="/tools/seoplus/#analyze">Analyser mon site</a>
           <a href="/tools/seoplus/#how-it-works">Comment ça marche</a>
-          <a href="/tools/seoplus/#pricing">Ce qui est inclus</a>
+          <a href="/tools/seoplus/#pricing">Offre</a>
           <a href="report.html?url=exemple.com&amp;demo=1">Exemple de rapport</a>
         </nav>
         <nav aria-label="Ressources">
@@ -204,17 +201,17 @@
         </nav>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 SEOPlus! V6.1 par OptimizIA.xyz</span>
+        <span>&copy; 2026 SEOPlus! V7 par OptimizIA.xyz</span>
         <button type="button" class="footer-cookies" data-oia-cookies data-consent></button>
       </div>
     </div>
   </footer>
 
   <script src="config.js"></script>
-  <script src="assets/i18n-en.js?v=20260926"></script>
-  <script src="assets/i18n-es.js?v=20260926"></script>
-  <script src="assets/i18n-de.js?v=20260926"></script>
-  <script src="assets/app.js?v=20260926b"></script>
+  <script src="assets/i18n-en.js?v=20260926v7"></script>
+  <script src="assets/i18n-es.js?v=20260926v7"></script>
+  <script src="assets/i18n-de.js?v=20260926v7"></script>
+  <script src="assets/app.js?v=20260926v7"></script>
   <script src="assets/oia-tracker.js?v=20260916" data-site="seoplus" defer></script>
   <script src="assets/oia-clarity.js?v=20260926" data-clarity="y4wvew5ezs" data-legal="politique-confidentialite.html" data-accent="#F97316" defer></script>
 </body>

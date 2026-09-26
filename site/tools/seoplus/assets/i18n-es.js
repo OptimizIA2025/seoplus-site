@@ -89,7 +89,7 @@
       "about.s2": "Auditoría SEO/GEO y visibilidad en IA, posiciones y citabilidad por LLM",
       "about.s3": "Agentes de IA a medida y despliegue de flujos n8n",
       "about.s4": "Sitios web rápidos, soberanos y conformes al RGPD",
-      "nav.tarifs": "Qué incluye",
+      "nav.tarifs": "Oferta",
       "nav.another": "Diagnosticar otro sitio",
       "roast.eyebrow": "Análisis en directo",
       "roast.dissect": "Diseccionando",
@@ -104,7 +104,7 @@
       "roast.errMsg": "No hemos podido acceder a este sitio. Comprueba la URL e inténtalo de nuevo.",
       "roast.retry": "Reintentar",
       "bilan.freeBadge": "Diagnóstico gratuito",
-      "bilan.jump": "Ver los errores y las advertencias encontrados",
+      "bilan.jump": "Lanzar mi auditoría completa",
       "roast.aiRead": "Nuestra lectura de tu sitio",
       "bilan.aiMarket": "Tu posición, medida",
       "bilan.catsH2": "Todo lo que se ha comprobado en tu sitio",
@@ -149,7 +149,7 @@
   /* Correspondance exacte du texte des elements. Cle = chaine francaise. */
   var P = D.pages || (D.pages = {});
   var _P = {
-      "Ce qui est inclus": "Qué incluye",
+      "Offre": "Oferta",
       "Classement": "Clasificación",
       "Auditer un autre site": "Auditar otro sitio",
       "Rapport d'audit SEOPlus! by OptimizIA.xyz": "Informe de auditoría SEOPlus! by OptimizIA.xyz",
@@ -199,7 +199,7 @@
       "Mise en regard des deux scores, catégorie par catégorie": "Las dos puntuaciones cara a cara, categoría por categoría",
       "Un avis, un bug, une critique ? On est preneur de tout : admin@optimizia.xyz": "¿Una opinión, un fallo, una crítica? Lo aceptamos todo: ",
       "Auditer un autre site.": "<a href=\"/tools/seoplus/\">Auditar otro sitio.</a>",
-      "© 2026 SEOPlus! V6.1 par OptimizIA.xyz": "© 2026 SEOPlus! V6.1 de OptimizIA.xyz",
+      "© 2026 SEOPlus! V7 par OptimizIA.xyz": "© 2026 SEOPlus! V7 de OptimizIA.xyz",
       "Retour à l'accueil": "<a href=\"/tools/seoplus/\">Volver al inicio</a>",
       "Audit complet": "Auditoría completa",
       "Le rapport de votre-site.fr est prêt.": "El informe de <em id=\"pay-host\">tu-sitio.com</em> está listo.",

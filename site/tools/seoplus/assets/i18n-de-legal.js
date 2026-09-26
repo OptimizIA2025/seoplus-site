@@ -9,7 +9,7 @@
   /* Correspondance exacte du texte des elements. */
   var P = D.pages || (D.pages = {});
   var _P = {
-      "Ce qui est inclus": "Was enthalten ist",
+      "Offre": "Angebot",
       "Les présentes conditions régissent l'utilisation de l'Audit Complet SEOPlus!, un rapport d'analyse numérique de site web proposé sous l'enseigne commerciale OptimizIA.xyz, exploitée par Rémy Ginoux dans le cadre d'un contrat de portage salarial avec PORTAGE D'OC, SARL au capital de 50 000 €, SIREN 799 198 841, dont le siège social est situé 23B Boulevard Président Kennedy, 34500 Béziers. Toute utilisation du service vaut acceptation de ces conditions.": "Diese Bedingungen regeln die Nutzung des SEOPlus! Vollständigen Audits, eines digitalen Website-Analyseberichts, angeboten unter dem Handelsnamen OptimizIA.xyz, betrieben von Rémy Ginoux im Rahmen eines Portage-Salarial-Vertrags mit PORTAGE D'OC, SARL mit einem Kapital von 50 000 €, SIREN 799 198 841, mit Sitz in 23B Boulevard Président Kennedy, 34500 Béziers, Frankreich. Jede Nutzung des Dienstes gilt als Annahme dieser Bedingungen.",
       "L'Audit Complet est fourni gratuitement, sans commande ni paiement. Un retour d'expérience est sollicité par email, sans obligation : il ne conditionne ni l'accès au rapport, ni sa conservation, ni aucune fonctionnalité du service.": "Das Vollständige Audit wird kostenlos bereitgestellt, ohne Bestellung und ohne Zahlung. Per E-Mail wird um ein Feedback gebeten, ohne Verpflichtung: Es ist weder Bedingung für den Zugang zum Bericht noch für dessen Aufbewahrung oder irgendeine Funktion des Dienstes.",
       "L'accès au rapport est immédiat, sur la page de rapport du site analysé. Le rapport est exportable en PDF par le client. En cas de problème d'accès, écrivez à contact@optimizia.xyz : nous rétablissons l'accès.": "Der Zugang zum Bericht erfolgt sofort auf der Berichtsseite der analysierten Website. Der Bericht kann vom Kunden als PDF exportiert werden. Bei Zugangsproblemen schreiben Sie an <a href=\"mailto:contact@optimizia.xyz\">contact@optimizia.xyz</a>: Wir stellen den Zugang wieder her.",
@@ -41,7 +41,7 @@
       "politique de confidentialité": "Datenschutzerklärung",
       "Cookies": "Cookies",
       "SEOPlus! ne dépose aucun cookie de suivi ni traceur publicitaire. Le navigateur mémorise localement (localStorage) votre session de connexion et l'accès à vos audits, uniquement sur votre appareil.": "SEOPlus! setzt kein Tracking-Cookie und keinen Werbetracker. Der Browser speichert lokal (localStorage) Ihre Anmeldesitzung und den Zugang zu Ihren Audits, ausschließlich auf Ihrem Gerät.",
-      "© 2026 SEOPlus! V6.1 par OptimizIA.xyz": "© 2026 SEOPlus! V6.1 von OptimizIA.xyz",
+      "© 2026 SEOPlus! V7 par OptimizIA.xyz": "© 2026 SEOPlus! V7 von OptimizIA.xyz",
       "Conditions générales de vente": "<a href=\"cgv.html\">AGB</a>",
       "Politique de confidentialité": "Datenschutzerklärung",
       "Dernière mise à jour : 6 août 2026.": "Letzte Aktualisierung: 6. August 2026.",

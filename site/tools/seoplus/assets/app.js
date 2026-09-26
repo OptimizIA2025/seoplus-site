@@ -1390,41 +1390,94 @@
         .catch(function () {});
     }
 
-    var ring = $(".score-ring .value");
-    var num = $(".score-num strong");
-    var finding = $(".report-finding");
-    if (!ring) return;
+  }
 
-    var target = 58;
-    var circumference = 2 * Math.PI * 48;
-    ring.style.strokeDasharray = circumference;
-    ring.style.strokeDashoffset = circumference;
+  /* Accueil V7 : l'audit tourne dans la carte du hero, puis chaque bloc s'allume
+     en entrant dans l'ecran. IntersectionObserver plutot qu'une bibliotheque de
+     defilement : quelques lignes, aucun fichier de plus a charger. */
+  var ETATS_NOEUD = { fr: ["En cours", "Fait"], en: ["Running", "Done"], es: ["En curso", "Hecho"], de: ["Läuft", "Fertig"] };
 
-    function run() {
-      ring.style.strokeDashoffset = circumference * (1 - target / 100);
+  function compterJusqua(el, cible, ms) {
+    if (reducedMotion) { el.textContent = cible; return; }
+    var t0 = null;
+    requestAnimationFrame(function f(t) {
+      if (!t0) t0 = t;
+      var p = Math.min(1, (t - t0) / ms);
+      el.textContent = Math.round(cible * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(f);
+    });
+  }
 
-      if (reducedMotion) {
-        num.textContent = target;
-      } else {
-        var start = null;
-        var animate = function (ts) {
-          if (!start) start = ts;
-          var p = Math.min((ts - start) / 1500, 1);
-          num.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
-          if (p < 1) requestAnimationFrame(animate);
-        };
-        requestAnimationFrame(animate);
-      }
+  function quandVisible(els, marge, fn) {
+    if (!window.IntersectionObserver) { els.forEach(fn); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); fn(e.target); } });
+    }, { rootMargin: marge });
+    els.forEach(function (el) { io.observe(el); });
+  }
 
-      $$(".cat-bar .fill").forEach(function (fill, i) {
-        var v = Number(fill.dataset.value) / 100;
-        setTimeout(function () { fill.style.transform = "scaleX(" + v + ")"; }, reducedMotion ? 0 : 150 + i * 90);
-      });
+  function animerAccueil() {
+    var flow = $(".hm-flow");
+    if (!flow) return;
+    document.documentElement.classList.add("js");
 
-      setTimeout(function () { finding && finding.classList.add("visible"); }, reducedMotion ? 0 : 1400);
+    /* Les etats se lisent dans la langue affichee, reposee a chaque bascule. */
+    var noeuds = $$(".hm-node", flow), score = $("#spScore");
+    function etat(n, cls, i) {
+      n.className = "hm-node" + (cls ? " " + cls : "");
+      n.querySelector(".hm-state").textContent = i == null ? "OK" : (ETATS_NOEUD[document.documentElement.lang] || ETATS_NOEUD.en)[i];
+    }
+    if (reducedMotion) {
+      noeuds.forEach(function (n) { etat(n, "done", 1); });
+    } else {
+      (function cycle() {
+        flow.classList.add("wait");
+        score.textContent = "0";
+        noeuds.forEach(function (n) { etat(n, ""); });
+        noeuds.forEach(function (n, i) {
+          setTimeout(function () { etat(n, "run", 0); }, 400 + i * 1100);
+          setTimeout(function () { etat(n, "done", 1); }, 1200 + i * 1100);
+        });
+        setTimeout(function () { flow.classList.remove("wait"); compterJusqua(score, 58, 1100); }, 1200 + (noeuds.length - 1) * 1100);
+        setTimeout(cycle, 400 + noeuds.length * 1100 + 3600);
+      })();
     }
 
-    setTimeout(run, reducedMotion ? 0 : 300);
+    /* Phrase pivot : --p suit la traversee de l'ecran. Le span est relu a chaque
+       fois, la bascule de langue le remplace. */
+    var say = $(".hm-say");
+    if (say && !reducedMotion) {
+      var peindre = function () {
+        var r = say.getBoundingClientRect(), h = window.innerHeight;
+        var p = Math.min(1, Math.max(0, (h * 0.8 - r.top) / (h * 0.3 + r.height)));
+        if (say.firstElementChild) say.firstElementChild.style.setProperty("--p", (p * 100).toFixed(1) + "%");
+      };
+      window.addEventListener("scroll", peindre, { passive: true });
+      peindre();
+    }
+
+    /* Constat : la douleur qui traverse le milieu de l'ecran s'allume, l'index suit. */
+    var lignes = $$(".hm-prow"), index = $$("#hmPainIndex li");
+    if (window.IntersectionObserver && lignes.length) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          e.target.classList.toggle("on", e.isIntersecting);
+          if (!e.isIntersecting) return;
+          var i = lignes.indexOf(e.target);
+          index.forEach(function (li, j) { li.classList.toggle("on", j === i); });
+        });
+      }, { rootMargin: "-38% 0px -38% 0px" });
+      lignes.forEach(function (l) { io.observe(l); });
+    } else {
+      lignes.forEach(function (l) { l.classList.add("on"); });
+    }
+
+    quandVisible($$(".hm-srow"), "0px 0px -22% 0px", function (el) { el.classList.add("done"); });
+    quandVisible($$(".sp-report, .sp-term"), "0px 0px -25% 0px", function (el) {
+      el.classList.add("on");
+      var n = el.querySelector("[data-score]");
+      if (n) compterJusqua(n, Number(n.getAttribute("data-score")), 1400);
+    });
   }
 
   /* ---------- /roast : le roast gratuit ---------- */
@@ -1528,20 +1581,12 @@
       '<span class="rv-count bad"><b>' + (c.erreurs || 0) + "</b> " + tUI("urgents", "urgents") + "</span>";
 
     /* Un bon score arrete la lecture : la personne voit 91, se rassure et
-       ferme l'onglet sans jamais descendre. Ce bouton dit combien de choses
-       restent ouvertes et emmene directement dessus. */
-    var aTraiter = (c.erreurs || 0) + (c.avertissements || 0);
-    var jump = $("#rv-jump"), jumpTxt = $("#rv-jump-text");
+       ferme l'onglet sans jamais descendre. Ce bouton l'emmene directement a
+       l'audit complet, le meme que l'appel de fin de page. */
+    var jump = $("#rv-jump");
     if (jump) {
-      jump.hidden = !aTraiter;
-      if (aTraiter && jumpTxt) {
-        jumpTxt.textContent = tEN("See the " + aTraiter + " errors and warnings found", "Voir les " + aTraiter + " erreurs et avertissements relevés");
-      }
-      jump.onclick = function (ev) {
-        ev.preventDefault();
-        var cible = $("#rv-cats");
-        if (cible) cible.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
-      };
+      jump.href = "report.html?url=" + encodeURIComponent(data.url || "");
+      jump.hidden = false;
     }
 
     renderAnalyzedAt($("#rv-analyzed"), data);
@@ -4287,7 +4332,7 @@
        necessaire dans une trentaine de secondes : on la met en route tout de
        suite, en parallele de l'analyse. Le garde de rendu reste la ceinture. */
     if (isEN && (page === "roast" || page === "bilan" || page === "rapport")) chargerDictAudit();
-    if (page === "home") { initHome(); initTestimonialHome(); }
+    if (page === "home") { initHome(); initTestimonialHome(); animerAccueil(); }
     if (page === "roast" || page === "bilan") initRoast();
     if (page === "rapport") { initReport(); initBench(); }
     if (page === "llms") initLlms();
