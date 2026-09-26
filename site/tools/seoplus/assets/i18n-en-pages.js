@@ -51,7 +51,7 @@
       "roastGateTitle": "The analysis of {host} is complete.",
       "roastGateSub": "161 checks done, your score is calculated. Sign in in 5 seconds to reveal it, with the 16 category breakdown and the AI verdict. Free, and the audit stays in your history.",
       "rapportGateTitle": "The full report of {host} is ready.",
-      "rapportGateSub": "Sign in in 5 seconds to unlock it and keep your reports.",
+      "rapportGateSub": "Sign in in 5 seconds to open it and keep your reports.",
       "conformes": "compliant",
       "avertissements": "warnings",
       "erreurs": "errors",

@@ -99,7 +99,7 @@ window.SEOPLUS_EN = {
     "cta.sub": "OptimizIA.xyz applies the fixes, writes the content and gets your visibility back on track on Google and in AIs. You validate, we execute.",
     "cta.btn": "Have it done for you",
 
-    "nav.tarifs": "Pricing",
+    "nav.tarifs": "What's included",
     "nav.another": "Diagnose another site",
     "roast.eyebrow": "Live analysis",
     "roast.dissect": "Dissecting",
@@ -118,9 +118,9 @@ window.SEOPLUS_EN = {
     "roast.aiMarket": "Against your market",
     "roast.catsH2": "The detail by category",
     "roast.catsSub": "Each category is graded. The precise findings and fixes are in the full report.",
-    "roast.ctaH2": "Go from diagnosis to action, <s>€9.90</s> free during launch.",
+    "roast.ctaH2": "Go from diagnosis to action: the full audit is free.",
     "roast.ctaSub": "Every check with its exact fix, a 4-phase action plan, your files generated for your domain and 3 competitor benchmarks with an AI verdict. Right now, on this page, without paying.",
-    "roast.ctaBtn": "Run my full audit · <s>€9.90</s> Free",
+    "roast.ctaBtn": "Run my full audit",
     "roast.ctaHint": "Or leave with your free score. <a href=\"index.html\">Diagnose another site.</a>",
     "compte.eyebrow": "My account",
     "compte.connected": "Signed in as",
@@ -141,9 +141,6 @@ window.SEOPLUS_EN = {
     "compte.fbImgAdd": "Attach a screenshot",
     "compte.fbImgHint": "PNG or JPG, 5 MB max. Visible to you and us only.",
     "compte.fbImgRemove": "Remove",
-    "deal.title": "Your feedback is worth the price of the audit.",
-    "deal.body": "The full audit is €0 during launch. In exchange we ask one thing: honest feedback. What helped, what you did not understand, what is missing. That is what moves the tool forward, and that is all we ask you to pay.",
-    "deal.badge": "Fair trade",
     "compte.tmTitle": "Your testimonial",
     "compte.tmCtaTitle": "A testimonial travels further than private feedback.",
     "compte.tmCtaSub": "The feedback above stays between us and helps us fix the tool. A testimonial is published on the homepage and helps the next person decide.",
@@ -168,7 +165,6 @@ window.SEOPLUS_EN = {
     "compte.fdQ4": "What did you drop, and why?",
     "compte.fdQ5": "What is missing for the tool to be genuinely useful to you?",
     "compte.fdSend": "Send my feedback",
-    "fond.note": "Full audit on us, normally €9.90. No credit card. You can leave the programme at any time by writing to <a href=\"mailto:contact@optimizia.xyz\">contact@optimizia.xyz</a>.",
     "geo.terminal": "<span class=\"dim\">$ seoplus check --geo your-website.com</span><br>GPTBot / ClaudeBot .. <span class=\"ko\">blocked</span><br>llms.txt ............ <span class=\"ko\">missing</span><br>company schema ...... <span class=\"ko\">missing</span><br>FAQ content ......... <span class=\"ko\">missing</span><br>citable passages .... <span class=\"ok\">12 detected</span><br>quantified facts .... <span class=\"ok\">7 detected</span><br><span class=\"dim\">verdict: citation crawlers blocked, no entity signal</span>"
   },
 
@@ -183,6 +179,7 @@ window.SEOPLUS_EN = {
 
   /* ---- Pages statiques : texte FR (normalise) vers EN ---- */
   pages: {
+      "Ce qui est inclus": "What's included",
     /* ---- Page A propos (17/08) + lien footer ---- */
     "À propos": "About us",
     "Qui est derrière SEOPlus!": "Who is behind SEOPlus!",
@@ -253,7 +250,6 @@ window.SEOPLUS_EN = {
     "votre-site.fr": "your-website.com",
     "Diagnostiquer mon site": "Diagnose my website",
     "Afficher mon site dans le classement public": "Show my website on the public leaderboard",
-    "Score gratuit en direct, sans carte bancaire. Connexion gratuite en 5 secondes (Google ou email) pour lancer l'analyse et retrouver vos rapports. Offre de lancement : l'audit complet est 9,90 € offert pour une durée limitée.": "Free live score, no credit card. Free 5-second sign-in (Google or email) to run the analysis and keep your reports. Launch offer: the full audit is <b><s>€9.90</s> free</b> for a limited time.",
     "Audit SEO-GEO-Sécurité": "SEO-GEO-Security audit",
     "Score global": "Overall score",
     "Objectif à 4 semaines : 78/100 avec le plan d'action": "4-week target: 78/100 with the action plan",
@@ -279,7 +275,6 @@ window.SEOPLUS_EN = {
     "Recevez votre score et notre lecture": "Get your score and our reading",
     "Score sur 100, points à gagner en 4 semaines, 16 catégories notées, notre lecture de votre site rédigée par l'IA et localisation de votre serveur. Gratuit.": "Score out of 100, points within reach in 4 weeks, 16 graded categories, AI-written verdict and your server's location. Free.",
     "Débloquez l'audit complet": "Unlock the full audit",
-    "9,90 € offert pendant le lancement : chaque vérification avec son correctif exact, un plan d'action en 4 phases, vos fichiers générés prêts à poser et la comparaison avec vos concurrents.": "<s>€9.90</s> free during launch: every check with its exact fix, a 4-phase action plan, your generated ready-to-deploy files and the comparison with your competitors.",
 
     "Ce que couvre l'audit": "What the audit covers",
     "16 catégories, les mêmes qu'une agence pourrait facturer 1 500 €.": "16 categories, the same an agency could bill €1,500 for.",
@@ -329,10 +324,7 @@ window.SEOPLUS_EN = {
     "On le fait pour vous": "We do it for you",
 
     "Le prix d'un déjeuner. Pas d'un cabinet de conseil.": "The price of a lunch. Not of a consulting firm.",
-    "Offre de lancement": "Launch offer",
     "Audit Complet": "Full Audit",
-    "9,90 € Offert": "<s>€9.90</s> Free",
-    "L'audit intégral, une fois, pour un site. Offert pendant le lancement, durée limitée.": "The full audit, once, for one site. Free during launch, for a limited time.",
     "161 vérifications détaillées avec correctifs": "161 detailed checks with fixes",
     "Plan d'action en 4 phases, priorisé": "Prioritized 4-phase action plan",
     "Fichiers générés pour votre domaine, prêts à poser": "Files generated for your domain, ready to deploy",
@@ -382,7 +374,6 @@ window.SEOPLUS_EN = {
     "Vous, votre webmaster, ou nous. Les fichiers générés se posent sans compétence technique. Pour le reste, OptimizIA.xyz propose une prise en charge complète des corrections, avec re-audit pour mesurer la progression.": "You, your webmaster, or us. The generated files can be deployed without technical skills. For the rest, OptimizIA.xyz offers full handling of the fixes, with a re-audit to measure progress.",
 
     "Dans 30 secondes, vous saurez exactement où vous en êtes.": "In 30 seconds, you will know exactly where you stand.",
-    "Commencez par le score gratuit. L'audit complet est 9,90 € offert pendant le lancement.": "Start with the free score. The full audit is <s>€9.90</s> free during launch.",
 
     "L'audit SEO et GEO automatisé par IA, conçu par OptimizIA.xyz, agence d'intégration IA et d'automatisation pour TPE et PME.": "The AI-automated SEO and GEO audit, built by OptimizIA.xyz, an AI integration and automation agency for small and mid-size businesses.",
     "Produit": "Product",
@@ -467,7 +458,6 @@ window.SEOPLUS_EN = {
     "Accessibilité et bonnes pratiques": "Accessibility and best practices",
     "Plan des titres, zoom autorisé sur mobile, champs étiquetés, repères de structure, encodage déclaré.": "Heading outline, zoom allowed on mobile, labelled form fields, structural landmarks, declared encoding.",
     "Éditeurs n8n, Make ou Zapier laissés joignables, webhooks devinables, clés d'API dans le code de la page.": "n8n, Make or Zapier editors left reachable, guessable webhooks, API keys in the page source.",
-    "L'audit complet est à 0 € pendant le lancement. En échange, on vous demande une seule chose : un retour honnête. Ce qui vous a servi, ce que vous n'avez pas compris, ce qui manque. C'est ce qui fait avancer l'outil, et c'est tout ce qu'on vous demande de payer.": "The full audit is €0 during launch. In exchange we ask for one thing: honest feedback. What helped you, what you did not understand, what is missing. That is what moves the tool forward, and it is all we ask you to pay.",
     "Ce que SEOPlus! change, dit par ceux qui s'en servent.": "What SEOPlus! changes, in the words of the people using it.",
     "Chaque avis publié ici vient d'un compte réel, après un audit réel. Aucun n'est écrit par nous, et chacun peut être retiré par son auteur.": "Every review published here comes from a real account, after a real audit. None are written by us, and each one can be withdrawn by its author.",
     "Vous avez utilisé SEOPlus! ? Racontez.": "Used SEOPlus!? Tell us about it.",
@@ -526,7 +516,7 @@ window.SEOPLUS_EN = {
     roastGateTitle: "The analysis of {host} is complete.",
     roastGateSub: "161 checks done, your score is calculated. Sign in in 5 seconds to reveal it, with the 16 category breakdown and the AI verdict. Free, and the audit stays in your history.",
     rapportGateTitle: "The full report of {host} is ready.",
-    rapportGateSub: "Sign in in 5 seconds to unlock it and keep your reports.",
+    rapportGateSub: "Sign in in 5 seconds to open it and keep your reports.",
     conformes: "compliant",
     avertissements: "warnings",
     erreurs: "errors",
@@ -646,7 +636,6 @@ window.SEOPLUS_EN = {
         "Audit complet": "Full audit",
         "Le rapport de votre-site.fr est prêt.": "The report for <em id=\"pay-host\">your-website.com</em> is ready.",
         "161 vérifications détaillées, plan d'action priorisé, fichiers prêts à poser et 3 comparaisons concurrents avec verdict IA. Paiement unique, accès immédiat.": "161 detailed checks, a prioritized action plan, ready-to-deploy files and 3 competitor comparisons with an AI verdict. One-off payment, immediate access.",
-        "Débloquer mon audit complet, 9,90 €": "Unlock my full audit, €9.90",
         "Paiement sécurisé par Stripe. Vous revenez ici automatiquement après le paiement.": "Secure payment through Stripe. You come back here automatically once it is done.",
         "Analyse impossible.": "Analysis impossible.",
         "On n'a pas réussi à joindre ce site. Vérifiez l'URL et réessayez.": "We could not reach this site. Check the URL and try again.",
