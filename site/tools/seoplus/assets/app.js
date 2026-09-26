@@ -1277,8 +1277,8 @@
      Une seule constante, partagee par la home et /classement. */
   var ELITE_MIN = 90;
 
-  /* Le classement est fige dans le HTML au deploiement (voir
-     09 Deploiement/(C) generer-snapshot-classement.js) : les crawlers IA, qui
+  /* Le classement est fige dans le HTML chaque nuit (voir
+     scripts/generer-snapshot-classement.js) : les crawlers IA, qui
      n'executent pas JavaScript, voient enfin de vrais sites avec de vrais
      scores au lieu d'un "Chargement du classement...". Le fetch ne fait que
      rafraichir cette photo.

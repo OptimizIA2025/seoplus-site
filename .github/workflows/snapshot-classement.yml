@@ -1,0 +1,62 @@
+name: Snapshot du classement
+
+# Chaque nuit, fige dans le HTML le classement public et le compteur d'analyses
+# (leaderboard.html, index.html) : GPTBot, ClaudeBot et PerplexityBot
+# n'executent pas JavaScript et ne voient que cette copie. Si rien n'a change,
+# rien ne se passe. Sinon : branche, pull request, fusion automatique une fois
+# les verifications requises du ruleset passees, puis deploiement Coolify comme
+# toute fusion sur main.
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+concurrency:
+  group: snapshot-classement
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      # Les dates du snapshot suivent l'heure de Paris, comme le site.
+      - name: Regenerer le snapshot
+        run: node scripts/generer-snapshot-classement.js --go
+        env:
+          TZ: Europe/Paris
+
+      - name: Publier par pull request si le classement a change
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet; then
+            echo "Classement inchange, rien a publier." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          jour=$(TZ=Europe/Paris date +%d/%m/%Y)
+          branche="snapshot/classement-$(date -u +%Y%m%d-%H%M)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branche"
+          git commit -am "Snapshot du classement du $jour"
+          git push origin "$branche"
+          url=$(gh pr create --base main --head "$branche" \
+            --title "Snapshot du classement du $jour" \
+            --body "Classement public et compteur d'analyses figes dans le HTML par le workflow de nuit. Fusion automatique apres les verifications requises.")
+          gh pr merge --auto --squash --delete-branch "$url"
+          # Une pull request ouverte avec le jeton du workflow ne declenche pas
+          # les workflows pull_request : les verifications requises sont lancees
+          # explicitement sur la branche (workflow_dispatch reste autorise).
+          gh workflow run ci.yml --ref "$branche"
+          gh workflow run dependency-review.yml --ref "$branche"
+          echo "Pull request ouverte : $url" >> "$GITHUB_STEP_SUMMARY"
