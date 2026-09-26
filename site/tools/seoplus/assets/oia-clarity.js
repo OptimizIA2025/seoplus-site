@@ -178,7 +178,7 @@
 
     /* Un seul endroit ecrit les libelles, appele au montage et a chaque
        changement de langue. */
-    var rappel = null;
+    var rappels = [];
     function peindre() {
         var T = TXT();
         if (bandeau) {
@@ -188,7 +188,7 @@
             bandeau.querySelector('[data-oiac="non"]').textContent = T.non;
             bandeau.querySelector('[data-oiac="oui"]').textContent = T.oui;
         }
-        if (rappel) rappel.textContent = T.gerer;
+        rappels.forEach(function (el) { el.textContent = T.gerer; });
     }
     document.addEventListener('seoplus:langue', peindre);
 
@@ -203,7 +203,13 @@
     function poserRappel() {
         var cibles = document.querySelectorAll('[data-oia-cookies]');
         if (cibles.length) {
-            cibles.forEach(function (el) { el.addEventListener('click', afficher); });
+            /* Un bouton vide recoit le libelle dans la langue de la page, et le
+               suit ; un bouton deja libelle est laisse tel quel. */
+            cibles.forEach(function (el) {
+                el.addEventListener('click', afficher);
+                if (!el.textContent.trim()) rappels.push(el);
+            });
+            peindre();
             return;
         }
         var pied = document.querySelector('footer');
@@ -214,7 +220,7 @@
         b.type = 'button';
         b.className = 'oiac-relink';
         b.textContent = TXT().gerer;
-        rappel = b;
+        rappels.push(b);
         b.addEventListener('click', afficher);
         wrap.appendChild(document.createTextNode(' · '));
         wrap.appendChild(b);

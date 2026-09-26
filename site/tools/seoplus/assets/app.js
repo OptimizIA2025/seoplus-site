@@ -3172,7 +3172,7 @@
         loading.hidden = true;
         gate.innerHTML = authCardHtml(
           tEN(tFmt("rapportGateTitle", "", { host: esc(host) }), "Votre audit complet de " + esc(host) + " est prêt à être généré."),
-          tEN("Sign in to open it: every check with its fix, the 4-phase action plan, your generated files and 3 competitor comparisons. <s>€9.90</s> free during launch.", "Connectez-vous pour l'ouvrir : chaque vérification avec son correctif, le plan d'action en 4 phases, vos fichiers générés et 3 comparaisons concurrents. <s>9,90 €</s> offert pendant le lancement."));
+          tEN("Sign in to open it: every check with its fix, the 4-phase action plan, your generated files and 3 competitor comparisons. Free, in full.", "Connectez-vous pour l'ouvrir : chaque vérification avec son correctif, le plan d'action en 4 phases, vos fichiers générés et 3 comparaisons concurrents. Offert, en entier."));
         bindAuthCard(gate);
         gate.hidden = false;
         return;

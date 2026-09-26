@@ -1,6 +1,6 @@
 # SEOPlus!
 
-> Automated SEO and GEO audit for small businesses and SMEs: 161 technical checks across 16 categories (security, DNS, email, on-page SEO, performance, AI visibility), free score in 30 seconds, full audit with a prioritised action plan and ready-to-paste files, included during launch (9.90 euros afterwards, one-off payment). Published by OptimizIA.xyz, a French AI integration and automation agency.
+> Automated SEO and GEO audit for small businesses and SMEs: 161 technical checks across 16 categories (security, DNS, email, on-page SEO, performance, AI visibility), free score in 30 seconds, full audit with a prioritised action plan and ready-to-paste files, free. Published by OptimizIA.xyz, a French AI integration and automation agency.
 
 The free snapshot returns an overall score out of 100, a grade per category and a verdict. It requires a free sign-in that takes a few seconds (Google or email), no credit card, and archives every audit in the account history. The full audit details the 161 checks with their measured value and the exact fix, a 4-phase action plan, generated files ready to paste (robots.txt, sitemap, llms.txt, structured data, security headers, SPF, DMARC), 3 competitor comparisons and a PDF export.
 
@@ -15,7 +15,7 @@ The analysis covers the homepage, up to 30 key pages found through the sitemap o
 ## Pricing
 
 - [Free snapshot](https://www.optimizia.xyz/tools/seoplus/) : 0 euro, score out of 100 and verdict, free sign-in required
-- [Full audit](https://www.optimizia.xyz/tools/seoplus/#pricing) : included during launch, 9.90 euros including tax afterwards, one-off payment, fully refunded if the analysis fails
+- [Full audit](https://www.optimizia.xyz/tools/seoplus/#pricing): every check with its fix, a 4-phase action plan, generated files and 3 competitor benchmarks. Free, in full, no credit card.
 
 ## Information
 

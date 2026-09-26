@@ -3433,3 +3433,34 @@ a.rep-som-row:focus-visible { outline: 2px solid var(--orange); outline-offset: 
 /* Nom d'auteur cliquable vers la page A propos, sans changer l'allure du byline. */
 .author-id .author-link { color: inherit; text-decoration: none; }
 .author-id .author-link:hover b { color: var(--orange-deep); }
+
+/* ============================================================
+   26/09 : tout est gratuit (une seule carte), bouton cookies dans le
+   pied de page, et gabarit « document » pleine largeur pour la methode
+   et les pages legales, dans l'esprit des piliers V7 du site agence.
+   ============================================================ */
+.pricing-grid-one { grid-template-columns: minmax(0, 520px); justify-content: center; }
+.pricing-grid-one .price-card.featured { transform: none; }
+.pricing-grid-one .price-card.featured:hover { transform: translateY(-3px); }
+
+.footer-bottom { align-items: center; }
+.footer-cookies { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 9px; border: 1px solid rgba(248, 250, 252, .16); border-radius: var(--pill); background: transparent; color: #94A3B8; font: inherit; font-size: .78rem; line-height: 1.2; cursor: pointer; transition: color .2s, border-color .2s; }
+.footer-cookies::before { content: ""; flex: none; width: 13px; height: 13px; border-radius: 50%; background: radial-gradient(circle at 32% 34%, #0F172A 0 1.5px, transparent 2px), radial-gradient(circle at 68% 40%, #0F172A 0 1.2px, transparent 1.7px), radial-gradient(circle at 48% 70%, #0F172A 0 1.4px, transparent 1.9px), #FDBA74; }
+.footer-cookies:hover { color: #fff; border-color: #FDBA74; }
+.footer-cookies:focus-visible { outline: 2px solid #FDBA74; outline-offset: 3px; }
+
+.doc { max-width: 1160px; margin: 0 auto; padding: 56px 24px 72px; }
+.doc-head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; align-items: end; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+.doc-head h1 { font-size: clamp(2rem, 3.6vw, 2.9rem); letter-spacing: -0.03em; margin: 10px 0 0; text-wrap: balance; }
+.doc-head .lead, .doc-head .legal-prevaut, .doc-head .legal-updated { margin: 0; }
+.doc-head .legal-updated { margin-top: 12px; }
+.doc-row { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 40px; padding: 36px 0; border-bottom: 1px solid var(--border); }
+.doc-row h2 { font-size: 1.35rem; letter-spacing: -0.02em; margin: 0; padding-top: 14px; position: relative; }
+.doc-row h2::before { content: ""; position: absolute; top: 0; left: 0; width: 40px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, var(--blue), var(--orange)); }
+.doc-row > div > :first-child { margin-top: 0; }
+.doc-row p, .doc-row li { line-height: 1.7; }
+.doc-row h3 { font-size: 1.05rem; margin: 22px 0 8px; }
+@media (max-width: 860px) {
+  .doc-head, .doc-row { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .doc-row { padding: 28px 0; }
+}
