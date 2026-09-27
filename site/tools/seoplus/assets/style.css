@@ -4174,3 +4174,11 @@ p.eyebrow, .section-head p.eyebrow { color: var(--orange); margin-top: 0; }
 .theme-btn svg { width: 15px; height: 15px; display: block; }
 .nav-mobile .theme-btn { margin: 14px auto 0; }
 @media (max-width: 900px) { .nav-links .theme-btn { display: none; } }
+
+/* Logo final (27/09) : paire claire / sombre dans la nav, version sombre dans le footer (toujours sombre) */
+.brand-lockup { display: block; height: 40px; width: auto; }
+.footer .brand-lockup { height: 38px; }
+.logo-sombre { display: none; }
+:root[data-theme="dark"] .logo-clair { display: none; }
+:root[data-theme="dark"] .logo-sombre { display: block; }
+@media (max-width: 900px) { .nav .brand-lockup { height: 34px; } }

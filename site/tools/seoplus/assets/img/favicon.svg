@@ -1,11 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#F97316"/>
-      <stop offset="1" stop-color="#EA580C"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="15" fill="url(#g)"/>
-  <circle cx="32" cy="32" r="17" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="7"/>
-  <path d="M 32 15 A 17 17 0 1 1 17.28 40.5" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="SEOPlus!"><defs><linearGradient id="gWM" gradientUnits="userSpaceOnUse" x1="0" y1="-100" x2="0" y2="0"><stop offset="0" stop-color="#FB923C"/><stop offset="1" stop-color="#EA580C"/></linearGradient><linearGradient id="gArc" gradientUnits="userSpaceOnUse" x1="95" y1="30" x2="85" y2="95"><stop offset="0" stop-color="#FB923C"/><stop offset="1" stop-color="#EA580C"/></linearGradient><linearGradient id="gKnob" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F97316"/><stop offset="1" stop-color="#C2410C"/></linearGradient></defs><style>.i{stroke:#F1F5F9}.if{fill:#F1F5F9}.a{stroke:url(#gWM)}.af{fill:url(#gWM)}.arc{stroke:url(#gArc)}.kb{fill:url(#gKnob)}.dg{stroke:#F1F5F9;opacity:.6}.tk{opacity:.45}</style><rect width="120" height="120" rx="27" fill="#0F172A"/><g transform="translate(12 12) scale(.8)"><path class="i" d="M31.01 88.99A41 41 0 1 1 92.31 34.76" stroke-width="17" fill="none"/><path class="arc" d="M91.86 34.2A41 41 0 0 1 99.82 69.75" stroke-width="17" fill="none"/><path class="kb" fill-rule="evenodd" d="M85.01 75.36a13 13 0 1 0 26 0a13 13 0 1 0 -26 0ZM93.61 75.36a4.4 4.4 0 1 0 8.8 0a4.4 4.4 0 1 0 -8.8 0Z"/><rect class="if" x="42" y="53.5" width="36" height="13"/><rect class="if" x="53.5" y="42" width="13" height="36"/></g></svg>
