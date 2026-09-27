@@ -15,7 +15,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  actions: write
 
 concurrency:
   group: snapshot-classement
@@ -61,9 +60,15 @@ jobs:
               --body "Classement public et compteur d'analyses figes dans le HTML par le workflow de nuit. Fusion automatique apres les verifications requises.")
           fi
           gh pr merge --auto --squash --delete-branch "$url"
-          # Une pull request ouverte avec le jeton du workflow ne declenche pas
-          # les workflows pull_request : les verifications requises sont lancees
-          # explicitement sur la branche (workflow_dispatch reste autorise).
-          gh workflow run ci.yml --ref "$branche"
-          gh workflow run dependency-review.yml --ref "$branche"
-          echo "Pull request ouverte : $url" >> "$GITHUB_STEP_SUMMARY"
+          # Le job attend la fusion : une pull request restee bloquee (controle
+          # rouge, execution en attente d'approbation) fait echouer le workflow,
+          # donc un e-mail de GitHub, au lieu d'un classement qui vieillit en silence.
+          for i in $(seq 1 40); do
+            if [ "$(gh pr view "$url" --json state --jq .state)" = "MERGED" ]; then
+              echo "Fusionnee : $url" >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            sleep 30
+          done
+          echo "::error::$url n'est pas fusionnee apres 20 min : controle rouge, ou execution en attente d'approbation (action_required) dans l'onglet Actions."
+          exit 1
