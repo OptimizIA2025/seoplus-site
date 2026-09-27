@@ -4176,9 +4176,13 @@ p.eyebrow, .section-head p.eyebrow { color: var(--orange); margin-top: 0; }
 @media (max-width: 900px) { .nav-links .theme-btn { display: none; } }
 
 /* Logo final (27/09) : paire claire / sombre dans la nav, version sombre dans le footer (toujours sombre) */
-.brand-lockup { display: block; height: 40px; width: auto; }
-.footer .brand-lockup { height: 38px; }
+.brand-lockup { display: block; height: 48px; width: auto; object-fit: contain; object-position: left center; }
+.footer .brand-lockup { height: 46px; }
 .logo-sombre { display: none; }
 :root[data-theme="dark"] .logo-clair { display: none; }
 :root[data-theme="dark"] .logo-sombre { display: block; }
-@media (max-width: 900px) { .nav .brand-lockup { height: 34px; } }
+@media (max-width: 900px) { .nav .brand-lockup { height: 40px; } }
+/* Logo agrandi (27/09) : l'allemand (libelles les plus longs) ne laissait plus d'air entre le logo et le menu */
+@media (min-width: 901px) { .nav-inner { gap: 20px; } .nav-links { gap: 22px; } }
+@media (min-width: 901px) and (max-width: 1120px) { .nav .brand-lockup { height: 40px; } .nav-links { gap: 16px; } }
+@media (min-width: 901px) and (max-width: 1024px) { .nav-links { gap: 12px; } }
