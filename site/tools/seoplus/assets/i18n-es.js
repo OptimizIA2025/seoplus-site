@@ -83,7 +83,7 @@
       "cta.btn2": "Confiar las correcciones a OptimizIA.xyz",
       "cta.sub2": "contact@optimizia.xyz · Sin compromiso · Respuesta en 24 h",
       "about.eyebrow": "Sobre el autor de este informe",
-      "about.desc": "Una agencia especializada en integración de IA y automatización, al servicio del rendimiento de las pymes. Primero construimos SEOPlus! para uso interno, para tener un chequeo rápido del ecosistema digital de las empresas que acompañamos. Después lo abrimos a todo el mundo, para que cualquiera pueda tener la misma visión de conjunto, rápida, precisa y a un precio imbatible: <b>107 comprobaciones medidas directamente</b>, una puntuación trazable punto por punto y un plan de acción que sabemos ejecutar.",
+      "about.desc": "Una agencia especializada en integración de IA y automatización, al servicio del rendimiento de las pymes. Primero construimos SEOPlus! para uso interno, para tener un chequeo rápido del ecosistema digital de las empresas que acompañamos. Después lo abrimos a todo el mundo, de forma gratuita, para que cualquiera pueda tener la misma visión de conjunto, rápida y precisa: <b>161 comprobaciones medidas directamente</b>, una puntuación trazable punto por punto y un plan de acción que sabemos ejecutar.",
       "about.method": "Nuestro método de auditoría, con total transparencia.",
       "about.s1": "Diagnóstico de IA y automatización, identificación de ganancias rápidas",
       "about.s2": "Auditoría SEO/GEO y visibilidad en IA, posiciones y citabilidad por LLM",

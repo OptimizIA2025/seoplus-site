@@ -83,7 +83,7 @@
       "cta.btn2": "Die Korrekturen OptimizIA.xyz übergeben",
       "cta.sub2": "contact@optimizia.xyz · Unverbindlich · Antwort binnen 24 Std.",
       "about.eyebrow": "Über den Verfasser dieses Berichts",
-      "about.desc": "Eine auf KI-Integration und Automatisierung spezialisierte Agentur, im Dienst der Leistung kleiner und mittlerer Unternehmen. Wir haben SEOPlus! zuerst intern gebaut, um schnell einen Gesundheitscheck des digitalen Ökosystems der von uns begleiteten Unternehmen zu bekommen. Dann haben wir es allen geöffnet, damit jede und jeder denselben Überblick erhält, schnell, präzise und zu einem unschlagbaren Preis: <b>107 direkt gemessene Prüfungen</b>, eine Punkt für Punkt nachvollziehbare Bewertung und ein Aktionsplan, den wir auszuführen wissen.",
+      "about.desc": "Eine auf KI-Integration und Automatisierung spezialisierte Agentur, im Dienst der Leistung kleiner und mittlerer Unternehmen. Wir haben SEOPlus! zuerst intern gebaut, um schnell einen Gesundheitscheck des digitalen Ökosystems der von uns begleiteten Unternehmen zu bekommen. Dann haben wir es allen kostenlos geöffnet, damit jede und jeder denselben Überblick erhält, schnell und präzise: <b>161 direkt gemessene Prüfungen</b>, eine Punkt für Punkt nachvollziehbare Bewertung und ein Aktionsplan, den wir auszuführen wissen.",
       "about.method": "Unsere Audit-Methode, in voller Transparenz.",
       "about.s1": "KI- und Automatisierungsdiagnose, Erkennung von Quick Wins",
       "about.s2": "SEO-/GEO- und KI-Sichtbarkeitsaudit, Platzierungen und Zitierfähigkeit für LLMs",

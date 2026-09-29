@@ -89,7 +89,7 @@ window.SEOPLUS_EN = {
     "cta.btn2": "Hand the fixes to OptimizIA.xyz",
     "cta.sub2": "contact@optimizia.xyz · No commitment · Reply within 24h",
     "about.eyebrow": "About the author of this report",
-    "about.desc": "An agency specialized in AI integration and automation, serving the performance of small and mid-size businesses. We first built SEOPlus! in-house to get a quick health check of the digital ecosystem of the companies we support. We then opened it to everyone, so anyone can get the same overview, fast, precise and unbeatably priced: <b>107 directly measured checks</b>, a score traceable point by point, and an action plan we know how to execute.",
+    "about.desc": "An agency specialized in AI integration and automation, serving the performance of small and mid-size businesses. We first built SEOPlus! in-house to get a quick health check of the digital ecosystem of the companies we support. We then opened it to everyone, free of charge, so anyone can get the same overview, fast and precise: <b>161 directly measured checks</b>, a score traceable point by point, and an action plan we know how to execute.",
     "about.method": "Our audit method, in full transparency.",
     "about.s1": "AI & automation diagnosis, quick-win identification",
     "about.s2": "SEO/GEO & AI visibility audit, rankings and LLM citability",
