@@ -1203,6 +1203,7 @@
     [/HTTPS actif/, "HTTPS on"], [/site non securise en HTTPS/, "site not secured with HTTPS"],
     [/HSTS present/, "HSTS present"], [/HSTS absent/, "HSTS missing"],
     [/Aucun traceur agressif ni cookie depose sans consentement\./, "No aggressive tracker or cookie set without consent."],
+    [/traceurs charges sans dispositif de consentement/, "trackers loaded without a consent tool"], [/ressources hors UE/, "resources outside the EU"],
     [/traceurs analytics detectes/, "analytics trackers detected"], [/pas de traceur/, "no tracker"],
     [/cookies deposes des l accueil/, "cookies set on landing"], [/pas de cookie/, "no cookie"],
     [/Verifier le consentement RGPD\./, "Check GDPR consent."]

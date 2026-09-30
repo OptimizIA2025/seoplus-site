@@ -1167,6 +1167,8 @@
     [new RegExp("HSTS present"), "HSTS presente"],
     [new RegExp("HSTS absent"), "HSTS ausente"],
     [new RegExp("Aucun traceur agressif ni cookie depose sans consentement\\."), "Ningún rastreador agresivo ni cookie depositada sin consentimiento."],
+    [new RegExp("traceurs charges sans dispositif de consentement"), "rastreadores cargados sin herramienta de consentimiento"],
+    [new RegExp("ressources hors UE"), "recursos fuera de la UE"],
     [new RegExp("traceurs analytics detectes"), "rastreadores de analítica detectados"],
     [new RegExp("pas de traceur"), "sin rastreador"],
     [new RegExp("cookies deposes des l accueil"), "cookies depositadas nada más llegar"],
