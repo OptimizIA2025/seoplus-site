@@ -167,7 +167,7 @@
       dictAuditLang = LANG;
       dictAudit = new Promise(function (res) {
         var s = document.createElement("script");
-        s.src = BASE + "/assets/i18n-" + LANG + "-audit.js?v=20260909b";
+        s.src = BASE + "/assets/i18n-" + LANG + "-audit.js?v=20260930";
         s.onload = s.onerror = function () { res(); };
         document.head.appendChild(s);
       }).then(function () { dictAudit = true; });
@@ -2532,14 +2532,14 @@
     var files = [];
 
     if (!sg.robots) files.push({
-      name: "robots.txt", loc: "à la racine · " + origin + "/robots.txt",
-      desc: "Autorise les moteurs à explorer votre site et pointe vers votre sitemap.",
+      name: "robots.txt", loc: tEN("at the root", "à la racine") + " · " + origin + "/robots.txt",
+      desc: tEN("Lets search engines crawl your website and points them to your sitemap.", "Autorise les moteurs à explorer votre site et pointe vers votre sitemap."),
       code: "# robots.txt - genere par SEOPlus! (www.optimizia.xyz/tools/seoplus)\nUser-agent: *\nAllow: /\n\nSitemap: " + origin + "/sitemap.xml"
     });
 
     if (!sg.sitemap) files.push({
-      name: "sitemap.xml", loc: "à la racine · " + origin + "/sitemap.xml",
-      desc: "Liste vos pages pour l'indexation, pré-remplie avec les pages trouvées pendant l'audit. Ajoutez celles qui manquent.",
+      name: "sitemap.xml", loc: tEN("at the root", "à la racine") + " · " + origin + "/sitemap.xml",
+      desc: tEN("Lists your pages for indexing, pre-filled with the pages found during the audit. Add any that are missing.", "Liste vos pages pour l'indexation, pré-remplie avec les pages trouvées pendant l'audit. Ajoutez celles qui manquent."),
       code: buildSitemapXml(data, origin)
     });
 
@@ -2548,40 +2548,40 @@
        son proprietaire est celui qui a le plus besoin du fichier corrige, et
        c'etait justement le seul a qui on ne le donnait pas. */
     if (!sg.llmsConforme) files.push({
-      name: "llms.txt", loc: "à la racine · " + origin + "/llms.txt",
+      name: "llms.txt", loc: tEN("at the root", "à la racine") + " · " + origin + "/llms.txt",
       desc: sg.llms
-        ? "Votre llms.txt existe mais Google le rejette. Voici une version conforme, construite avec les pages réellement trouvées sur votre site."
-        : "Guide les IA (ChatGPT, Perplexity, Claude) vers vos pages. Construit avec les pages réellement trouvées sur votre site, pas un modèle vide.",
+        ? tEN("Your llms.txt exists but Google rejects it. Here is a compliant version, built from the pages actually found on your website.", "Votre llms.txt existe mais Google le rejette. Voici une version conforme, construite avec les pages réellement trouvées sur votre site.")
+        : tEN("Guides AI assistants (ChatGPT, Perplexity, Claude) to your pages. Built from the pages actually found on your website, not an empty template.", "Guide les IA (ChatGPT, Perplexity, Claude) vers vos pages. Construit avec les pages réellement trouvées sur votre site, pas un modèle vide."),
       code: buildLlmsTxt(data, origin, host, og)
     });
 
     if (!sg.org) files.push({
-      name: "Données structurées (JSON-LD Organization)", loc: "dans le <head> de vos pages",
-      desc: "Permet aux IA et à Google d'identifier votre entreprise : nom, site, réseaux.",
+      name: tEN("Structured data (JSON-LD Organization)", "Données structurées (JSON-LD Organization)"), loc: tEN("in the <head> of your pages", "dans le <head> de vos pages"),
+      desc: tEN("Lets AI assistants and Google identify your business: name, website, social profiles.", "Permet aux IA et à Google d'identifier votre entreprise : nom, site, réseaux."),
       code: '<script type="application/ld+json">\n{\n  "@context": "https://schema.org",\n  "@type": "Organization",\n  "name": "' + title + '",\n  "url": "' + origin + '/",\n  "description": "' + desc + '",\n  "sameAs": ["https://www.linkedin.com/company/votre-page"]\n}\n<\/script>'
     });
 
     if (!sg.csp || !sg.hsts) files.push({
-      name: "En-têtes de sécurité (nginx)", loc: "dans le bloc server de votre configuration nginx",
-      desc: "Force le HTTPS, bloque le clickjacking et limite les scripts chargés.",
+      name: tEN("Security headers (nginx)", "En-têtes de sécurité (nginx)"), loc: tEN("in the server block of your nginx configuration", "dans le bloc server de votre configuration nginx"),
+      desc: tEN("Enforces HTTPS, blocks clickjacking and limits the scripts that can load.", "Force le HTTPS, bloque le clickjacking et limite les scripts chargés."),
       code: 'add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;\nadd_header X-Frame-Options "SAMEORIGIN" always;\nadd_header X-Content-Type-Options "nosniff" always;\nadd_header Referrer-Policy "strict-origin-when-cross-origin" always;\nadd_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;\nadd_header Content-Security-Policy "default-src \'self\'; img-src \'self\' data: https:; style-src \'self\' \'unsafe-inline\'" always;'
     });
 
     if (!sg.spf) files.push({
-      name: "Enregistrement SPF (DNS)", loc: "chez votre registrar · TXT sur la racine du domaine",
-      desc: "Empêche l'usurpation de vos e-mails. Adaptez l'include à votre fournisseur d'e-mail.",
+      name: tEN("SPF record (DNS)", "Enregistrement SPF (DNS)"), loc: tEN("at your registrar · TXT on the root of the domain", "chez votre registrar · TXT sur la racine du domaine"),
+      desc: tEN("Stops anyone from sending email in your name. Adjust the include to your email provider.", "Empêche l'usurpation de vos e-mails. Adaptez l'include à votre fournisseur d'e-mail."),
       code: "Type   : TXT\nNom    : @   (racine du domaine)\nValeur : v=spf1 include:_spf.google.com ~all"
     });
 
     if (!sg.dmarc) files.push({
-      name: "Politique DMARC (DNS)", loc: "chez votre registrar · TXT sur _dmarc",
-      desc: "Complète le SPF : indique aux serveurs quoi faire des e-mails frauduleux.",
+      name: tEN("DMARC policy (DNS)", "Politique DMARC (DNS)"), loc: tEN("at your registrar · TXT on _dmarc", "chez votre registrar · TXT sur _dmarc"),
+      desc: tEN("Completes SPF: tells mail servers what to do with fraudulent email.", "Complète le SPF : indique aux serveurs quoi faire des e-mails frauduleux."),
       code: "Type   : TXT\nNom    : _dmarc\nValeur : v=DMARC1; p=quarantine; rua=mailto:postmaster@" + host + "; fo=1"
     });
 
     if (!sg.og) files.push({
-      name: "Balises Open Graph", loc: "dans le <head> de vos pages",
-      desc: "Contrôle l'aperçu de votre site quand on le partage sur les réseaux sociaux.",
+      name: tEN("Open Graph tags", "Balises Open Graph"), loc: tEN("in the <head> of your pages", "dans le <head> de vos pages"),
+      desc: tEN("Controls the preview of your website when it is shared on social networks.", "Contrôle l'aperçu de votre site quand on le partage sur les réseaux sociaux."),
       code: '<meta property="og:title" content="' + title + '">\n<meta property="og:description" content="' + desc + '">\n<meta property="og:type" content="website">\n<meta property="og:url" content="' + origin + '/">\n<meta property="og:image" content="' + origin + '/og-image.jpg">'
     });
 
@@ -2629,7 +2629,7 @@
       return '<div class="file-card' + (f.badge ? " file-card--badge" : "") + '">' +
         '<div class="file-head"><div class="file-id"><b>' + esc(f.name) + "</b>" +
         '<span class="file-loc">' + esc(f.loc) + "</span></div>" +
-        '<button class="file-copy" type="button" data-copy="' + id + '">Copier</button></div>' +
+        '<button class="file-copy" type="button" data-copy="' + id + '">' + tUI("copy", "Copier") + '</button></div>' +
         '<p class="file-desc">' + esc(f.desc) + "</p>" +
         /* f.preview est du HTML que l'on construit nous-memes (badge), pas une
            donnee du site audite : il est rendu tel quel, jamais echappe. */
@@ -2651,9 +2651,9 @@
     if (!pre) return;
     var text = pre.textContent;
     var flash = function () {
-      var old = btn.getAttribute("data-label") || "Copier";
+      var old = btn.getAttribute("data-label") || btn.textContent;
       btn.setAttribute("data-label", old);
-      btn.textContent = "Copié";
+      btn.textContent = tUI("copied", "Copié !");
       btn.classList.add("copied");
       setTimeout(function () { btn.textContent = old; btn.classList.remove("copied"); }, 1600);
     };
