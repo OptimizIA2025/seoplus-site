@@ -333,7 +333,7 @@
       "The leaderboard is starting.": "Die Rangliste startet gerade.",
       "90/100 and above. At that level the technical foundation and AI readability are both in place, which stays rare.": "90/100 und mehr. Auf diesem Niveau stehen das technische Fundament und die Lesbarkeit für KIs beide, was selten bleibt.",
       "48 websites ranked": "48 Websites eingestuft",
-      "Last update: 28/09/2026": "Letzte Aktualisierung: 28.9.2026",
+      "Last update: 29/09/2026": "Letzte Aktualisierung: 29.9.2026",
       "How to enter the leaderboard": "Wie man in die Rangliste kommt",
       "Run the free audit from the homepage while ticking “Show my website on the public leaderboard”.": "Starten Sie das kostenlose Audit von der <a href=\"index.html#analyze\">Startseite</a> aus und setzen Sie das Häkchen bei „Meine Website in der öffentlichen Rangliste zeigen“.",
       "homepage": "Startseite",

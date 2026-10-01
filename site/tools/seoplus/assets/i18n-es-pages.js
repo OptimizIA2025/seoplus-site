@@ -333,7 +333,7 @@
       "The leaderboard is starting.": "La clasificación acaba de empezar.",
       "90/100 and above. At that level the technical foundation and AI readability are both in place, which stays rare.": "90/100 y por encima. A ese nivel, la base técnica y la legibilidad para las IA están las dos en su sitio, algo que sigue siendo raro.",
       "48 websites ranked": "48 sitios clasificados",
-      "Last update: 28/09/2026": "Última actualización: 28/9/2026",
+      "Last update: 29/09/2026": "Última actualización: 29/9/2026",
       "How to enter the leaderboard": "Cómo entrar en la clasificación",
       "Run the free audit from the homepage while ticking “Show my website on the public leaderboard”.": "Lanza la auditoría gratuita desde la <a href=\"index.html#analyze\">página de inicio</a> marcando «Mostrar mi sitio en la clasificación pública».",
       "homepage": "página de inicio",
