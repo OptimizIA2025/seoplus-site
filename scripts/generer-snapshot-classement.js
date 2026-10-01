@@ -15,8 +15,8 @@
    et refuse d'ecrire en cas de derive.
 
    QUAND. Chaque nuit, par .github/workflows/snapshot-classement.yml : si la
-   photo a change, le workflow ouvre une pull request fusionnee automatiquement
-   apres les verifications requises. Jusqu'au 26/09 le script vivait dans le
+   photo a change, le workflow verifie l'image puis pousse directement sur main
+   (cle de deploiement, sans pull request). Jusqu'au 26/09 le script vivait dans le
    coffre et se lancait a la main : il a ecrit un mois durant dans une copie
    archivee sans que personne le voie.
 
