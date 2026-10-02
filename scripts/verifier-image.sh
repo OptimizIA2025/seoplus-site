@@ -21,6 +21,23 @@ verifier() {
     fi
 }
 
+# Le code seul ne suffit pas : une 301 vers une page morte passe le test du
+# code. C'est ce qui a laisse 73 anciennes adresses filer vers /seo/ et /geo/,
+# en 410 depuis le 26/09, sans que la CI le voie.
+verifier_redirection() {
+    local hote="$1" chemin="$2" cible="$3"
+    local entetes code location
+    entetes=$(curl -s -o /dev/null -D - -H "Host: $hote" "$BASE$chemin" | tr -d '\r')
+    code=$(printf '%s\n' "$entetes" | head -n 1 | cut -d ' ' -f 2)
+    location=$(printf '%s\n' "$entetes" | grep -i '^location:' | cut -d ' ' -f 2)
+    if [ "$code" = "301" ] && [ "$location" = "$cible" ]; then
+        echo "OK   301 -> $cible  $hote$chemin"
+    else
+        echo "ECHEC attendu 301 -> $cible, obtenu $code -> $location  $hote$chemin"
+        erreurs=$((erreurs + 1))
+    fi
+}
+
 verifier_entete() {
     local hote="$1" chemin="$2" entete="$3"
     if curl -s -o /dev/null -D - -H "Host: $hote" "$BASE$chemin" | grep -qi "^$entete:"; then
@@ -47,7 +64,12 @@ verifier "www.optimizia.xyz" "/tools/seoplus/methodology.html" 200
 verifier "www.optimizia.xyz" "/tools/seoplus/mentions-legales.html" 200
 verifier "seoplus.optimizia.xyz" "/robots.txt" 200
 verifier "www.optimizia.xyz" "/tools/seoplus/page-inexistante.html" 404
-verifier "www.optimizia.xyz" "/tools/seoplus/autorite-confiance/combien-temps-seo/" 301
+verifier_redirection "www.optimizia.xyz" "/tools/seoplus/autorite-confiance/combien-temps-seo/" "/tools/seoplus/"
+verifier_redirection "www.optimizia.xyz" "/tools/seoplus/visibilite-ia/crawlers-ia-robots-txt" "/tools/seoplus/"
+verifier_redirection "www.optimizia.xyz" "/tools/seoplus/en/ai-visibility/llms-txt-guide/?utm_source=test" "/tools/seoplus/?utm_source=test"
+verifier_redirection "www.optimizia.xyz" "/tools/seoplus/blog-guide-conformite-site.html" "/tools/seoplus/"
+verifier_redirection "www.optimizia.xyz" "/tools/seoplus/en/blog/" "/blog/"
+verifier_redirection "www.optimizia.xyz" "/tools/seoplus/compte.html" "/tools/seoplus/account.html"
 
 # En-têtes de sécurité
 verifier_entete "www.optimizia.xyz" "/tools/seoplus/" "X-Content-Type-Options"
