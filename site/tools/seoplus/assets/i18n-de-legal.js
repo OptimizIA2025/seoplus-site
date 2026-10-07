@@ -128,7 +128,7 @@
       "authPrivacy": "Datenschutz",
       "emailPlaceholder": "sie@email.de",
       "nlTitle": "SEO-Tipps, null Spam",
-      "nlSub": "Ein umsetzbarer Tipp jeden Montagmorgen, Abmeldung mit einem Klick.",
+      "nlSub": "Ein Tipp, unsere Audit-Zahlen und die News zu SEO, KI und Sicherheit jeden Montagmorgen, auf Englisch. Abmeldung mit einem Klick.",
       "nlBtn": "Abonnieren",
       "nlOk": "Alles klar. Bis Montagmorgen in Ihrem Postfach.",
       "nlErr": "Anmeldung gerade nicht verfügbar. Versuchen Sie es gleich noch einmal."
