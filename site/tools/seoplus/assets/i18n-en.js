@@ -592,7 +592,7 @@ window.SEOPLUS_EN = {
     companyLater: "Later",
     companyDone: "Noted, thanks!",
     nlTitle: "SEO tips, zero spam",
-    nlSub: "One actionable tip every Monday morning, one-click unsubscribe.",
+    nlSub: "One tip, our audit data and the week’s search, AI and security news, every Monday morning. One-click unsubscribe.",
     nlBtn: "Subscribe",
     nlOk: "Got it. See you Monday morning in your inbox.",
     nlErr: "Subscription unavailable right now. Try again in a moment.",

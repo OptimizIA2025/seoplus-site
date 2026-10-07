@@ -355,7 +355,7 @@
       "companyLater": "Más tarde",
       "companyDone": "¡Anotado, gracias!",
       "nlTitle": "Consejos SEO, cero spam",
-      "nlSub": "Un consejo aplicable cada lunes por la mañana, baja con un clic.",
+      "nlSub": "Un consejo, nuestros datos de auditoría y la actualidad de SEO, IA y seguridad cada lunes por la mañana, en inglés. Baja con un clic.",
       "nlBtn": "Suscribirme",
       "nlOk": "Recibido. Nos vemos el lunes por la mañana en tu bandeja.",
       "nlErr": "Suscripción no disponible ahora mismo. Inténtalo dentro de un momento.",

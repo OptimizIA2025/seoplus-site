@@ -3561,7 +3561,7 @@
     var band = document.createElement("div");
     band.className = "nl-foot";
     band.innerHTML = '<div class="nl-foot-text"><b>' + tUI("nlTitle", "Des tips SEO, zéro spam") + '<span class="nl-cursor" aria-hidden="true">_</span></b>' +
-      "<span>" + tUI("nlSub", "Un conseil actionnable chaque lundi matin, désinscription en un clic.") + ' <a href="politique-confidentialite.html">' + tUI("authPrivacy", "Confidentialité") + "</a></span></div>" +
+      "<span>" + tUI("nlSub", "Un conseil, nos chiffres d’audit et l’actu SEO, IA et sécurité chaque lundi matin, en anglais. Désinscription en un clic.") + ' <a href="politique-confidentialite.html">' + tUI("authPrivacy", "Confidentialité") + "</a></span></div>" +
       '<form class="nl-form">' +
       '<input type="email" name="email" required placeholder="' + tUI("emailPlaceholder", "votre@email.fr") + '" autocomplete="email" aria-label="Email">' +
       '<button type="submit" class="btn btn-primary">' + tUI("nlBtn", "S'inscrire") + "</button>" +
