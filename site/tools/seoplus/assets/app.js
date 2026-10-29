@@ -799,8 +799,12 @@
   function sbClient() {
     if (sbInstance) return sbInstance;
     if (!window.supabase || !CFG.SUPABASE_URL || !CFG.SUPABASE_ANON_KEY) return null;
+    /* detectSessionInUrl coupe : le retour d'OAuth est traite par
+       handleAuthReturn(), qui nettoie l'URL avant meme que le SDK n'arrive et
+       echange le code lui-meme. Laisse au SDK, un ?error= perime dans l'URL
+       lui faisait jeter un code valide sans rien dire. */
     sbInstance = window.supabase.createClient(CFG.SUPABASE_URL, CFG.SUPABASE_ANON_KEY, {
-      auth: { flowType: "pkce" }
+      auth: { flowType: "pkce", detectSessionInUrl: false }
     });
     return sbInstance;
   }
@@ -824,7 +828,9 @@
         var s = document.createElement("script");
         s.src = BASE + "/assets/vendor/supabase.min.js?v=20260814b";
         s.onload = function () { res(true); };
-        s.onerror = function () { res(false); };
+        /* Echec reseau : on oublie la tentative, la prochaine action
+           retelecharge au lieu de rester bloquee sur un echec memorise. */
+        s.onerror = function () { s.remove(); sbPromesse = null; res(false); };
         document.head.appendChild(s);
       });
     }
@@ -887,45 +893,74 @@
      pas etre consomme par un robot.
 
      Apres verification on recharge la page : tout le reste du code suppose que
-     la session est lue au chargement, jamais posee a chaud. */
-  /* La carte de connexion vient d'etre posee a l'ecran : c'est le bon moment
-     pour aller chercher le SDK, la personne va lire avant de cliquer. */
-  function bindAuthCard(root) {
-    avecSupabase(function (client) { if (client) bindAuthCardAvec(root, client); });
-  }
+     la session est lue au chargement, jamais posee a chaud.
 
-  function bindAuthCardAvec(root, client) {
+     Les ecouteurs sont poses tout de suite et le SDK est demande au moment de
+     l'action. Ils n'etaient poses qu'une fois le SDK (203 Ko) arrive : un clic
+     sur Google pendant ce temps ne faisait rien, et le formulaire email
+     partait en soumission native, l'adresse dans l'URL. */
+  function bindAuthCard(root) {
     var status = $("[data-auth-status]", root);
+    var btnGoogle = $("[data-auth-google]", root);
     var formEmail = $("[data-auth-magic]", root);
     var formCode = $("[data-auth-code]", root);
     var again = $("[data-auth-again]", root);
     var pendingEmail = "";
+
+    /* La carte vient d'etre posee : c'est le bon moment pour aller chercher
+       le SDK, la personne va lire avant de cliquer. */
+    avecSupabase(function () {});
 
     function say(msg, isError) {
       status.textContent = msg;
       status.classList.toggle("bad", !!isError);
       status.hidden = false;
     }
+    function sayIndispo() {
+      say(tUI("authIndispo", "Connexion impossible pour le moment (réseau). Réessayez dans un instant."), true);
+    }
     function showCodeStep(on) {
       formEmail.hidden = !!on;
       formCode.hidden = !on;
       again.hidden = !on;
     }
+
+    /* Retour de Google sans session : on le dit sur la carte, sinon la
+       personne revoit exactement l'ecran qu'elle vient de quitter. Le message
+       reste tant qu'elle n'a rien retente, y compris si la carte est repeinte
+       au changement de langue. */
+    if (erreurRetourAuth === "annule") say(tUI("authGoogleAnnule", "Connexion Google annulée. Réessayez, ou recevez un code par email."), true);
+    else if (erreurRetourAuth) say(tUI("authGoogleEchec", "La connexion Google n'a pas abouti. Réessayez, ou recevez un code par email."), true);
+
     /* Memorise la page a rouvrir apres connexion : si l'allowlist Supabase
        rejette le redirectTo, le retour atterrit sur la Site URL (racine) et
        handleAuthReturn() nous ramene ici. Utile pour Google uniquement : le
        code par email ne quitte jamais la page. */
     function rememberReturn() {
-      try { localStorage.setItem("seoplus_auth_return", window.location.href); } catch (e) {}
+      try { localStorage.setItem("seoplus_auth_return", adresseSansAuth()); } catch (e) {}
     }
 
-    $("[data-auth-google]", root).addEventListener("click", function () {
-      rememberReturn();
-      client.auth.signInWithOAuth({
-        provider: "google",
-        options: { redirectTo: window.location.href }
-      }).then(function (res) {
-        if (res.error) say(tUI("authGoogleKo", "Connexion Google indisponible pour le moment. Essayez par email."), true);
+    /* Bouton desactive jusqu'au depart vers Google : un double clic lancerait
+       deux flux PKCE dont le second ecrase le verificateur du premier. Le
+       retour arriere depuis Google le reactive (ecouteur pageshow plus bas). */
+    btnGoogle.addEventListener("click", function () {
+      erreurRetourAuth = null;
+      btnGoogle.disabled = true;
+      say(tUI("authGoogleRedirect", "Redirection vers Google..."));
+      avecSupabase(function (client) {
+        if (!client) { btnGoogle.disabled = false; sayIndispo(); return; }
+        rememberReturn();
+        client.auth.signInWithOAuth({
+          provider: "google",
+          options: { redirectTo: adresseSansAuth() }
+        }).then(function (res) {
+          if (!res.error) return;
+          btnGoogle.disabled = false;
+          say(tUI("authGoogleKo", "Connexion Google indisponible pour le moment. Essayez par email."), true);
+        }, function () {
+          btnGoogle.disabled = false;
+          say(tUI("authGoogleKo", "Connexion Google indisponible pour le moment. Essayez par email."), true);
+        });
       });
     });
 
@@ -959,31 +994,35 @@
        attendu en retour, la personne revient avec son code sur cette page. */
     function sendCode(email) {
       var btnMail = $("button", formEmail);
+      erreurRetourAuth = null;
       btnMail.disabled = true;
       again.disabled = true;
       say(tUI("authSending", "Envoi du code..."));
-      client.auth.signInWithOtp({ email: email }).then(function (res) {
-        btnMail.disabled = false;
-        if (res.error) {
-          var msg = "" + (res.error.message || "");
-          /* 429 : message d'origine en anglais et peu parlant. */
-          if (res.error.status === 429 || /security purposes|rate limit|too many/i.test(msg)) {
-            showCodeStep(true);
-            say(tUI("authTropVite", "Trop de demandes rapprochees. Patientez un instant, puis redemandez un code."), true);
-            armerRenvoi(60);
+      avecSupabase(function (client) {
+        if (!client) { btnMail.disabled = false; again.disabled = false; sayIndispo(); return; }
+        client.auth.signInWithOtp({ email: email }).then(function (res) {
+          btnMail.disabled = false;
+          if (res.error) {
+            var msg = "" + (res.error.message || "");
+            /* 429 : message d'origine en anglais et peu parlant. */
+            if (res.error.status === 429 || /security purposes|rate limit|too many/i.test(msg)) {
+              showCodeStep(true);
+              say(tUI("authTropVite", "Trop de demandes rapprochees. Patientez un instant, puis redemandez un code."), true);
+              armerRenvoi(60);
+              return;
+            }
+            again.disabled = false;
+            say(tFmt("authSendKo", "Envoi impossible ({err}). Reessayez ou passez par Google.", { err: msg }), true);
             return;
           }
-          again.disabled = false;
-          say(tFmt("authSendKo", "Envoi impossible ({err}). Reessayez ou passez par Google.", { err: msg }), true);
-          return;
-        }
-        pendingEmail = email;
-        showCodeStep(true);
-        say(tFmt("authCodeSent", "Code envoye a {email}. Saisissez le DERNIER code recu (pensez aux spams).", { email: email }));
-        var input = $("input", formCode);
-        input.value = "";
-        try { input.focus(); } catch (e) {}
-        armerRenvoi(60);
+          pendingEmail = email;
+          showCodeStep(true);
+          say(tFmt("authCodeSent", "Code envoye a {email}. Saisissez le DERNIER code recu (pensez aux spams).", { email: email }));
+          var input = $("input", formCode);
+          input.value = "";
+          try { input.focus(); } catch (e) {}
+          armerRenvoi(60);
+        });
       });
     }
 
@@ -1005,7 +1044,7 @@
        jeton de type "signup", pas "email" : on essaie les deux plutot que de
        renvoyer "code incorrect" a la premiere inscription. Un essai qui echoue
        ne consomme rien. */
-    function verifyWith(types, code, done) {
+    function verifyWith(client, types, code, done) {
       var i = 0;
       function step() {
         client.auth.verifyOtp({ email: pendingEmail, token: code, type: types[i] }).then(function (res) {
@@ -1033,10 +1072,12 @@
         say(tUI("authCodeFormat", "Saisissez le code recu par email."), true);
         return;
       }
+      /* Cette etape n'apparait qu'apres un envoi reussi : le SDK est la. */
+      var client = sbClient();
       var btnCode = $("button", formCode);
       btnCode.disabled = true;
       say(tUI("authChecking", "Verification..."));
-      verifyWith(["email", "signup"], code, function (err) {
+      verifyWith(client, ["email", "signup"], code, function (err) {
         if (err) {
           btnCode.disabled = false;
           say(tUI("authCodeKo", "Code incorrect ou expire. Verifiez que c'est bien le dernier recu."), true);
@@ -1055,6 +1096,18 @@
       });
     });
   }
+
+  /* Retour arriere depuis Google : Safari et Chrome restaurent la page depuis
+     leur cache, bouton encore desactive et « Redirection » a l'ecran. */
+  window.addEventListener("pageshow", function (e) {
+    if (!e.persisted) return;
+    $$("[data-auth-google]").forEach(function (b) {
+      if (!b.disabled) return;
+      b.disabled = false;
+      var st = $("[data-auth-status]", b.closest(".auth-card"));
+      if (st) st.hidden = true;
+    });
+  });
 
   /* Capitalise le contact : upsert par (user, host), met a jour le score au re-audit. */
   function recordLead(user, host, score, grade) {
@@ -1131,9 +1184,18 @@
   }
 
   function getUser(cb) {
+    /* Retour de Google : la session n'existe qu'une fois le code echange. Sans
+       cette attente, la page concluait « pas connecte » sur un stockage encore
+       vide et reposait la carte de connexion, alors que la session s'ouvrait
+       une seconde plus tard en silence (constate en production le 27/10). */
+    if (retourAuth) { retourAuth.then(function () { lireSession(cb); }); return; }
     /* Aucune trace de session en local : inutile de telecharger le SDK pour se
        l'entendre confirmer. C'est le cas de presque tous les chargements. */
     if (!sessionStockee()) { cb(null); return; }
+    lireSession(cb);
+  }
+
+  function lireSession(cb) {
     avecSupabase(function (client) {
       if (!client) { cb(null); return; }
       client.auth.getSession().then(function (res) {
@@ -1218,33 +1280,65 @@
     });
   }
 
-  /* Retour OAuth / magic link : le ?code= peut atterrir sur n'importe quelle
-     page (Site URL en fallback). Creer le client suffit a echanger le code
-     (detectSessionInUrl) ; une fois la session posee, on repart vers la page
-     memorisee avant la connexion, sinon on nettoie juste l'URL. */
-  function handleAuthReturn() {
-    /* Le test du ?code= passe AVANT le chargement du SDK : sans lui, chaque
-       page allait chercher 203 Ko pour decouvrir qu'elle n'a rien a echanger. */
-    if (!/[?&]code=/.test(window.location.search)) return;
-    avecSupabase(function (client) { if (client) echangerCode(client); });
+  /* Retour OAuth : Supabase renvoie sur la page de depart avec ?code= quand
+     Google a dit oui, ou ?error=...#error=...&sb= quand la personne a annule
+     chez Google (ou que Supabase a refuse). Tout se regle ici, au chargement,
+     avant que la page ne decide d'afficher la carte de connexion :
+     - l'URL est nettoyee tout de suite. Ces parametres repartaient dans le
+       redirectTo du clic suivant, et le SDK refuse d'echanger un code tant
+       qu'une erreur traine dans l'URL, meme perimee : apres une tentative
+       annulee, chaque nouveau clic revenait avec un code valide jete sans un
+       mot (constate en production le 27/10, deux essais de suite) ;
+     - le code est echange ici, et getUser() attend la fin de l'echange.
+     Le test passe AVANT le chargement du SDK : sans lui, chaque page irait
+     chercher 203 Ko pour decouvrir qu'elle n'a rien a echanger. */
+  var PARAMS_AUTH = ["code", "error", "error_code", "error_description"];
+  var retourAuth = null;
+  var erreurRetourAuth = null;
+
+  /* Adresse absolue debarrassee des parametres d'un retour d'auth. Le hash
+     d'un retour en porte aussi (#error=...&sb=) ; une ancre n'a jamais de
+     « = », c'est ce qui les distingue. */
+  function adresseSansAuth(href) {
+    var u = new URL(href || window.location.href);
+    PARAMS_AUTH.forEach(function (k) { u.searchParams.delete(k); });
+    if (u.hash.indexOf("=") !== -1) u.hash = "";
+    return u.href;
   }
 
-  function echangerCode(client) {
-    var handled = false;
-    client.auth.onAuthStateChange(function (event, session) {
-      if (handled || !session) return;
-      handled = true;
-      var params = new URLSearchParams(window.location.search);
-      params.delete("code");
-      var qs = params.toString();
-      var clean = window.location.pathname + (qs ? "?" + qs : "") + window.location.hash;
-      var ret = null;
-      try {
-        ret = localStorage.getItem("seoplus_auth_return");
-        localStorage.removeItem("seoplus_auth_return");
-      } catch (e) {}
-      if (ret && ret !== window.location.origin + clean) window.location.replace(ret);
-      else window.history.replaceState(null, "", clean);
+  function handleAuthReturn() {
+    var q = new URLSearchParams(window.location.search);
+    var h = new URLSearchParams(window.location.hash.slice(1));
+    var code = q.get("code");
+    var erreur = q.get("error") || h.get("error") || q.get("error_code") || h.get("error_code");
+    if (!code && !erreur) return;
+    window.history.replaceState(null, "", adresseSansAuth());
+    var ret = null;
+    try {
+      ret = localStorage.getItem("seoplus_auth_return");
+      localStorage.removeItem("seoplus_auth_return");
+    } catch (e) {}
+    /* Code et erreur ensemble : l'erreur est le reste d'une tentative
+       precedente, recopie par l'ancienne version du site. Le code fait foi. */
+    if (!code) {
+      erreurRetourAuth = erreur === "access_denied" ? "annule" : "echec";
+      return;
+    }
+    retourAuth = new Promise(function (res) {
+      avecSupabase(function (client) {
+        if (!client) { erreurRetourAuth = "echec"; res(); return; }
+        client.auth.exchangeCodeForSession(code).then(function (r) {
+          if (r.error) { erreurRetourAuth = "echec"; res(); return; }
+          /* Supabase a pu rejeter le redirectTo et renvoyer sur la Site URL :
+             on repart vers la page d'ou la personne s'est connectee. Celle-ci
+             s'en va, elle n'a rien a afficher. */
+          if (ret && adresseSansAuth(ret) !== adresseSansAuth()) {
+            window.location.replace(adresseSansAuth(ret));
+            return;
+          }
+          res();
+        }, function () { erreurRetourAuth = "echec"; res(); });
+      });
     });
   }
 
